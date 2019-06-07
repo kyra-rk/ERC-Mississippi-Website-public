@@ -14,9 +14,15 @@ class App extends Component {
     this.makeSelection = this.makeSelection.bind(this)
   }
 
-  makeSelection(toDoItem){
-    let currentResults = []
-    this.setState({currentResults: currentResults})
+  makeSelection(selection){
+    let ResultsList = [...this.state.ResultsList]
+      if (selection === 'demographics'){
+        ResultsList.push(demographics)
+      }
+      else if (selection === 'education'){
+        ResultsList.push(education_and_employment)
+      }
+      this.setState({ResultsList: ResultsList})
   }
   
   render() {
