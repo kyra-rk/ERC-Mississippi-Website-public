@@ -4,7 +4,7 @@ import Dropdown from './Dropdown'
 import Results from './Results'
 
 const demographics = ['sample1', 'sample2', 'sample3']
-const education_and_employment = ['sample4', 'sample5', 'sample6']
+const education_and_employment = ['sample4', 'sample5', 'sample6', 'sample7']
 
 
 class App extends Component {
