@@ -25,6 +25,7 @@ class Dropdown extends Component {
             <form onSubmit={ this.handleSubmit }>
                 <label for="categorizeData">Select category of data</label>
                 <select class="form-control" id="categorizeData" onChange = { this.handleChange }>
+                    <option value='category'>Select a category...</option>
                     <option value='demographics'>Demographics</option>
                     <option value='education'>Education and Employment</option>
                     <option value='income'>Income and Earnings</option>
