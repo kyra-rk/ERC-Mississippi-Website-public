@@ -16,6 +16,7 @@ class App extends Component {
 
   makeSelection(selection){
     let ResultsList = [...this.state.ResultsList]
+      ResultsList = []
       if (selection === 'demographics'){
         ResultsList.push(demographics)
       }
