@@ -3,8 +3,34 @@ import './App.css';
 import Dropdown from './Dropdown'
 import Results from './Results'
 
-const demographics = ['sample1', 'sample2', 'sample3']
-const education_and_employment = ['sample4', 'sample5', 'sample6', 'sample7']
+const demographics = [
+  {
+  'name':'Percentage of women by county', 
+  'abbreviation': 'wbc',
+  },
+  {
+    'name':'Percentage of black women by county', 
+    'abbreviation': 'bwbc',
+  },
+  {
+    'name':'Percentage of white women by county', 
+    'abbreviation': 'wwbc',
+  }
+]
+const education_and_employment = [
+  {
+    'name':'Percentage of women with college degree education by county', 
+    'abbreviation': 'wcebc',
+  },
+  {
+    'name':'Percentage of black women with college degree education by county', 
+    'abbreviation': 'bwcebc',
+  },
+  {
+    'name':'Percentage of white women with college degree education by county', 
+    'abbreviation': 'wwcebc',
+  }
+]
 
 
 class App extends Component {
@@ -18,10 +44,14 @@ class App extends Component {
     let ResultsList = [...this.state.ResultsList]
       ResultsList = []
       if (selection === 'demographics'){
-        ResultsList.push(demographics)
+        for(i in demographics){
+          ResultsList.push(demographics[i])
+        }
       }
       else if (selection === 'education'){
-        ResultsList.push(education_and_employment)
+        for (var i in education_and_employment){
+          ResultsList.push(education_and_employment[i])
+        }
       }
       this.setState({ResultsList: ResultsList})
   }
