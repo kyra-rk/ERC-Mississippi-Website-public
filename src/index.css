@@ -12,8 +12,11 @@ code {
     monospace;
 }
 
-.navbar-custom {
-font-color: #FFFFFF;
+.navbar {
 background-color: #6d1b6c;
+}
+
+.navbar-brand{
+margin-top: 0px;
 }
 
