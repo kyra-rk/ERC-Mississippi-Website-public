@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Dropdown from './Dropdown'
 import Results from './Results'
+import { Redirect } from 'react-router-dom'
 
 const demographics = [
   {
@@ -32,6 +33,8 @@ const education_and_employment = [
   }
 ]
 
+// const demographics = ['sample1', 'sample2', 'sample3']
+// const education_and_employment = ['sample4', 'sample5', 'sample6', 'sample7']
 
 class App extends Component {
   constructor(props){
@@ -42,15 +45,16 @@ class App extends Component {
 
   makeSelection(selection){
     let ResultsList = [...this.state.ResultsList]
-      ResultsList = []
+      ResultsList = [];
+      var i;
       if (selection === 'demographics'){
         for(i in demographics){
-          ResultsList.push(demographics[i])
+          ResultsList.push(demographics[i]['name'])
         }
       }
       else if (selection === 'education'){
-        for (var i in education_and_employment){
-          ResultsList.push(education_and_employment[i])
+        for (i in education_and_employment){
+          ResultsList.push(education_and_employment[i]['name'])
         }
       }
       this.setState({ResultsList: ResultsList})
