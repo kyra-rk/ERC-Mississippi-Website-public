@@ -1,77 +1,65 @@
 import React, { Component } from 'react';
 import './App.css';
-import Dropdown from './Dropdown'
-import Results from './Results'
-import { Redirect } from 'react-router-dom'
+import {BrowserRouter as Router,Route} from 'react-router-dom'
+import About from './About'
+import Home from './Home'
+import DataPortal from './DataPortal'
+import OralHistories from './OralHistories'
+import EconIndex from './EconIndex'
+import { Navbar, Button } from 'react-bootstrap'
 
-const demographics = [
-  {
-  'name':'Percentage of women by county', 
-  'abbreviation': 'wbc',
-  },
-  {
-    'name':'Percentage of black women by county', 
-    'abbreviation': 'bwbc',
-  },
-  {
-    'name':'Percentage of white women by county', 
-    'abbreviation': 'wwbc',
-  }
-]
-const education_and_employment = [
-  {
-    'name':'Percentage of women with college degree education by county', 
-    'abbreviation': 'wcebc',
-  },
-  {
-    'name':'Percentage of black women with college degree education by county', 
-    'abbreviation': 'bwcebc',
-  },
-  {
-    'name':'Percentage of white women with college degree education by county', 
-    'abbreviation': 'wwcebc',
-  }
-]
-
-// const demographics = ['sample1', 'sample2', 'sample3']
-// const education_and_employment = ['sample4', 'sample5', 'sample6', 'sample7']
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {ResultsList: []};
-    this.makeSelection = this.makeSelection.bind(this)
-  }
-
-  makeSelection(selection){
-    let ResultsList = [...this.state.ResultsList]
-      ResultsList = [];
-      var i;
-      if (selection === 'demographics'){
-        for(i in demographics){
-          ResultsList.push(demographics[i]['name'])
-        }
-      }
-      else if (selection === 'education'){
-        for (i in education_and_employment){
-          ResultsList.push(education_and_employment[i]['name'])
-        }
-      }
-      this.setState({ResultsList: ResultsList})
-  }
-  
   render() {
     return (
       <div className="App">
-          <h1>
-            Data Portal
-          </h1>
-          <Dropdown makeSelection = {this.makeSelection}/>
-          <Results ResultsList = {this.state.ResultsList} />
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+          <a class="navbar-brand text-white" href="#">MS Women Count</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon navbar-inverse">
+            </span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="active">
+                  <a class="nav-link text-white" href="/home">Home
+                    <span class="sr-only">Home</span>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link text-white" href="/dataportal">Data Portal
+                    <span class="sr-only">Data Portal</span>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link text-white" href="/index">Index
+                    <span class="sr-only">Index</span>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link text-white" href="/oralhistories">Oral Histories
+                    <span class="sr-only">Oral Histories</span>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link text-white" href="/about">About
+                    <span class="sr-only">About</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        <Router>
+          <Route path="/home" component={Home}/>
+          <Route path="/dataportal" component={DataPortal}/>
+          <Route path="/index" component={EconIndex}/>
+          <Route path="/oralhistories" component={OralHistories}/>
+          <Route path="/about" component={About}/>
+        </Router>
       </div>
     );
   }
-
 }
 
 export default App;
+
