@@ -13,6 +13,9 @@ import OralHistories from './OralHistories'
 import EconIndex from './EconIndex'
 import { Navbar, Button } from 'react-bootstrap'
 
+/**
+*sr-only is for screenreaders, i.e. accessibility
+*/
 class App extends Component {
   render() {
     return (
