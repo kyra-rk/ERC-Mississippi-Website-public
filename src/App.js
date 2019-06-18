@@ -8,7 +8,6 @@ import OralHistories from './OralHistories'
 import EconIndex from './EconIndex'
 import { Navbar, Button } from 'react-bootstrap'
 
-
 class App extends Component {
   render() {
     return (
@@ -56,6 +55,7 @@ class App extends Component {
           <Route path="/oralhistories" component={OralHistories}/>
           <Route path="/about" component={About}/>
         </Router>
+
       </div>
     );
   }

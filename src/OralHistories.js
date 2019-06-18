@@ -1,35 +1,28 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+import Topic from './Topic'
+import Story from './Story'
 
-export const Topic = ({ match }) => (
+export const Category = ({ match }) => (
     <div>
       <h3>{match.params.topicId}</h3>
     </div>
   )
   
   
-  export const Topics = ({ match }) => (
+  export const Categories = ({ match }) => (
     <div>
-      <h2>Topics</h2>
-      <ul>
-        <li>
-          <Link to={`${match.url}/story`}>
-            By Story
-          </Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/topic`}>
-            By Topic
-          </Link>
-        </li>
-      </ul>
+      <h1>Oral History</h1>
+      <button type="button" class="btn btn-outline-info"><Link to={`${match.url}/story`}>People/Story</Link></button>
+      &nbsp;
+      <button type="button" class="btn btn-outline-info"><Link to={`${match.url}/topic`}>By Topic</Link></button>
   
-      <Route path={`${match.path}/:topicId`} component={Topic}/>
-      <Route exact path={match.path} render={() => (
-        <h3>Please select.</h3>
-      )}/>
+      <Route path={`${match.path}/Topic`} component={Topic}/>
+      <Route path={`${match.path}/Story`} component={Story}/>
+      <Route exact path={match.path} />
     </div>
   )
   
   
-export default Topics
+export default Categories
