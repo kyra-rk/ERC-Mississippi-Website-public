@@ -1,3 +1,8 @@
+/**
+ * Program file for the Oral Histories Page
+ * Used flip cards and several divs for each side of the card
+ * NEED TO ADD ICONS BELOW SEE MORE BUTTON AND AUTOPOPULATE USING CSV OR ARRAY
+ */
 import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
 import './OralHistories.css';
