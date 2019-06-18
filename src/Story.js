@@ -39,9 +39,6 @@ export const Story = () => (
                     </div>
                 </div>
             </div>
-        </div>
-        <br/>
-        <div class = "row justify-content-around">
             <div class = "col-md-4 card-container">
                 <div class="card-flip">
                     <div class="card front">
@@ -62,6 +59,9 @@ export const Story = () => (
                     </div>
                 </div>
             </div>
+        </div>
+        <br/>
+        <div class = "row justify-content-around">
             <div class = "col-md-4 card-container">
                 <div class="card-flip">
                     <div class="card front">
@@ -82,9 +82,6 @@ export const Story = () => (
                     </div>
                 </div>
             </div>
-        </div>
-        <br/>
-        <div class = "row justify-content-around">
             <div class = "col-md-4 card-container">
                 <div class="card-flip">
                     <div class="card front">
@@ -105,6 +102,9 @@ export const Story = () => (
                     </div>
                 </div>
             </div>
+        </div>
+        <br/>
+        <div class = "row justify-content-around">
             <div class = "col-md-4 card-container">
                 <div class="card-flip">
                     <div class="card front">
@@ -125,9 +125,7 @@ export const Story = () => (
                     </div>
                 </div>
             </div>
-        </div>
         <br/>
-        <div class = "row justify-content-around">
             <div class = "col-md-4 card-container">
                 <div class="card-flip">
                     <div class="card front">
