@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+/*@navbar is same color as MLICCI color*/
 .navbar {
 background-color: #6d1b6c;
 }
@@ -20,6 +21,7 @@ background-color: #6d1b6c;
 margin-top: -3px;
 }
 
+/*when screen is small, menu is contained in icon and this makes the color white*/
 .navbar span.navbar-toggler-icon {
 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }

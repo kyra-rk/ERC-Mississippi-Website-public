@@ -1,3 +1,4 @@
+/*Program file for the Data Portal Page*/
 import React, { Component } from 'react';
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
 import Dropdown from './Dropdown'
@@ -31,9 +32,6 @@ const demographics = [
       'abbreviation': 'wwcebc',
     }
   ]
-  
-  // const demographics = ['sample1', 'sample2', 'sample3']
-  // const education_and_employment = ['sample4', 'sample5', 'sample6', 'sample7']
   
   class DataPortal extends Component {
     constructor(props){

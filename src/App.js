@@ -1,3 +1,8 @@
+/**
+ * Entry point for the app
+ * Created navbar using bootstrap and router
+ * NEED TO MAKE MENU ITEMS AN ARRAY AND HAVE IT REFERENCED RATHER THAN HARD CODE
+ */
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
