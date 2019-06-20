@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-custom">
           <a class="navbar-brand text-white" href="/home">MS Women Count</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon navbar-inverse">
