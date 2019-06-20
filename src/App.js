@@ -6,11 +6,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
-import About from './About'
-import Home from './Home'
-import DataPortal from './DataPortal'
-import OralHistories from './OralHistories'
-import EconIndex from './EconIndex'
+import About from '../pages/About'
+import Home from '../pages/Home'
+import DataPortal from '../pages/DataPortal'
+import OralHistories from '../pages/OralHistories'
+import EconIndex from '../pages/EconIndex'
 import { Navbar, Button } from 'react-bootstrap'
 
 /**
