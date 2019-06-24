@@ -6,8 +6,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
-import About from './pages/About'
+import { Switch } from 'react-router-dom'
 import Home from './pages/Home'
+import About from './pages/About'
 import DataPortal from './pages/DataPortal'
 import OralHistories from './pages/OralHistories'
 import EconIndex from './pages/EconIndex'
@@ -21,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-custom">
-          <a class="navbar-brand text-white" href="/home">MS Women Count</a>
+          <a class="navbar-brand text-white" href="/">MS Women Count</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon navbar-inverse">
             </span>
@@ -29,7 +30,7 @@ class App extends Component {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="active">
-                  <a class="nav-link text-white" href="/home">Home
+                  <a class="nav-link text-white" href="/">Home
                     <span class="sr-only">Home</span>
                   </a>
                 </li>
@@ -56,13 +57,13 @@ class App extends Component {
               </ul>
             </div>
           </nav>
-        <Router>
-          <Route path="/home" component={Home}/>
+        <Switch>
+          <Route exact path="/" component={Home}/>
           <Route path="/dataportal" component={DataPortal}/>
           <Route path="/index" component={EconIndex}/>
           <Route path="/oralhistories" component={OralHistories}/>
           <Route path="/about" component={About}/>
-        </Router>
+        </Switch>
 
       </div>
     );
