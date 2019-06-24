@@ -16,6 +16,7 @@ import { Navbar, Button } from 'react-bootstrap'
 
 /**
 *sr-only is for screenreaders, i.e. accessibility
+*made home link be exact path "/" and switch makes it so that a new program file is being rendered (removing old file)
 */
 class App extends Component {
   render() {
