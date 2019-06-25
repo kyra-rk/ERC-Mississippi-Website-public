@@ -2,6 +2,7 @@
  * Entry point for the app
  * Created navbar using bootstrap and router
  * NEED TO MAKE MENU ITEMS AN ARRAY AND HAVE IT REFERENCED RATHER THAN HARD CODE
+ * Playing around with some things, don't delete the comments
  */
 import React, { Component } from 'react';
 import './App.css';
@@ -13,6 +14,7 @@ import DataPortal from './pages/DataPortal'
 import OralHistories from './pages/OralHistories'
 import EconIndex from './pages/EconIndex'
 import { Navbar, Button } from 'react-bootstrap'
+//import Products from './pages/Variables';
 
 /**
 *sr-only is for screenreaders, i.e. accessibility
