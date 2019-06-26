@@ -1,6 +1,5 @@
 /*Program file for the Data Portal Page*/
 import React, { Component } from 'react';
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
 import Dropdown from '../components/Dropdown'
 import Results from '../components/Results'
 

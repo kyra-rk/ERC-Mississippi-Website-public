@@ -3,15 +3,15 @@
  * Used navbar and Router to make buttons that link to subpages of people vs. topics categorization
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+//import { Button } from 'react-bootstrap'
 import Topic from './Topic'
 import Story from './Story'
 
 /**
 *&nbsp puts a space between the two buttons
-*@match.path keeps oralhistories in url but allows to add topic or story
+*match.path keeps oralhistories in url but allows to add topic or story
 */  
 export const Categories = ({ match }) => (
   <div>
