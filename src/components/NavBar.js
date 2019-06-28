@@ -16,17 +16,18 @@ const CreateNavBar = () => {
 
     const links = nav_bar_items.map((obj, index) => <Nav.Link href = {obj.url}>{obj.name}</Nav.Link>);
     
-    return (<Navbar expand="md" sticky="top" bg="purple" variant="dark">
-                <Navbar.Brand href="/">MS Women Count</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
-                            {links}
-                            <span className="sr-only">{links}</span>
-                        </Nav>
-                    </Navbar.Collapse>.
-                </Navbar>
-            );
+    return (
+        <Navbar collapseOnSelect expand="md" variant="dark">
+            <Navbar.Brand href="/">MSWomenCount</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto">
+                    {links}
+                    <span className="sr-only">{links}</span>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
+    )
 };
 
 export default NavBar;
