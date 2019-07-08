@@ -4,24 +4,30 @@
  */
 
 import React from 'react';
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
-//import { Button } from 'react-bootstrap'
+import {BrowserRouter as Router,Route, Switch} from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 import Topic from './Topic'
-import Story from './Story'
+import FlipCard from './Story'
+import NoMatch from './NoMatch'
 
 /**
-*&nbsp puts a space between the two buttons
-*match.path keeps oralhistories in url but allows to add topic or story
-*/  
+ * match.path keeps oralhistories in url but allows to add topic or story
+ * {' '} creates space between buttons
+ * Not super sure what <Route exact path={match.path}/> does but if i delete it, it seems fine
+ * Created a nomatch page
+ */  
 export const Categories = ({ match }) => (
   <div>
     <h1>Oral Histories</h1>
-    <button type="button" class="btn btn-outline-info"><Link to={`${match.url}/story`}>By People/Story</Link></button>
-    &nbsp;
-    <button type="button" class="btn btn-outline-info"><Link to={`${match.url}/topic`}>By Topic</Link></button>
-    <Route path={`${match.path}/Topic`} component={Topic}/>
-    <Route path={`${match.path}/Story`} component={Story}/>
-    <Route exact path={match.path} />
+    <Button variant="outline-info" href ={`${match.url}/story`}>By People/Narrative</Button>
+    {' '}
+    <Button variant="outline-info" href = {`${match.url}/topic`}>By Topic</Button>
+    <Switch>
+      <Route path={`${match.path}/Topic`} exact component={Topic}/>
+      <Route path={`${match.path}/Story`} exact component={FlipCard}/>
+      <Route exact path={match.path}/>
+      <Route exact path='*' component={NoMatch} />
+    </Switch>
   </div>
 )
   

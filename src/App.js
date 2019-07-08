@@ -9,6 +9,7 @@ import DataPortal from './pages/DataPortal'
 import OralHistories from './pages/OralHistories'
 import EconIndex from './pages/EconIndex'
 import NavBar from './components/NavBar'
+import NoMatch from './pages/NoMatch'
 
 
 /*made home link be exact path "/" and switch makes it so that a new program file is being rendered (removing old file)*/
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/index" component={EconIndex}/>
           <Route path="/oralhistories" component={OralHistories}/>
           <Route path="/about" component={About}/>
+          <Route component={NoMatch}/>
         </Switch>
       </div>
     );
