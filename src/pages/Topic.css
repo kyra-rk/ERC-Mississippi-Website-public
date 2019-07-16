@@ -1,0 +1,12 @@
+#Topic-Image {
+    width: auto;
+    max-height: 100px;
+    height: auto;
+    float: left;
+ }
+
+ .Quote-Container {
+ 	overflow: auto;
+ 	max-height: 100px;
+ 	height: auto;
+ }

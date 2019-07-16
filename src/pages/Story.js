@@ -6,11 +6,11 @@
  */
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import './OralHistories.css';
+import './FlipCard.css';
 import flip_card_items from '../data/flip_card_items'
 
 /*Calling the CreateNavBar const that is the const lower down*/
-const FlipCard = () => {
+const Story = () => {
     return <CreateFlipCard />
 }
 /*sr-only is for screenreaders, i.e. accessibility*/
@@ -20,7 +20,7 @@ const CreateFlipCard = () => {
             <div className = "card-container">
                 <div className="card-flip">
                     <div className="card front">
-                        <img src = {require('./person.png')}/>
+                        <img src = {require('../pictures/person.png')}/>
                         <div className= "card-text">   
                             <h4>{obj.name}</h4>
                         </div>
@@ -50,4 +50,4 @@ const CreateFlipCard = () => {
     )
 };
 
-export default FlipCard;
+export default Story;

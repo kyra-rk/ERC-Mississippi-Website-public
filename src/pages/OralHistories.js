@@ -7,7 +7,7 @@ import React from 'react';
 import {BrowserRouter as Router,Route, Switch} from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import Topic from './Topic'
-import FlipCard from './Story'
+import Story from './Story'
 import NoMatch from './NoMatch'
 
 /**
@@ -23,10 +23,10 @@ export const Categories = ({ match }) => (
     {' '}
     <Button variant="outline-info" href = {`${match.url}/topic`}>By Topic</Button>
     <Switch>
-      <Route path={`${match.path}/Topic`} exact component={Topic}/>
-      <Route path={`${match.path}/Story`} exact component={FlipCard}/>
+      <Route path={`${match.path}/topic`} component={Topic}/>
+      <Route path={`${match.path}/story`} component={Story}/>
       <Route exact path={match.path}/>
-      <Route exact path='*' component={NoMatch} />
+      <Route component={NoMatch}/>
     </Switch>
   </div>
 )
