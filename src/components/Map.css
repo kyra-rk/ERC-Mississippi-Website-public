@@ -1,16 +1,31 @@
+.Jumbotron{
+  background-color: transparent !important;
+}
+
 
 .description {
 background: red;
+background-color: rgba(185, 142, 167, 0.5);
+padding: 20px;
+}
 
+.description h1 {
+  font-size: 30px;
+}
+
+.description p {
+  text-align: left;
 }
 
 .mapclass {
-background: blue;
+  border: 6px solid rgba(185, 142, 167, 0.5);
+  background: #DCDCDC;
 
 }
 
 .tablemap {
-background: black;
+  border: 6px solid rgba(185, 142, 167, 0.5);
+  background: #DCDCDC;
 
 }
 
@@ -50,3 +65,4 @@ map {
   .tooltiptext, .name, .value {
     position: relative;
   }
+
