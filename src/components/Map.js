@@ -44,8 +44,8 @@ class Map extends Component {
         var center = d3.geoCentroid(json)
         console.log(center)
         let projection = d3.geoTransverseMercator()
-        .scale([2500])
-        .translate([.55*svgWidth,.9*svgHeight])
+        .scale([3000])
+        .translate([.45*svgWidth,.95*svgHeight])
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
        
         var svg = d3.select("svg")
@@ -132,6 +132,128 @@ class Map extends Component {
             svg.select("text.tooltiptext").remove();
             svg.select("rect.tooltip").remove();
             });     
+
+            var x = d3.scaleLinear()
+            .domain(color.domain())
+            .rangeRound([.25*svgHeight, .75*svgHeight]);
+
+            let loc = .75*svgWidth
+            var g = svg.append("g")
+                .attr("class", "key")
+                .attr("transform", `translate(${loc},0)`);
+            
+                g.selectAll("rect")
+       .data(color.range().map(function(d) {
+           d = color.invertExtent(d);
+           if (d[0] == null) d[0] = x.domain()[0];
+           if (d[1] == null) d[1] = x.domain()[1];
+           return d;
+         }))
+       .enter().append("rect")
+         .attr("width", 10 )
+         .attr("y", function(d) { return x(d[0]); })
+         .attr("height", function(d) { return x(d[1]) - x(d[0]); })
+         .attr("fill", function(d) { return color(d[0]); });
+
+
+    g.selectAll("text")
+    .data(color.range().map(function(d) {
+        d = color.invertExtent(d);
+        if (d[0] == null) d[0] = x.domain()[0];
+        if (d[1] == null) d[1] = x.domain()[1];
+        return d;
+      }))
+      .enter().append("text")
+          .attr("class", "labels")
+          .attr("x", 20)
+          .attr("y", function(d) { return x(d[0])+15; })
+          .attr("fill", "#000")
+          .attr("text-anchor", "start")
+          .text(function(d){return parseFloat(d[0]).toFixed(2)*100+ "%"});
+
+       data = data.sort(function (a, b) {
+        //    console.log(b[variable]);
+        //    console.log(a);
+          return b[variable]-a[variable];
+           // return d3.ascending(a.Percent_IBP_Women, b.Percent_IBP_Women);
+        })
+              
+          // data = data.slice(0, 10); 
+              
+               data = data.filter(function(d,i){
+        return i < 10;
+       });
+           
+       var margin2 = {
+        top: 15,
+        right: 30,
+        bottom: 15,
+        left: 90
+    };
+  
+  var width =svgWidth - margin2.left - margin2.right;
+  var height = svgHeight - margin2.top - margin2.bottom;
+  
+  var svg2 = d3.select(".tablemap").append("svg")
+        .attr("width", width + margin2.left + margin2.right)
+        .attr("height", height + margin2.top + margin2.bottom)
+        .append("g")
+        // .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+
+
+       var x_bar = d3.scaleLinear()
+       .range([0, svgWidth])
+       .domain([0,  d3.max(data, function(d){
+         return parseFloat(d[variable]).toFixed(2)*100;
+       })
+       ]);
+                 
+         var y_ax = d3.scaleBand()
+       .range([0, svgHeight])
+       .domain(data.map(function (d, i) {
+         return d.Geography.substring(0,d.Geography.length-20);}))
+         .padding(0.05);
+                 
+                  var yAxis = d3.axisLeft(y_ax)
+               //no tick marks
+               .tickSize(0);
+                 
+                  var gy = svg2.append("g")
+               .attr("class", "y axis")
+               .call(yAxis);
+                 
+                 var bars = svg2.selectAll("bar")
+               .data(data)
+               .enter()
+               .append("g");
+                 
+                 bars.append("rect")
+               .attr("class", "bar")
+               .attr("y", function (d, i) {
+                   
+                   return y_ax(d.Geography.substring(0,d.Geography.length-20));
+               })
+               .attr("height", y_ax.bandwidth())
+               .attr("x", 0)
+               .attr("width", function (d) {
+                   return x_bar(d[variable]*100);
+               });
+                 
+               bars.append("text")
+               .attr("class", "label_bar")
+               //y position of the label is halfway down the bar
+               .attr("y", function (d,i) {
+                   return y_ax(d.Geography.substring(0,d.Geography.length-20)) + y_ax.bandwidth() / 2 + 4;
+               })
+               //x position is 3 pixels to the right of the bar
+               .attr("x", function (d) {
+                   return x_bar(d[variable]*100) + 3;
+               })
+               .text(function (d) {
+                   console.log(d.Geography.substring(0,d.Geography.length-20));
+                   return d3.format(".1f")(d[variable]*100);
+               });
+           
     }
 
    render() {
