@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Map.css'
-import {Row, Col, Container} from 'react-bootstrap'
+import {Row, Col, Container, Jumbotron} from 'react-bootstrap'
 import json from '../data/Mississippi-Counties.json'
 import * as d3 from "d3";
 import csvdata from '../data/data_general_ms.csv';
@@ -259,18 +259,18 @@ class Map extends Component {
    render() {
 
    return (
-   <Container>
+   <Jumbotron>
        <Row>
-           <Col md={3} className="description">
+           <Col lg={3} className="description">
               <h1> {this.state.variablename}</h1>
-               {this.state.variabledescription}
+               <p>{this.state.variabledescription}</p>
            </Col>
            <Col md={{span: 9}}>
                <Row>
-                   <Col  md={{span: 5, offset: 1}} className="mapclass">
+                   <Col  lg={{span: 5, offset: 1}} className="mapclass">
                         <svg></svg>
                    </Col>
-                   <Col md={{span: 5, offset: 1}} className="tablemap">
+                   <Col lg={{span: 5, offset: 1}} className="tablemap">
                         Map Here
                    </Col>
                </Row>
@@ -279,7 +279,7 @@ class Map extends Component {
                </Row>
            </Col>
        </Row>
-    </Container>
+    </Jumbotron>
    )
    }
 }
