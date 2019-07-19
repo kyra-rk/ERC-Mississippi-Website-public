@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Map.css'
+import {Row, Col, Container} from 'react-bootstrap'
 import json from '../data/Mississippi-Counties.json'
 import * as d3 from "d3";
 import csvdata from '../data/data_general_ms.csv';
@@ -10,7 +11,9 @@ class Map extends Component {
         this.state = {
             dataset: this.props.datainput,
             color: d3.scaleQuantile().range(["#edc0da","#f9bbe0","#b2598e","#9b3070","#63053d"]),
-            variable: this.props.variable
+            variable: this.props.variable,
+            variablename: this.props.varname,
+            variabledescription: this.props.vardesc
         };
         this.componentDidMount = this.componentDidMount.bind(this)
         this.drawMap =this.drawMap.bind(this)
@@ -31,16 +34,18 @@ class Map extends Component {
     }
 
     drawMap() {
-        console.log(this.state);
-
-        let svgWidth = 300;
-        let svgHeight = 300;
+        let svgWidth = document.getElementsByClassName(["mapclass"])[0].clientWidth
+        let svgHeight = svgWidth;
+        // let svgWidth = 300;
+        // let svgHeight = 300;
         let variable = this.state.variable;
         let data = this.state.dataset;
         
+        var center = d3.geoCentroid(json)
+        console.log(center)
         let projection = d3.geoTransverseMercator()
         .scale([2500])
-        .translate([50+svgWidth/2,svgHeight-25])
+        .translate([.55*svgWidth,.9*svgHeight])
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
        
         var svg = d3.select("svg")
@@ -53,8 +58,8 @@ class Map extends Component {
             d3.max(data, function(d){return parseFloat(d[variable]);})
         ]);
         let color = this.state.color;
-        console.log(d3.min(data, function(d){return parseFloat(d[variable]);}))
-        console.log(d3.max(data, function(d){return parseFloat(d[variable]);}))
+        // console.log(d3.min(data, function(d){return parseFloat(d[variable]);}))
+        // console.log(d3.max(data, function(d){return parseFloat(d[variable]);}))
         // console.log(this.state.color(30))
         var path = d3.geoPath().projection(projection);
         // console.log(data[1])
@@ -131,7 +136,29 @@ class Map extends Component {
 
    render() {
 
-   return <svg></svg>
+   return (
+   <Container>
+       <Row>
+           <Col md={3} className="description">
+              <h1> {this.state.variablename}</h1>
+               {this.state.variabledescription}
+           </Col>
+           <Col md={{span: 9}}>
+               <Row>
+                   <Col  md={{span: 5, offset: 1}} className="mapclass">
+                        <svg></svg>
+                   </Col>
+                   <Col md={{span: 5, offset: 1}} className="tablemap">
+                        Map Here
+                   </Col>
+               </Row>
+               <Row>
+                   <Col>TABLE</Col>
+               </Row>
+           </Col>
+       </Row>
+    </Container>
+   )
    }
 }
 
