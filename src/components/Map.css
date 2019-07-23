@@ -1,10 +1,14 @@
-.Jumbotron{
+/* .Jumbotron{
   background-color: transparent !important;
-}
+} */
 
 .bar {
   fill: #63053d;
 z-index: 30;
+}
+
+.bar:hover {
+  fill-opacity: .7;
 }
 
 path {
@@ -51,22 +55,28 @@ path {
   font-size: 15px;
 }
 
- .tooltip {	 
-    text-align: center;		
-   position: absolute;
-   min-width: 100px;
-    width: 120px;					
+rect.test {
+  fill: black;
+}
+
+.tooltip {	 
+    /* text-align: center;		 */
+   /* position: absolute; */
+   /* min-width: 100px; */
+    
+    /* width: 120px;					
     height: 40px;					
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;		
-   justify-content: center;
+   justify-content: center; */
 } 
 
 
 .tooltiptext, .name, .value {
   position: relative;
 }
+
 
  .axis {
    font-size: 18px;
@@ -82,7 +92,7 @@ path {
 
 
 .description {
-background: red;
+/* background: red; */
 background-color: rgba(185, 142, 167, 0.5);
 padding: 20px;
 }
@@ -104,12 +114,12 @@ padding: 20px;
 .tablemap {
   border: 6px solid rgba(185, 142, 167, 0.5);
   background: #DCDCDC;
+  /* padding-left: 0px;
+  padding-right: 0px; */
 
 }
 
-map {
-    /* width: 300px; */
-    /* height: 300px;   */
+/* map {
     background: #E6E6E6;
   }
   
@@ -143,4 +153,4 @@ map {
   .tooltiptext, .name, .value {
     position: relative;
   }
-
+ */

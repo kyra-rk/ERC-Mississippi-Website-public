@@ -42,31 +42,25 @@ class Map extends Component {
         let data = this.state.dataset;
         
         var center = d3.geoCentroid(json)
-        console.log(center)
         let projection = d3.geoTransverseMercator()
         .scale([3000])
-        .translate([.45*svgWidth,.95*svgHeight])
+        .translate([.45*svgWidth,.85*svgHeight])
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
        
         var svg = d3.select("svg")
                     .attr("width", svgWidth)
                     .attr("height", svgHeight)
                     .attr('class','map');
-        // debugger
         this.state.color.domain([
             d3.min(data, function(d){return parseFloat(d[variable]);}),
             d3.max(data, function(d){return parseFloat(d[variable]);})
         ]);
         let color = this.state.color;
-        // console.log(d3.min(data, function(d){return parseFloat(d[variable]);}))
-        // console.log(d3.max(data, function(d){return parseFloat(d[variable]);}))
-        // console.log(this.state.color(30))
         var path = d3.geoPath().projection(projection);
-        // console.log(data[1])
+
         for (var i =0; i<data.length;i++){
             var dataCounty = data[i].Id2;
             var dataValue = parseFloat(data[i][variable]).toFixed(2);
-            // console.log(data[i])
             for (var j = 0; j < json.features.length; j++) {
 
                 var jsonCounty= json.features[j].properties.GEOID;
@@ -81,37 +75,36 @@ class Map extends Component {
             }
         }
         
-        // let counties = undefined;
-        // // console.log(this.state.color)
         let counties = svg.selectAll("counties")
             .data(json.features)
             .enter()
             .append("path")
-            .attr("class", "counties")
+            .attr("class", function(d){
+                // console.log(d.properties.NAME);
+                return "counties county" + d.properties.NAME;
+            //    return "county" + d.
+            })
             .attr("d", path)
             .style("fill", function(d) {
-                // console.log(d)
                     let value = undefined;
-                    // console.log(d.properties[variable])
                     value = d.properties[variable];
-                    // console.log(value)
                     if (value) {
-                        //If value exists…
                         return color(value);
                     } else {
-                        //If value is undefined…
                         return "#ccc";
                     }
             });
         counties.on("mouseover", function(d){
         
             svg.append("rect")
-                    .attr("class", "tooltip")
+                    .attr("class", "tool")
                     .attr("x", path.centroid(d)[0])
                     .attr("y", path.centroid(d)[1]-5)
+                    .attr("width", 140)
+                    .attr("height", 40)
+                    .style('fill',"white")
+                    .style("opacity", .7);
 
-                    .attr("fill","white")
-                    .attr("opacity", 0.7);
             svg.append("text")
             .attr("class", "tooltiptext")
             .attr("x", path.centroid(d)[0] + 20)
@@ -127,10 +120,16 @@ class Map extends Component {
                 .attr('x', path.centroid(d)[0]+ 33)
                 .attr('y', path.centroid(d)[1] + 30)
                 .text(d.properties[variable]);
+
+
+            d3.selectAll("rect.county" + d.properties.NAME)
+                .attr("opacity", .7);
             })
-            .on("mouseout", function(){
+            .on("mouseout", function(d){
             svg.select("text.tooltiptext").remove();
-            svg.select("rect.tooltip").remove();
+            svg.select("rect.tool").remove();
+            d3.selectAll("rect.county" + d.properties.NAME)
+                .attr("opacity", 1);
             });     
 
             var x = d3.scaleLinear()
@@ -202,15 +201,16 @@ class Map extends Component {
 
 
        var x_bar = d3.scaleLinear()
-       .range([0, svgWidth])
+       .range([0.2*svgWidth, .65*svgWidth])
        .domain([0,  d3.max(data, function(d){
          return parseFloat(d[variable]).toFixed(2)*100;
        })
        ]);
                  
          var y_ax = d3.scaleBand()
-       .range([0, svgHeight])
+       .range([.05*svgHeight, .95*svgHeight])
        .domain(data.map(function (d, i) {
+           console.log(d.Geography);
          return d.Geography.substring(0,d.Geography.length-20);}))
          .padding(0.05);
                  
@@ -220,46 +220,66 @@ class Map extends Component {
                  
                   var gy = svg2.append("g")
                .attr("class", "y axis")
+               .attr("transform", "translate (" + .2*svgWidth+ " 0)")
                .call(yAxis);
-                 
+                
+
                  var bars = svg2.selectAll("bar")
                .data(data)
                .enter()
                .append("g");
                  
                  bars.append("rect")
-               .attr("class", "bar")
+               .attr("class", function(d, i){
+                   console.log(d.Geography.substring(0,d.Geography.length-20));
+                   return "bar county" + d.Geography.substring(0,d.Geography.length-20);
+               })
                .attr("y", function (d, i) {
                    
                    return y_ax(d.Geography.substring(0,d.Geography.length-20));
                })
                .attr("height", y_ax.bandwidth())
-               .attr("x", 0)
+               .attr("x", .2*svgWidth)
                .attr("width", function (d) {
                    return x_bar(d[variable]*100);
                });
                  
                bars.append("text")
                .attr("class", "label_bar")
+               .attr("fill", "black")
                //y position of the label is halfway down the bar
                .attr("y", function (d,i) {
                    return y_ax(d.Geography.substring(0,d.Geography.length-20)) + y_ax.bandwidth() / 2 + 4;
                })
                //x position is 3 pixels to the right of the bar
                .attr("x", function (d) {
-                   return x_bar(d[variable]*100) + 3;
+                   return x_bar(d[variable]*100) + .22*svgWidth;
                })
                .text(function (d) {
                    console.log(d.Geography.substring(0,d.Geography.length-20));
                    return d3.format(".1f")(d[variable]*100);
                });
+               
+               bars.on("mouseover", function(d){
+                   d3.selectAll("path.county" + d.Geography.substring(0,d.Geography.length-20))
+                   .attr("opacity", .7)
+                   .style("stroke-width",3 );
+                
+                })
+                .on("mouseout", function(d){
+                    d3.selectAll("path.county" + d.Geography.substring(0,d.Geography.length-20))
+                    .attr("opacity", 1)
+                    .style("stroke-width",1);
+                })
+
+              
            
     }
 
    render() {
 
    return (
-   <Jumbotron>
+//    <Jumbotron>
        <Row>
            <Col lg={3} className="description">
               <h1> {this.state.variablename}</h1>
@@ -271,15 +291,15 @@ class Map extends Component {
                         <svg></svg>
                    </Col>
                    <Col lg={{span: 5, offset: 1}} className="tablemap">
-                        Map Here
+                        
                    </Col>
                </Row>
                <Row>
-                   <Col>TABLE</Col>
+                   <Col></Col>
                </Row>
            </Col>
        </Row>
-    </Jumbotron>
+    // </Jumbotron>
    )
    }
 }
