@@ -18,7 +18,7 @@ const Story = ({match}) => {
             <div className = "card-container">
                 <div className="card-flip">
                     <div className="card front">
-                        <img src = {require('../pictures/person.png')}/>
+                        <img src = {require(`../pictures/${obj.image}`)}/>
                         <div className= "card-text">   
                             <h4>{obj.name}</h4>
                         </div>

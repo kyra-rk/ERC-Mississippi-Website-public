@@ -11,11 +11,12 @@ import selectedQuotes from '../data/selectedQuotes'
 const TopicCategory = ({match}) => {
 	const quotes = selectedQuotes.map((obj, index) =>
 		<Col lg={6}>
-			<div>
-				<img id = "Topic-Image" src = {require(`../pictures/${obj.image}`)}/>
-				<audio controls>
-					<source src={require(`../audio/${obj.audio}`)} type="audio/mp3"/>
-				</audio>
+			<div className="Section">
+				<div>
+					<img id = "Topic-Image" src = {require(`../pictures/${obj.image}`)}/>
+					<audio controls>
+						<source src={require(`../audio/${obj.audio}`)} type="audio/mp3"/>
+					</audio>
 				</div>
 				<div className="Quote-Container">
 					<p>{obj.quotes.quote1}</p>
@@ -24,16 +25,15 @@ const TopicCategory = ({match}) => {
 				<div className="Quote-Container">
 					<p>{obj.quotes.quote2}</p>
 				</div>
+			</div>
 		</Col>
 	);
 	return (
 		<div>
 			<h1>{match.params.name}</h1>         
-				<Container>
-					<Row className="justify-content-md-center">
-						{quotes}
-					</Row>
-				</Container>
+				<Row className="justify-content-md-center">
+					{quotes}
+				</Row>
 		</div>
 	)
 };
