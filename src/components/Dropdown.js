@@ -1,6 +1,6 @@
 /*Dropdown component for Data Portal*/
 import React, { Component } from 'react';
-import '../App.css';
+import '../styling/App.css';
 
 class Dropdown extends Component {
     //props (property) when you pass data between component

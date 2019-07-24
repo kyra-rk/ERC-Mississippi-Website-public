@@ -1,6 +1,6 @@
 /*Entry point for the app*/
 import React, { Component } from 'react';
-import './App.css';
+import './styling/App.css';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import { Switch } from 'react-router-dom'
 import Home from './pages/Home'

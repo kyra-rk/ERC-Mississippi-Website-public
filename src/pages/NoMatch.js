@@ -6,7 +6,7 @@ import React from 'react';
 
 export const NoMatch = () => (
 	  <div>
-	    <h2>No Match</h2>
+	    <h1>No Match</h1>
 		<p>Please select any of the items on the menu above to be directed to an existing page.</p>
 	  </div>
 	)

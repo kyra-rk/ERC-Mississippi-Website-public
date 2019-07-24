@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Map.css'
+import '../styling/Map.css'
 import {Row, Col, Container, Jumbotron} from 'react-bootstrap'
 import json from '../data/Mississippi-Counties.json'
 import * as d3 from "d3";
@@ -279,8 +279,8 @@ class Map extends Component {
    render() {
 
    return (
-//    <Jumbotron>
-       <Row>
+       <Container-fluid mx-auto>
+       <Row mx-auto>
            <Col lg={3} className="description">
               <h1> {this.state.variablename}</h1>
                <p>{this.state.variabledescription}</p>
@@ -295,11 +295,13 @@ class Map extends Component {
                    </Col>
                </Row>
                <Row>
-                   <Col></Col>
+                   <Col>
+                    
+                   </Col>
                </Row>
            </Col>
        </Row>
-    // </Jumbotron>
+       </Container-fluid>
    )
    }
 }

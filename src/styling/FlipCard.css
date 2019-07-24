@@ -1,11 +1,11 @@
 .card {
-  margin: 0px;
-  max-height: 80%;
+  margin: 10px;
+  height: 250px;
 }
 
 .card-container {
   display: grid;
-  perspective: 700px;
+  perspective: 500px;
 }
 
 .card-flip {
@@ -39,7 +39,7 @@ h3 {
 }
 
 .card-text{
-  max-height: 50%;
+  max-height: 70px;
   overflow: auto;
 }
 
