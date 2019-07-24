@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Dropdown from '../components/Dropdown'
 import NewDropdown from '../components/NewDropdown'
 import DropdownBootstrap from '../components/DropdownBootstrap'
+import {Container} from 'react-bootstrap';
 import Results from '../components/Results'
 import Map from '../components/Map'
 import * as Papa from 'papaparse'
@@ -99,6 +100,7 @@ const demographics = [
     
     render() {
       return (
+        <Container>
         <div className="DataPortal">
             <h1>
               Data Portal
@@ -109,6 +111,7 @@ const demographics = [
             {this.state.currentvar && this.state.varChosen &&
             <Map datainput = {this.state.dataset} variable = {this.state.currentvar} varname = {this.state.varname} vardesc = {this.state.vardesc}/>}
         </div>
+        </Container>
       );
     }
   
