@@ -4,10 +4,11 @@
  */
 import React from 'react';
 import {BrowserRouter as Router,Route, Switch, Link} from 'react-router-dom';
-import { Button, Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import NoMatch from './NoMatch';
-import TopicCategory from './TopicCategory';
+import TopicCategory from './TopicCategory'
 import topic_categories from '../data/topic_categories';
+import { Row } from 'react-bootstrap';
 
 /*created buttons const that references the categories in topic_categories*/
 const Topic = ({match}) => {
@@ -16,21 +17,15 @@ const Topic = ({match}) => {
       <Link to={`${match.url}/${obj.name}`}><Button variant="outline-info">{obj.name}</Button></Link>
     </div>
   );
-
-  const links = topic_categories.map((obj) =>
-    <Switch>
-      <Route path={`${match.path}/${obj.name}`} component={TopicCategory}/>
-      <Route exact path={match.path}/>
-    </Switch>
-  );
-  
   return (
     <div>
       <h1>Topic</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <Router>
         <Row className="justify-content-md-center">{buttons}</Row>
-        {links}
+        <Switch>
+          <Route strict path={`${match.path}/:name`} component={TopicCategory}/>
+        </Switch>
       </Router>
     </div>
   )

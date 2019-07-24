@@ -1,6 +1,8 @@
 /*Program file for the Data Portal Page*/
 import React, { Component } from 'react';
 import Dropdown from '../components/Dropdown'
+import NewDropdown from '../components/NewDropdown'
+import DropdownBootstrap from '../components/DropdownBootstrap'
 import Results from '../components/Results'
 import Map from '../components/Map'
 import * as Papa from 'papaparse'
@@ -102,6 +104,7 @@ const demographics = [
               Data Portal
             </h1>
             <Dropdown makeSelection = {this.makeSelection}/>
+            {!this.state.varChosen && <NewDropdown chooseVariable={this.chooseVariable}/>}
             {!this.state.varChosen && <Results ResultsList ={this.state.ResultsList} chooseVariable={this.chooseVariable}/>}
             {this.state.currentvar && this.state.varChosen &&
             <Map datainput = {this.state.dataset} variable = {this.state.currentvar} varname = {this.state.varname} vardesc = {this.state.vardesc}/>}
@@ -112,5 +115,3 @@ const demographics = [
   }
   
   export default DataPortal;
-
-

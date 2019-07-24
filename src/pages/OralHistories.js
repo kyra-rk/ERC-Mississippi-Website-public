@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import {BrowserRouter as Router,Route, Switch, Link} from 'react-router-dom'
+import {BrowserRouter as Router,Route, Switch} from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import Topic from './Topic'
 import Story from './Story'
@@ -19,9 +19,9 @@ import NoMatch from './NoMatch'
 export const Categories = ({ match }) => (
   <div>
     <h1>Oral Histories</h1>
-    <Link to ={`${match.url}/story`}><Button variant="outline-info">By People/Narrative</Button></Link>
+    <Button variant="outline-info" href ={`${match.url}/story`}>By People/Narrative</Button>
     {' '}
-    <Link to ={`${match.url}/topic`}><Button variant="outline-info">By Topic</Button></Link>
+    <Button variant="outline-info" href = {`${match.url}/topic`}>By Topic</Button>
     <Switch>
       <Route path={`${match.path}/topic`} component={Topic}/>
       <Route path={`${match.path}/story`} component={Story}/>

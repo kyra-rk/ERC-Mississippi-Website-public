@@ -7,6 +7,6 @@
 
  .Quote-Container {
  	overflow: auto;
- 	max-height: 100px;
+ 	max-height: 50px;
  	height: auto;
  }

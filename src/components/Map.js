@@ -279,8 +279,8 @@ class Map extends Component {
    render() {
 
    return (
-       <Container-fluid mx-auto>
-       <Row mx-auto>
+    <Container-fluid>
+       <Row>
            <Col lg={3} className="description">
               <h1> {this.state.variablename}</h1>
                <p>{this.state.variabledescription}</p>
@@ -295,13 +295,11 @@ class Map extends Component {
                    </Col>
                </Row>
                <Row>
-                   <Col>
-                    
-                   </Col>
+                   <Col></Col>
                </Row>
            </Col>
        </Row>
-       </Container-fluid>
+     </Container-fluid>
    )
    }
 }
