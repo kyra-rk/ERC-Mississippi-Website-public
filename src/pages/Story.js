@@ -54,9 +54,7 @@ class Story extends Component {
                         <div className="card-text">
                             <p>{obj.bio}</p>
                         </div>
-                            <Link to={`${match.url}/${obj.name}`}>
-                                <Button variant="outline-info">See more</Button>
-                            </Link>
+                            <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>See more</Button>
                         </div>
                     </div>
                 </div>
