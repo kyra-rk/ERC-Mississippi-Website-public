@@ -6,11 +6,12 @@ import { Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import DataPortal from './pages/DataPortal'
+import DropdownBootstrap from './components/DropdownBootstrap'
 import OralHistories from './pages/OralHistories'
 import EconIndex from './pages/EconIndex'
 import NavBar from './components/NavBar'
 import NoMatch from './pages/NoMatch'
-import DropdownBootstrap from './components/DropdownBootstrap'
+// import DropdownBootstrap from './components/DropdownBootstrap'
 
 
 /*made home link be exact path "/" and switch makes it so that a new program file is being rendered (removing old file)*/
@@ -23,7 +24,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/dataportal" component={DataPortal}/>
-          <Route path="/dataportaltest" component={DropdownBootstrap}/>
+          {/* <Route path="/dropdown" component={DropdownBootstrap}/> */}
           <Route path="/index" component={EconIndex}/>
           <Route path="/oralhistories" component={OralHistories}/>
           <Route path="/about" component={About}/>

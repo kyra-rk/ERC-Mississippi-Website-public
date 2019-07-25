@@ -51,7 +51,7 @@ class NewDropdown extends Component {
     }
 
     createButtons(){
-        console.log(this.props.location)
+        
         let buttons = this.state.categories.map((obj, index) =>
         <Col lg={2}> <Button variant="outline-info" onClick={this.handleClick} value={obj.catname}>{obj.catname}</Button>
       <div>
