@@ -10,16 +10,16 @@ class Transcript extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-      activecat: ''
+      activecat: '',
       };
 
   this.handleClick = this.handleClick.bind(this);
   this.createTranscript = this.createTranscript.bind(this);
-  // this.updateActive = this.updateActive.bind(this);
+  //this.componentDidUpdate = this.componentDidUpdate.bind(this);
   }
 
   handleClick = (event) => {
-    // event.persist();
+    //event.persist();
     // var category = event.target.value;
     // var matchingsentences = document.getElementsByClassName(["cat"+category]);
     // var i;
@@ -31,12 +31,12 @@ class Transcript extends React.Component {
     // console.log(this.state);
   }
 
-  // componentDidMount(){
-  //   this.createTranscript();
-  // }
+    /*componentDidMount(prevState){
+      this.createTranscript(prevState);
+    }*/
 
   componentDidUpdate(prevState){
-    // console.log("UPdate triggered");
+    // console.log("Update triggered");
     if (this.state.activecat != prevState.activecat){
       var matchingsentences = document.getElementsByClassName(["cat"+prevState.activecat]);
       var i;
@@ -66,7 +66,7 @@ class Transcript extends React.Component {
           <h2>{obj.speaker}</h2>
         </Col>  
         <Col lg={10}>
-          <div className={`${classnames} import${obj.important}`}><p>{obj.text}</p></div>
+          <div className={`${classnames} import${obj.important}`}><p id="transcriptwords">{obj.text}</p></div>
         </Col>
       </Row>)
     });
@@ -78,13 +78,6 @@ class Transcript extends React.Component {
 
     return [buttons, name]
   }
-
- 
- 
-
-    
-
-  // }
 
   render(){
 

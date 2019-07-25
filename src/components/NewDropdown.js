@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DropdownButton, Col, Row, ButtonToolbar, Button } from 'react-bootstrap';
+import { Col, Row, Button } from 'react-bootstrap';
 import '../styling/App.css';
 import '../styling/NewDropdown.css';
 
@@ -53,11 +53,11 @@ class NewDropdown extends Component {
     createButtons(){
         console.log(this.props.location)
         let buttons = this.state.categories.map((obj, index) =>
-        <Col lg={2}> <ButtonToolbar><Button variant="outline-info" onClick={this.handleClick} value={obj.catname}> {obj.catname} </Button></ButtonToolbar>
+        <Col lg={2}> <Button variant="outline-info" onClick={this.handleClick} value={obj.catname}>{obj.catname}</Button>
       <div>
       {obj.open && <ul className="dd-list">
         {obj.variables.map((item) => (
-            <li className="dd-list-item" key={`${item.abbreviation}`}><DropdownButton variant="outline-info" onClick={this.chooseVariable} value={item.abbreviation}>{item.name}</DropdownButton></li>
+            <li className="dd-list-item" key={`${item.abbreviation}`}><Button variant="outline-info" onClick={this.chooseVariable} value={item.abbreviation}>{item.name}</Button></li>
         ))}
       </ul>}
       </div>
