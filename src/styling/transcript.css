@@ -15,6 +15,7 @@ h2 {
 
 .active {
     color: blue;
+    font-weight: bold;
 }
 #transcriptwords {
     text-align: left;
