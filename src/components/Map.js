@@ -170,6 +170,8 @@ class Map extends Component {
           .attr("text-anchor", "start")
           .text(function(d){return parseFloat(d[0]).toFixed(2)*100+ "%"});
 
+      let originaldata = data;
+      console.log(originaldata)
        data = data.sort(function (a, b) {
         //    console.log(b[variable]);
         //    console.log(a);
@@ -210,7 +212,7 @@ class Map extends Component {
          var y_ax = d3.scaleBand()
        .range([.05*svgHeight, .95*svgHeight])
        .domain(data.map(function (d, i) {
-           console.log(d.Geography);
+        //    console.log(d.Geography);
          return d.Geography.substring(0,d.Geography.length-20);}))
          .padding(0.05);
                  
@@ -231,7 +233,7 @@ class Map extends Component {
                  
                  bars.append("rect")
                .attr("class", function(d, i){
-                   console.log(d.Geography.substring(0,d.Geography.length-20));
+                //    console.log(d.Geography.substring(0,d.Geography.length-20));
                    return "bar county" + d.Geography.substring(0,d.Geography.length-20);
                })
                .attr("y", function (d, i) {
@@ -256,7 +258,7 @@ class Map extends Component {
                    return x_bar(d[variable]*100) + .22*svgWidth;
                })
                .text(function (d) {
-                   console.log(d.Geography.substring(0,d.Geography.length-20));
+                //    console.log(d.Geography.substring(0,d.Geography.length-20));
                    return d3.format(".1f")(d[variable]*100);
                });
                
@@ -273,19 +275,79 @@ class Map extends Component {
                 })
 
               
-           
+                var svg3 = d3.select(".distribution").append("svg")
+                .attr("width", width + margin2.left + margin2.right)
+                .attr("height", height + margin2.top + margin2.bottom)
+                .append("g")
+
+                const x_dotplot = d3.scaleLinear()
+                        .rangeRound([0, width])
+                        .domain([d3.min(originaldata, function(d){
+                            return parseFloat(d[variable]);
+                          }), d3.max(originaldata, function(d){
+                            return parseFloat(d[variable]);
+                          })
+                          ]);
+                
+                const nbins = 8;
+
+                var histogram = d3.histogram()
+                .domain(x.domain())
+                .thresholds(x.ticks(nbins))
+                .value(function(data) {return parseFloat(data[variable]);});
+                
+                // console.log(histogram)
+                // const bins = histogram(originaldata).map(d => console.log(d));
+                // console.log(bins)
+
+                const bins = histogram(originaldata).filter(d => d.length>0);
+                // const bins = histogram(data)
+                // console+.log(bins);
+                let binContainer = svg3.selectAll(".gBin")
+                            .data(bins);
+
+                let binContainerEnter = binContainer.enter()
+                .append("g")
+                    .attr("class", "gBin")
+                    .attr("transform", d => `translate(${x(d.x0)}, ${height})`);
+
+                binContainerEnter.selectAll("circle")
+                    .data(d => console.log(d)); 
+                //     d.map((p, i) => {
+                //         // console.log(d);
+                //       return {idx: i,
+                //               name: p.Name,
+                //               value: p.Value,
+                //               radius: (x(d.x1)-x(d.x0))/2
+                //             }
+                //     }))
+                //   .enter()
+                //   .append("circle")
+                //     .attr("class", "enter")
+                //     .attr("cx", 0) //g element already at correct x pos
+                //     .attr("cy", function(d) {
+                //         return - d.idx * 2 * d.radius - d.radius; })
+                //     .attr("r", 10)
+                    // .on("mouseover", tooltipOn)
+                    // .on("mouseout", tooltipOff)
+                    // .transition()
+                    //   .duration(500)
+                    //   .attr("r", function(d) {
+                    //   return (d.length==0) ? 0 : d.radius; });      
+
+                
     }
 
    render() {
 
    return (
     <Container-fluid>
-       <Row>
+       <Row className="rowblock">
            <Col lg={3} className="description">
               <h1> {this.state.variablename}</h1>
                <p>{this.state.variabledescription}</p>
            </Col>
-           <Col md={{span: 9}}>
+           <Col lg={{span: 9}}>
                <Row>
                    <Col  lg={{span: 5, offset: 1}} className="mapclass">
                         <svg></svg>
@@ -294,8 +356,8 @@ class Map extends Component {
                         
                    </Col>
                </Row>
-               <Row>
-                   <Col></Col>
+               <Row className="rowblock">
+                   <Col lg ={{span: 11, offset: 1}} className="distribution"></Col>
                </Row>
            </Col>
        </Row>

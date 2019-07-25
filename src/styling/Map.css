@@ -115,6 +115,14 @@ padding: 20px;
 
 }
 
+.rowblock {
+  padding-top: 20px;
+}
+
+.distribution {
+  border: 6px solid rgba(185, 142, 167, .5);
+
+}
 /* map {
     background: #E6E6E6;
   }
