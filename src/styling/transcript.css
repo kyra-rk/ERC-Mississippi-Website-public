@@ -12,11 +12,11 @@ h2 {
     text-align: left;
 }
 
-
-.active {
+.selected {
     color: blue;
     font-weight: bold;
 }
+
 #transcriptwords {
     text-align: left;
 }

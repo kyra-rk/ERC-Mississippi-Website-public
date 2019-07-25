@@ -24,7 +24,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/dataportal" component={DataPortal}/>
-          {/* <Route path="/dropdown" component={DropdownBootstrap}/> */}
+          <Route path="/dropdown" component={DropdownBootstrap}/>
           <Route path="/index" component={EconIndex}/>
           <Route path="/oralhistories" component={OralHistories}/>
           <Route path="/about" component={About}/>
