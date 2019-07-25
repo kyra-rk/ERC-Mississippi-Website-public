@@ -32,8 +32,10 @@ const Story = ({match}) => {
                         <div className="card-text">
                             <p>{obj.bio}</p>
                         </div>
-                            <Link to={`${match.url}/${obj.name}`}><Button variant="outline-info">See more</Button></Link>
-                        </div>zz
+                            <Link to={`${match.url}/${obj.name}`}>
+                                <Button variant="outline-info">See more</Button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
