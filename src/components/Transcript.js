@@ -15,37 +15,28 @@ class Transcript extends React.Component {
 
   this.handleClick = this.handleClick.bind(this);
   this.createTranscript = this.createTranscript.bind(this);
-  //this.componentDidUpdate = this.componentDidUpdate.bind(this);
+  this.componentDidUpdate = this.componentDidUpdate.bind(this)
   }
 
   handleClick = (event) => {
-    //event.persist();
-    // var category = event.target.value;
-    // var matchingsentences = document.getElementsByClassName(["cat"+category]);
-    // var i;
-    // for (i = 0; i < matchingsentences.length; i++) {
-    //   matchingsentences[i].className = "active";
-    // }
-    const prevState = this.state;
-    this.setState({activecat: event.target.value}, () => this.componentDidUpdate(prevState));
-    // console.log(this.state);
+    this.setState({activecat: event.target.value})
   }
 
-    /*componentDidMount(prevState){
-      this.createTranscript(prevState);
-    }*/
 
-  componentDidUpdate(prevState){
-    // console.log("Update triggered");
-    if (this.state.activecat != prevState.activecat){
+  componentDidUpdate(prevProps, prevState){
+    if (this.state.activecat !== prevState.activecat){
       var matchingsentences = document.getElementsByClassName(["cat"+prevState.activecat]);
       var i;
       for (i = 0; i < matchingsentences.length; i++) {
         matchingsentences[i].classList.remove("active")
         // matchingsentences[i].className += " active";
       }
-    //   this.updateActive();
-      // this.setState({variable: this.props.variable});
+      var category = this.state.activecat;
+      var matchingsentences = document.getElementsByClassName(["cat"+category]);
+      var i;
+      for (i = 0; i < matchingsentences.length; i++) {
+        matchingsentences[i].classList.add("active");
+      }
   }
 }
 
@@ -70,11 +61,6 @@ class Transcript extends React.Component {
         </Col>
       </Row>)
     });
-    var matchingsentences = document.getElementsByClassName(["cat"+this.state.activecat]);
-    var i;
-    for (i = 0; i < matchingsentences.length; i++) {
-      matchingsentences[i].className += " active";
-    }
 
     return [buttons, name]
   }
@@ -82,7 +68,6 @@ class Transcript extends React.Component {
   render(){
 
       const [buttons, name] = this.createTranscript()
-
 
       return (
         <div>
