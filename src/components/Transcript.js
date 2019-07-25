@@ -10,7 +10,7 @@ class Transcript extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-      activecat: ''
+      activecat: '',
       };
 
   this.handleClick = this.handleClick.bind(this);
@@ -57,7 +57,7 @@ class Transcript extends React.Component {
           <h2>{obj.speaker}</h2>
         </Col>  
         <Col lg={10}>
-          <div className={`${classnames} import${obj.important}`}><p>{obj.text}</p></div>
+          <div className={`${classnames} import${obj.important}`}><p id="transcriptwords">{obj.text}</p></div>
         </Col>
       </Row>)
     });
