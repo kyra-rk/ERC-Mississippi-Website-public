@@ -23,8 +23,8 @@ export const Categories = ({ match }) => (
     {' '}
     <Button variant="outline-info" href = {`${match.url}/topic`}>By Topic</Button>
     <Switch>
-      <Route path={`${match.path}/topic`} component={Topic}/>
-      <Route path={`${match.path}/story`} component={Story}/>
+      <Route path={`${match.url}/topic`} component={Topic}/>
+      <Route path={`${match.url}/story`} component={Story}/>
       <Route exact path={match.path}/>
       <Route component={NoMatch}/>
     </Switch>

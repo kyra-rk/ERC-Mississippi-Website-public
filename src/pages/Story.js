@@ -65,9 +65,11 @@ class Story extends Component {
         <Container>
             <Row className="justify-content-md-center">
                 {flipcards}
-            <Switch>
-                <Route strict path={`${this.props.match.path}/:name`} component={OHPerson}/>
-            </Switch>
+            <Router>
+                <Switch>
+                <Route exact path={`${this.props.match.path}/:name`} component={OHPerson}/>
+                </Switch>
+            </Router>
             </Row>
         </Container>
         )
