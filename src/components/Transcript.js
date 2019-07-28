@@ -4,7 +4,6 @@ import { Row, Col, Button} from 'react-bootstrap';
 import OHPersonData from '../data/Formatted';
 import '../styling/transcript.css';
 import topic_categories from '../data/topic_categories';
-import { create } from 'domain';
 
 class Transcript extends React.Component {
   constructor(props) {

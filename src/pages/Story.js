@@ -6,11 +6,10 @@
  */
 import React, {Component} from 'react';
 import { Row, Col, Container, Button } from 'react-bootstrap';
-import {BrowserRouter as Router,Route, Switch, Link, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router,Route, Switch, Redirect} from 'react-router-dom';
 import '../styling/FlipCard.css';
 import flip_card_items from '../data/flip_card_items'
 import OHPerson from './OHPerson'
-import Transcript from '../components/Transcript';
 
 /*sr-only is for screenreaders, i.e. accessibility*/
 
@@ -36,26 +35,17 @@ class Story extends Component {
     }
     
     var flipcards = flip_card_items.map((obj) =>
-        <Col lg={4}>  
-            <div className = "card-container">
-                <div className="card-flip">
-                    <div className="card front">
-                        <img src = {require(`../pictures/${obj.image}`)}/>
-                        <div className= "card-text">   
-                            <h4>{obj.name}</h4>
-                        </div>
+        <Col lg={4}>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
+                        <h3>{obj.name}</h3>
                     </div>
-                    <div className="card back">
-                        <div className= "card-header">
-                            <h4>{obj.name}</h4>
-                        </div>
-                        <div className="card block">
-                            <h4 className="card-title">Bio</h4>
-                        <div className="card-text">
-                            <p>{obj.bio}</p>
-                        </div>
-                            <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>See more</Button>
-                        </div>
+                    <div class="flip-card-back">
+                        <h4>{obj.name}</h4> 
+                        <p>{obj.bio}</p>
+                        <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>See more</Button>
                     </div>
                 </div>
             </div>

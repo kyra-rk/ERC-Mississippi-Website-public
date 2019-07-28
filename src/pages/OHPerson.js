@@ -2,7 +2,6 @@
  * Program file for the Oral Histories Person Page
  */
 import React from 'react';
-import { Row, Col, Container, Button} from 'react-bootstrap';
 import Transcript from '../components/Transcript';
 
 const OHPerson = ({match}) => (

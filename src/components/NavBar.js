@@ -1,6 +1,6 @@
 /*navbar component that will always be on top of website*/
 import React from 'react';
-import { Navbar, Nav, span } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 
 /*Calling the CreateNavBar const that is the const lower down*/
 const NavBar = () => {

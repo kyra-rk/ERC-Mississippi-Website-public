@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Row, DropdownButton, Dropdown, ButtonToolbar, Nav } from 'react-bootstrap';
+import { Row, DropdownButton, Dropdown, ButtonToolbar } from 'react-bootstrap';
 import {BrowserRouter as Router,Route, Switch, Link} from 'react-router-dom';
 import MapTest from '../pages/MapTest'
 import '../styling/App.css';
@@ -57,7 +57,7 @@ class DropdownBootstrap extends Component {
 
     
         createButtons(){
-            let buttons =  categories.map((obj, index) => (
+            let buttons =  categories.map((obj) => (
                     <DropdownButton
                         title={obj.catname}
                         variant={obj.variant.toLowerCase()}

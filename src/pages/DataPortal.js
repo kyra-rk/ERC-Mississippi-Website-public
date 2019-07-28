@@ -2,11 +2,11 @@
 import React, { Component } from 'react';
 import Dropdown from '../components/Dropdown'
 import NewDropdown from '../components/NewDropdown'
-import DropdownBootstrap from '../components/DropdownBootstrap'
+//import DropdownBootstrap from '../components/DropdownBootstrap'
 import {Container} from 'react-bootstrap';
 import Results from '../components/Results'
 import Map from '../components/Map'
-import * as Papa from 'papaparse';
+//import * as Papa from 'papaparse';
 import data_general from '../data/data_general_ms.json'
 
 const demographics = [
@@ -100,7 +100,7 @@ const demographics = [
     }
     
     render() {
-      console.log(this.state.dataset)
+      // console.log(this.state.dataset)
       return (
         <Container>
         <div className="DataPortal">

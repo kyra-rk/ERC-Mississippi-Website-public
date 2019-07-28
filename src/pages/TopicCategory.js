@@ -4,16 +4,16 @@
  */
 import React from 'react';
 import '../styling/Topic.css';
-import { Col, Row, Container } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import selectedQuotes from '../data/selectedQuotes'
 
 /*created TopicCategory const that references the data in selectedQuotes*/
 const TopicCategory = ({match}) => {
-	const quotes = selectedQuotes.map((obj, index) =>
+	const quotes = selectedQuotes.map((obj) =>
 		<Col lg={6}>
 			<div className="Section">
 				<div>
-					<img id = "Topic-Image" src = {require(`../pictures/${obj.image}`)}/>
+					<img id ="Topic-Image" src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
 					<audio controls>
 						<source src={require(`../audio/${obj.audio}`)} type="audio/mp3"/>
 					</audio>
