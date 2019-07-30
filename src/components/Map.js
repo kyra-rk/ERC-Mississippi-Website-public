@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import '../styling/Map.css'
-import {Row, Col, Container, Jumbotron} from 'react-bootstrap'
+import {Row, Col } from 'react-bootstrap'
 import json from '../data/Mississippi-Counties.json'
 import * as d3 from "d3";
-import csvdata from '../data/data_general_ms.csv';
+//import csvdata from '../data/data_general_ms.csv';
 
 class Map extends Component {
     constructor(props) {

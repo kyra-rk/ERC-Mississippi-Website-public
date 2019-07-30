@@ -4,13 +4,12 @@ import { Row, Col, Button} from 'react-bootstrap';
 import OHPersonData from '../data/Formatted';
 import '../styling/transcript.css';
 import topic_categories from '../data/topic_categories';
-import { create } from 'domain';
 
 class Transcript extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-      activecat: '',
+      selectedcat: '',
       };
 
   this.handleClick = this.handleClick.bind(this);
@@ -19,23 +18,23 @@ class Transcript extends React.Component {
   }
 
   handleClick = (event) => {
-    this.setState({activecat: event.target.value})
+    this.setState({selectedcat: event.target.value})
   }
 
 
   componentDidUpdate(prevProps, prevState){
-    if (this.state.activecat !== prevState.activecat){
-      var matchingsentences = document.getElementsByClassName(["cat"+prevState.activecat]);
+    if (this.state.selectedcat !== prevState.selectedcat){
+      var matchingsentences = document.getElementsByClassName(["cat"+prevState.selectedcat]);
       var i;
       for (i = 0; i < matchingsentences.length; i++) {
-        matchingsentences[i].classList.remove("active")
-        // matchingsentences[i].className += " active";
+        matchingsentences[i].classList.remove("selected")
+        // matchingsentences[i].className += " selected";
       }
-      var category = this.state.activecat;
+      var category = this.state.selectedcat;
       var matchingsentences = document.getElementsByClassName(["cat"+category]);
       var i;
       for (i = 0; i < matchingsentences.length; i++) {
-        matchingsentences[i].classList.add("active");
+        matchingsentences[i].classList.add("selected");
       }
   }
 }

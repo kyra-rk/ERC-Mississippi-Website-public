@@ -21,15 +21,17 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/dataportal" component={DataPortal}/>
-          {/* <Route path="/dropdown" component={DropdownBootstrap}/> */}
-          <Route path="/index" component={EconIndex}/>
-          <Route path="/oralhistories" component={OralHistories}/>
-          <Route path="/about" component={About}/>
-          <Route component={NoMatch}/>
-        </Switch>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/dataportal" component={DataPortal}/>
+            <Route path="/dropdown" component={DropdownBootstrap}/>
+            <Route path="/index" component={EconIndex}/>
+            <Route path="/oralhistories" component={OralHistories}/>
+            <Route path="/about" component={About}/>
+            <Route component={NoMatch}/>
+          </Switch>
+        </Router>
       </div>
     );
   }

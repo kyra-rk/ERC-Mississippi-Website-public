@@ -30,32 +30,23 @@ class Story extends Component {
 
     render (){
     if (this.state.personselected===true){
-        return (<Switch><Redirect to={`${this.props.match.path}/${this.state.name}`}/>                 
-        <Route path={`${this.props.match.path}/:name`} component={OHPerson}/></Switch>
+        return (<Router><Redirect to={`${this.props.match.path}/${this.state.name}`}/>                 
+        <Route path={`${this.props.match.path}/:name`} component={OHPerson}/></Router>
         )
     }
     
     var flipcards = flip_card_items.map((obj) =>
-        <Col lg={4}>  
-            <div className = "card-container">
-                <div className="card-flip">
-                    <div className="card front">
-                        <img src = {require(`../pictures/${obj.image}`)}/>
-                        <div className= "card-text">   
-                            <h4>{obj.name}</h4>
-                        </div>
+        <Col lg={4}>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
+                        <h3>{obj.name}</h3>
                     </div>
-                    <div className="card back">
-                        <div className= "card-header">
-                            <h4>{obj.name}</h4>
-                        </div>
-                        <div className="card block">
-                            <h4 className="card-title">Bio</h4>
-                        <div className="card-text">
-                            <p>{obj.bio}</p>
-                        </div>
-                            <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>See more</Button>
-                        </div>
+                    <div class="flip-card-back">
+                        <h4>{obj.name}</h4> 
+                        <p>{obj.bio}</p>
+                        <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>See more</Button>
                     </div>
                 </div>
             </div>
@@ -65,9 +56,11 @@ class Story extends Component {
         <Container>
             <Row className="justify-content-md-center">
                 {flipcards}
-            <Switch>
-                <Route strict path={`${this.props.match.path}/:name`} component={OHPerson}/>
-            </Switch>
+            <Router>
+                <Switch>
+                <Route exact path={`${this.props.match.path}/:name`} component={OHPerson}/>
+                </Switch>
+            </Router>
             </Row>
         </Container>
         )
@@ -75,20 +68,5 @@ class Story extends Component {
 
 } 
 
-
-// const Story = ({match}) => {
-
-    
-//     return (
-//         <Container>
-//             <Row className="justify-content-md-center">
-//                 {flipcards}
-//             <Switch>
-//                 <Route strict path={`${match.path}/:name`} component={OHPerson}/>
-//             </Switch>
-//             </Row>
-//         </Container>
-//     )
-// };
 
 export default Story;

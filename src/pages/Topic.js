@@ -5,7 +5,7 @@
 import React from 'react';
 import {BrowserRouter as Router,Route, Switch, Link} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import NoMatch from './NoMatch';
+//import NoMatch from './NoMatch';
 import TopicCategory from './TopicCategory'
 import topic_categories from '../data/topic_categories';
 import { Row, Container } from 'react-bootstrap';
@@ -24,7 +24,7 @@ const Topic = ({match}) => {
       <Router>
         <Row className="justify-content-md-center">{buttons}</Row>
         <Switch>
-          <Route strict path={`${match.path}/:name`} component={TopicCategory}/>
+          <Route path={`${match.path}/:name`} component={TopicCategory}/>
         </Switch>
       </Router>
     </Container>
