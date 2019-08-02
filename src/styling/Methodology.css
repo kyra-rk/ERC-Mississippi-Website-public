@@ -1,11 +1,11 @@
 .method h1{
     text-align: left;
-    font-size: 50px;
+    font-size: 40px;
   }
   
 .method p{
     text-align: justify;
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 30px;
   }
 

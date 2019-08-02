@@ -21,7 +21,7 @@ const Topic = ({match}) => {
   );
   return (
     <div>
-      <h1>Topic</h1>
+      <h1>Choose a Topic</h1>
       <Router>
         <Row className="justify-content-md-center">{buttons}</Row>
         <Switch>

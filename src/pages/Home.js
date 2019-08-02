@@ -34,6 +34,7 @@ class Home extends React.Component {
                 This project is a collaboration between Mississippi Low-Income Childcare Initiative and Barnard College's Empirical Reasoning Center & Mississippi Semester class.
                 </p>
           <h1>How to Use</h1>
+          <p>Please select any of the buttons to learn how to use the site</p>
           </div>
             <div className="Howto">
               <Row className="howtorow">

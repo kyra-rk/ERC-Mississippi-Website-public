@@ -28,6 +28,7 @@
   width: 65%;
   margin-top: 30px;
   margin-bottom: 20px;
+  height: 60px;
 }
 
 .introduction{
@@ -36,12 +37,12 @@
 
 .introduction h1{
   text-align: left;
-  font-size: 50px;
+  font-size: 40px;
 }
 
 .introduction p{
   text-align: justify;
-  font-size: 30px;
+  font-size: 15px;
   margin-bottom: 30px;
 }
 
