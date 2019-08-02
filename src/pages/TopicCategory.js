@@ -6,7 +6,7 @@ import React from 'react';
 import '../styling/Topic.css';
 import { Col, Row, Button } from 'react-bootstrap';
 import selectedQuotes from '../data/selectedQuotes';
-import {BrowserRouter as Router,Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router,Route, Switch, Link, Redirect} from 'react-router-dom';
 import OHPerson from './OHPerson'
 
 /*created TopicCategory const that references the data in selectedQuotes*/

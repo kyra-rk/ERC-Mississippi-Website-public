@@ -38,8 +38,10 @@
   border-radius: 30px;
 }
 
-.flip-card-front h3{
+.flip-card-front h6{
   margin-top: 10px;
+  white-space: nowrap;
+  font-size: 17px;
 }
 
 .flip-card-back {
@@ -49,9 +51,10 @@
   max-height: 325px;
 }
 
-.flip-card-back h4{
+.flip-card-back h6{
   text-align: center;
   margin-top: 10px;
+  white-space: nowrap;
 }
 
 .flip-card-back p{

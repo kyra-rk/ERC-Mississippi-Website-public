@@ -40,10 +40,10 @@ class People extends Component {
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
                         <img src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
-                        <h3>{obj.name}</h3>
+                        <h6>{obj.personname}</h6>
                     </div>
                     <div className="flip-card-back">
-                        <h4>{obj.name}</h4> 
+                        <h6>{obj.personname}</h6> 
                         <p>{obj.bio}</p>
                         <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>
                             See more
