@@ -27,5 +27,18 @@
 
 .transcriptbutton{
     margin: 5px;
+    margin-bottom: 30px;
 }
 
+#transcriptquotes{
+    margin-left: 15px;
+}
+
+#personbio{
+    text-align: justify;
+}
+
+#transcriptpic{
+    max-width: 180px;
+    overflow: hidden;
+}
