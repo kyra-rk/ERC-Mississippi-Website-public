@@ -27,7 +27,7 @@ class Map extends Component {
 
     componentDidUpdate(prevProps){
 
-        if (this.props.variable != prevProps.variable){
+        if (this.props.variable !== prevProps.variable){
             this.setState({variable: this.props.variable});
         }
         this.drawMap();
@@ -279,14 +279,13 @@ class Map extends Component {
    render() {
 
    return (
-    <Container-fluid>
        <Row>
            <Col lg={3} className="description">
               <h1> {this.state.variablename}</h1>
                <p>{this.state.variabledescription}</p>
            </Col>
            <Col md={{span: 9}}>
-               <Row>
+               <Row noGutters={true}>
                    <Col  lg={{span: 5, offset: 1}} className="mapclass">
                         <svg></svg>
                    </Col>
@@ -294,12 +293,9 @@ class Map extends Component {
                         
                    </Col>
                </Row>
-               <Row>
-                   <Col></Col>
-               </Row>
            </Col>
        </Row>
-     </Container-fluid>
+
    )
    }
 }

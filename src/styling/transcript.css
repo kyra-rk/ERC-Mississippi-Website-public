@@ -1,14 +1,16 @@
 .import1 {
     font-size: 24px;
     font-style: italic;
-    color: red;
+    font-weight: bold;
+    color: #d4a45c;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
-    max-width: 70%;
-    width: auto;    
+    text-align: center;
 }
 
-h2 {
+#speakername {
+    display: inline;
     text-align: left;
 }
 
@@ -17,7 +19,13 @@ h2 {
     font-weight: bold;
 }
 
-#transcriptwords {
+.transcriptcontent {
     text-align: left;
+    margin:0;
+    padding: 0;
+}
+
+.transcriptbutton{
+    margin: 5px;
 }
 

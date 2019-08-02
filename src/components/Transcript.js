@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Button} from 'react-bootstrap';
 //import OHPersonData from '../data/OHPersonData';
 import OHPersonData from '../data/Formatted';
-import '../styling/transcript.css';
+import '../styling/Transcript.css';
 import topic_categories from '../data/topic_categories';
 
 class Transcript extends React.Component {
@@ -28,13 +28,17 @@ class Transcript extends React.Component {
       var i;
       for (i = 0; i < matchingsentences.length; i++) {
         matchingsentences[i].classList.remove("selected")
-        // matchingsentences[i].className += " selected";
+        matchingsentences[i].style.color="black";
       }
       var category = this.state.selectedcat;
-      var matchingsentences = document.getElementsByClassName(["cat"+category]);
-      var i;
-      for (i = 0; i < matchingsentences.length; i++) {
-        matchingsentences[i].classList.add("selected");
+      var matchingsentence = document.getElementsByClassName(["cat"+category]);
+      var matchingcategory= topic_categories.filter((obj,i) => i+1 == category)
+      var index;
+      for (index = 0; index < matchingsentence.length; index++) {
+        matchingsentence[index].classList.add("selected");
+        matchingsentence[index].style.color=matchingcategory[0].color;
+
+        
       }
   }
 }
@@ -43,20 +47,22 @@ class Transcript extends React.Component {
     let match = this.props.match
     const personname = match.params.name;
     const buttons = topic_categories.map((obj, index) =>
-      <div>
-        <Button variant="outline-info" onClick={this.handleClick} value={index+1}>{obj.name}</Button>
-      </div>
+      <Button onClick={this.handleClick} value={index+1} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
+        {obj.name}
+      </Button>
     ); 
     var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
     result = result[0];
     const name= result.interview.map((obj) => {
       const classnames = obj.cat.map(item => `cat${item}`).join(" ");
-      return (<Row>
-        <Col lg={2}>
-          <h2>{obj.speaker}</h2>
+      return (<Row className="transcriptcontent">
+        <Col xl={1} id="speakername">
+          <h5>{obj.speaker}</h5>
         </Col>  
-        <Col lg={10}>
-          <div className={`${classnames} import${obj.important}`}><p id="transcriptwords">{obj.text}</p></div>
+        <Col xl={9}>
+          <div className={`${classnames} import${obj.important}`}>
+            <p>{obj.text}</p>  
+          </div>
         </Col>
       </Row>)
     });
@@ -70,7 +76,9 @@ class Transcript extends React.Component {
 
       return (
         <div>
-          <Row className="justify-content-md-center">{buttons}</Row>
+          <Row className="justify-content-md-center">
+          {buttons}
+          </Row>
           <div>{name}</div>
         </div>
 

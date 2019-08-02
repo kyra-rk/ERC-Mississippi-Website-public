@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, DropdownButton, Dropdown, ButtonToolbar } from 'react-bootstrap';
-import {BrowserRouter as Router,Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import MapTest from '../pages/MapTest'
 import '../styling/App.css';
 
@@ -64,7 +64,8 @@ class DropdownBootstrap extends Component {
                         id={`dropdown-variants-${obj.variant}`}
                         key={obj.variant}>
                     {obj.variables.map((item, i) => (
-                         <Dropdown.Item eventKey={i} onClick={this.handleClick} tag={Link} href={`${this.state.match.url}/${item.abbreviation}`}>{item.name}</Dropdown.Item>
+                      //removed tag={link} in dropdown item
+                         <Dropdown.Item key={i} eventKey={i} onClick={this.handleClick} href={`${this.state.match.url}/${item.abbreviation}`}>{item.name}</Dropdown.Item>
                         //  <Dropdown.Item eventKey={item.abbreviation} onClick={this.handleClick} >{item.name}</Dropdown.Item>
 
                     ))}
@@ -94,7 +95,6 @@ class DropdownBootstrap extends Component {
                 <Router> 
                    <ButtonToolbar> {buttons}
                    </ButtonToolbar>
-
                    <Switch>
                     <Route strict path={`${match.path}/:varabbreviation`} component={MapTest}/>
                     </Switch>

@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import Transcript from '../components/Transcript';
+// import flip_card_items from '../data/flip_card_items';
 
 const OHPerson = ({match}) => (
     <div>

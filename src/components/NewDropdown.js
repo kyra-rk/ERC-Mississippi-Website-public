@@ -52,8 +52,8 @@ class NewDropdown extends Component {
 
     createButtons(){
         
-        let buttons = this.state.categories.map((obj, index) =>
-        <Col lg={2}> <Button variant="outline-info" onClick={this.handleClick} value={obj.catname}>{obj.catname}</Button>
+        let buttons = this.state.categories.map((obj) =>
+        <Col lg={2} key={obj.catname}> <Button variant="outline-info" onClick={this.handleClick} value={obj.catname}>{obj.catname}</Button>
       <div>
       {obj.open && <ul className="dd-list">
         {obj.variables.map((item) => (
@@ -71,7 +71,7 @@ class NewDropdown extends Component {
         // this.props.chooseVariable(event.target.value)
         console.log("HANDLECLICK")
         for (var i =0;i<this.state.categories.length; i++){
-            if (this.state.categories[i].catname== event.target.value){
+            if (this.state.categories[i].catname=== event.target.value){
                 this.state.categories[i].open = !this.state.categories[i].open;
                 this.setState({listOpen: true, category: this.state.categories[i].catname}, ()=>{
                     document.addEventListener('click', this.closeMenu);
@@ -89,7 +89,7 @@ class NewDropdown extends Component {
     closeMenu(){
         console.log("CLOSE")
         for (var i =0;i<this.state.categories.length; i++){
-            if (this.state.categories[i].catname== this.state.category){
+            if (this.state.categories[i].catname=== this.state.category){
                 this.state.categories[i].open = false;
                 this.setState({listOpen: false, category:''}, ()=>{
                     document.removeEventListener('click', this.closeMenu);
@@ -107,9 +107,7 @@ class NewDropdown extends Component {
         const buttons = this.createButtons()
         return (
             <Row className="justify-content-md-center">
-            
                 {buttons}
-            
             </Row>
         )
     }

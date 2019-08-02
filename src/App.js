@@ -7,10 +7,12 @@ import Home from './pages/Home'
 import About from './pages/About'
 import DataPortal from './pages/DataPortal'
 import DropdownBootstrap from './components/DropdownBootstrap'
-import OralHistories from './pages/OralHistories'
+import Stories from './pages/Stories'
 import EconIndex from './pages/EconIndex'
 import NavBar from './components/NavBar'
 import NoMatch from './pages/NoMatch'
+import Methodology from './pages/Methodology'
+import Contact from './pages/Contact'
 // import DropdownBootstrap from './components/DropdownBootstrap'
 
 
@@ -27,8 +29,10 @@ class App extends Component {
             <Route path="/dataportal" component={DataPortal}/>
             <Route path="/dropdown" component={DropdownBootstrap}/>
             <Route path="/index" component={EconIndex}/>
-            <Route path="/oralhistories" component={OralHistories}/>
+            <Route path="/stories" component={Stories}/>
+            <Route path="/methodology" component={Methodology}/>
             <Route path="/about" component={About}/>
+            <Route path="/contact" component={Contact}/>
             <Route component={NoMatch}/>
           </Switch>
         </Router>

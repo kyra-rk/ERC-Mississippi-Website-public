@@ -8,26 +8,27 @@ import { Button } from 'react-bootstrap';
 //import NoMatch from './NoMatch';
 import TopicCategory from './TopicCategory'
 import topic_categories from '../data/topic_categories';
-import { Row, Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 /*created buttons const that references the categories in topic_categories*/
 const Topic = ({match}) => {
   const buttons = topic_categories.map((obj) =>
-    <div>
-      <Link to={`${match.url}/${obj.name}`}><Button variant="outline-info">{obj.name}</Button></Link>
+    <div key={obj.name}>
+      <Link to={`${match.url}/${obj.name}`}>
+        <Button className="topicbutton" style={{backgroundColor: obj.color, borderColor: obj.color}}>{obj.name}</Button>
+      </Link>
     </div>
   );
   return (
-    <Container>
+    <div>
       <h1>Topic</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <Router>
         <Row className="justify-content-md-center">{buttons}</Row>
         <Switch>
           <Route path={`${match.path}/:name`} component={TopicCategory}/>
         </Switch>
       </Router>
-    </Container>
+    </div>
   )
 }
 

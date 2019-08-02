@@ -5,7 +5,7 @@ const OHPersonData = [
     "interview": [
    {
      "id": 1,
-     "speaker": "Destiny",
+     "speaker": "Interviewer",
      "text": "Can you tell me a little bit about yourself?",
      "cat": [],
      "important": ""
@@ -40,7 +40,7 @@ const OHPersonData = [
    },
    {
      "id": 1,
-     "speaker": "Destiny",
+     "speaker": "Interviewer",
      "text": "Amazing. My mom met my dad. An American man, in, I don't even know what year she is. My mom left for me to go to Canada. Halfway through when she was in college because her sister got sponsored and like her sister allowed for her and my grandmother to come. And then my mom and my dad at church and everyone in my family was like: why are you marrying an American man? (mutual life) I don't know what you're doing. And she was like, \"No I'm in love like he's perfect\". Anyways they had two kids in Canada but they got a divorce. But she is happy as well. (Mutual laughter) You know it's..It's..It's a good it's a good thing.",
      "cat": [],
      "important": ""
@@ -82,7 +82,7 @@ const OHPersonData = [
    },
    {
      "id": 1,
-     "speaker": "Destiny",
+     "speaker": "Interviewer",
      "text": "Here we are wow. Ok. OK. Umm, next question (mutual laughter). What are some of your long term plans and dreams or goals?",
      "cat": [],
      "important": ""
@@ -92,7 +92,7 @@ const OHPersonData = [
    "interview": [
   {
     "id": 2,
-    "speaker": "Destiny",
+    "speaker": "Interviewer",
     "text": "Can you tell me a little bit about yourself?",
     "cat": [],
     "important": ""
@@ -127,7 +127,7 @@ const OHPersonData = [
   },
   {
     "id": 2,
-    "speaker": "Destiny",
+    "speaker": "Interviewer",
     "text": "Amazing. My mom met my dad. An American man, in, I don't even know what year she is. My mom left for me to go to Canada. Halfway through when she was in college because her sister got sponsored and like her sister allowed for her and my grandmother to come. And then my mom and my dad at church and everyone in my family was like: why are you marrying an American man? (mutual life) I don't know what you're doing. And she was like, \"No I'm in love like he's perfect\". Anyways they had two kids in Canada but they got a divorce. But she is happy as well. (Mutual laughter) You know it's..It's..It's a good it's a good thing.",
     "cat": [],
     "important": ""
@@ -169,7 +169,7 @@ const OHPersonData = [
   },
   {
     "id": 2,
-    "speaker": "Destiny",
+    "speaker": "Interviewer",
     "text": "Here we are wow. Ok. OK. Umm, next question (mutual laughter). What are some of your long term plans and dreams or goals?",
     "cat": [],
     "important": ""

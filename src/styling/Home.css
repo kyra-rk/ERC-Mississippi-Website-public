@@ -1,0 +1,22 @@
+#HomeBanner{
+    width: 100%;
+    transform: translate(0%);
+}
+
+.banner{
+  position: absolute;
+  top: 80px;
+  text-align: center;
+}
+
+.bannerwords{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  color: white;
+  font-weight: bold;
+  font-size: 10vw;
+  white-space: nowrap;
+  background: rgba(109, 27, 108, 0.3)
+}

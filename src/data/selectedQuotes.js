@@ -3,7 +3,7 @@
 const selectedQuotes = 
 [{name: "Person1", 
 category: "Health",
-image: "MSimage.png",
+image: "person.png",
 audio: "MSaudio.mp3",
 quotes: {
     quote1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -21,7 +21,7 @@ quotes: {
 },
 {name: "Person3", 
 category: "Education",
-image: "MSimage.png",
+image: "person.png",
 audio: "MSaudio.mp3",
 quotes: {
     quote1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -29,7 +29,7 @@ quotes: {
 },
 {name: "Person4", 
 category: "Health",
-image: "MSimage.png",
+image: "person.png",
 audio: "MSaudio.mp3",
 quotes: {
     quote1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -38,7 +38,7 @@ quotes: {
 },
 {name: "Person5", 
 category: "Education",
-image: "MSimage.png",
+image: "person.png",
 audio: "MSaudio.mp3",
 quotes: {
     quote1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -46,7 +46,7 @@ quotes: {
 },
 {name: "Person6", 
 category: "Health",
-image: "MSimage.png",
+image: "person.png",
 audio: "MSaudio.mp3",
 quotes: {
     quote1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
