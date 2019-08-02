@@ -1,5 +1,5 @@
 /**
- * Program file for the Oral Histories Page
+ * Program file for the Stories (formerly known as Oral Histories) Page
  * Used navbar and Router to make buttons that link to subpages of people vs. topics categorization
  */
 
@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap'
 import Topic from './Topic'
 import People from './People'
 import NoMatch from './NoMatch'
-import '../styling/oralhistories.css'
+import '../styling/Stories.css'
 
 /**
  * match.path keeps oralhistories in url but allows to add topic or story
@@ -19,8 +19,9 @@ import '../styling/oralhistories.css'
  */  
 export const Stories = ({ match }) => (
   <div className="screenwidth">
-    <h1>Stories</h1>
-    <p className="oh">
+    <div className="oh">
+    <h1> Stories</h1>
+    <p>
       Participants from the <strong>Women in Construction Program</strong> (WinC) were interviewed about their experiences as women and mothers training to work in the 
       construction industry. By showcasing their narratives, we hope to deepen people's understanding on women's economic security in Mississippi as well as bring
       a more qualitative aspect to the economic security index.
@@ -30,9 +31,10 @@ export const Stories = ({ match }) => (
       If you are more interested in reading about one person's story, then select "By Person" button. You will see a biography of the WinC participant and the full transcript of their interview.
       If you are more interested in reading quotes related to a topic, then select "By Topic" button. You can get to toggle between the topics and see relevant quotes.
     </p>
-    <Button className="ohbutton" variant="outline-info" href ={`${match.url}/people`}>By Person</Button>
+    </div>
+    <Button className="ohbutton" href ={`${match.url}/people`} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>By Person</Button>
     {' '}
-    <Button className="ohbutton" variant="outline-info" href = {`${match.url}/topic`}>By Topic</Button>
+    <Button className="ohbutton" href = {`${match.url}/topic`} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>By Topic</Button>
     <Router>
       <Switch>
         <Route path={`${match.url}/people`} component={People}/>

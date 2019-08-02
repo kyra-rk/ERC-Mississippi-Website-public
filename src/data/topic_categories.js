@@ -2,28 +2,36 @@
 
 const topic_categories = 
 [{name: "Employment",
-color: "#a7d6ce"
+color: "#a7d6ce",
+url: "employment",
 },
 {name: "Structural issues",
-color: "#a7b2d6"
+color: "#a7b2d6",
+url: "structure",
 },
 {name: "Education",
-color: "#d39e00"
+color: "#d39e00",
+url: "education",
 },
 {name: "Transportation",
-color: "#e09867"
+color: "#e09867",
+url: "transportation",
 },
 {name: "Financial situation",
-color: "#5bb635"
+color: "#5bb635",
+url: "finance",
 },
 {name: "Motherhood",
-color: "#dd7e6b"
+color: "#dd7e6b",
+url: "motherhood",
 },
 {name: "Care",
-color: "#a4c2f4"
+color: "#a4c2f4",
+url: "care",
 },       
 {name: "Interpersonal relationships",
-color: "#a38ddd"
+color: "#a38ddd",
+url: "relationships",
 },
 ]
 

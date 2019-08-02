@@ -3,6 +3,7 @@
  * Made a const and exported it as "About" to reference in App.js
  */
 import React from 'react';
+import '../styling/About.css'
 
 export const About = () => (
 	  <div className="screenwidth">
