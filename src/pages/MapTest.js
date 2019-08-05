@@ -36,7 +36,7 @@ class Map extends Component {
     }
 
     drawMap() {
-        console.log("REDRAWING")
+        // console.log("REDRAWING")
         d3.selectAll("svg").remove();
         let svgWidth = document.getElementsByClassName(["mapclass"])[0].clientWidth
         let svgHeight = svgWidth;
@@ -48,7 +48,7 @@ class Map extends Component {
         var center = d3.geoCentroid(json)
         let projection = d3.geoTransverseMercator()
         .scale([3000])
-        .translate([.45*svgWidth,.95*svgHeight])
+        .translate([.55*svgWidth,svgHeight])
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
        
         var svg = d3.select(".mapclass").append("svg")
@@ -332,7 +332,7 @@ class Map extends Component {
                 const min = Math.floor(minval/10)*10;
                 
                 const max = Math.ceil(maxval/10)*10;
-                console.log(max)
+                // console.log(max)
                 // const bindist = Math.pow(10, Math.floor(Math.log10(max-min)))
                 const bindist = Math.floor((max-min)/15)
                 // console.log(bindist);
@@ -348,14 +348,14 @@ class Map extends Component {
                 // for (var i =0; i<15;i++){
                 //     thresholds[i] = min+bindist*(i+1)
                 // }
-                console.log(thresholds);
+                // console.log(thresholds);
                 
                 const x_dotplot = d3.scaleLinear()
-                        .rangeRound([margin2.left*4, width-margin2.left])
+                        .rangeRound([margin2.left*3, width+margin2.right])
                         .domain([min, max]);
                 const nbins = 10;
 
-                console.log((max - min) / nearest);
+                // console.log((max - min) / nearest);
                 
                 var histogram = d3.histogram()
                 .domain(x_dotplot.domain())
@@ -372,19 +372,27 @@ class Map extends Component {
                 console.log(bins);
                 var maxinabin = d3.max(bins, function(d){return d.length})
 
-                var yradius = Math.floor((width-margin2.right-margin2.left-margin2.left)/d3.max(bins, function(d){return d.length}))/2;
-                console.log(x_dotplot(min + (bins[0].x1 - bins[0].x0)));
-                var xradius = x_dotplot(min + (bins[0].x1 - bins[0].x0))/2
+                var maxy = Math.ceil(maxinabin/10)*10;
+                var y_dotplot = d3.scaleLinear()
+                .rangeRound([height-margin2.bottom, margin2.top])
+                .domain([0,maxy]);
+                // var yradius = Math.floor((width-margin2.right-margin2.left-margin2.left)/d3.max(bins, function(d){return d.length}))/2;
+                // var yradius = y_dotplot()
+                var yradius = (y_dotplot(0) - y_dotplot(1)-1)/2
+                // console.log(x_dotplot(min + (bins[0].x1 - bins[0].x0)));
+                console.log(x_dotplot(min+(bins[0].x1 - bins[0].x0)))
+                var xradius = (x_dotplot(min + (bins[0].x1 - bins[0].x0))-x_dotplot(min))/2
                 console.log(yradius, xradius)
                 var radius = Math.min(xradius, yradius)
-                console.log(radius);
-                radius = 7.5;
+                // radius = Math.floor(radius)
+                console.log(radius)
+                // radius = 7.5;
 
-                var ylimit = (radius*2)*maxinabin
+                var ylimit = (radius*2)*maxy
                 // console.log((x_dotplot(bins[0].x1)-x_dotplot(bins[0].x0))/2)
-                const y_dotplot = d3.scaleLinear()
-                .rangeRound([height-margin2.bottom*2, height-margin2.bottom - ylimit])
-                .domain([0,maxinabin]);
+                 y_dotplot.rangeRound([height-margin2.bottom*3, height-ylimit-margin2.bottom*2]);
+                
+                 
             
                 // - (d.idx * 2 * radius) - radius
 
@@ -418,7 +426,7 @@ class Map extends Component {
                     .attr("cx", 0) //g element already at correct x pos
                     .attr("cy", function(d) {
                         // console.log(d.radius);
-                        return - (d.idx * 2 * radius) - radius-margin2.bottom; 
+                        return - (d.idx * 2 * radius) - radius-margin2.bottom*2; 
                         // return height-100;
                     })
                     .attr("r", radius)
@@ -439,14 +447,14 @@ class Map extends Component {
 
                     svg3.append("g")
   .attr("class", "axis--x")
-  .attr("transform", "translate(0," + (adjustheight-margin2.bottom) + ")")
-  .call(d3.axisBottom(x_dotplot));
+  .attr("transform", "translate(0," + (adjustheight-margin2.bottom*2) + ")")
+  .call(d3.axisBottom(x_dotplot).ticks(maxval/5));
                     // .on("mouseout", tooltipOff)
 
                     svg3.append("g")
                     .attr("class", "axis--y")
-                    .attr("transform", "translate(" + margin2.left*4 + ",0)")
-                    .call(d3.axisLeft(y_dotplot))
+                    .attr("transform", "translate(" + margin2.left*3 + ",0)")
+                    .call(d3.axisLeft(y_dotplot).ticks(maxinabin/5))
                                      
                        
 

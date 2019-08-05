@@ -1,0 +1,21 @@
+.about h1{
+    text-align: left;
+    font-size: 40px;
+  }
+  
+.about p{
+    text-align: justify;
+    font-size: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    top: 20%
+  }
+
+#Reportpic{
+  max-height: 250px; 
+  height: auto;
+}
+
+.aboutrow{
+  margin-bottom: 30px;
+}

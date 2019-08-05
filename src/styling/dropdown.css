@@ -44,9 +44,9 @@
 
 .unavailable.btn.btn-primary {
     background-color: transparent;
-    color: gray;
-    border-color: transparent;
-    text-decoration: line-through;
+    color: lightgray;
+    border-color: lightgray;
+    /* text-decoration: line-through; */
     pointer-events:none;
 
 }

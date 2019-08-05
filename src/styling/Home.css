@@ -1,0 +1,71 @@
+.homescreen{
+  overflow: hidden;
+  margin-top: -30px;
+  margin-bottom: 100px;
+}
+
+#HomeBanner{
+    width: 100%;
+}
+
+.banner{
+  position: relative;
+  text-align: center;
+}
+
+.bannerwords{
+  position: absolute;
+  left: 1%;
+  top: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 10vw;
+  white-space: nowrap;
+  background: rgba(109, 27, 108, 0.3);
+}
+
+.homebutton{
+  width: 65%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  height: 60px;
+}
+
+.introduction{
+  margin: 50px 150px 0px 150px;
+}
+
+.introduction h1{
+  text-align: left;
+  font-size: 40px;
+}
+
+.introduction p{
+  text-align: justify;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.Howto{
+  position: relative;
+  margin-left: 160px;
+  width: 89%;
+}
+
+#div1{
+  width: 65%;
+  max-height: 150px;
+  overflow: auto
+}
+
+#div2{
+  width: 65%;
+  max-height: 150px;
+  overflow: auto
+}
+
+#div3{
+  width: 65%;
+  max-height: 150px;
+  overflow: auto
+}

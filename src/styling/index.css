@@ -13,15 +13,39 @@ code {
 }
 
 /*@navbar is same color as MLICCI color*/
-Nav{
+.navigation{
 background-color: #6d1b6c;
+margin-bottom: 30px;
 }
 
-.navbar-brand{
-margin-top: -3px;
+@media only screen and (min-width: 1200px) {
+  .navigation{
+    height: 80px;
+    line-height: 80px;
+  }
 }
 
 /*when screen is small, menu is contained in icon and this makes the color white*/
 .navbar span.navbar-toggler-icon {
 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+
+}
+
+.navbar-nav a {
+  display: inline-block;
+  font-style: italic;
+}
+
+.navbar-nav a:hover {
+  background-color: #d4a45c;
+}
+
+.NavbarBrand{
+  padding-left: 50px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .NavbarBrand{
+    padding-left: 0px;
+  }
 }

@@ -7,10 +7,28 @@
 
  .Quote-Container {
  	overflow: auto;
- 	max-height: 50px;
- 	height: auto;
+ 	max-height: 75px;
+    height: auto;
  }
  
- .Section {
-     margin: 10px;
+.rightcolumn{
+    margin-right: 0
+}
+
+audio {
+    height: 30px;
+}
+
+ #topicrow {
+     margin-bottom: 30px;
+ }
+
+ #buttonrow{
+     position: absolute;
+     bottom: 0;
+     right: 20px;
+ }
+
+ .topicbutton {
+    margin: 5px;
  }

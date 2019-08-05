@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Dropdown from '../components/Dropdown'
 import NewDropdown from '../components/NewDropdown'
 //import DropdownBootstrap from '../components/DropdownBootstrap'
-import {Container} from 'react-bootstrap';
 import Results from '../components/Results'
 import Map from '../components/Map'
 //import * as Papa from 'papaparse';
@@ -48,25 +47,25 @@ const demographics = [
       this.state = {ResultsList: [], currentvar: '', varname: '', vardesc: '', varChosen: false, dataset:data_general};
       this.makeSelection = this.makeSelection.bind(this)
       this.chooseVariable = this.chooseVariable.bind(this)
-      this.componentDidMount = this.componentDidMount.bind(this)
+      // this.componentDidMount = this.componentDidMount.bind(this)
     }
 
-    componentDidMount(){
-      let tempresults = {}
-      // var results = Papa.parse("https://cdn.glitch.com/9464a98c-0c3d-4d5a-9f8e-6fb666dea3f2%2FData_General.csv?1552623990370", {
-      //   header: true,
-      //   download: true,
-      //   complete: (results) => {
-      //     // console.log(results);
-      //     this.setState({dataset: results.data});
-      //   }
-      // })   
-  }
+  //   componentDidMount(){
+  //     let tempresults = {}
+  //     // var results = Papa.parse("https://cdn.glitch.com/9464a98c-0c3d-4d5a-9f8e-6fb666dea3f2%2FData_General.csv?1552623990370", {
+  //     //   header: true,
+  //     //   download: true,
+  //     //   complete: (results) => {
+  //     //     // console.log(results);
+  //     //     this.setState({dataset: results.data});
+  //     //   }
+  //     // })   
+  // }
   
     makeSelection(selection){
       let ResultsList = [...this.state.ResultsList]
         ResultsList = [];
-        var i;
+        // var i;
         if (selection === 'demographics'){
           ResultsList = demographics
         }
@@ -81,7 +80,7 @@ const demographics = [
       let ResultsList = [...this.state.ResultsList]
       for (var j = 0; j < this.state.ResultsList.length; j++) {
         var abbrv = ResultsList[j].abbreviation;
-        if (selectedvar == abbrv) {
+        if (selectedvar === abbrv) {
           console.log(ResultsList[j].description)
           this.setState({varname: ResultsList[j].name, vardesc: ResultsList[j].description});
           break;
@@ -102,8 +101,7 @@ const demographics = [
     render() {
       // console.log(this.state.dataset)
       return (
-        <Container>
-        <div className="DataPortal">
+        <div className="DataPortal" className="screenwidth">
             <h1>
               Data Portal
             </h1>
@@ -113,7 +111,6 @@ const demographics = [
             {this.state.currentvar && this.state.varChosen &&
             <Map datainput = {this.state.dataset} variable = {this.state.currentvar} varname = {this.state.varname} vardesc = {this.state.vardesc}/>}
         </div>
-        </Container>
       );
     }
   

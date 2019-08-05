@@ -1,14 +1,9 @@
-#EconImage {
-    width: 20%;
-    height: 20%;
-  }
-
-.econindex h1{
+.contact h1{
     text-align: left;
     font-size: 40px;
   }
-
-.econindex p{
+  
+.contact p{
     text-align: justify;
     font-size: 15px;
     margin-bottom: 30px;

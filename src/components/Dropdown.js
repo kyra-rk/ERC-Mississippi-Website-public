@@ -24,8 +24,8 @@ class Dropdown extends Component {
     render() {
         return (
             <form onSubmit={ this.handleSubmit }>
-                <label for="categorizeData">Select category of data</label>
-                <select class="form-control" id="categorizeData" onChange = { this.handleChange }>
+                <label htmlFor="categorizeData">Select category of data</label>
+                <select className="form-control" id="categorizeData" onChange = { this.handleChange }>
                     <option value='category'>Select a category...</option>
                     <option value='demographics'>Demographics</option>
                     <option value='education'>Education and Employment</option>

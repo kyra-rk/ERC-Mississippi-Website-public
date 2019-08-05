@@ -5,8 +5,8 @@
  * NEED TO ADD ICONS BELOW SEE MORE BUTTON
  */
 import React, {Component} from 'react';
-import { Row, Col, Container, Button } from 'react-bootstrap';
-import {BrowserRouter as Router,Route, Switch, Link, Redirect} from 'react-router-dom';
+import { Row, Col, Button } from 'react-bootstrap';
+import {BrowserRouter as Router,Route, Switch, Redirect} from 'react-router-dom';
 import '../styling/FlipCard.css';
 import flip_card_items from '../data/flip_card_items'
 import OHPerson from './OHPerson'
@@ -14,7 +14,7 @@ import Transcript from '../components/Transcript';
 
 /*sr-only is for screenreaders, i.e. accessibility*/
 
-class Story extends Component {
+class People extends Component {
     constructor(props){  
         super(props);
         this.state ={
@@ -36,24 +36,26 @@ class Story extends Component {
     }
     
     var flipcards = flip_card_items.map((obj) =>
-        <Col lg={4}>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
+        <Col lg={4} key={obj.name}>
+            <div className="flip-card">
+                <div className="flip-card-inner">
+                    <div className="flip-card-front">
                         <img src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
-                        <h3>{obj.name}</h3>
+                        <h6>{obj.personname}</h6>
                     </div>
-                    <div class="flip-card-back">
-                        <h4>{obj.name}</h4> 
+                    <div className="flip-card-back">
+                        <h6>{obj.personname}</h6> 
                         <p>{obj.bio}</p>
-                        <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>See more</Button>
+                        <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>
+                            See more
+                        </Button>
                     </div>
                 </div>
             </div>
-        </Col>);
+        </Col>
+        );
 
         return (
-        <Container>
             <Row className="justify-content-md-center">
                 {flipcards}
             <Router>
@@ -62,11 +64,10 @@ class Story extends Component {
                 </Switch>
             </Router>
             </Row>
-        </Container>
         )
     }
 
 } 
 
 
-export default Story;
+export default People;
