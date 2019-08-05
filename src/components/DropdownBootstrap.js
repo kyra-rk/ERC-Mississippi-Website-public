@@ -147,18 +147,18 @@ class DropdownBootstrap extends Component {
         createDemButtons(){
           let everyonebutton = 
           <Col lg={1}>
-            <Button id="dembutton" className="dembutton available" value={["E", "B"]} onClick={this.handleDemClick}>Everyone</Button>
-            <Button className = {`dembutton ${this.state.gender ? "available selected": "unavailable"}`} id="Women" value={["E", "F"]} onClick={this.handleDemClick}>Women</Button>
-            <Button className = {`dembutton ${this.state.gender ? "available": "unavailable"}`}id="Men" value={["E", "M"]} onClick={this.handleDemClick}>Men</Button>
+            <Row><Button id="dembutton" className="dembutton available" value={["E", "B"]} onClick={this.handleDemClick}>Everyone</Button></Row>
+            <Row><Button className = {`dembutton ${this.state.gender ? "available selected": "unavailable"}`} id="Women" value={["E", "F"]} onClick={this.handleDemClick}>Women</Button></Row>
+            <Row><Button className = {`dembutton ${this.state.gender ? "available": "unavailable"}`}id="Men" value={["E", "M"]} onClick={this.handleDemClick}>Men</Button></Row>
 
           </Col>
           let otherbuttons =
           demographics.map((group, index)=>(
             <Col lg={1}>
               {/* <Dropdown.Menu show> */}
-              <Button id="dembutton" className = {`dembutton ${this.state.race ? "available": "unavailable"}`} value={[group.abbreviation, "B"]} onClick={this.handleDemClick}>{group.name}</Button>
+              <Row><Button id="dembutton" className = {`dembutton ${this.state.race ? "available": "unavailable"}`} value={[group.abbreviation, "B"]} onClick={this.handleDemClick}>{group.name}</Button></Row>
                 {group.subgroup.map((gender, i) => (
-                  <Button className = {`dembutton ${this.state.racegender ? "available": "unavailable"}`} id={`${gender.name}`} value={[group.abbreviation, gender.abbreviation]} onClick={this.handleDemClick}>{gender.name}</Button>
+                 <Row> <Button className = {`dembutton ${this.state.racegender ? "available": "unavailable"}`} id={`${gender.name}`} value={[group.abbreviation, gender.abbreviation]} onClick={this.handleDemClick}>{gender.name}</Button></Row>
                 ))}
             {/* </Dropdown.Menu> */}
             </Col>
