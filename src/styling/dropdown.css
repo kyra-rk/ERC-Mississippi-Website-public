@@ -1,0 +1,52 @@
+
+
+.available#Men:active {
+    background-color:#d07eda;
+    border-color: #d07eda;
+    color: white;
+}
+
+.available#Women:active {
+    background-color:#d07eda;
+    border-color: #d07eda;
+    color: white;
+}
+
+.available#dembutton:active {
+    background-color:#d07eda;
+    border-color: #d07eda;
+    color: white;
+}
+
+.dembutton.btn.btn-primary {
+    line-height: .3;
+    font-size: .75rem;
+}
+
+.available.btn.btn-primary {
+    background-color:transparent;
+    color: purple;
+    border-color: purple;
+}
+
+.available.btn.btn-primary:hover {
+    background-color:#d07eda;
+    border-color: #d07eda;
+    color: white;
+    /* opacity: .5; */
+}
+
+.available.selected.btn.btn-primary {
+    background-color: #d07eda;
+    border-color: #d07eda;
+    color: white;
+}
+
+.unavailable.btn.btn-primary {
+    background-color: transparent;
+    color: gray;
+    border-color: transparent;
+    text-decoration: line-through;
+    pointer-events:none;
+
+}

@@ -3,6 +3,14 @@
 z-index: 30;
 }
 
+.circle {
+  fill: #63053d;
+  /* z-index: 30; */
+}
+
+.circle:hover {
+  fill-opacity: .7;
+}
 .bar:hover {
   fill-opacity: .7;
 }
@@ -85,8 +93,26 @@ rect.test {
             display: none;
         }
 
+.axis--x {
+  font-size: 18px;
+  font-family: "Futura", medium, sans-serif;
+}
 
+.axis--x path,
+        .axis--x line {
+            fill: none;
+            /* display: none; */
+        }
 
+.axis--y {
+  font-size: 18px;
+  font-family: "Futura", medium, sans-serif;
+}
+
+.axis--y path {
+  fill: none;
+}
+        
 .description {
 /* background: red; */
 background-color: rgba(185, 142, 167, 0.5);
@@ -115,12 +141,29 @@ padding: 20px;
 
 }
 
+.top10title {
+  padding-top: 10px;
+}
+
+.top10header {
+  text-align: center;
+}
+
+.dotplottitle {
+  padding-top: 10px;
+}
+
+.dotplotheader {
+  text-align: center;
+}
+
 .rowblock {
   padding-top: 20px;
 }
 
 .distribution {
   border: 6px solid rgba(185, 142, 167, .5);
+  background: #DCDCDC;
 
 }
 /* map {

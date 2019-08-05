@@ -32,7 +32,7 @@ const demographics = [
     },
     {
       'name':'Percentage of women with some college or Associates degree education by county', 
-      'abbreviation': 'wscbc',
+      'abbreviation':  "P_Female_Some_college_or_associates_degree",
       'description': ''
     },
     {
@@ -108,7 +108,7 @@ const demographics = [
               Data Portal
             </h1>
             <Dropdown makeSelection = {this.makeSelection}/>
-            {!this.state.varChosen && <NewDropdown chooseVariable={this.chooseVariable}/>}
+            {/* {!this.state.varChosen && <NewDropdown chooseVariable={this.chooseVariable}/>} */}
             {!this.state.varChosen && <Results ResultsList ={this.state.ResultsList} chooseVariable={this.chooseVariable}/>}
             {this.state.currentvar && this.state.varChosen &&
             <Map datainput = {this.state.dataset} variable = {this.state.currentvar} varname = {this.state.varname} vardesc = {this.state.vardesc}/>}
