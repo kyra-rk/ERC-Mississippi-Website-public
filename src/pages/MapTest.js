@@ -13,7 +13,7 @@ class Map extends Component {
             color: d3.scaleQuantile().range(["#edc0da","#f9bbe0","#b2598e","#9b3070","#63053d"]),
             variable: this.props.variable,
             variablename: this.props.varname,
-            variabledescription: "LOREM IPSUM"
+            variabledescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         };
         this.componentDidMount = this.componentDidMount.bind(this)
         this.drawMap =this.drawMap.bind(this)
@@ -29,7 +29,7 @@ class Map extends Component {
     componentDidUpdate(prevProps){
 
         if (this.props.variable != prevProps.variable){
-            this.setState({variable: this.props.variable});
+            this.setState({variable: this.props.variable, variablename: this.props.varname});
         }
         // console.log("REDRAWING")
         this.drawMap();

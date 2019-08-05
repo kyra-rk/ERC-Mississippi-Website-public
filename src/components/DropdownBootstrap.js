@@ -4,10 +4,12 @@ import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import MapTest from '../pages/MapTest'
 import '../styling/App.css';
 import '../styling/dropdown.css'
+// import '../styling/teststyling.css'
 import data_general from '../data/data_general_ms.json';
+import data_black from '../data/data_black.json'
+import data_white from '../data/data_white.json'
 import topic_categories from '../data/topic_categories';
 import Octicon, {Check} from '@primer/octicons-react';
-import '../styling/teststyling.css'
 // import '../styling/font-awesome.min.css'
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 // import Map from '../components/Map.js'
@@ -71,14 +73,14 @@ const categories = [
         'abbreviation': 'High_school_graduate_(includes_equivalency)',
         'race': true,
         'gender': true,
-        'race&gender': false
+        'racegender': false
       },
       {
         'name':'Percentage of Demographic Group with some college or Associates degree education by county', 
         'abbreviation': "Some_college_or_associates_degree",
         'race': true,
         'gender': true,
-        'race&gender': true
+        'racegender': true
       },
       {
         'name':'Percentage of women with Bachelors degree education by county', 
@@ -92,9 +94,50 @@ const categories = [
           'abbreviation': 'NoHealthInsurance',
           'race': true,
           'gender': true,
-          'race&gender': false,
+          'racegender': false,
           },
-          ],},]
+          {
+            'name':'Percentage with Public Health Insurance Coverage', 
+            'abbreviation': 'NoHealthInsurance',
+            'race': true,
+            'gender': true,
+            'racegender': false,
+            },
+            {
+              'name':'Percentage with Private Health Insurance Coverage', 
+              'abbreviation': 'NoHealthInsurance',
+              'race': true,
+              'gender': true,
+              'racegender': false,
+              },
+          ],},
+        {'catname': 'Income',
+          'variant': 'Danger',
+          'variables': 
+          [{
+            'name': 'Percent of Demographic Group with Income Below Poverty',
+            'abbreviation': 'IBP',
+            'race': true,
+            'gender': true,
+            'racegender': true,
+          },
+          {
+            'name': 'Median Earnings',
+            'abbreviation': 'IBP',
+            'race': true,
+            'gender': true,
+            'racegender': true,
+          },
+          {
+            'name': 'Gender Wage Gap',
+            'abbreviation': 'IBP',
+            'race': true,
+            'gender': true,
+            'racegender': true,
+          },
+        ],
+
+        }]
 
 
 
@@ -119,9 +162,21 @@ class DropdownBootstrap extends Component {
             this.handleClick = this.handleClick.bind(this)
             this.createDemButtons = this.createDemButtons.bind(this)
             this.handleDemClick = this.handleDemClick.bind(this)
+            this.componentDidMount = this.componentDidMount(this)
         }
 
+        componentDidMount() {
+            for (var i=0; i<this.state.dataset.length; i++){
+              console.log(this.state.dataset[i])
+              var result = data_black.filter(obj => obj.Geography == this.state.dataset[i].Geography)
+              this.state.dataset[i].P_IBP_B_M = result[0].Percent_IBP_Men
+              this.state.dataset[i].P_IBP_B_F = result[0].Percent_IBP_Women
+              result = data_white.filter(obj => obj.Geography == this.state.dataset[i].Geography)
+              this.state.dataset[i].P_IBP_W_M = result[0].Percent_IBP_Men
+              this.state.dataset[i].P_IBP_W_F = result[0].Percent_IBP_Women
+            }
 
+        }
     
         createButtons(){
             let buttons =  categories.map((obj, index) => (
@@ -196,6 +251,7 @@ class DropdownBootstrap extends Component {
 
             this.setState({demselected: event.target.value[0], genderselected: event.target.value[2], varabbreviation: `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`, 
           varname: matchingvar.name});
+          console.log(this.state.varname)
             // `${this.state.varname}${this.state.race? event.target.value[0] }`
             // this.setState({varname: th})
           }
@@ -227,6 +283,7 @@ class DropdownBootstrap extends Component {
                     </Switch>
                 </Router> 
                 </Row>
+                <br></br>
                 <Row className="justify-content-md-center">
                   <Col lg={3.5}></Col>
                   {everyonebuttons}
