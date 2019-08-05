@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Button} from 'react-bootstrap';
-import OHPersonData from '../data/OHPersonData';
+import OHPersonData from '../data/OHPersonData'
 import '../styling/Transcript.css';
 import topic_categories from '../data/topic_categories';
 
