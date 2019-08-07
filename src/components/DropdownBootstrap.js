@@ -7,8 +7,7 @@ import '../styling/Dropdown.css'
 import data_general from '../data/data_general_ms.json';
 import data_black from '../data/data_black.json'
 import data_white from '../data/data_white.json'
-import topic_categories from '../data/topic_categories';
-import Octicon, {Check} from '@primer/octicons-react';
+// import Octicon, {Check} from '@primer/octicons-react';
 
 const demographics = [
     {'name': 'White',
@@ -181,7 +180,7 @@ class DropdownBootstrap extends Component {
                         id={`dropdown-variants-${obj.variant}`}
                         key={obj.variant}>
                     {obj.variables.map((item, i) => (
-                         <Dropdown.Item eventKey={i} name={[index,i]} onClick={this.handleClick} >{item.name}</Dropdown.Item>
+                         <Dropdown.Item eventKey={i} name={[index,i]} onClick={this.handleClick} key={i}>{item.name}</Dropdown.Item>
                     ))}
 
                     </DropdownButton>
