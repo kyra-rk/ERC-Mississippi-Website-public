@@ -54,18 +54,21 @@
 
 #div1{
   width: 65%;
-  max-height: 150px;
-  overflow: auto
+  max-height: 250px;
+  overflow: auto;
+  text-align: justify;
 }
 
 #div2{
   width: 65%;
-  max-height: 150px;
-  overflow: auto
+  max-height: 250px;
+  overflow: auto;
+  text-align: justify;
 }
 
 #div3{
   width: 65%;
-  max-height: 150px;
-  overflow: auto
+  max-height: 250px;
+  overflow: auto;
+  text-align: justify;
 }
