@@ -68,8 +68,6 @@ class NewDropdown extends Component {
     }
 
     handleClick(event){
-        // this.props.chooseVariable(event.target.value)
-        console.log("HANDLECLICK")
         for (var i =0;i<this.state.categories.length; i++){
             if (this.state.categories[i].catname=== event.target.value){
                 this.state.categories[i].open = !this.state.categories[i].open;
@@ -83,11 +81,9 @@ class NewDropdown extends Component {
         }
         
         this.setState({categories: this.state.categories});
-        // this.props.categories.
     }
 
     closeMenu(){
-        console.log("CLOSE")
         for (var i =0;i<this.state.categories.length; i++){
             if (this.state.categories[i].catname=== this.state.category){
                 this.state.categories[i].open = false;

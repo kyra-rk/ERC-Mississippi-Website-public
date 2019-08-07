@@ -1,11 +1,8 @@
 /*Program file for the Data Portal Page*/
 import React, { Component } from 'react';
 import Dropdown from '../components/Dropdown'
-import NewDropdown from '../components/NewDropdown'
-//import DropdownBootstrap from '../components/DropdownBootstrap'
 import Results from '../components/Results'
 import Map from '../components/Map'
-//import * as Papa from 'papaparse';
 import data_general from '../data/data_general_ms.json'
 
 const demographics = [
@@ -47,25 +44,11 @@ const demographics = [
       this.state = {ResultsList: [], currentvar: '', varname: '', vardesc: '', varChosen: false, dataset:data_general};
       this.makeSelection = this.makeSelection.bind(this)
       this.chooseVariable = this.chooseVariable.bind(this)
-      // this.componentDidMount = this.componentDidMount.bind(this)
     }
-
-  //   componentDidMount(){
-  //     let tempresults = {}
-  //     // var results = Papa.parse("https://cdn.glitch.com/9464a98c-0c3d-4d5a-9f8e-6fb666dea3f2%2FData_General.csv?1552623990370", {
-  //     //   header: true,
-  //     //   download: true,
-  //     //   complete: (results) => {
-  //     //     // console.log(results);
-  //     //     this.setState({dataset: results.data});
-  //     //   }
-  //     // })   
-  // }
   
     makeSelection(selection){
       let ResultsList = [...this.state.ResultsList]
         ResultsList = [];
-        // var i;
         if (selection === 'demographics'){
           ResultsList = demographics
         }
@@ -81,32 +64,20 @@ const demographics = [
       for (var j = 0; j < this.state.ResultsList.length; j++) {
         var abbrv = ResultsList[j].abbreviation;
         if (selectedvar === abbrv) {
-          console.log(ResultsList[j].description)
           this.setState({varname: ResultsList[j].name, vardesc: ResultsList[j].description});
           break;
         }
-        // var jsonCounty= json.features[j].properties.GEOID;
-
-        // if (dataCounty == jsonCounty) {
-
-        //     //Copy the data value into the JSON
-        //     json.features[j].properties[variable] = dataValue;
-        //     break;
-
-        // }
     }
 
     }
     
     render() {
-      // console.log(this.state.dataset)
       return (
         <div className="DataPortal" className="screenwidth">
             <h1>
               Data Portal
             </h1>
             <Dropdown makeSelection = {this.makeSelection}/>
-            {/* {!this.state.varChosen && <NewDropdown chooseVariable={this.chooseVariable}/>} */}
             {!this.state.varChosen && <Results ResultsList ={this.state.ResultsList} chooseVariable={this.chooseVariable}/>}
             {this.state.currentvar && this.state.varChosen &&
             <Map datainput = {this.state.dataset} variable = {this.state.currentvar} varname = {this.state.varname} vardesc = {this.state.vardesc}/>}

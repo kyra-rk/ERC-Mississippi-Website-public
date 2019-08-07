@@ -1,7 +1,7 @@
 /*navbar component that will always be on top of website*/
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap'
-import '../styling/index.css';
+import '../styling/App.css';
 
 /*Calling the CreateNavBar const that is the const lower down*/
 const NavBar = () => {

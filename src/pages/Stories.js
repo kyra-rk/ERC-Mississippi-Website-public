@@ -49,7 +49,7 @@ export const Stories = ({ match }) => (
   
 export default Stories
 
-
+//ATTEMPT AT HAVING REDIRECT WHEN CLICKING BY TOPIC OR BY PERSON IS NOT WORKING
 // /**
 //  * Program file for the Stories (formerly known as Oral Histories) Page
 //  * Used navbar and Router to make buttons that link to subpages of people vs. topics categorization

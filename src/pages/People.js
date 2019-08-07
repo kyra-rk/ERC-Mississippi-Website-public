@@ -2,7 +2,6 @@
  * Program file for the Oral Histories Page
  * Used several divs for each side of the card, see oralhistories.css
  * Data for flip card is in data file
- * NEED TO ADD ICONS BELOW SEE MORE BUTTON
  */
 import React, {Component} from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
@@ -10,7 +9,6 @@ import {BrowserRouter as Router,Route, Switch, Redirect} from 'react-router-dom'
 import '../styling/FlipCard.css';
 import flip_card_items from '../data/flip_card_items'
 import OHPerson from './OHPerson'
-import Transcript from '../components/Transcript';
 
 /*sr-only is for screenreaders, i.e. accessibility*/
 
@@ -27,7 +25,7 @@ class People extends Component {
     handleClick(event){
         this.setState({name: event.target.value, personselected: true});
     }
-
+//redirect gets rid of flipcard component but doesnt seem to work when just typing out url
     render (){
     if (this.state.personselected===true){
         return (<Router><Redirect to={`${this.props.match.path}/${this.state.name}`}/>                 

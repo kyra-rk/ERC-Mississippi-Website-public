@@ -16,7 +16,6 @@ class Dropdown extends Component {
     }
 
     handleSubmit(event){
-        //alert('Your selected category is: ' + this.state.value);
         event.preventDefault();
         this.props.makeSelection(this.state.value)
     }

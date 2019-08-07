@@ -5,7 +5,6 @@ z-index: 30;
 
 .circle {
   fill: #63053d;
-  /* z-index: 30; */
 }
 
 .circle:hover {
@@ -63,19 +62,6 @@ rect.test {
   fill: black;
 }
 
-/*.tooltip {	 
-    /* text-align: center;		 */
-   /* position: absolute; */
-   /* min-width: 100px; */
-    
-    /* width: 120px;					
-    height: 40px;					
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;		
-   justify-content: center;} */
-
-
 
 .tooltiptext, .name, .value {
   position: relative;
@@ -101,7 +87,6 @@ rect.test {
 .axis--x path,
         .axis--x line {
             fill: none;
-            /* display: none; */
         }
 
 .axis--y {
@@ -114,7 +99,6 @@ rect.test {
 }
         
 .description {
-/* background: red; */
 background-color: rgba(185, 142, 167, 0.5);
 padding: 20px;
 }
@@ -136,8 +120,6 @@ padding: 20px;
 .tablemap {
   border: 6px solid rgba(185, 142, 167, 0.5);
   background: #DCDCDC;
-  /* padding-left: 0px;
-  padding-right: 0px; */
 
 }
 
@@ -166,38 +148,3 @@ padding: 20px;
   background: #DCDCDC;
 
 }
-/* map {
-    background: #E6E6E6;
-  }
-  
-  path {
-    fill: steelblue;
-  }
-  
-  .counties{
-    stroke: white;
-    stroke-width: 1;
-  }
-  
-  .counties:hover {
-    fill-opacity: .7;
-  }
-  
-  
-   .tooltip {	 
-      text-align: center;		
-     position: absolute;
-     min-width: 100px;
-      width: 120px;					
-      height: 40px;					
-      border: 0px;		
-      border-radius: 8px;			
-      pointer-events: none;		
-     justify-content: center;
-  } 
-  
-  
-  .tooltiptext, .name, .value {
-    position: relative;
-  }
- */

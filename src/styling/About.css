@@ -6,7 +6,7 @@
 .about p{
     text-align: justify;
     font-size: 15px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
     position: relative;
     top: 20%
   }

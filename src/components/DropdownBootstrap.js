@@ -3,16 +3,12 @@ import { Row, DropdownButton, Dropdown, ButtonToolbar, Col, Button } from 'react
 import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import MapTest from '../pages/MapTest'
 import '../styling/App.css';
-import '../styling/dropdown.css'
-// import '../styling/teststyling.css'
+import '../styling/Dropdown.css'
 import data_general from '../data/data_general_ms.json';
 import data_black from '../data/data_black.json'
 import data_white from '../data/data_white.json'
 import topic_categories from '../data/topic_categories';
 import Octicon, {Check} from '@primer/octicons-react';
-// import '../styling/font-awesome.min.css'
-// @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-// import Map from '../components/Map.js'
 
 const demographics = [
     {'name': 'White',
@@ -167,7 +163,6 @@ class DropdownBootstrap extends Component {
 
         componentDidMount() {
             for (var i=0; i<this.state.dataset.length; i++){
-              console.log(this.state.dataset[i])
               var result = data_black.filter(obj => obj.Geography == this.state.dataset[i].Geography)
               this.state.dataset[i].P_IBP_B_M = result[0].Percent_IBP_Men
               this.state.dataset[i].P_IBP_B_F = result[0].Percent_IBP_Women
@@ -186,16 +181,11 @@ class DropdownBootstrap extends Component {
                         id={`dropdown-variants-${obj.variant}`}
                         key={obj.variant}>
                     {obj.variables.map((item, i) => (
-                        //  <Dropdown.Item eventKey={({index},{i})} tag={Link} href={`${this.state.match.url}/${item.abbreviation}`}>{item.name}</Dropdown.Item>
                          <Dropdown.Item eventKey={i} name={[index,i]} onClick={this.handleClick} >{item.name}</Dropdown.Item>
-                        // <Link to={}> <Dropdown.Item eventKey={i} tag={Link} href={`${this.state.match.url}/${item.abbreviation}`}>{item.name}</Dropdown.Item> </Link> 
-
-
                     ))}
 
                     </DropdownButton>
             ))
-        // console.log(buttons)
             return buttons;
         }
 
@@ -210,22 +200,16 @@ class DropdownBootstrap extends Component {
           let otherbuttons =
           demographics.map((group, index)=>(
             <Col lg={1}>
-              {/* <Dropdown.Menu show> */}
               <Row><Button id="dembutton" className = {`dembutton ${this.state.race ? "available": "unavailable"}`} value={[group.abbreviation, "B"]} onClick={this.handleDemClick}>{group.name}</Button></Row>
                 {group.subgroup.map((gender, i) => (
                  <Row> <Button className = {`dembutton ${this.state.racegender ? "available": "unavailable"}`} id={`${gender.name}`} value={[group.abbreviation, gender.abbreviation]} onClick={this.handleDemClick}>{gender.name}</Button></Row>
                 ))}
-            {/* </Dropdown.Menu> */}
             </Col>
-            // {this.props.showBulkActions ? 'show' : 'hidden'}
           ))
-          // console.log(otherbuttons)
           return [everyonebutton, otherbuttons];
         }
 
         handleClick(event){
-            // console.log("TRIGGERED")
-            // console.log(event.target.name[2])
            const matchingvar = categories[event.target.name[0]].variables[event.target.name[2]]
             var genderbool;
             if (!matchingvar.gender){
@@ -233,43 +217,30 @@ class DropdownBootstrap extends Component {
             }
             
             var abbreviation = `P_${matchingvar.abbreviation}_${this.state.demselected}_${this.state.genderselected}`;
-            console.log(abbreviation)
             this.setState({currentvar: true, varindex: event.target.name, varname: matchingvar.name, varabbreviation: abbreviation, gender: genderbool, 
             race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender})
         }
 
         handleDemClick(event){
-          // console.log(event.target.value);
           document.getElementsByClassName(["selected"])[0].classList.remove("selected");
           (event.target).classList.add("selected");
-          // console.log(this.state)
           if (this.state.currentvar) {
             const matchingvar = categories[this.state.varindex[0]].variables[this.state.varindex[2]]
-            // console.log(matchingvar)
-            
-            console.log(`P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`);
-
             this.setState({demselected: event.target.value[0], genderselected: event.target.value[2], varabbreviation: `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`, 
           varname: matchingvar.name});
-          console.log(this.state.varname)
-            // `${this.state.varname}${this.state.race? event.target.value[0] }`
-            // this.setState({varname: th})
           }
-          // this.setState({currentvar: true, varname: })
         }
 
 
         render(){
            const varbuttons = this.createButtons();
            const [everyonebuttons, dembuttons] = this.createDemButtons();
-          //  console.log(dembuttons)
            let match = this.props.match;
             return (
                 <div>
                 <h1>
               Dropdown Bootstrap
                 </h1>
-               {/* <Container> */}
                  <Row className="justify-content-md-center">
                 <Router> 
                    <ButtonToolbar> {varbuttons}
@@ -290,25 +261,6 @@ class DropdownBootstrap extends Component {
                {dembuttons}
                <Col lg={3.5}></Col>
                 </Row>
-
-                {/* <Row>
-                 <Col lg={{span: 2, offset: 3}} > <Dropdown.Menu show>
-                    <Dropdown.Header>Education 
-</Dropdown.Header>
-                    <Dropdown.Item>Variable 1<link rel="icon" type="image/png" href="../pictures/checkmark.png"></link></Dropdown.Item>
-                    <Dropdown.Item>Variable 2    <Octicon id="testing" icon={Check} />  </Dropdown.Item>
-                  </Dropdown.Menu>
-                  </Col>
-                  <Col lg={2}>
-                 
-                  <Dropdown.Menu show>
-                    <Dropdown.Header>Something Else</Dropdown.Header>
-                    <Dropdown.Item>Variable 1</Dropdown.Item>
-                    <Dropdown.Item>Variable 2</Dropdown.Item>
-                  </Dropdown.Menu>
-                  </Col>
-                </Row> */}
-              
                 {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname}/>}
                 </div>

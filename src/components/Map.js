@@ -36,8 +36,6 @@ class Map extends Component {
     drawMap() {
         let svgWidth = document.getElementsByClassName(["mapclass"])[0].clientWidth
         let svgHeight = svgWidth;
-        // let svgWidth = 300;
-        // let svgHeight = 300;
         let variable = this.state.variable;
         let data = this.state.dataset;
         
@@ -66,8 +64,6 @@ class Map extends Component {
                 var jsonCounty= json.features[j].properties.GEOID;
 
                 if (dataCounty == jsonCounty) {
-
-                    //Copy the data value into the JSON
                     json.features[j].properties[variable] = dataValue;
                     break;
 
@@ -80,9 +76,7 @@ class Map extends Component {
             .enter()
             .append("path")
             .attr("class", function(d){
-                // console.log(d.properties.NAME);
                 return "counties county" + d.properties.NAME;
-            //    return "county" + d.
             })
             .attr("d", path)
             .style("fill", function(d) {
@@ -123,7 +117,6 @@ class Map extends Component {
 
 
             d3.selectAll("circle.county" + d.properties.NAME)
-                // .attr("opacity", .7)
                 .style("stroke", "yellow")
                 .style("stroke-width", 3);
             })
@@ -175,17 +168,10 @@ class Map extends Component {
           .text(function(d){return parseFloat(d[0]).toFixed(2)*100+ "%"});
 
       let originaldata = data;
-    //   console.log(originaldata)
        data = data.sort(function (a, b) {
-        //    console.log(b[variable]);
-        //    console.log(a);
           return b[variable]-a[variable];
-           // return d3.ascending(a.Percent_IBP_Women, b.Percent_IBP_Women);
         })
-              
-          // data = data.slice(0, 10); 
-              
-               data = data.filter(function(d,i){
+            data = data.filter(function(d,i){
         return i < 10;
        });
            
@@ -203,7 +189,6 @@ class Map extends Component {
         .attr("width", width + margin2.left + margin2.right)
         .attr("height", height + margin2.top + margin2.bottom)
         .append("g")
-        // .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
 
        var x_bar = d3.scaleLinear()
@@ -216,7 +201,6 @@ class Map extends Component {
          var y_ax = d3.scaleBand()
        .range([.05*svgHeight, .95*svgHeight])
        .domain(data.map(function (d, i) {
-        //    console.log(d.Geography);
          return d.Geography.substring(0,d.Geography.length-20);}))
          .padding(0.05);
                  
@@ -237,7 +221,6 @@ class Map extends Component {
                  
                  bars.append("rect")
                .attr("class", function(d, i){
-                //    console.log(d.Geography.substring(0,d.Geography.length-20));
                    return "bar county" + d.Geography.substring(0,d.Geography.length-20);
                })
                .attr("y", function (d, i) {
@@ -262,7 +245,6 @@ class Map extends Component {
                    return x_bar(d[variable]*100) + .22*svgWidth;
                })
                .text(function (d) {
-                //    console.log(d.Geography.substring(0,d.Geography.length-20));
                    return d3.format(".1f")(d[variable]*100);
                });
                
@@ -273,7 +255,6 @@ class Map extends Component {
                    .style("fill", "yellow")
                    .style("stroke", "yellow");
                    d3.selectAll("circle.county" + d.Geography.substring(0,d.Geography.length-20))
-                // .attr("opacity", .7)
                 .style("stroke", "yellow")
                 .style("stroke-width", 3);
                 
@@ -316,10 +297,7 @@ class Map extends Component {
                 const min = Math.floor(minval/10)*10;
                 
                 const max = Math.ceil(maxval/10)*10;
-                console.log(max)
-                // const bindist = Math.pow(10, Math.floor(Math.log10(max-min)))
                 const bindist = Math.floor((max-min)/15)
-                // console.log(bindist);
                 const thresholds = []
                 
                 var val=0
@@ -329,46 +307,24 @@ class Map extends Component {
                     val = thresholds[i]
                     i+=1
                 }
-                // for (var i =0; i<15;i++){
-                //     thresholds[i] = min+bindist*(i+1)
-                // }
-                console.log(thresholds);
                 
                 const x_dotplot = d3.scaleLinear()
                         .rangeRound([margin2.left, width-margin2.right-margin2.left])
                         .domain([min, max]);
                 const nbins = 10;
-
-                console.log((max - min) / nearest);
                 
                 var histogram = d3.histogram()
                 .domain(x_dotplot.domain())
-                // .thresholds(x_dotplot.ticks(nbins))
                 .thresholds(thresholds)
                 .value(function(data) {return parseFloat(data[variable]*100);});
-                
-                // console.log(histogram)
-                // const bins = histogram(originaldata).map(d => console.log(d));
-                // console.log(bins)
 
                 const bins = histogram(originaldata).filter(d => d.length>0);
-                // const bins = histogram(data)
-                console.log(bins);
                 var maxinabin = d3.max(bins, function(d){return d.length})
 
                 var yradius = Math.floor((width-margin2.right-margin2.left-margin2.left)/d3.max(bins, function(d){return d.length}))/2;
-                console.log(x_dotplot(min + (bins[0].x1 - bins[0].x0)));
                 var xradius = x_dotplot(min + (bins[0].x1 - bins[0].x0))/2
-                console.log(yradius, xradius)
                 var radius = Math.min(xradius, yradius)
-                console.log(radius);
                 radius = 7.5;
-                // console.log((x_dotplot(bins[0].x1)-x_dotplot(bins[0].x0))/2)
-                // const y_dotplot = d3.scaleLinear()
-                // .rangeRound([height-margin2.bottom, (height-margin2.bottom)-(((maxinabin - 1)*2*radius) - radius)])
-                // .domain([0,maxinabin]);
-            
-                // - (d.idx * 2 * radius) - radius
 
                 let binContainer = svg3.selectAll(".gBin")
                             .data(bins);
@@ -383,29 +339,22 @@ class Map extends Component {
                     .data(d => 
                         
                     d.map((p, i) => {
-                        // console.log(d);
                       return {idx: i,
                               name: p.Geography,
                               value: parseFloat(p[variable])                            }
                     }))
                   .enter()
                   .append("circle")
-                    // .attr("class", "enter")
                     .attr("class", function(d, i){
-                        //    console.log(d.Geography.substring(0,d.Geography.length-20));
-                            // console.log(d);
                             // return "enter testing"
                            return "circle county" + d.name.substring(0,d.name.length-20);
                        })
                     .attr("cx", 0) //g element already at correct x pos
                     .attr("cy", function(d) {
-                        // console.log(d.radius);
                         return - (d.idx * 2 * radius) - radius; 
-                        // return height-100;
                     })
                     .attr("r", radius)
                     .on("mouseover", function(d){
-                        // console.log(d)
                         d3.selectAll("path.county" + d.name.substring(0,d.name.length-20))
                         .attr("opacity", .7)
                         .style("stroke-width",5)
@@ -420,18 +369,9 @@ class Map extends Component {
                     });
 
                     svg3.append("g")
-  .attr("class", "axis--x")
-  .attr("transform", "translate(0," + adjustheight + ")")
-  .call(d3.axisBottom(x_dotplot));
-                    // .on("mouseout", tooltipOff)
-
-                    // svg3.append("g")
-                    // .attr("class", "axis--y")
-                    // .attr("transform", "translate(" + margin2.left + ",0)")
-                    // .call(d3.axisLeft(y_dotplot));
-                                     
-                       
-
+                    .attr("class", "axis--x")
+                    .attr("transform", "translate(0," + adjustheight + ")")
+                    .call(d3.axisBottom(x_dotplot));
                 
     }
 

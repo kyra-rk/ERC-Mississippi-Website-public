@@ -13,10 +13,9 @@ import NavBar from './components/NavBar'
 import NoMatch from './pages/NoMatch'
 import Methodology from './pages/Methodology'
 import Contact from './pages/Contact'
-// import DropdownBootstrap from './components/DropdownBootstrap'
 
 
-/*made home link be exact path "/" and switch makes it so that a new program file is being rendered (removing old file)*/
+/*made home link be exact path "/" , any non matching url goes to nomatch page*/
 
 class App extends Component {
   render() {
