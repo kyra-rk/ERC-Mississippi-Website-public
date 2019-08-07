@@ -237,7 +237,7 @@ class DropdownBootstrap extends Component {
            const [everyonebuttons, dembuttons] = this.createDemButtons();
            let match = this.props.match;
             return (
-                <div>
+                <div className="screenwidth">
                 <h1>
               Dropdown Bootstrap
                 </h1>
