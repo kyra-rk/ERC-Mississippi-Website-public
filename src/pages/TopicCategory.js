@@ -6,7 +6,7 @@ import React from 'react';
 import '../styling/Topic.css';
 import { Col, Row, Button } from 'react-bootstrap';
 import selectedQuotes from '../data/selectedQuotes';
-import {BrowserRouter as Router,Route, Switch, Link } from 'react-router-dom';
+import {BrowserRouter as Router,Route, Switch, Redirect } from 'react-router-dom';
 import OHPerson from './OHPerson'
 
 /*created TopicCategory const that references the data in selectedQuotes*/
@@ -16,9 +16,9 @@ const TopicCategory = ({match}) => {
 			<Row>
 				<Col lg={5}>
 					<img id ="Topic-Image" src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
-						<audio controls>
+						{/* <audio controls>
 							<source src={require(`../audio/${obj.audio}`)} type="audio/mp3"/>
-						</audio>
+						</audio> */}
 				</Col>
 				<Col lg={7} className="rightcolumn">
 					<Row className="Quote-Container">
@@ -29,9 +29,10 @@ const TopicCategory = ({match}) => {
 						<p>{obj.quotes.quote2}</p>
 					</Row>
 					<Row id="buttonrow">
-						<Link to={`${match.url}/${obj.name}`}>
+						{/* when i try to make the link redirect from this to the actual person's page, the whole thing just doesn't load up anymore  */}
+						<Redirect from={`${match.url}/${obj.name}`} to={`/stories/people/${obj.name}`}>
         					<Button variant="outline-info">See more</Button>
-      					</Link>
+      					</Redirect>
 					</Row>
 				</Col>
 			</Row>
