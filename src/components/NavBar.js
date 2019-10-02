@@ -10,8 +10,9 @@ const NavBar = () => {
 /*sr-only is for screenreaders, i.e. accessibility*/
 const CreateNavBar = () => {
     const nav_bar_items = [{url: "/", name: "Home"}, 
+                         //  {url: "/dataportal", name: "Data Portal"},
                            {url: "/dataportal", name: "Data Portal"},
-                           {url: "/dropdown", name: "Dropdown Bootstrap"}, 
+                           {url: "/comparison", name: "Compare Data"}, 
                            {url: "/index", name: "Index"}, 
                            {url: "/stories", name: "Stories"},
                            {url: "/methodology", name: "Methodology"},
