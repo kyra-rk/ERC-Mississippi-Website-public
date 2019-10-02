@@ -7,7 +7,10 @@ import '../styling/Dropdown.css'
 import data_general from '../data/data_general_ms.json';
 import data_black from '../data/data_black.json'
 import data_white from '../data/data_white.json'
-// import Octicon, {Check} from '@primer/octicons-react';
+import topic_categories from '../data/topic_categories';
+// import '../styling/font-awesome.min.css'
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+// import Map from '../components/Map.js'
 
 const demographics = [
     {'name': 'White',
@@ -64,11 +67,11 @@ const categories = [
     'open': false,
     'variables':
     [{
-        'name':'Percentage of Demographic Group with high school degree education by county', 
+        'name':'Percentage with a high school degree education by county', 
         'abbreviation': 'High_school_graduate_(includes_equivalency)',
         'race': true,
         'gender': true,
-        'racegender': false
+        'racegender': true
       },
       {
         'name':'Percentage of Demographic Group with some college or Associates degree education by county', 
@@ -210,10 +213,10 @@ class DropdownBootstrap extends Component {
 
         handleClick(event){
            const matchingvar = categories[event.target.name[0]].variables[event.target.name[2]]
-            var genderbool;
-            if (!matchingvar.gender){
-                genderbool = false;
-            }
+            // var genderbool;
+            // if (!matchingvar.gender){
+            //     genderbool = false;
+            // }
             
             var abbreviation = `P_${matchingvar.abbreviation}_${this.state.demselected}_${this.state.genderselected}`;
             this.setState({currentvar: true, varindex: event.target.name, varname: matchingvar.name, varabbreviation: abbreviation, gender: genderbool, 
@@ -257,9 +260,12 @@ class DropdownBootstrap extends Component {
                 <Row className="justify-content-md-center">
                   <Col lg={3.5}></Col>
                   {everyonebuttons}
-               {dembuttons}
+                  {dembuttons}
                <Col lg={3.5}></Col>
                 </Row>
+
+          
+              
                 {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname}/>}
                 </div>
@@ -268,3 +274,7 @@ class DropdownBootstrap extends Component {
     }
     
     export default DropdownBootstrap;
+
+
+    //P_High_school_graduate_(includes_equivalency)_E_F
+//P_IBP_E_F

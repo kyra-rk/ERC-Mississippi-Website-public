@@ -117,6 +117,14 @@ padding: 20px;
 
 }
 
+
+.mapclass2 {
+  border: 6px solid rgba(185, 142, 167, 0.5);
+  background: #DCDCDC;
+
+}
+
+
 .tablemap {
   border: 6px solid rgba(185, 142, 167, 0.5);
   background: #DCDCDC;

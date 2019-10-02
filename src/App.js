@@ -13,6 +13,8 @@ import NavBar from './components/NavBar'
 import NoMatch from './pages/NoMatch'
 import Methodology from './pages/Methodology'
 import Contact from './pages/Contact'
+import Comparison from './pages/Comparison'
+// import DropdownBootstrap from './components/DropdownBootstrap'
 
 
 /*made home link be exact path "/" , any non matching url goes to nomatch page*/
@@ -25,8 +27,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/dataportal" component={DataPortal}/>
-            <Route path="/dropdown" component={DropdownBootstrap}/>
+           <Route path="/dataportal" component={DropdownBootstrap}/>
+          <Route path="/comparison" component={Comparison}/>
             <Route path="/index" component={EconIndex}/>
             <Route path="/stories" component={Stories}/>
             <Route path="/methodology" component={Methodology}/>
