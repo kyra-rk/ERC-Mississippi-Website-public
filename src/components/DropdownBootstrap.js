@@ -7,6 +7,7 @@ import '../styling/Dropdown.css'
 import data_general from '../data/data_general_ms.json';
 import data_black from '../data/data_black.json'
 import data_white from '../data/data_white.json'
+import categories from '../data/Metadata'
 import topic_categories from '../data/topic_categories';
 // import '../styling/font-awesome.min.css'
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
@@ -45,97 +46,97 @@ const demographics = [
     ]}]
 
 
-const categories = [
-    {'catname': 'Demographics',
-    'variant': 'Info',
-    'open': false,
-      'variables': 
-      [{
-        'name':'Percentage of women by county', 
-        'abbreviation': 'wbc',
-        },
-        {
-          'name':'Percentage of black women by county', 
-          'abbreviation': 'bwbc',
-        },
-        {
-          'name':'Percentage of white women by county', 
-          'abbreviation': 'wwbc',
-        }],},
-    {'catname': 'Education', 
-    'variant': 'Warning',
-    'open': false,
-    'variables':
-    [{
-        'name':'Percentage with a high school degree education by county', 
-        'abbreviation': 'High_school_graduate_(includes_equivalency)',
-        'race': true,
-        'gender': true,
-        'racegender': true
-      },
-      {
-        'name':'Percentage of Demographic Group with some college or Associates degree education by county', 
-        'abbreviation': "Some_college_or_associates_degree",
-        'race': true,
-        'gender': true,
-        'racegender': true
-      },
-      {
-        'name':'Percentage of women with Bachelors degree education by county', 
-        'abbreviation': 'wcebc',
-      }]},
-      {'catname': 'Health',
-      'variant': 'success',
-        'variables': 
-        [{
-          'name':'Percentage with Health Insurance Coverage', 
-          'abbreviation': 'NoHealthInsurance',
-          'race': true,
-          'gender': true,
-          'racegender': false,
-          },
-          {
-            'name':'Percentage with Public Health Insurance Coverage', 
-            'abbreviation': 'NoHealthInsurance',
-            'race': true,
-            'gender': true,
-            'racegender': false,
-            },
-            {
-              'name':'Percentage with Private Health Insurance Coverage', 
-              'abbreviation': 'NoHealthInsurance',
-              'race': true,
-              'gender': true,
-              'racegender': false,
-              },
-          ],},
-        {'catname': 'Income',
-          'variant': 'Danger',
-          'variables': 
-          [{
-            'name': 'Percent of Demographic Group with Income Below Poverty',
-            'abbreviation': 'IBP',
-            'race': true,
-            'gender': true,
-            'racegender': true,
-          },
-          {
-            'name': 'Median Earnings',
-            'abbreviation': 'IBP',
-            'race': true,
-            'gender': true,
-            'racegender': true,
-          },
-          {
-            'name': 'Gender Wage Gap',
-            'abbreviation': 'IBP',
-            'race': true,
-            'gender': true,
-            'racegender': true,
-          },
-        ],
+// const categories = [
+//     {'catname': 'Demographics',
+//     'variant': 'Info',
+//     'open': false,
+//       'variables': 
+//       [{
+//         'name':'Percentage of women by county', 
+//         'abbreviation': 'wbc',
+//         },
+//         {
+//           'name':'Percentage of black women by county', 
+//           'abbreviation': 'bwbc',
+//         },
+//         {
+//           'name':'Percentage of white women by county', 
+//           'abbreviation': 'wwbc',
+//         }],},
+//     {'catname': 'Education', 
+//     'variant': 'Warning',
+//     'open': false,
+//     'variables':
+//     [{
+//         'name':'Percentage with a high school degree education by county', 
+//         'abbreviation': 'High_school_graduate_(includes_equivalency)',
+//         'race': true,
+//         'gender': true,
+//         'racegender': true
+//       },
+//       {
+//         'name':'Percentage of Demographic Group with some college or Associates degree education by county', 
+//         'abbreviation': "Some_college_or_associates_degree",
+//         'race': true,
+//         'gender': true,
+//         'racegender': true
+//       },
+//       {
+//         'name':'Percentage of women with Bachelors degree education by county', 
+//         'abbreviation': 'wcebc',
+//       }]},
+//       {'catname': 'Health',
+//       'variant': 'success',
+//         'variables': 
+//         [{
+//           'name':'Percentage with Health Insurance Coverage', 
+//           'abbreviation': 'NoHealthInsurance',
+//           'race': true,
+//           'gender': true,
+//           'racegender': false,
+//           },
+//           {
+//             'name':'Percentage with Public Health Insurance Coverage', 
+//             'abbreviation': 'NoHealthInsurance',
+//             'race': true,
+//             'gender': true,
+//             'racegender': false,
+//             },
+//             {
+//               'name':'Percentage with Private Health Insurance Coverage', 
+//               'abbreviation': 'NoHealthInsurance',
+//               'race': true,
+//               'gender': true,
+//               'racegender': false,
+//               },
+//           ],},
+//         {'catname': 'Income',
+//           'variant': 'Danger',
+//           'variables': 
+//           [{
+//             'name': 'Percent of Demographic Group with Income Below Poverty',
+//             'abbreviation': 'IBP',
+//             'race': true,
+//             'gender': true,
+//             'racegender': true,
+//           },
+//           {
+//             'name': 'Median Earnings',
+//             'abbreviation': 'IBP',
+//             'race': true,
+//             'gender': true,
+//             'racegender': true,
+//           },
+//           {
+//             'name': 'Gender Wage Gap',
+//             'abbreviation': 'IBP',
+//             'race': true,
+//             'gender': true,
+//             'racegender': true,
+//           },
+//         ],
 
-        }]
+//         }]
 
 
 
@@ -219,7 +220,7 @@ class DropdownBootstrap extends Component {
             // }
             
             var abbreviation = `P_${matchingvar.abbreviation}_${this.state.demselected}_${this.state.genderselected}`;
-            this.setState({currentvar: true, varindex: event.target.name, varname: matchingvar.name, varabbreviation: abbreviation, gender: genderbool, 
+            this.setState({currentvar: true, varindex: event.target.name, varname: matchingvar.name, varabbreviation: abbreviation, 
             race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender})
         }
 
@@ -239,7 +240,7 @@ class DropdownBootstrap extends Component {
            const [everyonebuttons, dembuttons] = this.createDemButtons();
            let match = this.props.match;
             return (
-                <div className="screenwidth">
+                <div>
                 <h1>
               Dropdown Bootstrap
                 </h1>

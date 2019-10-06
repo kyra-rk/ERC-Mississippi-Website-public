@@ -42,8 +42,8 @@ class Map extends Component {
         
         var center = d3.geoCentroid(json)
         let projection = d3.geoTransverseMercator()
-        .scale([3000])
-        .translate([.55*svgWidth,svgHeight])
+        .scale([5500])
+        .translate([.55*svgWidth,1.15*svgHeight])
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
        
         var svg = d3.select(".mapclass").append("svg")
@@ -398,13 +398,12 @@ class Map extends Component {
    render() {
 
    return (
-    <Container>
        <Row className="rowblock">
-           <Col lg={3} className="description">
+           <Col lg={{span: 12}}className="description">
               <h1> {this.state.variablename}</h1>
                <p>{this.state.variabledescription}</p>
            </Col>
-           <Col lg={{span: 9}}>
+           <Col lg={{span: 11}}>
                <Row noGutters={true}>
                    <Col  lg={{span: 5, offset: 1}} className="mapclass">
                    </Col>
@@ -418,7 +417,7 @@ class Map extends Component {
                </Row>
            </Col>
        </Row>
-     </Container>
+   
    )
    }
 }
