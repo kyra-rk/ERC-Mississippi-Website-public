@@ -21,16 +21,16 @@ class TopicCategory extends Component {
     }
 
     handleClick(event){
-        this.setState({name: event.target.value, personselected: true});
-    }
+		this.setState({name: event.target.value, personselected: true}, this.props.redirectperson(event.target.value));
+	}
+	
 //redirect gets rid of flipcard component but doesnt seem to work when just typing out url
     render (){
-    if (this.state.personselected===true){
-		console.log(this.props.match.path)
-        return (<Router><Redirect to={`${this.props.match.path}/${this.state.name}`}/>                 
-        <Route path={`${this.props.match.path}/:name`} component={OHPerson}/></Router>
-        )
-    }
+    // if (this.state.personselected===true){
+    //     return (<Router><Redirect to={`${this.props.match.path}/${this.state.name}`}/>                 
+    //     <Route path={`${this.props.match.path}/:name`} component={OHPerson}/></Router>
+    //     )
+    // }
     
     var topiccat = selectedQuotes.map((obj) =>
 	<Col lg={6} key={obj.name} id="topicrow">
@@ -61,14 +61,15 @@ class TopicCategory extends Component {
 
         return (
 			<div>
-			<h1>{this.props.match.name}</h1>
+			{/* Now not working
+			<h1>{this.props.match.name}</h1> */}
 				<Row className="justify-content-md-center">
 					{topiccat}
-			<Router>
+			{/* <Router>
 				<Switch>
 				<Route exact path={`${this.props.match.path}/:name`} component={OHPerson}/>
 				</Switch>
-			</Router>
+			</Router> */}
 			</Row>
 			</div>
         )

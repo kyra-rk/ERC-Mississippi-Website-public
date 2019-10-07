@@ -48,7 +48,9 @@ class OHPerson extends React.Component {
 
   createTranscript(){
     let match = this.props.match
+    console.log(match)
     const personname = match.params.name;
+    
     const buttons = topic_categories.map((obj, index) =>
       <Button onClick={this.handleClick} value={index+1} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
         {obj.name}
