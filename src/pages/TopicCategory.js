@@ -26,20 +26,11 @@ class TopicCategory extends Component {
 	
 //redirect gets rid of flipcard component but doesnt seem to work when just typing out url
     render (){
-    // if (this.state.personselected===true){
-    //     return (<Router><Redirect to={`${this.props.match.path}/${this.state.name}`}/>                 
-    //     <Route path={`${this.props.match.path}/:name`} component={OHPerson}/></Router>
-    //     )
-    // }
-    
     var topiccat = selectedQuotes.map((obj) =>
-	<Col lg={6} key={obj.name} id="topicrow">
-		<Row>
+	<Col lg={6} key={obj.name}>
+		<Row id="personblock">
 			<Col lg={5}>
 				<img id ="Topic-Image" src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
-					{/* <audio controls>
-						<source src={require(`../audio/${obj.audio}`)} type="audio/mp3"/>
-					</audio> */}
 			</Col>
 			<Col lg={7} className="rightcolumn">
 				<Row className="Quote-Container">
@@ -62,15 +53,10 @@ class TopicCategory extends Component {
         return (
 			<div>
 			{/* Now not working
-			<h1>{this.props.match.name}</h1> */}
+			<h1>{match.params.name}</h1> */}
 				<Row className="justify-content-md-center">
 					{topiccat}
-			{/* <Router>
-				<Switch>
-				<Route exact path={`${this.props.match.path}/:name`} component={OHPerson}/>
-				</Switch>
-			</Router> */}
-			</Row>
+				</Row>
 			</div>
         )
     }

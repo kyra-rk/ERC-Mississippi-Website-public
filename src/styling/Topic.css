@@ -15,10 +15,6 @@
     margin-right: 0
 }
 
-audio {
-    height: 30px;
-}
-
  #topicrow {
      margin-bottom: 30px;
  }
@@ -31,4 +27,10 @@ audio {
 
  .topicbutton {
     margin: 5px;
+ }
+
+ #personblock {
+    margin-bottom: 50px;
+    margin-right: 10px;
+    margin-left: -10px;
  }

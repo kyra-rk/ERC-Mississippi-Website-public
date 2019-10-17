@@ -34,10 +34,10 @@ class Topic extends Component {
 //redirect gets rid of flipcard component but doesnt seem to work when just typing out url
   render (){
   if (this.state.personselected===true){
-    console.log(this.props.history.length);
-    console.log(this.props.history.location.pathname.split("/")[1])
-    var prevpath = "/" + this.props.history.location.pathname.split("/")[1] + "/person"
-  console.log(this.props.match.path, this.state.name)
+    // console.log(this.props.history.length);
+    // console.log(this.props.history.location.pathname.split("/")[1])
+    var prevpath = "/" + this.props.history.location.pathname.split("/")[1] + "/people"
+  // console.log(this.props.match.path, this.state.name)
       return (<Router><Redirect to={`${prevpath}/${this.state.name}`}/>                 
       <Route path={`${prevpath}/:name`} component={OHPerson}/></Router>
       )
@@ -50,16 +50,14 @@ class Topic extends Component {
       </Link>
     </div>
   );
-
       return (
         <div>
         <h1>Choose a Topic</h1>
         <Router>
           <Row className="justify-content-md-center">{buttons}</Row>
           <Switch>
-      <Route path={`${this.props.match.path}/:name`} render={(props) => <TopicCategory {...props} redirectperson={this.redirectperson}/>}/>                
-      <Route exact path={`/stories/person/:name`} component={OHPerson}/>
-
+            <Route path={`${this.props.match.path}/:name`} render={(props) => <TopicCategory {...props} redirectperson={this.redirectperson}/>}/>                
+            <Route exact path={`/stories/people/:name`} component={OHPerson}/>
           </Switch>
         </Router>
       </div>
