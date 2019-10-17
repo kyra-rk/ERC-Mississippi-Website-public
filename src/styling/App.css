@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Muli-Black';
+  src: local('Muli-Black'), url(../fonts/Muli-SemiBold.ttf) format('truetype');
+}
+
 .App {
   text-align: center;
 }
@@ -25,7 +30,7 @@ code {
 /*@navbar is same color as MLICCI color*/
 .navigation{
 background-color: #6d1b6c;
-margin-bottom: 30px;
+margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 1200px) {
