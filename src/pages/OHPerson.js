@@ -48,7 +48,9 @@ class OHPerson extends React.Component {
 
   createTranscript(){
     let match = this.props.match
+    console.log(match)
     const personname = match.params.name;
+    
     const buttons = topic_categories.map((obj, index) =>
       <Button onClick={this.handleClick} value={index+1} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
         {obj.name}
@@ -63,9 +65,14 @@ class OHPerson extends React.Component {
         <Col xl={1} id="speakername">
           <h5>{obj.speaker}</h5>
         </Col>  
-        <Col xl={10}>
+        <Col xl={9}>
           <div className={`${classnames} import${obj.important}`}>
             <p id="transcriptquotes">{obj.text}</p>  
+          </div>
+        </Col>
+        <Col xl={2}>
+          <div id="annotation">
+            <p>{obj.annotation}</p>
           </div>
         </Col>
       </Row>)
