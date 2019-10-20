@@ -52,8 +52,7 @@ class TopicCategory extends Component {
 
         return (
 			<div>
-			{/* Now not working
-			<h1>{match.params.name}</h1> */}
+			<h1>{this.props.match.params.name}</h1>
 				<Row className="justify-content-md-center">
 					{topiccat}
 				</Row>

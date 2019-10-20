@@ -46,9 +46,10 @@ class OHPerson extends React.Component {
   }
 }
 
+
+
   createTranscript(){
-    let match = this.props.match
-    console.log(match)
+    let match = this.props.match;
     const personname = match.params.name;
     
     const buttons = topic_categories.map((obj, index) =>
@@ -91,7 +92,7 @@ class OHPerson extends React.Component {
           <img src = {person} alt="transcriptpic" id ="transcriptpic"/>
         </Col>
         <Col lg={10}>
-          <h1>Claudene Logan</h1>
+          <h1>{this.props.match.params.name}</h1>
           <p id="personbio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>        
         </Col>
       </Row>
