@@ -55,7 +55,6 @@ const OHPersonData =
 "text": "I'm divorced. But, you know USCIS hasn't removed that yet so I still have to use it but (mutual laughter) I love my Logans so I use it for this or everything else that I'm in.",
 "cat": [1],
 "important": "",
-"annotation": "https://www.uscis.gov/",
 },
 {
 "speaker": "Interviewer",
@@ -136,7 +135,7 @@ const OHPersonData =
 "important": "",
 },
 {
-"speaker": "",
+"speaker": "Claudene",
 "text": "But I was working at a casino and this man just like� you know, I ask him because I was a porter so I cleaned the machines and ashtrays and stuff.",
 "cat": [2],
 "important": "",
@@ -224,6 +223,7 @@ const OHPersonData =
 "text": "So I used to work in construction in Jamaica. Not hands-on working, I was a supervisor/manager in a construction firm.",
 "cat": [2],
 "important": "",
+"annotation": "According to https://statinja.gov.jm/LabourForce/NewLFS.aspx, women account for only 2.97% of construction workers in Jamaica.",
 },
 {
 "speaker": "",

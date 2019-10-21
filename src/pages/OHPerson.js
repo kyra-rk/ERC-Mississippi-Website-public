@@ -2,8 +2,8 @@
  * Program file for the Oral Histories Person Page
  */
 import React from 'react';
-import person from '../pictures/person.png';
-import { Row, Col, Button } from 'react-bootstrap';
+// import person from '../pictures/person.png';
+import { Row, Col, Button, Card, Accordion } from 'react-bootstrap';
 import '../styling/Transcript.css';
 import OHPersonData from '../data/OHPersonData'
 import topic_categories from '../data/topic_categories';
@@ -95,8 +95,17 @@ createHeader(){
           </div>
         </Col>
         <Col xl={2}>
-          <div id="annotation">
-            <p>{obj.annotation}</p>
+          <div>
+            <Accordion defaultActiveKey="1">
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="0">
+                  Learn more
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="0">
+                  <Card.Body>{obj.annotation}</Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            </Accordion>
           </div>
         </Col>
       </Row>)
