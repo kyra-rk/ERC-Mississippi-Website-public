@@ -46,7 +46,30 @@ class OHPerson extends React.Component {
   }
 }
 
-
+createHeader(){
+  let match = this.props.match;
+  const personname = match.params.name;
+  
+  var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
+  result = result[0];
+  const printheader= result.header.map((obj) => {
+    return (
+      <h1>{obj.realname}</h1>
+      )
+  }
+  );
+  const printinitials=result.header.map((obj) => {
+    return (
+      <h1 className="initials">{obj.initials}</h1>
+    )
+  });
+  const printbio=result.header.map((obj) => {
+    return (
+      <p>{obj.bio}</p>
+    )
+  });
+  return [printheader, printinitials, printbio]
+}
 
   createTranscript(){
     let match = this.props.match;
@@ -83,17 +106,17 @@ class OHPerson extends React.Component {
   }
 
   render(){
-
+      const [printheader, printinitials, printbio] = this.createHeader()
       const [buttons, printtranscript] = this.createTranscript()
       return (
         <div>
         <Row className="ohpersonrow">
         <Col lg={2}>
-          <img src = {person} alt="transcriptpic" id ="transcriptpic"/>
+          {printinitials}
         </Col>
         <Col lg={10}>
-          <h1>{this.props.match.params.name}</h1>
-          <p id="personbio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>        
+          <h1>{printheader}</h1>
+          <p id="personbio">{printbio}</p>        
         </Col>
       </Row>
         <div>
