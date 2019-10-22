@@ -6,7 +6,11 @@ import React from 'react';
 import '../styling/App.css'
 import '../styling/Home.css'
 import WinC from '../pictures/WinC.jpg'
+import data_logo from '../pictures/data_logo.png'
+import stories_logo from '../pictures/stories_logo.png'
+import method_logo from '../pictures/method_logo.png'
 import { Row, Col, Button } from 'react-bootstrap';
+import 'bootstrap';
 
 class Home extends React.Component {
 
@@ -19,24 +23,65 @@ class Home extends React.Component {
       const { showDiv2 } = this.state;
       const { showDiv3 } = this.state;
       return (
+
         <div className="homescreen">
-          <div className="banner">
-            <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
-              <div className="bannerwords">
-                <p>Make Women Count</p>
-              </div>
-          </div>
+          <section>
+            <div className="banner">
+              <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
+                <div className="bannerwords">
+                  <p>Make Women Count</p>
+                  </div>
+                </div>
+          </section>
+
+
+        <section class="page-section">
           <div className="introduction">
-          <h1>Welcome</h1>
-              <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.
+            <h1>Welcome</h1>
+                <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.
                 Our site uses both qualitative and quantitative data to provide a comprehensive understanding of the unique challenges women encounter.
                 The information was gathered from a variety of sources, such as American Community Survey from the US Census Bureau and interviews with Women in Construction.
                 This project is a collaboration between Mississippi Low-Income Childcare Initiative and Barnard College's Empirical Reasoning Center & Mississippi Semester class.
-                </p>
-          <h1>How to Use</h1>
-          <p>Please select the buttons to learn how to use the site</p>
+                  </p>
           </div>
+        </section>
+
+        <section class="bg-light page-section" id="services">
+                <div className="introduction">
+                  <h1>Features</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                </div>
+          <div class="container">
+            <div class="row text-center">
+              <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                  <img src = {data_logo} alt="Data logo" id="FeatureLogo"/>
+                </span>
+                <h4 class="service-heading">Data Portal</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+              </div>
+              <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                  <img src = {stories_logo} alt="Data logo" id="FeatureLogo"/>
+                </span>
+                <h4 class="service-heading">Stories</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+              </div>
+              <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                  <img src = {method_logo} alt="Methodology logo" id="FeatureLogo"/>
+                </span>
+                <h4 class="service-heading">Methodology</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page-section">
             <div className="Howto">
+              <h1>How to Use</h1>
+              <p>Please select the buttons to learn how to use the site</p>
               <Row className="howtorow">
                 <Col xl={4}>
                   <Row>
@@ -54,7 +99,7 @@ class Home extends React.Component {
                   <Row>
                   <Button size="lg" className="homebutton" onClick={() => this.setState({ showDiv2: !showDiv2 })} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>
                     Economic Security Index
-                  </Button>                    
+                  </Button>
                   </Row>
                   <Row className="explanation">
                   { showDiv2 && (
@@ -66,7 +111,7 @@ class Home extends React.Component {
                   <Row>
                   <Button size="lg" className="homebutton" onClick={() => this.setState({ showDiv3: !showDiv3 })} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>
                     Stories
-                  </Button>                    
+                  </Button>
                   </Row>
                   <Row className="explanation">
                   { showDiv3 && (
@@ -76,7 +121,8 @@ class Home extends React.Component {
                 </Col>
               </Row>
             </div>
-          </div>  
+            </section>
+          </div>
       )
   }
 }
