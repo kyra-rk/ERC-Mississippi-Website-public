@@ -97,10 +97,10 @@ class DropdownBootstrap extends Component {
             let buttons =  categories.map((obj, index) => (
                     <DropdownButton
                         title={obj.catname}
-                        variant={obj.variant.toLowerCase()}
-                        id={`dropdown-variants-${obj.variant}`}
+                        variant={obj.variant.toLowerCase()} //Not necessarily needed
                         key={index}>
                     {obj.variables.map((item, i) => (
+                          //Dropdown.Item refers to ever item within the dropdown
                          <Dropdown.Item eventKey={i} name={[index,i]} onClick={this.handleClick} key={i}>{item.name}</Dropdown.Item>
                     ))}
 
@@ -127,6 +127,23 @@ class DropdownBootstrap extends Component {
             </Col>
           ))
           return [everyonebutton, otherbuttons];
+        }
+
+        createNewDemButtons(){
+          let racesButtons =
+          <Row>
+            <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>All races</Button>
+            <Button id="dembutton" key ="White" className={`White dembutton available ${this.state.buttonselected==="White"? "selected": ""}`} value={["A", "A", "White"]} onClick={this.handleDemClick}>White</Button>
+            <Button id="dembutton" key ="Black" className={`Black dembutton available ${this.state.buttonselected==="Black"? "selected": ""}`} value={["A", "A", "Black"]} onClick={this.handleDemClick}>Black</Button>
+            <Button id="dembutton" key ="OtherRaces" className={`OtherRaces dembutton available ${this.state.buttonselected==="OtherRaces"? "selected": ""}`} value={["A", "A", "OtherRaces"]} onClick={this.handleDemClick}>Other races</Button>
+          </Row>
+          let genderButtons =
+          <Row>
+            <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>All genders</Button>
+            <Button id="dembutton" key ="Women" className={`Women dembutton available ${this.state.buttonselected==="Women"? "selected": ""}`} value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button>
+            <Button id="dembutton" key ="Men" className={`Men dembutton available ${this.state.buttonselected==="Men"? "selected": ""}`} value={["A", "M", "Men"]} onClick={this.handleDemClick}>Men</Button>
+          </Row>
+          return [racesButtons, genderButtons];
         }
 
         getabbreviation(matchingvar, demselected, genderselected){
@@ -228,6 +245,7 @@ class DropdownBootstrap extends Component {
         render(){
            const varbuttons = this.createButtons();
            const [everyonebuttons, dembuttons] = this.createDemButtons();
+           const [racesButtons, genderButtons] = this.createNewDemButtons();
            let match = this.props.match;
             return (
                 <div>
@@ -251,7 +269,10 @@ Data Portal                </h1>
                   <Col lg={3.5}></Col>
                   {everyonebuttons}
                   {dembuttons}
-               <Col lg={3.5}></Col>
+               <Col lg={3.5}>
+               {racesButtons}
+               {genderButtons}
+               </Col>
                 </Row>
 
           
