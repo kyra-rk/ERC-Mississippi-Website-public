@@ -1,20 +1,33 @@
+.ohtop{
+  background-color: #d4a45c;
+  margin-top: -30px;
+}
+
 .ohbutton{
+    margin-top: 30px;
     margin-bottom: 20px;
     width: 45%;
 }
 
-.oh h1{
+.ohtop h1{
     text-align: left;
     font-size: 40px;
+    color: white;
+    padding-top: 30px;
   }
 
-.oh h5{
+.ohtop p{
+  color: white;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.oh h3{
     text-align: left;
     font-size: 30px;
 }
   
 .oh p{
-    text-align: justify;
+    text-align: left;
     font-size: 15px;
-    margin-bottom: 30px;
   }
