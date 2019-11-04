@@ -269,10 +269,14 @@ Data Portal                </h1>
                   <Col lg={3.5}></Col>
                   {everyonebuttons}
                   {dembuttons}
+                  </Row>
+                  <p></p>
+                  <Row className="justify-content-md-center">
+                  <Col lg={3.5}></Col>
                <Col lg={3.5}>
                {racesButtons}
                {genderButtons}
-               </Col>
+              </Col>
                 </Row>
 
           
