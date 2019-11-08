@@ -1,5 +1,5 @@
 .ohtop{
-  background-color: #d4a45c;
+  /* background-color: #d4a45c; */
   margin-top: -30px;
 }
 
@@ -12,12 +12,12 @@
 .ohtop h1{
     text-align: left;
     font-size: 40px;
-    color: white;
+    /* color: white; */
     padding-top: 30px;
   }
 
 .ohtop p{
-  color: white;
+  /* color: white; */
   text-align: left;
   padding-bottom: 20px;
 }
@@ -26,7 +26,7 @@
     text-align: left;
     font-size: 30px;
 }
-  
+
 .oh p{
     text-align: left;
     font-size: 15px;
