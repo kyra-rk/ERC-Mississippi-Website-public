@@ -1,4 +1,4 @@
-const OHPersonData = 
+const OHPersonData =
 [
 {
 "id": 1,
@@ -1273,7 +1273,7 @@ const OHPersonData =
 {
 "id": 2,
 "header": [
-    {"bio": "Kandy Nickles was born in California, and split her youth in California and Texas. She has had a diverse education background: medical school, trade school, a semester of criminal justice, and business technology. With those certifications, she went from working for private investigators, to selling cars to owning a cleaning business, but she had to leave the business behind when she left an abusive relationship. Kandy did not want her daughter to learn that abuse is condoned, therefore left for a better future for the both of them. Kandy made her way to Mississippi after getting engaged to a Mississippian, and together with her daughter, they relocated. Having had experience with male-dominated industries, Kandy hopes to create more opportunities for women by opening her own construction firm that is exclusively run by women.", 
+    {"bio": "Kandy Nickles was born in California, and split her youth in California and Texas. She has had a diverse education background: medical school, trade school, a semester of criminal justice, and business technology. With those certifications, she went from working for private investigators, to selling cars to owning a cleaning business, but she had to leave the business behind when she left an abusive relationship. Kandy did not want her daughter to learn that abuse is condoned, therefore left for a better future for the both of them. Kandy made her way to Mississippi after getting engaged to a Mississippian, and together with her daughter, they relocated. Having had experience with male-dominated industries, Kandy hopes to create more opportunities for women by opening her own construction firm that is exclusively run by women.",
     "realname": "Kandy Nickles",
     "initials": "KN",
     }],
@@ -1313,6 +1313,7 @@ const OHPersonData =
 "text": "I went to medical school in billing and coding and graduated. I went to a trade school and got business and office and then took a semester criminal justice and this school that I was going through paid for the semester at the University and Texas so I'm kind of a little bit certified in a little bit in everything.",
 "cat": [2, 7],
 "important": "",
+"annotation": "Check our map to see the percentage of women with Bachelor's Degrees education across counties in Mississippi."
 },
 {
 "speaker": "",

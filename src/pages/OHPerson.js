@@ -41,7 +41,7 @@ class OHPerson extends React.Component {
         matchingsentence[index].classList.add("selected");
         matchingsentence[index].style.color=matchingcategory[0].color;
 
-        
+
       }
   }
 }
@@ -49,7 +49,7 @@ class OHPerson extends React.Component {
 createHeader(){
   let match = this.props.match;
   const personname = match.params.name;
-  
+
   var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
   result = result[0];
   const printheader= result.header.map((obj) => {
@@ -74,38 +74,50 @@ createHeader(){
   createTranscript(){
     let match = this.props.match;
     const personname = match.params.name;
-    
+
     const buttons = topic_categories.map((obj, index) =>
       <Button onClick={this.handleClick} value={index+1} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
         {obj.name}
       </Button>
-    ); 
+    );
     //id has person# so removing the word person then matching with number and then add cat# to name of class
     var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
     result = result[0];
     const printtranscript= result.interview.map((obj) => {
       const classnames = obj.cat.map(item => `cat${item}`).join(" ");
-      return (<Row className="transcriptcontent">
-        <Col xl={1} id="speakername">
+      var annotation = null;
+      if (obj.annotation){
+        annotation =
+        <Card>
+  <Card.Body>{obj.annotation}</Card.Body>
+</Card>
+        // <Accordion defaultActiveKey="1">
+        //     <Card>
+        //       <Accordion.Toggle as={Card.Header} eventKey="0">
+        //         Learn more
+        //       </Accordion.Toggle>
+        //       <Accordion.Collapse eventKey="0">
+        //         <Card.Body>{obj.annotation}</Card.Body>
+        //       </Accordion.Collapse>
+        //     </Card>
+        //   </Accordion>
+      }
+      else{
+        // annotation = null;
+        console.log("no");
+      }
+      return (<Row >
+        <Col xl={{span: 1}} id="speakername">
           <h5>{obj.speaker}</h5>
-        </Col>  
-        <Col xl={9}>
+        </Col>
+        <Col xl={8}>
           <div className={`${classnames} import${obj.important}`}>
-            <p id="transcriptquotes">{obj.text}</p>  
+            <p id="transcriptquotes">{obj.text}</p>
           </div>
         </Col>
-        <Col xl={2}>
+        <Col xl={3}>
           <div>
-            <Accordion defaultActiveKey="1">
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey="0">
-                  Learn more
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey="0">
-                  <Card.Body>{obj.annotation}</Card.Body>
-                </Accordion.Collapse>
-              </Card>
-            </Accordion>
+            {annotation}
           </div>
         </Col>
       </Row>)
@@ -125,7 +137,7 @@ createHeader(){
         </Col>
         <Col lg={10}>
           <h1>{printheader}</h1>
-          <p id="personbio">{printbio}</p>        
+          <p id="personbio">{printbio}</p>
         </Col>
       </Row>
         <div>
@@ -137,7 +149,7 @@ createHeader(){
         </div>
 
 
-      ); 
+      );
 
 
 }
