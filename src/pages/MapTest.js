@@ -18,7 +18,7 @@ class Map extends Component {
         this.drawMap =this.drawMap.bind(this)
         this.componentDidUpdate = this.componentDidUpdate.bind(this)
     }
-    
+
 
     componentDidMount(){
 
@@ -43,13 +43,13 @@ class Map extends Component {
         // let svgHeight = svgWidth;
         let variable = this.state.variable;
         let data = this.state.dataset;
-        
+
         var center = d3.geoCentroid(json)
         let projection = d3.geoTransverseMercator()
         .scale([4800])
         .translate([.55*svgWidth,1.1*svgHeight])
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
-       
+
         var svg = d3.select(".mapclass").append("svg")
                     .attr("width", svgWidth)
                     .attr("height", svgHeight);
@@ -76,7 +76,7 @@ class Map extends Component {
                 }
             }
         }
-        
+
         let counties = svg.selectAll("counties")
             .data(json.features)
             .enter()
@@ -96,7 +96,7 @@ class Map extends Component {
                     }
             });
         counties.on("mouseover", function(d){
-        
+
             svg.append("rect")
                     .attr("class", "tool")
                     .attr("x", path.centroid(d)[0])
@@ -133,8 +133,8 @@ class Map extends Component {
             d3.selectAll("circle.county" + d.properties.NAME.replace(/\s+/g, ''))
                 .attr("opacity", 1)
                 .style("stroke", "none");
-                
-            });     
+
+            });
 
             var x = d3.scaleLinear()
             .domain(color.domain())
@@ -144,7 +144,7 @@ class Map extends Component {
             var g = svg.append("g")
                 .attr("class", "key")
                 .attr("transform", `translate(${loc},0)`);
-            
+
                 g.selectAll("rect")
        .data(color.range().map(function(d) {
            d = color.invertExtent(d);
@@ -179,11 +179,11 @@ class Map extends Component {
           return b[variable]-a[variable];
            // return d3.ascending(a.Percent_IBP_Women, b.Percent_IBP_Women);
         })
-              
+
         data = data.filter(function(d,i){
         return i < 10;
        });
-           
+
        var margin2 = {
         top: 10,
         right: 10,
@@ -196,7 +196,7 @@ class Map extends Component {
   var newwidth =newsvgWidth - margin2.left - margin2.right;
   var width = svgWidth - margin2.left - margin2.right;
   var height = svgHeight - margin2.top - margin2.bottom;
-  
+
   var svg2 = d3.select(".tablemap").append("svg")
         .attr("width", width + margin2.left + margin2.right)
         .attr("height", height + margin2.top + margin2.bottom)
@@ -209,34 +209,34 @@ class Map extends Component {
          return parseFloat(d[variable]).toFixed(2);
        })
        ]);
-                 
+
          var y_ax = d3.scaleBand()
        .range([.05*svgHeight, .95*svgHeight])
        .domain(data.map(function (d, i) {
          return d.Geography.substring(0,d.Geography.length-20);}))
          .padding(0.05);
-                 
+
                   var yAxis = d3.axisLeft(y_ax)
                //no tick marks
                .tickSize(0);
-                 
+
                   var gy = svg2.append("g")
                .attr("class", "y axis")
                .attr("transform", "translate (" + .2*svgWidth+ " 0)")
                .call(yAxis);
-                
+
 
                  var bars = svg2.selectAll("bar")
                .data(data)
                .enter()
                .append("g");
-                 
+
                  bars.append("rect")
                .attr("class", function(d, i){
                    return "bar county" + d.Geography.substring(0,d.Geography.length-20);
                })
                .attr("y", function (d, i) {
-                   
+
                    return y_ax(d.Geography.substring(0,d.Geography.length-20));
                })
                .attr("height", y_ax.bandwidth())
@@ -244,7 +244,7 @@ class Map extends Component {
                .attr("width", function (d) {
                    return x_bar(d[variable]);
                });
-                 
+
                bars.append("text")
                .attr("class", "label_bar")
                .attr("fill", "black")
@@ -259,7 +259,7 @@ class Map extends Component {
                .text(function (d) {
                    return d3.format(".1f")(d[variable]);
                });
-               
+
                bars.on("mouseover", function(d){
                    d3.selectAll("path.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
                    .attr("opacity", .7)
@@ -269,7 +269,7 @@ class Map extends Component {
                    d3.selectAll("circle.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
                 .style("stroke", "yellow")
                 .style("stroke-width", 3);
-                
+
                 })
                 .on("mouseout", function(d){
                     d3.selectAll("path.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
@@ -291,7 +291,7 @@ class Map extends Component {
                     .style("stroke", "none");
                 })
 
-                
+
                 var svg3 = d3.select(".distribution").append("svg")
                 .attr("width", newwidth + margin2.left)
                 .attr("height", height + margin2.top + margin2.bottom)
@@ -319,7 +319,7 @@ class Map extends Component {
                 // bindist = Math.ceil(bindist/(rounding/10))*(rounding/10);
                 console.log(bindist)
                 const thresholds = []
-                
+
                 var val=0
                 i=0
                 while (val<max){
@@ -332,7 +332,7 @@ class Map extends Component {
                         .rangeRound([margin2.left*6,  newwidth])
                         .domain([min, max]);
 //                 const nbins = 10;
-                
+
                 var histogram = d3.histogram()
                 .domain(x_dotplot.domain())
                 .thresholds(thresholds)
@@ -357,13 +357,13 @@ class Map extends Component {
 
                 let binContainer = svg3.selectAll(".gBin")
                             .data(bins);
-                
+
                 let adjustheight = height - margin2.bottom
                 svg3.append("g")
                 .attr("class", "axis--x")
                 .attr("transform", "translate(0," + (adjustheight-margin2.bottom*2) + ")")
                 .call(d3.axisBottom(x_dotplot).ticks(thresholds.length));
-              
+
                                   svg3.append("g")
                                   .attr("class", "axis--y")
                                   .attr("transform", "translate(" + margin2.left*6 + ",0)")
@@ -374,8 +374,8 @@ class Map extends Component {
                     .attr("transform", d => `translate(${x_dotplot(d.x0)}, ${adjustheight})`);
 
                 binContainerEnter.selectAll("circle")
-                    .data(d => 
-                        
+                    .data(d =>
+
                     d.map((p, i) => {
                       return {idx: i,
                               name: p.Geography,
@@ -388,7 +388,7 @@ class Map extends Component {
                        })
                     .attr("cx", 0) //g element already at correct x pos
                     .attr("cy", function(d) {
-                        return - (d.idx * 2 * radius) - radius-margin2.bottom*2; 
+                        return - (d.idx * 2 * radius) - radius-margin2.bottom*2;
                     })
                     .attr("r", radius)
                     .on("mouseover", function(d){
@@ -396,7 +396,7 @@ class Map extends Component {
                         .attr("opacity", .7)
                         .style("stroke-width",5)
                         .style("stroke", "yellow");
-                     
+
                      })
                      .on("mouseout", function(d){
                         d3.selectAll("path.county" + d.name.substring(0,d.name.length-20).replace(/\s+/g, ''))
@@ -405,35 +405,40 @@ class Map extends Component {
                         .style("stroke", "white");
                     });
 
- 
-                                     
-                       
 
-                
+
+
+
+
     }
 
    render() {
 
    return (
-      <div> <Row className="rowblock">
+      <div>
+      <Row className="rowblock">
            <Col lg={{span: 6}}>
               <div class="headerdiv"><h1 className="descriptionheader"> {this.state.variablename}</h1></div>
+               {/* <p>Quick description here</p> */}
+           </Col>
+           <Col lg={{span: 10, offset: 1}}>
+              <div class="distexplanation">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                {/* <p>Quick description here</p> */}
            </Col>
            <Col lg={{span: 11}}>
                <Row className="rowblock" noGutters={true}>
                    {/* <Col lg={1}></Col> */}
-                   <Col  lg={{span: 5}} className="mapclass">
+                   <Col  lg={{span: 5, offset: 1}} className="mapclass">
                    </Col>
                    {/* <Col lg={1}></Col> */}
-                   <Col lg={{span: 5}} className="distribution">
+                   <Col lg={{span: 5, offset: 1}} className="distribution">
                    {/* <div className="dotplottitle"><h2 className="dotplotheader">Dotplot Distribution</h2></div> */}
                    <svg></svg>
                    </Col>
-                   <Col lg={{span:2}}><div class="distexplanation">Some explanation of the data. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </div></Col>
                </Row>
                <Row className="rowblock" noGutters={true}>
                <Col  lg={{span: 5, offset: 1}} className="test">
+               <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim. Cras ornare arcu dui vivamus arcu. Tincidunt arcu non sodales neque sodales ut. Proin fermentum leo vel orci porta non pulvinar neque laoreet. Fusce ut placerat orci nulla pellentesque dignissim enim sit. Ac ut consequat semper viverra nam libero justo. Aliquet risus feugiat in ante metus dictum at. Mauris vitae ultricies leo integer. Fames ac turpis egestas maecenas pharetra.</div>
                    </Col>
                    <Col lg ={{span: 5, offset: 1}} className="tablemap"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div><svg className="top10"></svg></Col>
                </Row>
@@ -441,10 +446,10 @@ class Map extends Component {
        </Row>
        <Row className="rowblock">
                 <Col lg={{span: 6}}>
-               
+
                <div class="headerdiv"><h1 className="descriptionheader">Demographic Maps</h1></div>
                 {/* <p>Quick description here</p> */}
-                
+
             </Col>
        </Row>
    </div>

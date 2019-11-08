@@ -19,39 +19,39 @@ const demographics = [
     {'name': 'White',
     'abbreviation': 'W',
     'class': 'White',
-    'subgroup': 
+    'subgroup':
     [{
-      'name':'Women', 
+      'name':'Women',
       'abbreviation': 'F',
       'class': 'WhiteWomen',
       },
-      {'name': 'Men', 
+      {'name': 'Men',
     'abbreviation': 'M',
     'class': 'WhiteMen',}
     ]},
     {'name': 'Black',
     'abbreviation': 'B',
     'class': 'Black',
-    'subgroup': 
+    'subgroup':
     [{
-      'name':'Women', 
+      'name':'Women',
       'abbreviation': 'F',
       'class': 'BlackWomen',
       },
-      {'name': 'Men', 
+      {'name': 'Men',
     'abbreviation': 'M',
     'class': 'BlackMen',}
     ]},
     {'name': 'Other Race(s)',
     'abbreviation': 'O',
      'class': 'OtherRaces',
-    'subgroup': 
+    'subgroup':
     [{
-      'name':'Women', 
+      'name':'Women',
       'abbreviation': 'F',
       'class': 'OtherRacesWomen',
       },
-      {'name': 'Men', 
+      {'name': 'Men',
     'abbreviation': 'M',
     'class': 'OtherRacesMen',}
     ]}]
@@ -62,7 +62,7 @@ class DropdownBootstrap extends Component {
             this.state = {
                 currentvar: false,
                 match: this.props.match,
-                varname: '', 
+                varname: '',
                 varabbreviation: '',
                 vardesc: '',
                 varindex: '',
@@ -92,7 +92,7 @@ class DropdownBootstrap extends Component {
         //     }
 
         // }
-    
+
         createButtons(){
             let buttons =  categories.map((obj, index) => (
                     <DropdownButton
@@ -110,7 +110,7 @@ class DropdownBootstrap extends Component {
         }
 
         createDemButtons(){
-          let everyonebutton = 
+          let everyonebutton =
           <Col lg={1}>
             <Row><Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button></Row>
             <Row><Button key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`} id="Women" value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button></Row>
@@ -180,7 +180,7 @@ class DropdownBootstrap extends Component {
             }
           }
           return abbrev;
-        
+
         }
 
         handleClick(event){
@@ -216,11 +216,11 @@ class DropdownBootstrap extends Component {
             console.log("CHANGED")
           }
           var abbreviation = this.getabbreviation(matchingvar, demselected, genderselected);
-          
+
 
           // var abbreviation = `P_${matchingvar.abbreviation}_${this.state.demselected}_${this.state.genderselected}`;
           // var abbreviation = "P_IBP_B_M";
-          this.setState({currentvar: true, varindex: event.target.name, varname: matchingvar.name, varabbreviation: abbreviation, 
+          this.setState({currentvar: true, varindex: event.target.name, varname: matchingvar.name, varabbreviation: abbreviation,
             race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected})
         }
 
@@ -233,7 +233,7 @@ class DropdownBootstrap extends Component {
             const matchingvar = categories[this.state.varindex[0]].variables[this.state.varindex[2]]
             var abbreviation = this.getabbreviation(matchingvar, event.target.value[0], event.target.value[2])
             // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
-            this.setState({demselected: event.target.value[0], genderselected: event.target.value[2], varabbreviation: abbreviation, 
+            this.setState({demselected: event.target.value[0], genderselected: event.target.value[2], varabbreviation: abbreviation,
           varname: matchingvar.name, buttonselected: event.target.value.slice(4,)});
           }
           else {
@@ -252,25 +252,26 @@ class DropdownBootstrap extends Component {
                 <h1>
 Data Portal                </h1>
                  <Row className="justify-content-md-center">
-                <Router> 
+                <Router>
                    <ButtonToolbar> {varbuttons}
                    </ButtonToolbar>
                    <Switch>
-                    <Route strict path={`${match.path}/:varabbreviation`} 
+                    <Route strict path={`${match.path}/:varabbreviation`}
                     render={(routeProps) => (
                       <MapTest {...routeProps} datainput = {this.state.dataset} />
                       )}
                       />
                     </Switch>
-                </Router> 
+                </Router>
                 </Row>
-                
+
                 <Row className="justify-content-md-center">
                   <Col lg={3.5}></Col>
                   {everyonebuttons}
                   {dembuttons}
                   </Row>
                   <p></p>
+
                   <Row className="justify-content-md-center">
                   <Col lg={3.5}></Col>
                <Col lg={3.5}>
@@ -279,15 +280,15 @@ Data Portal                </h1>
               </Col>
                 </Row>
 
-          
-              
+
+
                 {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname}/>}
                 </div>
             )
         }
     }
-    
+
     export default DropdownBootstrap;
 
 
