@@ -77,7 +77,11 @@ class DropdownBootstrap extends Component {
             this.createButtons = this.createButtons.bind(this)
             this.handleClick = this.handleClick.bind(this)
             this.createDemButtons = this.createDemButtons.bind(this)
+            this.createNewDemButtons = this.createNewDemButtons.bind(this)
             this.handleDemClick = this.handleDemClick.bind(this)
+            this.handleNewRaceDemClick = this.handleNewRaceDemClick.bind(this)
+            this.handleNewGenderDemClick = this.handleNewGenderDemClick.bind(this)
+
             // this.componentDidMount = this.componentDidMount(this)
         }
 
@@ -93,29 +97,30 @@ class DropdownBootstrap extends Component {
 
         // }
 
+        //Create general variable buttons
         createButtons(){
+            //Maps categories to a new DropdownButton
             let buttons =  categories.map((obj, index) => (
                     <DropdownButton
                         title={obj.catname}
                         variant={obj.variant.toLowerCase()} //Not necessarily needed
                         key={index}>
                     {obj.variables.map((item, i) => (
-                          //Dropdown.Item refers to ever item within the dropdown
+                          //Dropdown.Item refers to ever item within the dropdown and every variable gets 
+                          //mapped to a dropdown item for that respective DropdownButton
                          <Dropdown.Item eventKey={i} name={[index,i]} onClick={this.handleClick} key={i}>{item.name}</Dropdown.Item>
                     ))}
-
                     </DropdownButton>
             ))
             return buttons;
         }
-
+        //Creates specific demographic filter buttons
         createDemButtons(){
           let everyonebutton =
           <Col lg={1}>
             <Row><Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button></Row>
             <Row><Button key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`} id="Women" value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button></Row>
             <Row><Button key="Men" className = {`Men dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Men"? "selected": ""}`} id="Men" value={["A", "M", "Men"]} onClick={this.handleDemClick}>Men</Button></Row>
-
           </Col>
           let otherbuttons =
           demographics.map((group, index)=>(
@@ -132,16 +137,15 @@ class DropdownBootstrap extends Component {
         createNewDemButtons(){
           let racesButtons =
           <Row>
-            <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>All races</Button>
-            <Button id="dembutton" key ="White" className={`White dembutton available ${this.state.buttonselected==="White"? "selected": ""}`} value={["A", "A", "White"]} onClick={this.handleDemClick}>White</Button>
-            <Button id="dembutton" key ="Black" className={`Black dembutton available ${this.state.buttonselected==="Black"? "selected": ""}`} value={["A", "A", "Black"]} onClick={this.handleDemClick}>Black</Button>
-            <Button id="dembutton" key ="OtherRaces" className={`OtherRaces dembutton available ${this.state.buttonselected==="OtherRaces"? "selected": ""}`} value={["A", "A", "OtherRaces"]} onClick={this.handleDemClick}>Other races</Button>
+            <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.demselected==="A"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleNewRaceDemClick}>All races</Button>
+            <Button id="dembutton" key ="White" className={`White dembutton available ${this.state.demselected==="W"? "selected": ""}`} value={["W", "A", "White"]} onClick={this.handleNewRaceDemClick}>White</Button>
+            <Button id="dembutton" key ="Black" className={`Black dembutton available ${this.state.demselected==="B"? "selected": ""}`} value={["B", "A", "Black"]} onClick={this.handleNewRaceDemClick}>Black</Button>
           </Row>
           let genderButtons =
           <Row>
-            <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>All genders</Button>
-            <Button id="dembutton" key ="Women" className={`Women dembutton available ${this.state.buttonselected==="Women"? "selected": ""}`} value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button>
-            <Button id="dembutton" key ="Men" className={`Men dembutton available ${this.state.buttonselected==="Men"? "selected": ""}`} value={["A", "M", "Men"]} onClick={this.handleDemClick}>Men</Button>
+            <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.genderselected==="A"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleNewGenderDemClick}>All genders</Button>
+            <Button id="dembutton" key ="Women" className={`Women dembutton available ${this.state.genderselected==="F"? "selected": ""}`} value={["A", "F", "Women"]} onClick={this.handleNewGenderDemClick}>Women</Button>
+            <Button id="dembutton" key ="Men" className={`Men dembutton available ${this.state.genderselected==="M"? "selected": ""}`} value={["A", "M", "Men"]} onClick={this.handleNewGenderDemClick}>Men</Button>
           </Row>
           return [racesButtons, genderButtons];
         }
@@ -241,6 +245,38 @@ class DropdownBootstrap extends Component {
           }
         }
 
+        handleNewRaceDemClick(event){
+          if (this.state.currentvar) {
+            console.log("NewDem button clicked")
+            const matchingvar = categories[this.state.varindex[0]].variables[this.state.varindex[2]]
+            console.log("Matchingvar: " + matchingvar)
+            var abbreviation = this.getabbreviation(matchingvar, event.target.value[0], this.state.genderselected)
+            console.log("Abbreviation: " + abbreviation)
+            // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
+            this.setState({demselected: event.target.value[0], varabbreviation: abbreviation,
+          varname: matchingvar.name, buttonselected: event.target.value.slice(4,)});
+          }
+          else {
+            this.setState({demselected: event.target.value[0],buttonselected: event.target.value.slice(4,)})
+          }
+        }
+
+        handleNewGenderDemClick(event){
+          if (this.state.currentvar) {
+            console.log("NewDem button clicked")
+            const matchingvar = categories[this.state.varindex[0]].variables[this.state.varindex[2]]
+            console.log("Matchingvar: " + matchingvar)
+            var abbreviation = this.getabbreviation(matchingvar, this.state.demselected, event.target.value[2])
+            console.log("Abbreviation: " + abbreviation)
+            // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
+            this.setState({ genderselected: event.target.value[2], varabbreviation: abbreviation,
+          varname: matchingvar.name, buttonselected: event.target.value.slice(4,)});
+          }
+          else {
+            this.setState({genderselected: event.target.value[2], buttonselected: event.target.value.slice(4,)})
+          }
+        }
+
 
         render(){
            const varbuttons = this.createButtons();
@@ -280,7 +316,7 @@ Data Portal                </h1>
               </Col>
                 </Row>
 
-
+              <h1> {this.state.varabbreviation}</h1>
 
                 {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname}/>}
