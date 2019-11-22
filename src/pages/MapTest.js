@@ -12,7 +12,8 @@ class Map extends Component {
             color: d3.scaleQuantile().range(["#fde8f4","#dfb9cf","#b76293","#79064b", "#30031e"]),
             variable: this.props.variable,
             variablename: this.props.varname,
-            variabledescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            variabledescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            group: this.props.group,
         };
         this.componentDidMount = this.componentDidMount.bind(this)
         this.drawMap =this.drawMap.bind(this)
@@ -28,7 +29,7 @@ class Map extends Component {
     componentDidUpdate(prevProps){
 
         if (this.props.variable != prevProps.variable){
-            this.setState({variable: this.props.variable, variablename: this.props.varname});
+            this.setState({variable: this.props.variable, variablename: this.props.varname, group: this.props.group});
         }
         this.drawMap();
     }
@@ -58,6 +59,15 @@ class Map extends Component {
             d3.max(data, function(d){return parseFloat(d[variable]);})
         ]);
         let color = this.state.color;
+        var path = d3.geoPath().projection(projection);
+        var bounds = path.bounds(json);
+        var hscale  = scale*svgWidth  / (bounds[1][0] - bounds[0][0]);
+      var vscale  = scale*svgHeight / (bounds[1][1] - bounds[0][1]);
+      var scale   = (hscale < vscale) ? hscale : vscale;
+      var offset  = [svgWidth - (bounds[0][0] + bounds[1][0])/2,
+                        svgHeight - (bounds[0][1] + bounds[1][1])/2];
+
+        // projection = d3.geoTransverseMercator().scale(4800).translate(offset).rotate([88 + 50 / 60, -29 - 30 / 60]);
         var path = d3.geoPath().projection(projection);
 
         for (var i =0; i<data.length;i++){
@@ -361,13 +371,13 @@ class Map extends Component {
                 let adjustheight = height - margin2.bottom
                 svg3.append("g")
                 .attr("class", "axis--x")
-                .attr("transform", "translate(0," + (adjustheight-margin2.bottom*2) + ")")
-                .call(d3.axisBottom(x_dotplot).ticks(thresholds.length));
+                .attr("transform", "translate(0," + (adjustheight-margin2.bottom) + ")")
+                .call(d3.axisBottom(x_dotplot).ticks(thresholds.length).tickSize(-ylimit, 0, 0));
 
                                   svg3.append("g")
                                   .attr("class", "axis--y")
-                                  .attr("transform", "translate(" + margin2.left*6 + ",0)")
-                                  .call(d3.axisLeft(y_dotplot).ticks(maxinabin/5))
+                                  .attr("transform", "translate(" + margin2.left*5 + ",0)")
+                                  .call(d3.axisLeft(y_dotplot).ticks(maxinabin/5).tickSize(-svgWidth, 0, 0))
                 let binContainerEnter = binContainer.enter()
                 .append("g")
                     .attr("class", "gBin")
@@ -404,7 +414,13 @@ class Map extends Component {
                         .style("stroke-width",1)
                         .style("stroke", "white");
                     });
-
+        //             svg3.append("text")
+        // .attr("x", (svgWidth / 2))             
+        // .attr("y", 0 - (margin2.top / 2))
+        // .attr("text-anchor", "middle")  
+        // .style("font-size", "16px") 
+        // .style("text-decoration", "underline")  
+        // .text("Value vs Date Graph");
 
 
 
@@ -418,7 +434,7 @@ class Map extends Component {
       <div>
       <Row className="rowblock">
            <Col lg={{span: 6}}>
-              <div class="headerdiv"><h1 className="descriptionheader"> {this.state.variablename}</h1></div>
+              <div class="headerdiv"><h1 className="descriptionheader"> {`${this.state.variablename} (${this.state.group})`}</h1></div>
                {/* <p>Quick description here</p> */}
            </Col>
            <Col lg={{span: 10, offset: 1}}>
@@ -428,13 +444,23 @@ class Map extends Component {
            <Col lg={{span: 11}}>
                <Row className="rowblock" noGutters={true}>
                    {/* <Col lg={1}></Col> */}
-                   <Col  lg={{span: 5, offset: 1}} className="mapclass">
+                   <Col lg={{span: 5, offset: 1}}>
+                       <Row className="justify-content-md-center"><div class="maptitle"><h1> Map </h1></div></Row>
+                       <Row><Col className="mapclass"></Col></Row>
                    </Col>
+                   {/* <Col  lg={{span: 5, offset: 1}} className="mapclass">
+                   </Col> */}
                    {/* <Col lg={1}></Col> */}
-                   <Col lg={{span: 5, offset: 1}} className="distribution">
-                   {/* <div className="dotplottitle"><h2 className="dotplotheader">Dotplot Distribution</h2></div> */}
-                   <svg></svg>
+
+                   <Col lg={{span: 5, offset: 1}}>
+                       <Row className="justify-content-md-center"><div class="maptitle"><h1> Dotplot Distribution </h1></div></Row>
+                       <Row><Col className="distribution"><svg></svg></Col></Row>
                    </Col>
+
+                   {/* <Col lg={{span: 5, offset: 1}} className="distribution"> */}
+                   {/* <div className="dotplottitle"><h2 className="dotplotheader">Dotplot Distribution</h2></div> */}
+                   {/* <svg></svg>
+                   </Col> */}
                </Row>
                <Row className="rowblock" noGutters={true}>
                <Col  lg={{span: 5, offset: 1}} className="test">

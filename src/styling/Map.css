@@ -94,8 +94,22 @@ rect.test {
   font-family: "Futura", medium, sans-serif;
 }
 
+.axis--y line {
+  stroke: lightgrey;
+  shape-rendering: crispEdges;
+}
 .axis--y path {
   fill: none;
+  stroke-width: 0;
+}
+
+.axis--x line {
+  stroke: lightgrey;
+  shape-rendering: crispEdges;
+}
+
+.axis--x path {
+  stroke-width: 0;
 }
         
 .headerdiv {
@@ -114,20 +128,26 @@ display: table;
   font-family: Muli-Black;
 }
 
+.maptitle {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
 .description p {
   text-align: left;
 }
 
 .distribution {
-  border: 6px solid rgba(185, 142, 167, .5);
-  background: #DCDCDC;
+  /* border: 6px solid rgba(185, 142, 167, .5); */
+  /* background: #DCDCDC; */
   /* border: 2px solid #6d1b6c; */
 
 }
 
 .mapclass {
-  /* border: 6px solid rgba(185, 142, 167, 0.5); 
-  background: #DCDCDC; */
+   /* border: 6px solid rgba(185, 142, 167, 0.5);  */
+  /* background: #DCDCDC; */
   /* height: 70vh; */
 
 }
