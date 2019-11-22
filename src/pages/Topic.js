@@ -68,28 +68,3 @@ class Topic extends Component {
 
 
 export default Topic;
-
-
-// /*created buttons const that references the categories in topic_categories*/
-// const Topic = ({match}) => {
-//   const buttons = topic_categories.map((obj) =>
-//     <div key={obj.name}>
-//       <Link to={`${match.url}/${obj.name}`}>
-//         <Button className="topicbutton" style={{backgroundColor: obj.color, borderColor: obj.color}}>{obj.name}</Button>
-//       </Link>
-//     </div>
-//   );
-//   return (
-//     <div>
-//       <h1>Choose a Topic</h1>
-//       <Router>
-//         <Row className="justify-content-md-center">{buttons}</Row>
-//         <Switch>
-//           <Route path={`${match.path}/:name`} component={TopicCategory}/>
-//         </Switch>
-//       </Router>
-//     </div>
-//   )
-// }
-
-// export default Topic

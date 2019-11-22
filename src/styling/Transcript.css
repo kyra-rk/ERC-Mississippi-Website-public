@@ -47,8 +47,7 @@
     margin-bottom: 30px;
 }
 
-#annotation{
-    background-color: yellow;
-    padding-left: 0;
-    padding-right: 0;
+.initials{
+    color: purple;
+    font-size: 9em;
 }

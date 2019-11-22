@@ -34,7 +34,7 @@ class People extends Component {
     }
     
     var flipcards = flip_card_items.map((obj) =>
-        <Col xl={3} key={obj.name}>
+        <Col xl={4} key={obj.name}>
             <div className="flip-card">
                 <div className="flip-card-inner">
                     <div className="flip-card-front">

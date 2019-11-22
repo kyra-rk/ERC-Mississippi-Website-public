@@ -1,7 +1,12 @@
-const OHPersonData = 
+const OHPersonData =
 [
 {
 "id": 1,
+"header": [
+{"bio": "Claudine Logan is a mother of four and grandmother of two. Before Women in Construction, she worked as a supervisor for a construction firm in Jamaica, where she originally came from. Later, she lived in a shelter for women, where she found herself to be a mother figure to the other women living in the shelter. As someone who loves learning, Claudine enjoys getting hands-on with the construction training at WinC, and even hired a math teacher to improve at measurements. When Claudine graduates, she is looking forward to working at Ingalls Construction, where she has already secured a job at. She hopes to one day have her whole family under one roof, where her mother and son can be together with her and live in financial stability.",
+"realname": "Claudene Logan",
+"initials": "CL",
+}],
 "interview": [
 {
 "speaker": "Interviewer",
@@ -50,7 +55,6 @@ const OHPersonData =
 "text": "I'm divorced. But, you know USCIS hasn't removed that yet so I still have to use it but (mutual laughter) I love my Logans so I use it for this or everything else that I'm in.",
 "cat": [1],
 "important": "",
-"annotation": "https://www.uscis.gov/",
 },
 {
 "speaker": "Interviewer",
@@ -131,7 +135,7 @@ const OHPersonData =
 "important": "",
 },
 {
-"speaker": "",
+"speaker": "Claudene",
 "text": "But I was working at a casino and this man just like� you know, I ask him because I was a porter so I cleaned the machines and ashtrays and stuff.",
 "cat": [2],
 "important": "",
@@ -219,6 +223,7 @@ const OHPersonData =
 "text": "So I used to work in construction in Jamaica. Not hands-on working, I was a supervisor/manager in a construction firm.",
 "cat": [2],
 "important": "",
+"annotation": "According to https://statinja.gov.jm/LabourForce/NewLFS.aspx, women account for only 2.97% of construction workers in Jamaica.",
 },
 {
 "speaker": "",
@@ -1267,6 +1272,11 @@ const OHPersonData =
 ]},
 {
 "id": 2,
+"header": [
+    {"bio": "Kandy Nickles was born in California, and split her youth in California and Texas. She has had a diverse education background: medical school, trade school, a semester of criminal justice, and business technology. With those certifications, she went from working for private investigators, to selling cars to owning a cleaning business, but she had to leave the business behind when she left an abusive relationship. Kandy did not want her daughter to learn that abuse is condoned, therefore left for a better future for the both of them. Kandy made her way to Mississippi after getting engaged to a Mississippian, and together with her daughter, they relocated. Having had experience with male-dominated industries, Kandy hopes to create more opportunities for women by opening her own construction firm that is exclusively run by women.",
+    "realname": "Kandy Nickles",
+    "initials": "KN",
+    }],
 "interview": [
 {
 "speaker": "Interviewer",
@@ -1303,6 +1313,7 @@ const OHPersonData =
 "text": "I went to medical school in billing and coding and graduated. I went to a trade school and got business and office and then took a semester criminal justice and this school that I was going through paid for the semester at the University and Texas so I'm kind of a little bit certified in a little bit in everything.",
 "cat": [2, 7],
 "important": "",
+"annotation": "Check our map to see the percentage of women with Bachelor's Degrees education across counties in Mississippi."
 },
 {
 "speaker": "",
@@ -1439,6 +1450,11 @@ const OHPersonData =
 ]},
 {
 "id": 3,
+"header": [
+    {"bio": "Krista Augustine is from a small country town in Louisiana, but she left Louisiana for bigger and better opportunities. Now, she lives in Mississippi with her twins girls and son. In Louisiana, Krista dropped out of high school after feeling that the school she was transferred to prevented her from succeeding. She later enrolled in Camelot College to pursue a degree in medical assistance and her GED, but after becoming pregnant, she wasn’t able to continue school. She has previously worked as a PCA (Physician Care Assistant) and in housekeeping, but has struggled over the years to find a well-paying job and to make ends meet due to childcare expenses she cannot afford and her ineligibility for SNAP benefits. As a student in the Women in Construction program, she is excited and thankful to be in the program and looks forward to what she will be able to accomplish after the program has ended.",
+    "realname": "Krista Augustine",
+    "initials": "KA",
+    }],
 "interview": [
 {
 "speaker": "Interviewer",
