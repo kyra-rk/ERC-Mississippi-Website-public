@@ -102,10 +102,6 @@ createHeader(){
         //     </Card>
         //   </Accordion>
       }
-      else{
-        // annotation = null;
-        console.log("no");
-      }
       return (<Row >
         <Col xl={{span: 1}} id="speakername">
           <h5>{obj.speaker}</h5>
