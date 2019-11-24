@@ -7,7 +7,6 @@
 
  .Quote-Container {
  	overflow: auto;
- 	max-height: 75px;
     height: auto;
  }
  
@@ -30,7 +29,7 @@
  }
 
  #personblock {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     margin-right: 10px;
     margin-left: -10px;
  }
