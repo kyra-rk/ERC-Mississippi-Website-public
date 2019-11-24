@@ -6,6 +6,7 @@
     "@primer/octicons-react": "^9.1.1",
     "bootstrap": "^4.3.1",
     "d3": "^5.9.7",
+    "d3-tip": "^0.9.1",
     "jquery": "^3.4.1",
     "papaparse": "^5.0.0",
     "react": "^16.8.6",

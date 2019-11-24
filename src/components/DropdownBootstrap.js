@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, DropdownButton, Dropdown, ButtonToolbar, Col, Button, Container } from 'react-bootstrap';
 import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import MapTest from '../pages/MapTest'
+import DemographicMap from '../components/DemographicMaps'
 import '../styling/App.css';
 import '../styling/Dropdown.css'
 import data_general from '../data/data_general_ms.json';
@@ -81,6 +82,7 @@ class DropdownBootstrap extends Component {
         }
 
         createButtons(){
+            //Maps categories to a new DropdownButton
             let buttons =  categories.map((obj, index) => (
                     <DropdownButton
                         title={obj.catname}
@@ -89,12 +91,11 @@ class DropdownBootstrap extends Component {
                     {obj.variables.map((item, i) => (
                          <Dropdown.Item eventKey={i} onClick={this.handleClick.bind(this,index, i)} key={i}>{item.name}</Dropdown.Item>
                     ))}
-
                     </DropdownButton>
             ))
             return buttons;
         }
-
+        //Creates specific demographic filter buttons
         createDemButtons(){
           let racebuttons = 
           
@@ -242,15 +243,57 @@ let racegenderbuttons =
           }
         }
 
+        handleNewRaceDemClick(event){
+          if (this.state.currentvar) {
+            console.log("NewDem button clicked")
+            const matchingvar = categories[this.state.varindex[0]].variables[this.state.varindex[2]]
+            console.log("Matchingvar: " + matchingvar)
+            var abbreviation = this.getabbreviation(matchingvar, event.target.value[0], this.state.genderselected)
+            console.log("Abbreviation: " + abbreviation)
+            // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
+            this.setState({demselected: event.target.value[0], varabbreviation: abbreviation,
+          varname: matchingvar.name, buttonselected: event.target.value.slice(4,)});
+          }
+          else {
+            this.setState({demselected: event.target.value[0],buttonselected: event.target.value.slice(4,)})
+          }
+        }
+
+        handleNewGenderDemClick(event){
+          if (this.state.currentvar) {
+            console.log("NewDem button clicked")
+            const matchingvar = categories[this.state.varindex[0]].variables[this.state.varindex[2]]
+            console.log("Matchingvar: " + matchingvar)
+            var abbreviation = this.getabbreviation(matchingvar, this.state.demselected, event.target.value[2])
+            console.log("Abbreviation: " + abbreviation)
+            // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
+            this.setState({ genderselected: event.target.value[2], varabbreviation: abbreviation,
+          varname: matchingvar.name, buttonselected: event.target.value.slice(4,)});
+          }
+          else {
+            this.setState({genderselected: event.target.value[2], buttonselected: event.target.value.slice(4,)})
+          }
+        }
+
 
         render(){
            const varbuttons = this.createButtons();
            const [racebuttons, genderbuttons,racegenderbuttons, everyonebuttons, dembuttons] = this.createDemButtons();
            let match = this.props.match;
+           let variables = [];
+           if (this.state.racegender & this.state.currentvar){
+            //  console.log(this.state.varlocation.index1)
+             let matchingvar = categories[this.state.varlocation.index1].variables[this.state.varlocation.index2];
+             let abbrev1 = this.getabbreviation(matchingvar, "W", "M");
+             let abbrev2 = this.getabbreviation(matchingvar, "W", "F")
+             let abbrev3 = this.getabbreviation(matchingvar, "B", "M")
+             let abbrev4 = this.getabbreviation(matchingvar, "B", "F")
+             variables = [abbrev1, abbrev2, abbrev3, abbrev4];
+           }
             return (
                 <div>
-                <h1>
-Data Portal                </h1>
+                {/* <h1>
+Data Portal                </h1> */}
                  <Row className="justify-content-md-center">
                 <Router>
                    <ButtonToolbar> {varbuttons}
@@ -272,7 +315,7 @@ Data Portal                </h1>
                   </Row>
                   <p></p>
                
-                  <Row className="justify-content-md-center">
+                  {/* <Row className="justify-content-md-center">
               
                   {racebuttons}
                
@@ -282,11 +325,14 @@ Data Portal                </h1>
                       {genderbuttons}
                 
               
-                                  </Row>
+                                  </Row> */}
 
 
                 {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
+                 {this.state.currentvar &&
+            <DemographicMap variables = {variables} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
+                
                 </div>
             )
         }

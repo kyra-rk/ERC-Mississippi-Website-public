@@ -3,7 +3,7 @@
  
  import Octicon, {Check} from '@primer/octicons-react';
 
- import data_general from '../data/data_general_ms.json';
+ import data_general from '../data/datacomplete.json';
 import '../styling/App.css';
 import ComparisonMap from '../components/ComparisonMaps'
 
@@ -31,7 +31,7 @@ export const Comparison = () => (
                   </Col>
              
                 </Row>
-                <ComparisonMap datainput = {data_general} variable ={"P_IBP_E_F"} variable2 = {"P_High_school_graduate_(includes_equivalency)_E_F"}varname = {"Poverty"} varname2 ={"High School Education"}/>}
+                <ComparisonMap datainput = {data_general} variable ={"P_Female_IBP"} variable2 = {"P_Female_Less_than_high_school_diploma"}varname = {"Poverty"} varname2 ={"High School Education"}/>}
 
     </Container>
     </div>
