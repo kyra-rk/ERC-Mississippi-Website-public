@@ -13,3 +13,24 @@
     font-size: 15px;
     margin-bottom: 30px;
   }
+.info_section{
+    margin: 50px 150px 0px 0px;
+}
+
+.info_section h1{
+  text-align: left;
+  font-size: 30px;
+}
+
+
+.imgsize{
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tabsformat{
+  display: inline-flex;
+  text-align: left;
+}
