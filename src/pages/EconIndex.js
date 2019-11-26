@@ -114,6 +114,7 @@ class Slide extends React.Component{
               )}
             </Ticks>
           </Slider>
+          <br />
           <div class="row">
             <div class="col-md-4">
               <h4>Minimum: {domain[0]}</h4>
