@@ -149,6 +149,8 @@ background-color: #6d1b6c;
 padding: 10px 30px;
 /* margin: 0 auto; */
 display: table;
+margin-left: -15px;
+
 }
 
 .headerdiv h1 {

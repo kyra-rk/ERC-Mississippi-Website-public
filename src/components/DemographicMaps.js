@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+
 import '../styling/Map.css'
 import {Row, Col, Container} from 'react-bootstrap'
 import json from '../data/Mississippi-Counties.json'
 import * as d3 from "d3";
+import { tsImportEqualsDeclaration } from '@babel/types';
 
 class DemographicMaps extends Component {
     constructor(props) {
@@ -12,6 +14,7 @@ class DemographicMaps extends Component {
             color: d3.scaleQuantile().range(["#fde8f4","#dfb9cf","#b76293","#79064b", "#30031e"]),
             variables: this.props.variables,
         };
+        this.mapElement = React.createRef();
         this.componentDidMount = this.componentDidMount.bind(this)
         this.drawMap =this.drawMap.bind(this)
         this.componentDidUpdate = this.componentDidUpdate.bind(this)
@@ -23,12 +26,15 @@ class DemographicMaps extends Component {
     componentDidMount(){
 
         const [width, height, projection, missing] = this.setUp();
+        console.log("didmount: ", width)
         let variables = this.props.variables;
-
-        this.drawMap(".demmapclass1", variables[0], width, height, projection);
-        this.drawMap(".demmapclass2", variables[1], width, height, projection);
-        this.drawMap(".demmapclass3", variables[2], width, height, projection);
-        this.drawMap(".demmapclass4", variables[3], width, height, projection);
+        let labels = this.props.labels;
+        variables.forEach((obj, i) => this.drawMap(`.demmapclass${i}`, obj, width, height, projection))
+        // this.drawMap
+        // this.drawMap(".demmapclass1", variables[0], width, height, projection);
+        // this.drawMap(".demmapclass2", variables[1], width, height, projection);
+        // this.drawMap(".demmapclass3", variables[2], width, height, projection);
+        // this.drawMap(".demmapclass4", variables[3], width, height, projection);
         this.insertLegend(missing);
 
 }
@@ -36,23 +42,36 @@ class DemographicMaps extends Component {
     componentDidUpdate(prevProps){
         if (this.props.variables != prevProps.variables){
             const [width, height, projection, missing] = this.setUp();
-        let variables = this.props.variables;
-        this.drawMap(".demmapclass1", this.props.variables[0],width, height, projection);
-        this.drawMap(".demmapclass2", variables[1], width, height, projection);
-        this.drawMap(".demmapclass3", variables[2], width, height, projection);
-        this.drawMap(".demmapclass4", variables[3], width, height, projection);
-        this.insertLegend(missing);
+            console.log("didupdate: ", width)
+            let variables = this.props.variables;
+            let labels = this.props.labels;
+            variables.forEach((obj, i) => this.drawMap(`.demmapclass${i}`, obj, width, height, projection))
+
+            // this.drawMap(".demmapclass1", this.props.variables[0],width, height, projection);
+            // this.drawMap(".demmapclass2", variables[1], width, height, projection);
+            // this.drawMap(".demmapclass3", variables[2], width, height, projection);
+            // this.drawMap(".demmapclass4", variables[3], width, height, projection);
+            this.insertLegend(missing);
         }
         
     }
 
     setUp() {
         var missing;
-        let svgWidth = document.getElementsByClassName(["demmapclass1"])[0].clientWidth
-        var computedStyle = window.getComputedStyle(document.getElementsByClassName(["demmapclass1"])[0], null)
+        // // let svgWidth = ReactDOM.findDOMNode(this.mapElement).width
+        // let svgWidth = this.mapElement.current.clientWidth;
+        let svgWidth = document.getElementsByClassName(["demmapclass0"])[0].clientWidth
+        var computedStyle = window.getComputedStyle(document.getElementsByClassName(["demmapclass0"])[0], null)
         svgWidth -= parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
-        let svgHeight = svgWidth*1.1;
-
+        var svgHeight;
+        console.log(this.props.labels.length)
+        if (this.props.labels.length==2){
+            svgHeight = .75*svgWidth;
+        }
+        else {
+            svgHeight = svgWidth*1.1;
+        }
+        // console.log(svgWidth, svgHeight)
         const projection = d3.geoTransverseMercator()
         .rotate([88 + 50/60,-29 - 30/60])
         .fitExtent([[10, 10], [svgWidth-10, svgHeight-10]], json);
@@ -60,14 +79,14 @@ class DemographicMaps extends Component {
         let variables = this.props.variables;
         let data = this.state.dataset;
         
-
-
         var max = d3.max(data, function(d){
-            return Math.max(d[variables[0]], d[variables[1]], d[variables[2]], d[variables[3]]);
+            return Math.max(...variables.map((obj, i) => {return d[variables[i]];}));
         });
         var min = d3.min(data, function(d){
-            return Math.min(parseFloat(d[variables[0]]), parseFloat(d[variables[1]]), parseFloat(d[variables[2]]), parseFloat(d[variables[3]]));
+            return Math.min(...variables.map((obj, i) => {return d[variables[i]];}));
         });
+
+        // console.log(min, max)
         let color = this.state.color
         color.domain([
             Math.floor(min),
@@ -98,6 +117,7 @@ class DemographicMaps extends Component {
     }
 
     drawMap(selector, variable, svgWidth, svgHeight, projection) {
+        // console.log("drawMap called for ", selector, variable)
         //Get the width of the column and make the svg the same size
         //Create variables to store our state variables
         let data = this.state.dataset;
@@ -105,7 +125,8 @@ class DemographicMaps extends Component {
         //Set projection info for the map to be placed accordingly
         var path = d3.geoPath().projection(projection);
 
-
+        // console.log(selector)
+        // console.log(selector.substring(1, selector.length))
         //Add SVG 
         d3.select(`${selector} svg`).remove();
     
@@ -184,8 +205,10 @@ class DemographicMaps extends Component {
     }
 
     insertLegend(missing){
-        let svgWidth = document.getElementsByClassName(["demmapclass1"])[0].clientWidth
-        var computedStyle = window.getComputedStyle(document.getElementsByClassName(["demmapclass1"])[0], null)
+        // let svgWidth = this.mapElement.current.clientWidth;
+
+        let svgWidth = document.getElementsByClassName(["demmapclass0"])[0].clientWidth
+        var computedStyle = window.getComputedStyle(document.getElementsByClassName(["demmapclass0"])[0], null)
         svgWidth -= parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
         svgWidth *= 2;
         let svgHeight = 50;
@@ -230,7 +253,9 @@ class DemographicMaps extends Component {
             .attr("height", .25*svgHeight )
             .attr("x", function(d) { return x(d[0]); })
             .attr("width", function(d) {return x(d[1]) - x(d[0]); })
-            .attr("fill", function(d) { return color(d[0]); });
+            .attr("fill", function(d) { return color(d[0]); })
+            .attr("stroke", "purple")
+            .attr("stroke-width", 1);
 
 
     g.selectAll("text")
@@ -272,48 +297,75 @@ class DemographicMaps extends Component {
             .attr("height", .25*svgHeight )
             .attr("x",   x(color.domain()[0]) - diff)
             .attr("width", diff )
-            .attr("fill", "steelblue");
+            .attr("fill", "steelblue")
+            .attr("stroke", "purple")
+            .attr("stroke-width", 1);;
     }
    
         }
 
 
    render() {
+    //    console.log("TESTING");
+    //    console.log(this.)
        
+        const mapstest = this.props.labels.map(function(obj, i)
+            {if (i!=0){
+                return <Col>
+                <Row className="justify-content-md-center"><div className="maptitle"><h1>{obj}</h1></div></Row>
+                <Row><Col className={`demmapclass${i}`}></Col></Row>
+     </Col>
+            }}
+        )
+          
+        
+    // const maps = this.props.variables.map((obj) => 
 
+    //    );
    return (
-      <div>
+      <Container fluid="True">
        <Row className="rowblock">
-            <Col lg={{span: 6}}>
+            <Row>
+                <Col>
 
                <div className="headerdiv"><h1 className="descriptionheader">Demographic Maps</h1></div>
 
             </Col>
+            </Row>
+            <Row>
+            <Col>
+              <div className="distexplanation">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+               {/* <p>Quick description here</p> */}
+           </Col>
+           </Row>
+        </Row>
+        {/* <Row className="rowblock"> */}
             <Col lg={{span: 12}}>
                <Row className="rowblock" >
-                   <Col lg={{span: 3}}>
-                       <Row className="justify-content-md-center"><div className="maptitle"><h1> Map 1</h1></div></Row>
-                       <Row><Col className="demmapclass1"></Col></Row>
+                   
+                   <Col>
+                       <Row className="justify-content-md-center"><div className="maptitle"><h1> {this.props.labels[0]}</h1></div></Row>
+                       <Row><Col className="demmapclass0"></Col></Row>
                    </Col>
-
-                   <Col lg={{span: 3}}>
+                   {mapstest}
+                   {/* <Col lg={{span: 3}}>
                        <Row className="justify-content-md-center"><div className="maptitle"><h1> Map 2</h1></div></Row>
-                       <Row><Col className="demmapclass2"></Col></Row>
+                       <Row><Col className="demmapclass1"></Col></Row>
                    </Col>
                    <Col lg={{span: 3}}>
                        <Row className="justify-content-md-center"><div className="maptitle"><h1> Map 3</h1></div></Row>
-                       <Row><Col className="demmapclass3"></Col></Row>
+                       <Row><Col className="demmapclass2"></Col></Row>
                    </Col>
 
                    <Col lg={{span: 3}}>
                        <Row className="justify-content-md-center"><div className="maptitle"><h1> Map 4</h1></div></Row>
-                       <Row><Col className="demmapclass4"></Col></Row>
-                   </Col>
+                       <Row><Col className="demmapclass3"></Col></Row>
+                   </Col> */}
                </Row>
-               <Row className="rowblock justify-content-md-center"><Col className="legend"></Col></Row>
+               {/* <Row className="rowblock justify-content-md-center"><Col className="legend"></Col></Row> */}
            </Col>
-       </Row>
-   </div>
+       {/* </Row> */}
+       </Container>
    )
    }
 }
