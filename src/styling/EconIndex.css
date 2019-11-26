@@ -14,12 +14,16 @@
     margin-bottom: 30px;
   }
 .info_section{
-    margin: 50px 150px 0px 0px;
+    margin: 100px 150px 0px 0px;
 }
 
 .info_section h1{
   text-align: left;
   font-size: 30px;
+}
+.info_section h3{
+  text-align: left;
+  font-size: 20px;
 }
 
 

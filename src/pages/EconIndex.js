@@ -54,13 +54,16 @@ const railStyle ={
   backgroundColor: '#8B9CB6',
 }
 
+const values_x = [20, 30, 50, 80];
+
 class Slide extends React.Component{
   constructor(props){
     super(props);
 
     this.state ={
-      domain: [0,100],
-      values: [50]
+      domain: [props.min, props.max],
+      values: [props.values],
+      type: props.type
     };
   }
 
@@ -69,52 +72,105 @@ class Slide extends React.Component{
   };
 
   render(){
-    const { domain, values } = this.state;
+    const { domain, values, type } = this.state;
 
-    return(
-      <div>
-        <Slider
-          mode = {1}
-          step = {1}
-          domain = {domain}
-          rootStyle = {sliderStyle}
-          onChange = {this.onChange}
-          values = {values}
-        >
-          <Rail>
-            {({getRailProps}) => (
-              <div style={railStyle} {...getRailProps()} />
-            )}
-          </Rail>
-          <Handles>
-            {({handles, getHandleProps}) => (
-              <div className="slider-handles">
-                {handles.map(handle => (
-                  <Handle
-                    key={handle.id}
-                    handle={handle}
-                    domain={domain}
-                    getHandleProps={getHandleProps}
-                  />
-                ))}
-              </div>
-            )}
-          </Handles>
-        </Slider>
-        <div class="row">
-          <div class="col-md-4">
-            <h4>Minimum: {domain[0]}</h4>
-          </div>
-          <div class="col-md-4">
-            <h4>Current Value: {values}</h4>
-          </div>
-          <div class="col-md-4">
-            <h4>Calculated Index: <RankCalc value={values} min={domain[0]} max={domain[1]} /> </h4>
+    if(type == "rescale"){
+      return(
+        <div>
+          <Slider
+            mode = {1}
+            step = {1}
+            domain = {domain}
+            rootStyle = {sliderStyle}
+            onChange = {this.onChange}
+            values = {values}
+          >
+            <Rail>
+              {({getRailProps}) => (
+                <div style={railStyle} {...getRailProps()} />
+              )}
+            </Rail>
+            <Handles>
+              {({handles, getHandleProps}) => (
+                <div className="slider-handles">
+                  {handles.map(handle => (
+                    <Handle
+                      key={handle.id}
+                      handle={handle}
+                      domain={domain}
+                      getHandleProps={getHandleProps}
+                    />
+                  ))}
+                </div>
+              )}
+            </Handles>
+            <Ticks count={10}>
+              {({ticks}) => (
+                <div className="slider-ticks">
+                  {ticks.map(tick => (
+                    <Tick key={tick.id} tick={tick} count={ticks.length}/>
+                  ))}
+                </div>
+              )}
+            </Ticks>
+          </Slider>
+          <div class="row">
+            <div class="col-md-4">
+              <h4>Minimum: {domain[0]}</h4>
+            </div>
+            <div class="col-md-4">
+              <h4>Current Value: {values}</h4>
+            </div>
+            <div class="col-md-4">
+              <h4>Calculated Index: <RankCalc value={values} min={domain[0]} max={domain[1]} /> </h4>
+            </div>
           </div>
         </div>
-      </div>
-
-    )
+      )
+    }
+    else{
+      return(
+        <div>
+          <Slider
+            mode = {1}
+            step = {1}
+            domain = {domain}
+            rootStyle = {sliderStyle}
+            onChange = {this.onChange}
+            values = {values}
+          >
+            <Rail>
+              {({getRailProps}) => (
+                <div style={railStyle} {...getRailProps()} />
+              )}
+            </Rail>
+            <Handles>
+              {({handles, getHandleProps}) => (
+                <div className="slider-handles">
+                  {handles.map(handle => (
+                    <Handle
+                      key={handle.id}
+                      handle={handle}
+                      domain={domain}
+                      getHandleProps={getHandleProps}
+                    />
+                  ))}
+                </div>
+              )}
+            </Handles>
+            <Ticks count={10}>
+              {({ticks}) => (
+                <div className="slider-ticks">
+                  {ticks.map(tick => (
+                    <Tick key={tick.id} tick={tick} count={ticks.length}/>
+                  ))}
+                </div>
+              )}
+            </Ticks>
+          </Slider>
+        </div>
+      )
+    }
   }
 }
 
@@ -149,6 +205,39 @@ export function Handle({
   )
 }
 
+export function Tick({tick, count}){
+  return(
+    <div>
+      <div
+        style={{
+          position: 'absolute',
+          marginTop: 50,
+          marginLeft:-0.5,
+          width: 1,
+          height: 8,
+          backgroundColor: 'silver',
+          left: `${tick.percent}%`,
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          marginTop:60,
+          fontSize: 10,
+          textAlign: 'center',
+          marginLeft: `${-(100 / count) / 2}%`,
+          width: `${100 / count}%`,
+          left: `${tick.percent}%`,
+        }}
+      >
+        {tick.value}
+      </div>
+    </div>
+  )
+}
+
+
+
 function RankCalc(props){
   return (props.value-props.min) / (props.max-props.min)
 }
@@ -168,26 +257,24 @@ export const EconIndex = () => (
       <section class="bg-light page-section" className="section">
       <div class="slidecontainer" className="info_section">
           <h1>Rescaling</h1>
-          {/*<Slider
-            rootStyle={sliderStyle}
-            domain={[0,100]}
-            step={1}
-            mode={2}
-            values={[30]}
-          >
-            <div style={railStyle}></div>
-            <Handles>
-            {({handles, getHandleProps}) => (
-              <div className ="slider-handles">
-              {handles.map(handle=> (
-                <Handle key={handle.id} handle={handle} getHandleProps = {getHandleProps} />
-              ))}
-              </div>
-            )}
-            </Handles>
-          </Slider>*/}
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
 
-            <Slide />
+            <Slide min={0} max={100} values={50} type="rescale"/>
+      </div>
+      <div class="slidecontainer" className="info_section">
+        <h1>Rankings</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        <h3>Var 1</h3>
+        <Slide min={0} max={100} values={values_x[0]} type="vars"/>
+        <br />
+        <h3>Var 2</h3>
+        <Slide min={0} max={100} values={values_x[1]} type="vars"/>
+        <br />
+        <h3>Var 3</h3>
+        <Slide min={0} max={100} values={values_x[2]} type="vars"/>
+        <br />
+        <h3>Var 4</h3>
+        <Slide min={0} max={100} values={values_x[3]} type="vars"/>
       </div>
       </section>
 
