@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Spectral&display=swap');
+
 .homescreen{
   overflow: hidden;
   margin-top: -30px;
@@ -15,13 +18,16 @@
 
 .bannerwords{
   position: absolute;
-  left: 1%;
-  top: 50%;
+  left: 50%;
+  top: 30%;
+  text-align: right;
   color: white;
   font-weight: bold;
   font-size: 10vw;
-  white-space: nowrap;
-  background: rgba(109, 27, 108, 0.3);
+  line-height: 80%;
+  white-space: normal;
+  background: rgba(109, 27, 108, 0.5);
+  font-family: 'Raleway';
 }
 
 .homebutton{
@@ -33,20 +39,25 @@
 
 .introduction{
   margin: 50px 150px 0px 150px;
+  font-family: 'Raleway';
 }
 
 .introduction h1{
-  text-align: left;
-  font-size: 40px;
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Raleway';
+  font-weight: bold;
+  padding: 100px;
 }
 
 .introduction p{
-  text-align: justify;
-  font-size: 15px;
-  margin-bottom: 30px;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 100px;
 }
 
 .Howto{
+  text-align: justify;
   position: relative;
   margin-left: 160px;
   width: 89%;
@@ -71,4 +82,14 @@
   max-height: 250px;
   overflow: auto;
   text-align: justify;
+}
+
+.service-heading {
+  margin: 15px 0;
+  text-transform: none;
+}
+
+#FeatureLogo{
+  width: 55%;
+  height: 55%;
 }

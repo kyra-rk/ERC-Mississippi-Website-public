@@ -98,23 +98,43 @@ rect.test {
   fill: none;
 }
         
-.description {
-background-color: rgba(185, 142, 167, 0.5);
-padding: 20px;
+.headerdiv {
+/* background-color: rgba(185, 142, 167, 0.5); */
+background-color: #6d1b6c;
+padding: 10px 30px;
+/* margin: 0 auto; */
+display: table;
 }
 
-.description h1 {
+.headerdiv h1 {
   font-size: 30px;
+  text-align: left;
+  margin-left: 15px;
+  color: white;
+  font-family: Muli-Black;
 }
 
 .description p {
   text-align: left;
 }
 
-.mapclass {
-  border: 6px solid rgba(185, 142, 167, 0.5);
+.distribution {
+  border: 6px solid rgba(185, 142, 167, .5);
   background: #DCDCDC;
+  /* border: 2px solid #6d1b6c; */
 
+}
+
+.mapclass {
+  /* border: 6px solid rgba(185, 142, 167, 0.5); 
+  background: #DCDCDC; */
+  /* height: 70vh; */
+
+}
+
+.distexplanation {
+  text-align: left;
+  padding-top: 20px;
 }
 
 
@@ -128,6 +148,7 @@ padding: 20px;
 .tablemap {
   border: 6px solid rgba(185, 142, 167, 0.5);
   background: #DCDCDC;
+  /* border-left: 2px solid #6d1b6c; */
 
 }
 
@@ -151,8 +172,3 @@ padding: 20px;
   padding-top: 20px;
 }
 
-.distribution {
-  border: 6px solid rgba(185, 142, 167, .5);
-  background: #DCDCDC;
-
-}

@@ -1,0 +1,21 @@
+---
+title: "Multiply Products"
+author: "Fatima Koli"
+date: "October 6, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+df <- read.csv("Data_COMPLETE.csv")
+
+library(stringr)
+df[, str_detect(names(df), "P_[A-Z]")] <- df[, str_detect(names(df), "P_[A-Z]")]*100
+df
+write.csv(df, "Data_COMPLETE_cleaned.csv", row.names = F)
+```
+
