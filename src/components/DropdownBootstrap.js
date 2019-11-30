@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, DropdownButton, Dropdown, ButtonToolbar, Col, Button, Container } from 'react-bootstrap';
+import Grid from "@material-ui/core/Grid";
 import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import MapTest from '../pages/MapTest'
 import DemographicMap from '../components/DemographicMaps'
@@ -43,19 +44,7 @@ const demographics = [
     'abbreviation': 'M',
     'class': 'BlackMen',}
     ]},
-    {'name': 'Other Race(s)',
-    'abbreviation': 'O',
-     'class': 'OtherRaces',
-    'subgroup':
-    [{
-      'name':'Women',
-      'abbreviation': 'F',
-      'class': 'OtherRacesWomen',
-      },
-      {'name': 'Men',
-    'abbreviation': 'M',
-    'class': 'OtherRacesMen',}
-    ]}]
+]
 
 class DropdownBootstrap extends Component {
         constructor(props) {
@@ -143,24 +132,75 @@ let racegenderbuttons =
   <Row><Button className="dembutton available">Men</Button></Row></Col>
   </Col>
          
+          let subbuttons =
+          demographics.map((group, index)=>(
+                group.subgroup.map((gender, i) => (
+                  <Grid item sm={6} ><Button key={`${gender.class}`} className = {`${gender.class} dembutton ${this.state.racegender ? "available": "unavailable"} ${this.state.buttonselected=== gender.class ? "selected": ""}`}  id={`${gender.name}`} value={[group.abbreviation, gender.abbreviation, gender.class]} onClick={this.handleDemClick}>{gender.name}</Button></Grid>
+                ))
+          ))
+
+          let everyonegridbutton = 
+          <Grid container xs = {6} sm={6} md={4} lg={3} >
+            <Grid container sm={4}>
+
+            <Grid item xs ={12} sm={12} zeroMinWidth>
+                     <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button>
+            </Grid>
+            </Grid>
+            <Grid container xs = {12} sm={8} >
+
+            <Grid item xs = {6} sm={6}  zeroMinWidth>
+            <Button id="dembutton" key ="White" className={`White dembutton ${this.state.buttonselected==="White"? "selected": ""} ${this.state.race ? "available": "unavailable"}`} value={["W", "A", "White"]} onClick={this.handleDemClick}>White</Button>
+             </Grid>
+            <Grid item xs = {6} sm={6}  zeroMinWidth >
+            <Button id="dembutton" key ="Black" className={`Black dembutton ${this.state.buttonselected==="Black"? "selected": ""} ${this.state.race ? "available": "unavailable"}`} value={["B", "A", "Black"]} onClick={this.handleDemClick}>Black</Button>
+            </Grid>
+            </Grid>
+            <Grid container sm={4} >
+            <Grid item xs = {6} sm={12}>
+              <Button id="genderbutton" key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`}  value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button>          
+            </Grid>
+            <Grid item xs ={6} sm={12} >
+            <Button id="genderbutton" key="Men" className = {`Men dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Men"? "selected": ""}`} value={["A", "M", "Men"]} onClick={this.handleDemClick}>Men</Button>
+
+                     {/* <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>MEN</Button> */}
+            </Grid>
+
+            </Grid>
+            <Grid container sm={8}  >
+            <Grid item xs = {6} sm={6} >
+                     <Button id="Women" key ="WhiteWomen" className={`WhiteWomen dembutton available ${this.state.buttonselected==="WhiteWomen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["W", "F", "WhiteWomen"]} onClick={this.handleDemClick}>White Women</Button>
+            </Grid>
+            <Grid item  xs = {6} sm={6} >
+                     <Button id="Women" key ="BlackWomen" className={`BlackWomen dembutton available ${this.state.buttonselected==="BlackWomen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["B", "F", "BlackWomen"]} onClick={this.handleDemClick}>Black Women</Button>
+            </Grid>
+            <Grid item  xs = {6} sm={6}>
+                     <Button id="Men" key ="WhiteMen" className={`WhiteMen dembutton available ${this.state.buttonselected==="WhiteMen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["W", "M", "WhiteMen"]} onClick={this.handleDemClick}>White Men</Button>
+            </Grid>
+            <Grid item  xs = {6}sm={6}>
+                     <Button id="Men" key ="BlackMen" className={`BlackMen dembutton available ${this.state.buttonselected==="BlackMen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["B", "M", "BlackMen"]} onClick={this.handleDemClick}>Black Men</Button>
+            </Grid>
+          </Grid>
+          </Grid>
+          
 
           let everyonebutton =
-          <Col>
+          <Col sm = {4} md={"auto"}>
             <Row><Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button></Row>
-            <Row><Button id="genderbutton" key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`}  value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button></Row>
+            <div><Row><Button id="genderbutton" key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`}  value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button></Row>
             <Row><Button id="genderbutton" key="Men" className = {`Men dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Men"? "selected": ""}`} value={["A", "M", "Men"]} onClick={this.handleDemClick}>Men</Button></Row>
-
+            </div>
           </Col>
           let otherbuttons =
           demographics.map((group, index)=>(
-            <Col>
+            <Col sm ={4} md={"auto"}>
               <Row><Button id="dembutton" key={`${group.class}`} className = {`${group.class} dembutton ${this.state.race ? "available": "unavailable"} ${this.state.buttonselected=== group.class ? "selected": ""}`} value={[group.abbreviation, "A", group.class]} onClick={this.handleDemClick}>{group.name}</Button></Row>
                 {group.subgroup.map((gender, i) => (
                  <Row> <Button key={`${gender.class}`} className = {`${gender.class} dembutton ${this.state.racegender ? "available": "unavailable"} ${this.state.buttonselected=== gender.class ? "selected": ""}`}  id={`${gender.name}`} value={[group.abbreviation, gender.abbreviation, gender.class]} onClick={this.handleDemClick}>{gender.name}</Button></Row>
                 ))}
             </Col>
           ))
-          return [ everyonebutton, otherbuttons];
+          return [ everyonebutton, otherbuttons, everyonegridbutton];
         }
 
         getabbreviation(matchingvar, demselected, genderselected){
@@ -278,7 +318,7 @@ let racegenderbuttons =
 
         render(){
            const varbuttons = this.createButtons();
-           const [everyonebuttons, dembuttons] = this.createDemButtons();
+           const [everyonebuttons, dembuttons, everyonebutton] = this.createDemButtons();
            let match = this.props.match;
            let variables = [];
            let labels = [];
@@ -296,7 +336,7 @@ let racegenderbuttons =
             }
             else if (this.state.gender & !this.state.race){
               let abbrev1 = this.getabbreviation(matchingvar, "A", "M");
-              let abbrev2 = this.getabbreviation(matchingvar, "A", "W");
+              let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
               variables = [abbrev1, abbrev2];
               labels = ["Men", "Women"];
 
@@ -317,6 +357,7 @@ let racegenderbuttons =
             }
           }
           console.log(variables, labels);
+          console.log(this.state.varabbreviation)
 
             return (
                 <Container fluid="True">
@@ -336,12 +377,19 @@ Data Portal                </h1> */}
                 </Router> */}
                 </Row>
 
-                <Row className="justify-content-center">
-                  <Row>
+                {/* <Row className="justify-content-center">
+                  <Row className="justify-content-center">
                   {everyonebuttons}
                   {dembuttons}
                   </Row>
+                  </Row> */}
+                 
+                 <section class="buttons">
+                  <Row className="justify-content-center">
+                  {everyonebutton}
                   </Row>
+                 </section>
+
                   <p></p>
                
                   {/* <Row className="justify-content-md-center">
@@ -360,7 +408,7 @@ Data Portal                </h1> */}
                 {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
                  {this.state.currentvar && variables &&
-            <DemographicMap variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
+            <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
           </Container>
                
             )

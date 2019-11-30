@@ -307,7 +307,7 @@ class Map extends Component {
          var svgWidth = document.getElementsByClassName(["mapclass"])[0].clientWidth
         var computedMapStyle = window.getComputedStyle(document.getElementsByClassName(["mapclass"])[0], null);
          svgWidth = svgWidth - parseFloat(computedMapStyle.paddingLeft) + parseFloat(computedMapStyle.paddingRight);
-        let svgHeight = svgWidth/1.3;
+        let svgHeight = svgWidth/1.175;
      // let svgHeight = document.getElementsByClassName(["mapclass"])[0].clientHeight
  //    svgHeight = svgWidth/1.3
          svgWidth = newsvgWidth;
@@ -477,7 +477,7 @@ class Map extends Component {
         let svgWidth = document.getElementsByClassName(["mapclass"])[0].clientWidth
         var computedStyle = window.getComputedStyle(document.getElementsByClassName(["mapclass"])[0], null)
         svgWidth -= parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
-        let svgHeight = svgWidth/1.3;
+        let svgHeight = svgWidth/1.2;
         
         //Create variables to store our state variables
         let variable = this.state.variable;
@@ -551,6 +551,7 @@ class Map extends Component {
             });
          
         counties.on("mouseover", function(d){
+            d3.select(this).style('stroke', 'yellow').style('stroke-width', 5);
             div.transition()        
                 .duration(200)      
                 .style("opacity", .9);    
@@ -570,6 +571,7 @@ class Map extends Component {
                 .style("stroke-width", 3);
             })
             .on("mouseout", function(d){
+                d3.select(this).style('stroke', 'white').style('stroke-width', 1);
                 div.transition()        
                     .duration(200)      
                     .style("opacity", 0);    
@@ -577,9 +579,7 @@ class Map extends Component {
                     .duration(200)
                     .style("opacity", 0);
                 d3.selectAll("circle.county" + d.properties.NAME.replace(/\s+/g, ''))
-                    .attr("opacity", 1)
                     .style("stroke", "none");
-
             });
 
             var x = d3.scaleLinear()

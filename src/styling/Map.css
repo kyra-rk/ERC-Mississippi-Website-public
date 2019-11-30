@@ -30,11 +30,11 @@ path {
   stroke-width: 1;
 }
 
-.counties:hover {
+/* .counties:hover {
   stroke-width: 6px;
   stroke: yellow;
 
-}
+} */
 
 .testpaths {
   stroke: white;
@@ -64,11 +64,11 @@ path {
 }
 
 
-div.tooltip {   
+div.tooltip, div.demtooltip {   
   position: absolute;           
   text-align: center;           
   /* width: 60px;                   */
-  height: 60px;                 
+  /* height: 60px;                  */
   padding: 10px;             
   border: 0px;      
   border-radius: 8px;           
@@ -83,10 +83,18 @@ div.tooltip {
   /* stroke-width: 2px;   */
 }
 
+div.demtooltip {
+  line-height: 1;
+  font-size: 13px;
+  text-align: left;
+}
 
+table {
+  margin-top: 5px;
+}
 
 /* Creates a small triangle extender for the tooltip */
-div.arrow {
+div.arrow, div.demarrow {
   box-sizing: border-box;
   display: inline;
   font-size: 10px;
@@ -196,13 +204,13 @@ margin-left: -15px;
 }
 
 
-.demmapclass1, .demmapclass2, .demmapclass3, .demmapclass4 {
-  /* border: 6px solid rgba(185, 142, 167, 0.5); */
+.demmapclass1, .demmapclass2, .demmapclass3 {
+  border-left: 2px dashed rgba(185, 142, 167, 0.5);
   /* background: #DCDCDC; */
 
 }
 
-.legend {
+div.legend {
   /* border: 6px solid rgba(185, 142, 167, 0.5); */
 }
 

@@ -24,9 +24,14 @@ class DemographicMaps extends Component {
 
 
     componentDidMount(){
-
         const [width, height, projection, missing] = this.setUp();
-        console.log("didmount: ", width)
+        var div = d3.select("body").append("div")   
+            .attr("class", "demtooltip")           
+            .style("opacity", 0);
+        
+        var arrow = d3.select("body").append("div")
+            .attr("class", "demarrow")
+            .style("opacity", 0);
         let variables = this.props.variables;
         let labels = this.props.labels;
         variables.forEach((obj, i) => this.drawMap(`.demmapclass${i}`, obj, width, height, projection))
@@ -69,7 +74,7 @@ class DemographicMaps extends Component {
             svgHeight = .75*svgWidth;
         }
         else {
-            svgHeight = svgWidth*1.1;
+            svgHeight = svgWidth*1.3;
         }
         // console.log(svgWidth, svgHeight)
         const projection = d3.geoTransverseMercator()
@@ -113,6 +118,8 @@ class DemographicMaps extends Component {
                 }
             }
         }
+
+        
         return [svgWidth, svgHeight, projection, missing]
     }
 
@@ -141,14 +148,8 @@ class DemographicMaps extends Component {
         let color = this.state.color;
 
         //Merge variable data into json
-
-
-        var div = d3.select("body").append("div")   
-            .attr("class", "tooltip")           
-            .style("opacity", 0);
-        var arrow = d3.select("body").append("div")
-            .attr("class", "arrow")
-            .style("opacity", 0);
+        var div = d3.select(".demtooltip");
+        var arrow = d3.select(".demarrow");
 
         //Create counties
         let counties = svg.selectAll("counties")
@@ -172,15 +173,27 @@ class DemographicMaps extends Component {
                     //     return defcolor;
                     // }
             });
-         
+        let labels = this.props.labels;
+        let variables = this.props.variables;
         counties.on("mouseover", function(d){
+            d3.select(this).style('stroke', 'yellow').style('stroke-width', 5);
+            d3.selectAll("path.county" + d.properties.NAME.replace(/\s+/g, ''))
+                         .style("stroke-width",5)
+                         .style("stroke", "yellow");
             div.transition()        
                 .duration(200)      
                 .style("opacity", .9);    
             arrow.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div.html(d.properties.NAME + " County <br/>"  + d.properties[variable])  
+            var tooltipstring = '<table>';
+            for (var i=0; i<labels.length; i++){
+                let value = d.properties[variables[i]]
+                tooltipstring += `<tr><td>${labels[i]}: </td> <td style="text-align: end">${value}</td> </tr>`
+            }
+            tooltipstring += "</table>"
+
+            div.html(d.properties.NAME + " County <br/>"  + tooltipstring)  
                 .style("left", (d3.event.pageX + 10) + "px")     
                 .style("top", (d3.event.pageY - 70) + "px");    
 
@@ -191,6 +204,10 @@ class DemographicMaps extends Component {
             
             })
             .on("mouseout", function(d){
+                d3.select(this).style('stroke', 'white').style('stroke-width', 1);
+                d3.selectAll("path.county" + d.properties.NAME.replace(/\s+/g, ''))
+                         .style("stroke-width",1)
+                         .style("stroke", "white");
                 div.transition()        
                     .duration(200)      
                     .style("opacity", 0);    
@@ -208,9 +225,15 @@ class DemographicMaps extends Component {
         // let svgWidth = this.mapElement.current.clientWidth;
 
         let svgWidth = document.getElementsByClassName(["demmapclass0"])[0].clientWidth
-        var computedStyle = window.getComputedStyle(document.getElementsByClassName(["demmapclass0"])[0], null)
-        svgWidth -= parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
-        svgWidth *= 2;
+        // var computedStyle = window.getComputedStyle(document.getElementsByClassName(["demmapclass0"])[0], null)
+        // svgWidth -= parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
+        if (this.props.labels.length==4){
+            svgWidth *= 2
+        }
+        else {
+            svgWidth *= 1.25;
+        }
+        
         let svgHeight = 50;
 
 
@@ -227,12 +250,12 @@ class DemographicMaps extends Component {
         if (missing){
             var x = d3.scaleLinear()
             .domain(color.domain())
-            .rangeRound([.25*svgWidth, .85*svgWidth]);
+            .rangeRound([.36*svgWidth, .76*svgWidth]);
         }
         else {
             var x = d3.scaleLinear()
             .domain(color.domain())
-            .rangeRound([.15*svgWidth, .85*svgWidth]);
+            .rangeRound([.26*svgWidth, .76*svgWidth]);
         }
         
 
@@ -255,7 +278,7 @@ class DemographicMaps extends Component {
             .attr("width", function(d) {return x(d[1]) - x(d[0]); })
             .attr("fill", function(d) { return color(d[0]); })
             .attr("stroke", "purple")
-            .attr("stroke-width", 1);
+            .attr("stroke-width", .75);
 
 
     g.selectAll("text")
@@ -308,10 +331,17 @@ class DemographicMaps extends Component {
    render() {
     //    console.log("TESTING");
     //    console.log(this.)
-       
+        var colspan;
+        if (this.props.labels.length==4){
+            colspan = 12/this.props.labels.length
+        }
+        else {
+            colspan = 5
+        }
+        var maps;
         const mapstest = this.props.labels.map(function(obj, i)
             {if (i!=0){
-                return <Col>
+                return <Col lg={{span: colspan}}>
                 <Row className="justify-content-md-center"><div className="maptitle"><h1>{obj}</h1></div></Row>
                 <Row><Col className={`demmapclass${i}`}></Col></Row>
      </Col>
@@ -339,11 +369,11 @@ class DemographicMaps extends Component {
            </Col>
            </Row>
         </Row>
-        {/* <Row className="rowblock"> */}
+        <Row className="rowblock">
             <Col lg={{span: 12}}>
-               <Row className="rowblock" >
+               <Row className="rowblock justify-content-md-center">
                    
-                   <Col>
+                   <Col lg={{span: colspan}}>
                        <Row className="justify-content-md-center"><div className="maptitle"><h1> {this.props.labels[0]}</h1></div></Row>
                        <Row><Col className="demmapclass0"></Col></Row>
                    </Col>
@@ -362,9 +392,9 @@ class DemographicMaps extends Component {
                        <Row><Col className="demmapclass3"></Col></Row>
                    </Col> */}
                </Row>
-               {/* <Row className="rowblock justify-content-md-center"><Col className="legend"></Col></Row> */}
+               <Row className="rowblock" ><Col className="legend"></Col></Row>
            </Col>
-       {/* </Row> */}
+       </Row>
        </Container>
    )
    }
