@@ -15,7 +15,7 @@ const CreateNavBar = () => {
                            {url: "/comparison", name: "Compare Data"}, 
                            {url: "/index", name: "Index"}, 
                            {url: "/stories", name: "Stories"},
-                           {url: "/methodology", name: "Methodology"},
+                           // {url: "/methodology", name: "Methodology"},
                            {url: "/about", name: "About"},
                            {url: "/contact", name: "Contact"}];
 
