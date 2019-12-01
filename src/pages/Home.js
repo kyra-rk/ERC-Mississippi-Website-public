@@ -7,6 +7,7 @@ import '../styling/App.css'
 import '../styling/Home.css'
 import WinC from '../pictures/WinC.jpg'
 import { Row, Col, Button } from 'react-bootstrap';
+import MLICCI from "../pictures/MLICCI.jpg";
 
 class Home extends React.Component {
 
@@ -14,18 +15,19 @@ class Home extends React.Component {
       showDiv: true
   }
 
+
   render() {
       const { showDiv1 } = this.state;
       const { showDiv2 } = this.state;
       const { showDiv3 } = this.state;
       return (
         <div className="homescreen">
-          <div className="banner">
-            <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
-              <div className="bannerwords">
+            <div className="image">
+                <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
+            </div>
+            <div className="bannerwords">
                 <p>Make Women Count</p>
-              </div>
-          </div>
+            </div>
           <div className="introduction">
           <h1>Welcome</h1>
               <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.

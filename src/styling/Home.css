@@ -1,11 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
 .homescreen{
   overflow: hidden;
-  margin-top: -30px;
-  margin-bottom: 100px;
+  background-color: #eeeeee;
+}
+
+.rectangle{
+  width: 100px;
+  height: 500px;
+  background-color: #151515;
+}
+
+.image{
+  display: inline-block;
+  position: relative;
+  width: 30%;
+  height: 70%;
+  margin-top: 12%;
+  margin-left: -15%;
+  margin-bottom: 10%;
+
+  box-shadow: -70px 60px 220px rgba(0, 0, 0, 0.32);
 }
 
 #HomeBanner{
-    width: 100%;
+  width: 110%;
+
 }
 
 .banner{
@@ -13,15 +33,19 @@
   text-align: center;
 }
 
+
 .bannerwords{
-  position: absolute;
-  left: 1%;
-  top: 50%;
-  color: white;
-  font-weight: bold;
-  font-size: 10vw;
-  white-space: nowrap;
-  background: rgba(109, 27, 108, 0.3);
+  display: inline-block;
+  position: relative;
+  margin-left: 100px;
+  width:100px;
+  color: #000000;
+  font-family: "Fira Sans";
+  font-weight: bolder;
+  font-size: 120px;
+  white-space: normal;
+  line-height: 70%;
+  letter-spacing: -3px;
 }
 
 .homebutton{
@@ -36,11 +60,13 @@
 }
 
 .introduction h1{
+  position: relative;
   text-align: left;
   font-size: 40px;
 }
 
 .introduction p{
+  position: relative;
   text-align: justify;
   font-size: 15px;
   margin-bottom: 30px;

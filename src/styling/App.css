@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
 .App {
   text-align: center;
 }
@@ -18,14 +20,15 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New","Fira Sans",
     monospace;
 }
 
 /*@navbar is same color as MLICCI color*/
 .navigation{
-background-color: #6d1b6c;
-margin-bottom: 30px;
+  background-color: #6d1b6c;
+  margin-bottom: 30px;
+  font-family: Fira Sans;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -43,7 +46,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
 
 .navbar-nav a {
   display: inline-block;
-  font-style: italic;
+  text-align: right;
 }
 
 .navbar-nav a:hover {
@@ -52,6 +55,9 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
 
 .NavbarBrand{
   padding-left: 50px;
+  text-align: right;
+  letter-spacing: -2px;
+  font-weight: 900;
 }
 
 @media only screen and (max-width: 1200px) {
