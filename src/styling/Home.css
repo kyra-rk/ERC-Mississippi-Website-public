@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Raleway|Spectral&display=swap');
 
@@ -40,11 +41,6 @@ mark.yellow {
   height: 440px;
 }
 
-.banner{
-  position: relative;
-  text-align: center;
-}
-
 .bannerwords{
 
   display: inline-block;
@@ -60,22 +56,20 @@ mark.yellow {
   left: 55%;
   top: 30%;
   text-align: right;
-}
 
-.homebutton{
-  width: 65%;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  height: 60px;
+  text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.15);
 }
 
 .introduction{
   margin: 50px 150px 50px 150px;
-  font-family: 'Raleway';
+  font-family: 'Roboto';
 }
 
 .introduction h1{
 
+  font-family: "Fira Sans";
+  font-weight: bold;
+  letter-spacing: -1.5px;
   margin-top: 15%;
   position: relative;
   text-align: center;
@@ -83,6 +77,11 @@ mark.yellow {
 }
 
 .introduction h2{
+
+  letter-spacing: -1.5px;
+  font-weight: normal;
+  margin-top: -5%;
+  font-family: "Fira Sans";
   position: relative;
   text-align: center;
   font-size: 60px;
@@ -94,8 +93,7 @@ mark.yellow {
   font-size: 15px;
   text-align: center;
   font-size: 50px;
-  font-family: 'Raleway';
-  font-weight: bold;
+  font-family: 'Roboto';
   padding: 100px;
 }
 
@@ -110,6 +108,10 @@ mark.yellow {
   position: relative;
   margin-left: 160px;
   width: 89%;
+}
+
+.container{
+  margin-bottom: 10%;
 }
 
 #div1{
@@ -134,11 +136,24 @@ mark.yellow {
 }
 
 .service-heading {
+  font-size: 30px;
+  color: #671e65;
+  font-weight: 900;
+  font-family: "Fira Sans";
   margin: 15px 0;
   text-transform: none;
 }
 
 #FeatureLogo{
-  width: 55%;
-  height: 55%;
+  margin-top: -20%;
+  width: 45%;
+  height: 45%;
 }
+
+.text-muted{
+  margin-left:12%;
+  margin-top:10%;
+  width:75%;
+  font-family: "Roboto";
+}
+

@@ -66,6 +66,16 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
   font-weight: 900;
 }
 
+.DataPortal h1{
+  font-family: "Fira Sans";
+  font-weight: bold;
+  letter-spacing: -1.5px;
+  margin-top: 15%;
+  position: relative;
+  text-align: center;
+  font-size: 60px;
+}
+
 @media only screen and (max-width: 1200px) {
   .NavbarBrand{
     padding-left: 0px;
