@@ -1,5 +1,5 @@
  import React, { Component } from 'react';
- import { Row, DropdownButton, Dropdown, Container, ButtonToolbar, Col, Button } from 'react-bootstrap';
+ import { Row, Dropdown, Container, Col } from 'react-bootstrap';
  
  import Octicon, {Check} from '@primer/octicons-react';
 

@@ -1,3 +1,28 @@
+
+
+#dropdown-variants-Info {
+    background-color: #ffd524;
+    border-color: #ffd524;
+    color: #6d1b6c;
+    font-weight: 600;
+    border: 2px solid white;
+}
+
+.dropdown-toggle.btn.btn-info {
+    background-color: #ffd524;
+    border-color: #ffd524;
+    color: #6d1b6c;
+    font-weight: 600;
+    border: 2px solid white;
+}
+
+
+button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled).active, .show > button.dropdown-toggle.btn.btn-info.dropdown-toggle {
+  background-color: #6d1b6c;
+  border-color: #6d1b6c;
+  color: #fff;
+}
+
 .available#Men:active {
     background-color:#d07eda;
     border-color: #d07eda;
@@ -17,7 +42,7 @@
 }
 
 .dembutton.btn.btn-primary {
-    line-height: 1,5;
+    line-height: 1;
     margin-top: .5rem;
     font-size: .75rem;
 }

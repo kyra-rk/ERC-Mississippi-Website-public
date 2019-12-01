@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+=======
+@font-face {
+  font-family: 'Muli-Black';
+  src: local('Muli-Black'), url(../fonts/Muli-SemiBold.ttf) format('truetype');
+}
+>>>>>>> ab7c4b27493dca3267ecf80bba70dfaca29c6a9d
 
 .App {
   text-align: center;
@@ -26,9 +33,14 @@ code {
 
 /*@navbar is same color as MLICCI color*/
 .navigation{
+<<<<<<< HEAD
   background-color: #6d1b6c;
   margin-bottom: 30px;
   font-family: Fira Sans;
+=======
+background-color: #5a1659;
+margin-bottom: 20px;
+>>>>>>> ab7c4b27493dca3267ecf80bba70dfaca29c6a9d
 }
 
 @media only screen and (min-width: 1200px) {
@@ -50,7 +62,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
 }
 
 .navbar-nav a:hover {
-  background-color: #d4a45c;
+  background-color: #EABD24;
 }
 
 .NavbarBrand{

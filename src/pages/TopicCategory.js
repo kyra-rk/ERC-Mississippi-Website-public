@@ -29,8 +29,8 @@ class TopicCategory extends Component {
     var topiccat = selectedQuotes.map((obj) =>
 	<Col lg={6} key={obj.name}>
 		<Row id="personblock">
-			<Col lg={5}>
-				<img id ="Topic-Image" src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
+			<Col lg={5} className="initial">
+				{obj.initials}
 			</Col>
 			<Col lg={7} className="rightcolumn">
 				<Row className="Quote-Container">
