@@ -10,11 +10,8 @@ import data_logo from '../pictures/db.png'
 import stories_logo from '../pictures/communication.png'
 import method_logo from '../pictures/clipboard.png'
 import { Row, Col, Button } from 'react-bootstrap';
-<<<<<<< HEAD
 import MLICCI from "../pictures/MLICCI.jpg";
-=======
 import 'bootstrap';
->>>>>>> ab7c4b27493dca3267ecf80bba70dfaca29c6a9d
 
 class Home extends React.Component {
 
@@ -30,14 +27,12 @@ class Home extends React.Component {
       return (
 
         <div className="homescreen">
-<<<<<<< HEAD
             <div className="image">
                 <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
             </div>
             <div className="bannerwords">
                 <p>Make Women Count</p>
             </div>
-=======
           <section>
             <div className="banner">
               <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
@@ -49,7 +44,6 @@ class Home extends React.Component {
 
 
         <section class="page-section">
->>>>>>> ab7c4b27493dca3267ecf80bba70dfaca29c6a9d
           <div className="introduction">
             <h1>Welcome</h1>
                 <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.
