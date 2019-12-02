@@ -30,6 +30,7 @@ class Map extends Component {
     this.drawMap();
     this.drawDotplot();
     this.drawTopTen();
+    // this.drawTopTenSmaller();
 }
 
     componentDidUpdate(prevProps){
@@ -49,7 +50,12 @@ class Map extends Component {
         topdata = topdata.sort(function (a, b) {
             return b[variable]-a[variable];
           })
+
+          topdata = topdata.filter(function(d){
+              return d[variable] != "NA"
+          })
           topdata = topdata.filter(function(d,i){
+              console.log(d[variable])
           return i < 10;
          });
 
@@ -78,7 +84,7 @@ class Map extends Component {
 
 
        var x_bar = d3.scaleLinear()
-       .range([0.2*svgWidth, .65*svgWidth])
+       .range([0.15*svgWidth, .6*svgWidth])
        .domain([0,  d3.max(data, function(d){
          return parseFloat(d[variable]).toFixed(2);
        })
@@ -96,7 +102,7 @@ class Map extends Component {
 
                   var gy = svg2.append("g")
                .attr("class", "y axis")
-               .attr("transform", "translate (" + .2*svgWidth+ " 0)")
+               .attr("transform", "translate (" + .15*svgWidth+ " 0)")
                .call(yAxis);
 
 
@@ -114,7 +120,7 @@ class Map extends Component {
                    return y_ax(d.Geography.substring(0,d.Geography.length-20));
                })
                .attr("height", y_ax.bandwidth())
-               .attr("x", .21*svgWidth)
+               .attr("x", .17*svgWidth)
                .attr("width", function (d) {
                    return x_bar(d[variable]);
                });
@@ -128,7 +134,7 @@ class Map extends Component {
                })
                //x position is 3 pixels to the right of the bar
                .attr("x", function (d) {
-                   return x_bar(d[variable]) + .23*svgWidth;
+                   return x_bar(d[variable]) + .19*svgWidth;
                })
                .text(function (d) {
                    return d3.format(".1f")(d[variable]);
@@ -173,7 +179,6 @@ class Map extends Component {
         topdata = topdata.sort(function (a, b) {
             return b[variable]-a[variable];
           })
-  
           topdata = topdata.filter(function(d,i){
           return i < 10;
          });

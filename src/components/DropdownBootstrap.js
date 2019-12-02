@@ -86,68 +86,16 @@ class DropdownBootstrap extends Component {
         }
         //Creates specific demographic filter buttons
         createDemButtons(){
-          let racebuttons = 
-          
-          <Row >
-            <Col><Button className="dembutton available">Everyone</Button></Col>
-             <Row><Col><Button className="dembutton available">White</Button></Col>
-             <Col><Button className="dembutton available">Black</Button></Col></Row>
-            </Row>
-           
-            let genderbuttons = 
-            <Row className="justify-content-md-center">
-              <Col sm={"auto"}>
-               
-                <Row className="justify-content-md-center"><Button className="dembutton available">Women</Button></Row>
-              <Row className="justify-content-md-center"><Button className="dembutton available">Men</Button></Row>
-              
-              </Col>
-
-              <Col sm={"auto"}>
-                <Row>
-                  <Button className="dembutton available">Women</Button> 
-                  <Button className="dembutton available">Women</Button>
-                  </Row>
-                <Row>
-                <Button className="dembutton available">Men</Button>
-                  <Button className="dembutton available">Men</Button>
-                </Row>
-              </Col>
-            </Row>
-
-            //  <Col lg={1}>
-
-            //  <Row><Button className="dembutton available">Women</Button></Row>
-            //   <Row><Button className="dembutton available">Men</Button></Row></Col>
-             
-
-let racegenderbuttons = 
-<Col lg={2}>
-  <Col lg={1}>
-  <Row><Button className="dembutton available">Women</Button></Row>
-  <Row><Button className="dembutton available">Men</Button></Row></Col>
-
-<Col lg={1}>
-  <Row><Button className="dembutton available">Women</Button></Row>
-  <Row><Button className="dembutton available">Men</Button></Row></Col>
-  </Col>
-         
-          let subbuttons =
-          demographics.map((group, index)=>(
-                group.subgroup.map((gender, i) => (
-                  <Grid item sm={6} ><Button key={`${gender.class}`} className = {`${gender.class} dembutton ${this.state.racegender ? "available": "unavailable"} ${this.state.buttonselected=== gender.class ? "selected": ""}`}  id={`${gender.name}`} value={[group.abbreviation, gender.abbreviation, gender.class]} onClick={this.handleDemClick}>{gender.name}</Button></Grid>
-                ))
-          ))
-
+    
           let everyonegridbutton = 
           <Grid container xs = {6} sm={6} md={4} lg={3} >
-            <Grid container sm={4}>
+            <Grid container className="Everyone" sm={4}>
 
             <Grid item xs ={12} sm={12} zeroMinWidth>
                      <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button>
             </Grid>
             </Grid>
-            <Grid container xs = {12} sm={8} >
+            <Grid container className="Race" xs = {12} sm={8} >
 
             <Grid item xs = {6} sm={6}  zeroMinWidth>
             <Button id="dembutton" key ="White" className={`White dembutton ${this.state.buttonselected==="White"? "selected": ""} ${this.state.race ? "available": "unavailable"}`} value={["W", "A", "White"]} onClick={this.handleDemClick}>White</Button>
@@ -156,7 +104,7 @@ let racegenderbuttons =
             <Button id="dembutton" key ="Black" className={`Black dembutton ${this.state.buttonselected==="Black"? "selected": ""} ${this.state.race ? "available": "unavailable"}`} value={["B", "A", "Black"]} onClick={this.handleDemClick}>Black</Button>
             </Grid>
             </Grid>
-            <Grid container sm={4} >
+            <Grid container className="Gender" sm={4} >
             <Grid item xs = {6} sm={12}>
               <Button id="genderbutton" key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`}  value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button>          
             </Grid>
@@ -167,7 +115,7 @@ let racegenderbuttons =
             </Grid>
 
             </Grid>
-            <Grid container sm={8}  >
+            <Grid container className="RaceGender" sm={8}  >
             <Grid item xs = {6} sm={6} >
                      <Button id="Women" key ="WhiteWomen" className={`WhiteWomen dembutton available ${this.state.buttonselected==="WhiteWomen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["W", "F", "WhiteWomen"]} onClick={this.handleDemClick}>White Women</Button>
             </Grid>
