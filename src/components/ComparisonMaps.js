@@ -43,7 +43,7 @@ class Map extends Component {
 
     drawMap() {
         // console.log("REDRAWING")
-        d3.selectAll("svg").remove();
+        d3.selectAll("svg.comparisonmap").remove();
         let svgWidth = document.getElementsByClassName(["mapclass"])[0].clientWidth
         let svgHeight = svgWidth;
         // let svgWidth = 300;
@@ -59,6 +59,7 @@ class Map extends Component {
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
        console.log(center)
         var svg = d3.select(".mapclass").append("svg")
+                    .attr("class", "comparisonmap")
                     .attr("width", svgWidth)
                     .attr("height", svgHeight);
 
@@ -195,6 +196,7 @@ class Map extends Component {
         
        
         var svg = d3.select(".mapclass2").append("svg")
+                    .attr("class", "comparisonmap")
                     .attr("width", svgWidth)
                     .attr("height", svgHeight);
 
@@ -300,9 +302,7 @@ class Map extends Component {
    render() {
 
    return (
-    <Container>
-
-    <div style={{height:200}}></div>
+    // <Container>
        <Row className="rowblock">
            <Col lg={{span: 12}}>
                <Row noGutters={true}>
@@ -317,7 +317,7 @@ class Map extends Component {
 
            </Col>
        </Row>
-     </Container>
+    //  </Container>
    )
    }
 }
