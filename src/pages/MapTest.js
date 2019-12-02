@@ -3,7 +3,7 @@ import '../styling/Map.css'
 import {Row, Col, Container} from 'react-bootstrap'
 import json from '../data/Mississippi-Counties.json'
 import * as d3 from "d3";
-import d3tip from "d3-tip";
+// import d3tip from "d3-tip";
 
 class Map extends Component {
     constructor(props) {

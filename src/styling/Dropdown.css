@@ -23,6 +23,9 @@ button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button
   color: #fff;
 }
 
+.dembutton.btn-primary:focus {
+    box-shadow: 0 0 0 0;
+}
 
 .dembutton.btn-primary:not(:disabled):not(.disabled):active, .dembutton.btn-primary:not(:disabled):not(.disabled).active, .show > .dembutton.btn-primary.dropdown-toggle {
     background-color:#d07eda;
@@ -49,13 +52,13 @@ button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button
 }
 
 .dembutton.btn.btn-primary {
-    width: 108px;
+    width: 95px;
     /* margin-top: 2px; */
     padding: 7px;
     /* line-height: 1; */
     /* margin-top: .5rem; */
     font-size: .75rem;
-    border-radius: 0;
+    /* border-radius: 0; */
 
 }
 
@@ -79,7 +82,7 @@ button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button
 
 .available.btn.btn-primary {
     background-color:transparent;
-    color: white;
+    color: purple;
     border-color: purple;
 }
 
@@ -105,10 +108,10 @@ button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button
 
 
  .MuiGrid-container {
-     /* margin-top: 5px; */
-     /* padding: 2px; */
-     background-color: purple; 
-    border: 2px solid white;
+     /* margin-top: 5px;
+     padding: 2px;
+     background-color: purple;  */
+    /* border: 2px solid white; */
 } 
 
 div.btn-toolbar {
@@ -116,7 +119,12 @@ div.btn-toolbar {
 }
 
 
-.Race .MuiGrid-item {
+.MuiGrid-item {
+    /* border-right: 1px solid white; */
+    border-bottom: 3px solid white;
+}
+
+/* .Race .MuiGrid-item {
     border-right: 1px solid white;
 }
 
@@ -127,7 +135,7 @@ div.btn-toolbar {
 .RaceGender .MuiGrid-item {
     border-right:1px solid white;
     border-bottom: 1px solid white;
-}
+} */
 
 /* .MuiGrid-item {
     background-color: purple;
