@@ -2,7 +2,7 @@
 
 const selectedQuotes = 
 [{name: "Person1",
-// name: "Claudene Logan", 
+fullname: "Claudene Logan", 
 category: "Health",
 initials: "CL",
 audio: "MSaudio.mp3",
@@ -12,7 +12,7 @@ quotes: {
 }
 },
 {name: "Person2",
-// name: "Kandy Nickles", 
+fullname: "Kandy Nickles", 
 category: "Education",
 initials: "KN",
 audio: "MSaudio.mp3",
@@ -21,7 +21,7 @@ quotes: {
 }
 },
 {name: "Person3",
-// name: "Krista Augustine", 
+fullname: "Krista Augustine", 
 category: "Education",
 initials: "KA",
 audio: "MSaudio.mp3",
@@ -30,7 +30,7 @@ quotes: {
 }
 },
 {name: "Person4",
-// name: "Meredith Dantzler", 
+fullname: "Meredith Dantzler", 
 category: "Health",
 initials: "MD",
 audio: "MSaudio.mp3",
@@ -40,7 +40,7 @@ quotes: {
 }
 },
 {name: "Person5",
-// name: "Tanya Wills", 
+fullname: "Tanya Wills", 
 category: "Education",
 initials: "TW",
 audio: "MSaudio.mp3",
@@ -49,7 +49,7 @@ quotes: {
 }
 },
 {name: "Person6",
-// name: "Women in Construction Participant", 
+fullname: "Women in Construction Participant", 
 category: "Health",
 initials: "WinC",
 audio: "MSaudio.mp3",
