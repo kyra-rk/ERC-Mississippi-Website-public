@@ -55,18 +55,13 @@ class Map extends Component {
         var center = d3.geoCentroid(json)
         let projection = d3.geoTransverseMercator()
         .scale([3000])
-        .translate([.55*svgWidth,.95*svgHeight])
+        .translate([.5*svgWidth,.75*svgHeight])
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
-       
+       console.log(center)
         var svg = d3.select(".mapclass").append("svg")
                     .attr("width", svgWidth)
                     .attr("height", svgHeight);
 
-                //     var svg3 = d3.select(".distribution").append("svg")
-                // .attr("width", width + margin2.left + margin2.right)
-                // .attr("height", height + margin2.top + margin2.bottom)
-                // .append("g")
-                    // .attr('class','map');
         this.state.color.domain([
             d3.min(data, function(d){return parseFloat(d[variable]);}),
             d3.max(data, function(d){return parseFloat(d[variable]);})
@@ -189,7 +184,7 @@ class Map extends Component {
           .attr("y", function(d) { return x(d[0])+15; })
           .attr("fill", "#000")
           .attr("text-anchor", "start")
-          .text(function(d){return parseFloat(d[0]).toFixed(2)*100+ "%"});
+          .text(function(d){return parseFloat(d[0]).toFixed(2)+ "%"});
 
       
 
@@ -298,7 +293,7 @@ class Map extends Component {
           .attr("y", function(d) { return x2(d[0])+15; })
           .attr("fill", "#000")
           .attr("text-anchor", "start")
-          .text(function(d){return parseFloat(d[0]).toFixed(2)*100+ "%"});
+          .text(function(d){return parseFloat(d[0]).toFixed(2)+ "%"});
                 
     }
 

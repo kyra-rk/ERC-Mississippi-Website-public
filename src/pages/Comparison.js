@@ -3,7 +3,7 @@
  
  import Octicon, {Check} from '@primer/octicons-react';
 
- import data_general from '../data/data_general_ms.json';
+
  import datacomplete from '../data/datacomplete.json'
  import categories from '../data/Metadata'
 import '../styling/App.css';
@@ -141,7 +141,7 @@ class Comparison extends Component {
         </Col>
         
         </Row>
-        <ComparisonMap datainput = {data_general} variable ={this.state.varabbreviation1} variable2 = {"P_High_school_graduate_(includes_equivalency)_E_F"}varname = {this.state.varname1} varname2 ={"High School Education"}/>}
+        <ComparisonMap datainput = {this.state.dataset} variable ={this.state.varabbreviation1} variable2 = {"P_Female_IBP"}varname = {this.state.varname1} varname2 ={"High School Education"}/>}
         </Container>
     </div>
   // <div>
