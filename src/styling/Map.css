@@ -9,6 +9,9 @@ z-index: 30;
 
 .circle:hover {
   fill-opacity: .7;
+  /* fill: yellow; */
+  stroke: yellow;
+  stroke-width: 3px; 
 }
 .bar:hover {
   fill-opacity: .7;
@@ -27,9 +30,11 @@ path {
   stroke-width: 1;
 }
 
-.counties:hover {
-  fill-opacity: .7;
-}
+/* .counties:hover {
+  stroke-width: 6px;
+  stroke: yellow;
+
+} */
 
 .testpaths {
   stroke: white;
@@ -58,13 +63,47 @@ path {
   font-size: 15px;
 }
 
-rect.test {
-  fill: black;
+
+div.tooltip, div.demtooltip {   
+  position: absolute;           
+  text-align: center;           
+  /* width: 60px;                   */
+  /* height: 60px;                  */
+  padding: 10px;             
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none; 
+  background: black;
+  color: white;
+  /* border: 2px solid purple; */
+  font-family: 'Helvetica Neue', sans-serif;
+  line-height: 1.25;
+  font-size: 15px;
+  /* font-weight: bold; */
+  /* stroke-width: 2px;   */
 }
 
+div.demtooltip {
+  line-height: 1;
+  font-size: 13px;
+  text-align: left;
+}
 
-.tooltiptext, .name, .value {
-  position: relative;
+table {
+  margin-top: 5px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+div.arrow, div.demarrow {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.9);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+  transform: rotate(45deg);
 }
 
 
@@ -94,8 +133,22 @@ rect.test {
   font-family: "Futura", medium, sans-serif;
 }
 
+.axis--y line {
+  stroke: lightgrey;
+  shape-rendering: crispEdges;
+}
 .axis--y path {
   fill: none;
+  stroke-width: 0;
+}
+
+.axis--x line {
+  stroke: lightgrey;
+  shape-rendering: crispEdges;
+}
+
+.axis--x path {
+  stroke-width: 0;
 }
         
 .headerdiv {
@@ -104,6 +157,8 @@ background-color: #6d1b6c;
 padding: 10px 30px;
 /* margin: 0 auto; */
 display: table;
+margin-left: -15px;
+
 }
 
 .headerdiv h1 {
@@ -114,20 +169,31 @@ display: table;
   font-family: Muli-Black;
 }
 
+.maptitle {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  
+}
+
+.maptitle h1{
+  font-size: 15px;
+}
+
 .description p {
   text-align: left;
 }
 
 .distribution {
-  border: 6px solid rgba(185, 142, 167, .5);
-  background: #DCDCDC;
+  /* border: 6px solid rgba(185, 142, 167, .5); */
+  /* background: #DCDCDC; */
   /* border: 2px solid #6d1b6c; */
 
 }
 
 .mapclass {
-  /* border: 6px solid rgba(185, 142, 167, 0.5); 
-  background: #DCDCDC; */
+   /* border: 6px solid rgba(185, 142, 167, 0.5);  */
+  /* background: #DCDCDC; */
   /* height: 70vh; */
 
 }
@@ -138,18 +204,20 @@ display: table;
 }
 
 
-.mapclass2 {
-  border: 6px solid rgba(185, 142, 167, 0.5);
-  background: #DCDCDC;
+.demmapclass1, .demmapclass2, .demmapclass3 {
+  border-left: 2px dashed rgba(185, 142, 167, 0.5);
+  /* background: #DCDCDC; */
 
 }
 
+div.legend {
+  /* border: 6px solid rgba(185, 142, 167, 0.5); */
+}
 
 .tablemap {
-  border: 6px solid rgba(185, 142, 167, 0.5);
-  background: #DCDCDC;
+  /* border: 6px solid rgba(185, 142, 167, 0.5);
+  background: #DCDCDC; */
   /* border-left: 2px solid #6d1b6c; */
-
 }
 
 .top10title {
@@ -158,6 +226,7 @@ display: table;
 
 .top10header {
   text-align: center;
+  font-size: 25px;
 }
 
 .dotplottitle {

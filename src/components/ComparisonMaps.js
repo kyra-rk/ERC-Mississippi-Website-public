@@ -43,7 +43,7 @@ class Map extends Component {
 
     drawMap() {
         // console.log("REDRAWING")
-        d3.selectAll("svg").remove();
+        d3.selectAll("svg.comparisonmap").remove();
         let svgWidth = document.getElementsByClassName(["mapclass"])[0].clientWidth
         let svgHeight = svgWidth;
         // let svgWidth = 300;
@@ -55,18 +55,14 @@ class Map extends Component {
         var center = d3.geoCentroid(json)
         let projection = d3.geoTransverseMercator()
         .scale([3000])
-        .translate([.55*svgWidth,.95*svgHeight])
+        .translate([.5*svgWidth,.75*svgHeight])
         .rotate([88 + 50 / 60, -29 - 30 / 60]);
-       
+       console.log(center)
         var svg = d3.select(".mapclass").append("svg")
+                    .attr("class", "comparisonmap")
                     .attr("width", svgWidth)
                     .attr("height", svgHeight);
 
-                //     var svg3 = d3.select(".distribution").append("svg")
-                // .attr("width", width + margin2.left + margin2.right)
-                // .attr("height", height + margin2.top + margin2.bottom)
-                // .append("g")
-                    // .attr('class','map');
         this.state.color.domain([
             d3.min(data, function(d){return parseFloat(d[variable]);}),
             d3.max(data, function(d){return parseFloat(d[variable]);})
@@ -189,7 +185,7 @@ class Map extends Component {
           .attr("y", function(d) { return x(d[0])+15; })
           .attr("fill", "#000")
           .attr("text-anchor", "start")
-          .text(function(d){return parseFloat(d[0]).toFixed(2)*100+ "%"});
+          .text(function(d){return parseFloat(d[0]).toFixed(2)+ "%"});
 
       
 
@@ -200,6 +196,7 @@ class Map extends Component {
         
        
         var svg = d3.select(".mapclass2").append("svg")
+                    .attr("class", "comparisonmap")
                     .attr("width", svgWidth)
                     .attr("height", svgHeight);
 
@@ -298,16 +295,14 @@ class Map extends Component {
           .attr("y", function(d) { return x2(d[0])+15; })
           .attr("fill", "#000")
           .attr("text-anchor", "start")
-          .text(function(d){return parseFloat(d[0]).toFixed(2)*100+ "%"});
+          .text(function(d){return parseFloat(d[0]).toFixed(2)+ "%"});
                 
     }
 
    render() {
 
    return (
-    <Container>
-
-    <div style={{height:200}}></div>
+    // <Container>
        <Row className="rowblock">
            <Col lg={{span: 12}}>
                <Row noGutters={true}>
@@ -322,7 +317,7 @@ class Map extends Component {
 
            </Col>
        </Row>
-     </Container>
+    //  </Container>
    )
    }
 }

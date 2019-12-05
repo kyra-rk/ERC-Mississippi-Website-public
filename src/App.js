@@ -31,7 +31,7 @@ class App extends Component {
           <Route path="/comparison" component={Comparison}/>
             <Route path="/index" component={EconIndex}/>
             <Route path="/stories" component={Stories}/>
-            {/*<Route path="/methodology" component={Methodology}/>*/}
+            <Route path="/methodology" component={Methodology}/>
             <Route path="/about" component={About}/>
             <Route path="/contact" component={Contact}/>
             <Route component={NoMatch}/>

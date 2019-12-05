@@ -3,8 +3,19 @@
     height: 20%;
   }
 
+
+.page-section {
+  text-align: left;
+}
+
+.section h1,h2 {
+  text-align: left;
+}
+
+
+
 .econindex h1{
-    text-align: left;
+    /* text-align: left; */
     font-size: 40px;
   }
 
@@ -14,13 +25,15 @@
     margin-bottom: 30px;
   }
 .info_section{
-    margin: 100px 150px 0px 0px;
+    /* margin: 100px 150px 0px 0px; */
+    margin: 20px auto;
 }
 
 .info_section h1{
-  text-align: left;
+  /* text-align: left; */
   font-size: 30px;
 }
+
 .info_section h3{
   text-align: left;
   font-size: 20px;
@@ -28,13 +41,61 @@
 
 
 .imgsize{
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .tabsformat{
-  display: inline-flex;
-  text-align: left;
+  /* display: inline-flex; */
+  /* text-align: left; */
+  margin-top: 15px;
 }
+
+.nav-tabs {
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.tab-content{
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 70%;
+  justify-content: center;
+}
+
+  .value h4, .section h4 {
+    font-size: 44px;
+  }
+
+  .singleslider {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .arrowicon {
+    justify-content: center;
+  }
+
+  hr.MuiDivider-root {
+    height: 4px;
+    margin-top: 30px;
+  }
+
+  .map {
+    height: 485px;
+    border: 2px solid purple;
+  }
+
+  .indexdesc {
+    height: 475px;
+    /* display: flex; */
+    /* justify-content: left; */
+    text-align: left;
+  /* justify-content: center; */
+  /* align-self: center;    <---- REMOVE */
+  /* align-items: center;  */
+  margin-top: 10px;
+  }
+
