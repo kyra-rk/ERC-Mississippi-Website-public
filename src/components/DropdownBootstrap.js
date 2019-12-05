@@ -154,6 +154,7 @@ class DropdownBootstrap extends Component {
         getabbreviation(matchingvar, demselected, genderselected){
           var abbrev = "";
           var genderabbrev = "";
+          var totalabbrev = "";
           if (matchingvar.type === "P"){
             abbrev+= "P_";
           }
@@ -164,7 +165,10 @@ class DropdownBootstrap extends Component {
             else if (genderselected==="M"){
               genderabbrev = "_MaleNoWife"
             }
-            abbrev= abbrev + matchingvar.abbreviation + genderabbrev
+            else if (genderselected==="A"){
+              totalabbrev = "Total_"
+            }
+            abbrev= abbrev + totalabbrev + matchingvar.abbreviation + genderabbrev
             if (demselected !== "A"){
               abbrev += "_" + demselected;
             }

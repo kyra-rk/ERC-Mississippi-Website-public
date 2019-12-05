@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.7.0",
+    "@material-ui/icons": "^4.5.1",
     "@primer/octicons-react": "^9.3.1",
     "bootstrap": "^4.3.1",
     "d3": "^5.14.2",

@@ -81,3 +81,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
     padding-left: 0px;
   }
 }
+
+.rowblock {
+  padding-top: 20px;
+}

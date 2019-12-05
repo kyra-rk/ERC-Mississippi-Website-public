@@ -652,12 +652,12 @@ class Map extends Component {
            <Col lg={{span: 11}}>
                <Row className="rowblock" >
                    <Col lg={{span: 5, offset: 1}}>
-                       <Row className="justify-content-md-center"><div className="maptitle"><h1> Map </h1></div></Row>
+                       <Row className="justify-content-center"><div className="maptitle"><h1> Map </h1></div></Row>
                        <Row><Col className="mapclass"></Col></Row>
                    </Col>
 
                    <Col lg={{span: 6}}>
-                       <Row className="justify-content-md-center"><div className="maptitle"><h1> Dotplot Distribution </h1></div></Row>
+                       <Row className="justify-content-center"><div className="maptitle"><h1> Dotplot Distribution </h1></div></Row>
                        <Row><Col className="distribution"></Col></Row>
                    </Col>
                </Row>
