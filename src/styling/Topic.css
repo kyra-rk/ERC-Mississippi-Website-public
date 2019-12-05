@@ -38,3 +38,9 @@
     color: purple;
     font-size: 500%;
 }
+
+#fullname {
+    font-size: 18px;
+    color: purple;
+    text-align: left;
+}

@@ -29,10 +29,15 @@ class TopicCategory extends Component {
     var topiccat = selectedQuotes.map((obj) =>
 	<Col lg={6} key={obj.name}>
 		<Row id="personblock">
-			<Col lg={5} className="initial">
-				{obj.initials}
+			<Col lg={4}>
+				<Row className="initial">
+					{obj.initials}
+				</Row>
+				<Row id="fullname">
+					{obj.fullname}
+				</Row>
 			</Col>
-			<Col lg={7} className="rightcolumn">
+			<Col lg={8} className="rightcolumn">
 				<Row className="Quote-Container">
 					<p>{obj.quotes.quote1}</p>
 				</Row>
