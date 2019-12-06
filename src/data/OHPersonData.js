@@ -46,13 +46,13 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "My name is Claudene Logan. My name is Logan-Clauzelle.",
+"text": "My name is Claudene.",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "",
-"text": "I'm divorced. But, you know USCIS hasn't removed that yet so I still have to use it but (mutual laughter) I love my Logans so I use it for this or everything else that I'm in.",
+"text": "I'm divorced. But, you know USCIS hasn't removed that yet so I still have to use it.",
 "cat": [1],
 "important": "",
 },
@@ -1286,7 +1286,7 @@ const OHPersonData =
 },
 {
 "speaker": "Kandy",
-"text": "My name is Kandy Nickles. 41. I'm Hispanic. I'm originally born and raised in California and I moved out to Texas.",
+"text": "My name is Kandy. 41. I'm Hispanic. I'm originally born and raised in California and I moved out to Texas.",
 "cat": [],
 "important": "",
 },
@@ -1451,8 +1451,8 @@ const OHPersonData =
 {
 "id": 3,
 "header": [
-    {"bio": "Krista Augustine is from a small country town in Louisiana, but she left Louisiana for bigger and better opportunities. Now, she lives in Mississippi with her twins girls and son. In Louisiana, Krista dropped out of high school after feeling that the school she was transferred to prevented her from succeeding. She later enrolled in Camelot College to pursue a degree in medical assistance and her GED, but after becoming pregnant, she wasn’t able to continue school. She has previously worked as a PCA (Physician Care Assistant) and in housekeeping, but has struggled over the years to find a well-paying job and to make ends meet due to childcare expenses she cannot afford and her ineligibility for SNAP benefits. As a student in the Women in Construction program, she is excited and thankful to be in the program and looks forward to what she will be able to accomplish after the program has ended.",
-    "realname": "Krista Augustine",
+    {"bio": "Krista is from a small country town in Louisiana, but she left Louisiana for bigger and better opportunities. Now, she lives in Mississippi with her twins girls and son. In Louisiana, Krista dropped out of high school after feeling that the school she was transferred to prevented her from succeeding. She later enrolled in Camelot College to pursue a degree in medical assistance and her GED, but after becoming pregnant, she wasn’t able to continue school. She has previously worked as a PCA (Physician Care Assistant) and in housekeeping, but has struggled over the years to find a well-paying job and to make ends meet due to childcare expenses she cannot afford and her ineligibility for SNAP benefits. As a student in the Women in Construction program, she is excited and thankful to be in the program and looks forward to what she will be able to accomplish after the program has ended.",
+    "realname": "Krista",
     "initials": "KA",
     }],
 "interview": [
@@ -1464,7 +1464,7 @@ const OHPersonData =
 },
 {
 "speaker": "Krista",
-"text": "Well my name is Krista Augustine. I'm originally from Louisiana. I'm the baby girl of six siblings.",
+"text": "Well my name is Krista. I'm originally from Louisiana. I'm the baby girl of six siblings.",
 "cat": [],
 "important": "",
 },
