@@ -1,14 +1,15 @@
 
 
-#dropdown-variants-Info {
+/* #dropdown-variants-Info {
     background-color: #ffd524;
     border-color: #ffd524;
     color: #6d1b6c;
     font-weight: 600;
     border: 2px solid white;
-}
+} */
 
 .dropdown-toggle.btn.btn-info {
+    /* background: linear-gradient(45deg, #ffd524 30%, #FF8E53 90%); */
     background-color: #ffd524;
     border-color: #ffd524;
     color: #6d1b6c;
