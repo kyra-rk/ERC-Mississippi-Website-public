@@ -82,14 +82,20 @@ createHeader(){
     //id has person# so removing the word person then matching with number and then add cat# to name of class
     var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
     result = result[0];
-    const printtranscript= result.interview.map((obj) => {
+    var printtranscript=""
+    if (result){
+    printtranscript= result.interview.map((obj) => {
       const classnames = obj.cat.map(item => `cat${item}`).join(" ");
       var annotation = null;
+      var transcriptwidth=7
+      var annotationwidth = 0
       if (obj.annotation){
         annotation =
         <Card>
   <Card.Body>{obj.annotation}</Card.Body>
 </Card>
+transcriptwidth = 5
+annotationwidth = 4
         // <Accordion defaultActiveKey="1">
         //     <Card>
         //       <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -102,22 +108,24 @@ createHeader(){
         //   </Accordion>
       }
       return (<Row >
-        <Col xl={{span: 1}} id="speakername">
+        <Col sm={1}></Col>
+        <Col sm={{span: 1}} id="speakername">
           <h5>{obj.speaker}</h5>
         </Col>
-        <Col xl={8}>
+        <Col sm={1}></Col>
+        <Col sm={transcriptwidth}>
           <div className={`${classnames} import${obj.important}`}>
             <p id="transcriptquotes">{obj.text}</p>
           </div>
         </Col>
-        <Col xl={3}>
+        <Col sm={annotationwidth}>
           <div>
             {annotation}
           </div>
         </Col>
       </Row>)
     });
-
+  }
     return [buttons, printtranscript]
   }
 
@@ -126,17 +134,19 @@ createHeader(){
       const [buttons, printtranscript] = this.createTranscript()
       return (
         <div>
-        <Row className="ohpersonrow">
-        <Col lg={2}>
+        <Row className="ohpersonrow justify-content-center">
+        {/* <Col sm={3}>
+          <div className="initialdiv">
           {printinitials}
-        </Col>
-        <Col lg={10}>
+          </div>
+        </Col> */}
+        <Col sm={8}>
           <h1>{printheader}</h1>
           <p id="personbio">{printbio}</p>
         </Col>
       </Row>
         <div>
-          <Row className="justify-content-md-center">
+          <Row className="justify-content-center">
           {buttons}
           </Row>
           <div>{printtranscript}</div>

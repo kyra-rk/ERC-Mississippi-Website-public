@@ -39,9 +39,9 @@
 .oh p {
     font-family: "Roboto";
     font-size: 15px;
-    margin-left: 10%;
-    text-align: center;
-    width: 80%;
+    /* margin-left: 10%; */
+    text-align: left;
+    /* width: 80%; */
 
 }
 

@@ -13,9 +13,9 @@
     height: auto;
  }
 
- h1{
+ h1 {
      font-family: "Fira Sans";
-     padding-bottom:20px;
+     /* padding-bottom:20px; */
  }
  
 .rightcolumn{
@@ -35,7 +35,7 @@
 
  .topicbutton {
      font-family: "Fira Sans";
-     text-transform: uppercase;
+     /* text-transform: uppercase; */
      font-size: 10px;
      font-weight: 900;
      margin: 5px;

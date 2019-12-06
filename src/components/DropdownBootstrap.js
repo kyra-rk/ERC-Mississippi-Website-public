@@ -18,6 +18,7 @@ import '../styling/introjs.css'
 import { Fab, IconButton, Tooltip } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/Help';
 import HelpOutlineSharpIcon from '@material-ui/icons/HelpOutlineSharp';
+import { borderRight } from '@material-ui/system';
 // import '../styling/font-awesome.min.css'
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 // import Map from '../components/Map.js'
@@ -55,12 +56,12 @@ class DropdownBootstrap extends Component {
         constructor(props) {
             super(props);
             this.state = {
-                currentvar: false,
+                currentvar: true,
                 match: this.props.match,
-                varname: '',
-                varabbreviation: '',
+                varname: "Population Estimates",
+                varabbreviation: 'Female_Population',
                 vardesc: '',
-                varlocation: {index1: '', index2: ''},
+                varlocation: {index1: 0, index2: 0},
                 dataset: datacomplete,
                 race: true,
                 gender: true,
@@ -77,20 +78,41 @@ class DropdownBootstrap extends Component {
                   },
                   {
                     element: '.step2',
-                    intro: 'Select if you want to look at the demographics for everyone',
+                    intro: 'Choose a demographic here to see data only for that group. Choose everyone if you want to see the distribution for the whole population.',
                   },
                   {
                     element: '.step3',
-                    intro: 'Explore a specific race',
+                    intro: 'Choose one of these options to see data for the Black Population or the white population.',
                   },
                   {
                     element: '.step4',
-                    intro: 'Explore a specific gender',
+                    intro: 'Choose one of these options to see data on Women or Men.',
                   },
                   {
                     element: '.step5',
-                    intro: 'Explore specific race and gender combinations',
+                    intro: 'Choose one of these if you are interested in a subgroup of race and gender. Not all groups are available for all variables. Buttons will gray out if they are not available for certain variables.',
                   },
+                  {
+                    element: '.step6',
+                    intro: 'Explore a map showing the distribution of the variable by County. Hover over a county to see its exact value.',
+                    position: "right"
+                  },
+                  {
+                    element: '.step7',
+                    intro: 'This is a dotplot showing the distribution of the variable. Each circle corresponds to a single county. Each stack of circles corresponds to a range of values. Hover over a circle to see its exact value. Note that the axis does not always start at 0!',
+                    position: "left",
+                  },
+                  {
+                    element: '.step8',
+                    intro: 'Get a quick summary of the variable by seeing the top 10 counties and their values here.',
+                    position: 'left',
+                  },
+                  {
+                    element: '.step9',
+                    intro: 'See the variation in the variable by different demographic groups here. Note the title above each map to see what demographic is being represented. These will change according to what is available for a specific variable.',
+                    position: "right",
+                  },
+
                 ],
             }
             this.createButtons = this.createButtons.bind(this)
@@ -117,8 +139,9 @@ class DropdownBootstrap extends Component {
         createDemButtons(){
 
           let everyonegridbutton =
-          <Grid container xs = {6} sm={6} md={4} lg={3} >
-            <Grid container className="Everyone step2" sm={4}>
+          <Row className="justify-content-center">
+          <Grid className = "step2" container xs = {8} sm={8} md={6} lg={4} >
+            <Grid container className="Everyone" sm={4}>
 
             <Grid item xs ={12} sm={12} zeroMinWidth>
                      <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button>
@@ -159,7 +182,7 @@ class DropdownBootstrap extends Component {
             </Grid>
           </Grid>
           </Grid>
-
+</Row>
 
           let everyonebutton =
           <Col sm = {4} md={"auto"}>
@@ -298,6 +321,7 @@ class DropdownBootstrap extends Component {
 
 
         render(){
+          console.log(this.state)
            const varbuttons = this.createButtons();
            const [everyonebuttons, dembuttons, everyonebutton] = this.createDemButtons();
            const {stepsEnabled,steps,initialStep} = this.state;
@@ -355,8 +379,22 @@ Data Portal                </h1> */}
 
                  <Row className="justify-content-md-center">
                 {/* <Router> */}
+                <Col sm={1}></Col>
+                <Col sm={12} lg={10}>
                    <ButtonToolbar className="step1"> {varbuttons}
                    </ButtonToolbar>
+                   <section class="buttons">
+                  <Row className="justify-content-center">
+                  <Col lg={10}>{everyonebutton}</Col>
+                  </Row>
+                 </section>
+                </Col>
+                   <Col>
+                   <IconButton color="default" className="iconbutton" onClick={this.onStart}>
+                      <HelpIcon color="primary" />
+                      <p>Click here for Demo</p>
+                    </IconButton>
+                    </Col>
                    {/* <Switch>
                     <Route strict path={`${match.path}/:varabbreviation`}
                     render={(routeProps) => (
@@ -366,38 +404,6 @@ Data Portal                </h1> */}
                     </Switch>
                 </Router> */}
                 </Row>
-
-                {/* <Row className="justify-content-center">
-                  <Row className="justify-content-center">
-                  {everyonebuttons}
-                  {dembuttons}
-                  </Row>
-                  </Row> */}
-
-                 <section class="buttons">
-                  <Row className="justify-content-center">
-                  {everyonebutton}
-                  </Row>
-                 </section>
-
-                  <p></p>
-                  <Tooltip title="Demo" arrow>
-                    <IconButton color="default" className="iconbutton" onClick={this.onStart}>
-                      <HelpOutlineSharpIcon color="primary" />
-                    </IconButton>
-                  </Tooltip>
-
-                  {/* <Row className="justify-content-md-center">
-
-                  {racebuttons}
-
-                  </Row>
-                  <Row className="justify-content-md-center">
-
-                      {genderbuttons}
-
-
-                                  </Row> */}
 
 
                 {this.state.currentvar &&

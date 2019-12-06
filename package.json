@@ -8,10 +8,7 @@
     "@primer/octicons-react": "^9.3.1",
     "bootstrap": "^4.3.1",
     "d3": "^5.14.2",
-<<<<<<< HEAD
-=======
     "inline-style-prefixer": "^5.1.0",
->>>>>>> 1a64c5f8fbdb553797d18ca6bc464363f210edfa
     "intro.js": "^2.9.3",
     "intro.js-react": "^0.2.0",
     "jquery": "^3.4.1",
@@ -30,10 +27,7 @@
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
-<<<<<<< HEAD
-=======
     "react-scrollable-anchor": "^0.6.1",
->>>>>>> 1a64c5f8fbdb553797d18ca6bc464363f210edfa
     "react-scrollspy": "^3.4.2",
     "react-slider": "^1.0.1",
     "react-transition-group": "^4.3.0",

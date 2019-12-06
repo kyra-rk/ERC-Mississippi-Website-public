@@ -4,7 +4,7 @@
  * Data for flip card is in data file
  */
 import React, {Component} from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Card } from 'react-bootstrap';
 import {BrowserRouter as Router,Route, Switch, Redirect} from 'react-router-dom';
 import '../styling/FlipCard.css';
 import flip_card_items from '../data/flip_card_items'
@@ -34,8 +34,23 @@ class People extends Component {
     }
     
     var flipcards = flip_card_items.map((obj) =>
-        <Col xl={4} key={obj.name}>
-            <div className="flip-card">
+        <Col sm={4} key={obj.name}>
+            <Card>
+            <Card.Img variant="top" src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
+            <Card.Body>
+            <Card.Title>{obj.personname}</Card.Title>
+            <Card.Text>
+            {obj.bio}
+            </Card.Text>
+            <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>
+                            See more
+                        </Button>
+            </Card.Body>
+            
+            </Card>
+
+
+            {/* <div className="flip-card">
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
                         <img src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
@@ -49,7 +64,7 @@ class People extends Component {
                         </Button>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </Col>
         );
 

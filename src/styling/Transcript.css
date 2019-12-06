@@ -22,8 +22,10 @@
     display: inline;
     text-align: left;
     font-size: 12px;
-    margin-left: 20%;
+    /* margin-left: 20%; */
+    /* margin-right: 10px; */
 }
+
 
 .selected {
     color: blue;
@@ -39,7 +41,7 @@
 .transcriptbutton{
 
     font-family: "Fira Sans";
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-size: 10px;
     font-weight: 900;
     margin: 5px;
@@ -48,7 +50,7 @@
 
 #transcriptquotes{
     font-family: "Roboto";
-    margin-left: 2%;
+    /* margin-left: 2%; */
 }
 
 #personbio{
@@ -66,5 +68,11 @@
 
 .initials{
     color: purple;
-    font-size: 9em;
+    font-size: 65px;
+}
+
+.initialdiv {
+    height: 100px;
+    vertical-align: middle;
+    font-size: 20px;
 }
