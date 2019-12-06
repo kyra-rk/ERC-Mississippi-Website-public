@@ -36,11 +36,11 @@
 
  .initial{
     color: purple;
-    font-size: 500%;
+    font-size: 420%;
 }
 
 #fullname {
-    font-size: 18px;
+    font-size: 1em;
     color: purple;
     text-align: left;
 }

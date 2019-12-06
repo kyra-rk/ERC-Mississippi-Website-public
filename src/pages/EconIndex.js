@@ -6,15 +6,27 @@ import React,{ Component } from 'react';
 import '../styling/EconIndex.css';
 import { Row, Container, Collapse, Col, Button, Accordion, Card, CardGroup, Tab, Tabs, TabContent, Image} from 'react-bootstrap';
 import {Slider, Handles, Rail, Ticks, Tracks} from 'react-compound-slider'
+import Map from '../components/IndexMap'
+import DemographicMap from '../components/DemographicMaps'
 
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import Divider from '@material-ui/core/Divider';
+
+import Scrollspy from 'react-scrollspy'
+
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+
+// import ListItemText from '@material-ui/core/ListItemText';
 
 import earnings_logo from '../pictures/earnings_logo.png'
 import education_logo from '../pictures/education_logo.png'
 import health_logo from '../pictures/health_logo.png'
 import poverty_logo from '../pictures/poverty_logo.png'
 import employment_logo from '../pictures/employment_logo.png'
+
+import indexdata from '../data/indexdata.json'
+
 import { TextareaAutosize } from '@material-ui/core';
 
 class Vars extends React.Component{
@@ -70,19 +82,23 @@ class Slide extends React.Component{
       actualmin: props.actualmin,
       step: props.step,
     };
+    // this.change = this.change.bind(this)
   }
 
-  onChange = values => {
-    this.setState({values});
+  change = values => {
+    // if (!this.props.multiple)
+        this.setState({values});
   };
 
   render(){
     const { domain, values, type, actualmin, step } = this.state;
+    const multiple = this.props.multiple
     const flip = this.props.flip;
     let info = "";
     let minmax = ""
     let i = 9;
     let sliderClass = "slider"
+
     if (flip) {
       i = 8
         info =  
@@ -90,17 +106,16 @@ class Slide extends React.Component{
           <Row>
           <Col sm={2}><h2>=</h2></Col>
           <Col sm={3}>
-          <div className="value">
+          <div className={"value"}>
           <h4><RankCalc value={values} min={actualmin} max={domain[1]} /> </h4>
         </div>
         </Col>
         <Col sm={2}>
-          <div class="arrowicon"><h2><ArrowRightAltIcon fontSize="large" ></ArrowRightAltIcon></h2></div></Col>
+          <div className="arrowicon"><h2><ArrowRightAltIcon fontSize="large" ></ArrowRightAltIcon></h2></div></Col>
           <Col sm={4}>
-          <div className="value">
+          <div className={"value"}>
           <h4><RankCalc value={values} min={actualmin} max={domain[1]} flip={"True"}/> </h4>
-          <h6>Rescaled Value</h6>
-        </div>
+          <h6>Rescaled Value</h6>        </div>
         </Col>
         </Row>
       </Col>
@@ -110,9 +125,8 @@ class Slide extends React.Component{
       <Row className="justify-content-center" noGutters="true">
       <Col sm={3}><h2>=</h2></Col>
       <Col sm={9}>
-    <div className="value">
-      <h4><RankCalc value={values} min={actualmin} max={domain[1]} /> </h4>
-      <h6>Rescaled Value</h6>
+      <div className={"value"}>      <h4><RankCalc value={values} min={actualmin} max={domain[1]} /> </h4>
+      <h6>Rescaled Value</h6>  
     </div>
     </Col>
     </Row>
@@ -132,6 +146,79 @@ class Slide extends React.Component{
       </Row>
     </Col>
     }
+    if (multiple){
+      return(
+        <div className={sliderClass}>
+          <Row>
+            <Col sm={i}>
+          <Slider
+            mode = {2}
+            step = {step}
+            domain = {domain}
+            disabled={true}
+            rootStyle = {sliderStyle}
+            values = {values[0]}
+          >
+            <Rail>
+              {({getRailProps}) => (
+                <div style={railStyle} {...getRailProps()} />
+              )}
+            </Rail>
+            <Handles>
+              {({handles, getHandleProps}) => {
+                return (
+                <div className="slider-handles">
+                  {handles.map(handle => (
+                    <Handle
+                      key={handle.id}
+                      handle={handle}
+                      // domain={domain}
+                      getHandleProps={getHandleProps}
+                    />
+                  ))}
+                </div>
+              )}}
+            </Handles>
+            <Tracks left={false} right={false}>
+      {({ tracks, getTrackProps }) => (
+        <div className="slider-tracks">
+          {tracks.map(({ id, source, target }) => (
+            <Track
+              key={id}
+              source={source}
+              target={target}
+              getTrackProps={getTrackProps}
+            />
+          ))}
+        </div>
+      )}
+    </Tracks>
+            <Ticks count={12}>
+              {({ticks}) => {
+                ticks = ticks.filter((obj,i) => obj.value>=actualmin);
+                return (
+                <div className="slider-ticks">
+                  {ticks.map(tick => (
+                    <Tick key={tick.id} tick={tick} count={ticks.length}/>
+                  ))}
+                  
+                  {/* <Tick className="actualmintick" key = {`$$-${actualmin}`} tick={{id: `$$-${actualmin}`,value: actualmin, percent: (actualmin-domain[0])/(domain[1]-domain[0])}} count={12}></Tick> */}
+                  {/* <Tick key={`$$-${domain[1]}`} tick={{id: `$$-${domain[1]}`,value: domain[1], percent: 100}} count={12}></Tick> */}
+
+                </div>
+              )}}
+            </Ticks>
+          </Slider>
+          </Col>
+         {/* {info} */}
+          </Row >
+          <Row className="justify-content-center">
+          {minmax}
+          </Row>
+        </div>
+      )
+    }
+    else {
       return(
         <div className={sliderClass}>
           <Row className="justify-content-center">
@@ -141,7 +228,7 @@ class Slide extends React.Component{
             step = {step}
             domain = {domain}
             rootStyle = {sliderStyle}
-            onChange = {this.onChange}
+            onChange = {this.change}
             values = {values}
           >
             <Rail>
@@ -150,7 +237,8 @@ class Slide extends React.Component{
               )}
             </Rail>
             <Handles>
-              {({handles, getHandleProps}) => (
+              {({handles, getHandleProps}) => {
+                return (
                 <div className="slider-handles">
                   {handles.map(handle => (
                     <Handle
@@ -161,7 +249,7 @@ class Slide extends React.Component{
                     />
                   ))}
                 </div>
-              )}
+              )}}
             </Handles>
             <Tracks right={false}>
       {({ tracks, getTrackProps }) => (
@@ -199,6 +287,8 @@ class Slide extends React.Component{
           {minmax}
         </div>
       )
+    }
+
   }
 }
 
@@ -298,7 +388,9 @@ function average(arr){
   return finalstate.sum/finalstate.count
 }
   
-
+// function ListItemLink(props) {
+//   return <ListItem button component="a" {...props} />;
+// }
 
 export const EconIndex = () => (
 	//   <div className="screenwidth">
@@ -314,97 +406,200 @@ export const EconIndex = () => (
 
     <div className="screenwidth">
       <div className="econindex">
+      <Row className="justify-content-center" noGutters={"True"}>
+
+      {/* <Col sm={6} lg={2}> */}
+
+{/* <div id="list-example" >
+<a class="list-group-item list-group-item-action" href="#section-1">Item 1</a>
+<a class="list-group-item list-group-item-action" href="#section-2">Item2</a>
+<a class="list-group-item list-group-item-action" href="#section-3">Item 3</a> */}
+{/* <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+  {/* <List>
+  <ListItemLink className = "list-group-item list-group-item-action" href="#section-1">
+<ListItemText primary="Spam" />
+</ListItemLink>
+<ListItemLink href="#section-2">
+<ListItemText primary="Spam" />
+</ListItemLink>
+<ListItemLink href="#section-3">
+<ListItemText primary="Spam" />
+</ListItemLink>
+  </List> */}
+
+{/* </div> */}
+<div className="scrollspy">
+<Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current">
+<li><a href="#section-1">section 1</a></li>
+<li><a href="#section-2">section 2</a></li>
+<li><a href="#section-3">section 3</a></li>
+</Scrollspy>
+</div>
+{/* </Col>  */}
+<Col sm={8}>
+
         <h1>Index</h1>
-        <Row className="justify-content-center">
-
-        <Col sm={9}>
-        <Row className="justify-content-center">
-
-        <section class="page-section">
-          <div className="info_section">
-            <h1>What variables are part of our index?</h1>
-            <div className="tabs">
-            <Vars />
-            </div>
-          </div>
-        </section>
-      
-</Row>
-
-        <Row className="justify-content-center">
-
-        <section class="bg-light page-section" className="section">
-        <h1>How did we calculate the index?</h1>
-          <div class="slidecontainer" className="info_section">
-            <h2>Rescaling Each Variable</h2>
-            <p>Most of our variables were on a scale of 0-100 since they were percentages, but we also had variables such as Median Income that had to be incorporated into the index. In order to ensure every variable was standardized in the same way, we rescaled each variable to be from 0-100 based on the range of the dataset.</p>
-            <p> Let's take Median Earnings for women working full time and Poverty as an example. 
-              The minimum value for Median Income is 18,500 and the maximum is 81,059. We let these correspond to 0 and 100, respectively. The county with the minimum value gets a value of 0 and the county with the highest value gets a value of 100. <span style={{fontWeight: "bold"}}>To calculate each county's rescaled value, we take its value, subtract the minimum from it and then divide over the range.</span> We get a fraction that we then multiply by 100. 
-              This corresponds essentially to rankings. Counties with higher rescaled values have higher values for that variable relative to the other counties. The slider below shows what a county with a Median Income of 32,500 would have as its rescaled value: 22. Intuitively, a value of 22 would mean that this county is in the first quartile of the distribution and is relatively not doing as well as most counties.
-
-</p>
-              <Slide min={18500} max={81059} values={32500} type="rescale" actualmin={18500} step={500}/>
-
-<p>
-Now, let's take Poverty as our example. 
-
-              The minimum value for the percent of women in poverty was 10.41 and the maximum was 44.75. We calculate the index similarly and the slider below shows what a county with 27% of women in poverty would have as its rescaled value: 48. Intuitively, a value of 48 would mean that this county falls in the middle of the distribution of all the counties. 
-              There is one more step for rescaling poverty. With Median Earnings, a higher rescaled value means the county is more economically secure. However, with the way we've rescaled poverty, a higher rescaled value corresponds to higher levels of poverty and thus economic insecurity. To account for that, we will subtract the rescaled value from 100 so that the scale is reversed and the county with the highest level of poverty corresponds to a ranking of 0 and the county with the lowest level of poverty corresponds to a ranking of 100. 
-</p>
-              <Slide min={10} max={44.75} values={27} type="rescale" actualmin={10.41} step={.5} flip={"True"}/>
-             
-          </div>
-          <div class="slidecontainer" className="info_section">
-            <h2>Combing Variables Into Our Index</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-            <h3>Poverty</h3>
-            <Slide min={0} max={100} values={values_x[0]} type="vars" actualmin={0} step={1} flip={"True"}/>
-            <h3>Median Earnings - Full Time</h3>
-            <Slide min={0} max={100} values={values_x[1]} type="vars" actualmin={0} step={1}/>
-            <h3>Median Earnings - Part Time</h3>
-            <Slide min={0} max={100} values={values_x[2]} type="vars" actualmin={0} step={1}/>
-            <h3>Health Insurance</h3>
-            <Slide min={0} max={100} values={values_x[3]} type="vars" actualmin={0} step={1}/>
-            <h3>Educational Level - Less Than A High School Degree</h3>
-            <Slide min={7} max={29.68} values={values_x[3]} type="vars" actualmin={0} step={1}/>
-            <h3>Unemployment Rate</h3>
-            <Slide min={0} max={100} values={values_x[3]} type="vars" actualmin={0} step={1}/>
-            
-            <Divider className="divider" variant="middle" />
-
-            <Row className="justify-content-center rowblock">
-<h4>Index Value: {average([20,30,50,80,100,80])}</h4>
-            </Row>
-
-          </div>
-        </section>
-        </Row>
-
-<Row className="rowblock">
-  {/* <section className="section"> */}
-    <Col md={7}><div className="map">MAP GOES HERE</div></Col>
-    <Col>            
-    <div className="indexdesc">
-      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-    </div>
-</Col>
-  {/* </section> */}
-</Row>
         
-        <section class="page-section" className="section">
-          <div className="info_section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <img id ="EconImage" src = {require('../pictures/MSimage.png')} alt="Index Map"/>
-          </div>
-        </section>
+
+            <Row className="justify-content-center">
+
+            <section class="page-section">
+              <div className="info_section">
+                <h1>What variables are part of our index?</h1>
+                <div className="tabs">
+                <Vars />
+                </div>
+              </div>
+            </section>
+          
+    </Row>
+
+            <Row className="justify-content-center" >
+{/* <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example"> */}
+            <section id ="section-1" class="bg-light page-section" className="section">
+            <h1>How did we calculate the index?</h1>
+              <div class="slidecontainer" className="info_section">
+                <h2>Rescaling Each Variable</h2>
+                <p>Most of our variables were on a scale of 0-100 since they were percentages, but we also had variables such as Median Income that had to be incorporated into the index. In order to ensure every variable was standardized in the same way, we rescaled each variable to be from 0-100 based on the range of the dataset.</p>
+                <p> Let's take Median Earnings for women working full time and Poverty as an example. 
+                  The minimum value for Median Income is 18,500 and the maximum is 41,059. We let these correspond to 0 and 100, respectively. The county with the minimum value gets a value of 0 and the county with the highest value gets a value of 100. <span style={{fontWeight: "bold"}}>To calculate each county's rescaled value, we take its value, subtract the minimum from it and then divide over the range.</span> We get a fraction that we then multiply by 100. 
+                  This corresponds essentially to rankings. Counties with higher rescaled values have higher values for that variable relative to the other counties. The slider below shows what a county with a Median Income of 23,500 would have as its rescaled value: 22. Intuitively, a value of 22 would mean that this county is in the first quartile of the distribution and is relatively not doing as well as most counties.
+
+    </p>
+                  <Slide min={18500} max={41059} values={23500} type="rescale" actualmin={18500} step={500}/>
+
+    <p>
+    Now, let's take Poverty as our example. 
+
+                  The minimum value for the percent of women in poverty was 10.41 and the maximum was 44.75. We calculate the index similarly and the slider below shows what a county with 27% of women in poverty would have as its rescaled value: 48. Intuitively, a value of 48 would mean that this county falls in the middle of the distribution of all the counties. 
+                  There is one more step for rescaling poverty. With Median Earnings, a higher rescaled value means the county is more economically secure. However, with the way we've rescaled poverty, a higher rescaled value corresponds to higher levels of poverty and thus economic insecurity. To account for that, we will subtract the rescaled value from 100 so that the scale is reversed and the county with the highest level of poverty corresponds to a ranking of 0 and the county with the lowest level of poverty corresponds to a ranking of 100. 
+    </p>
+                  <Slide min={10} max={44.75} values={27} type="rescale" actualmin={10.41} step={.5} flip={"True"}/>
+                
+              </div>
+              </section>
+              <section id ="section-2" class="bg-light page-section" className="section">
+
+              <div class="slidecontainer" className="info_section multiplevars">
+                <h2>Combining Variables Into Our Index</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <h3>Poverty</h3>
+                <Slide min={0} max={100} values={values_x[0]} type="vars" actualmin={0} step={1} flip={"True"}/>
+
+                <h3>Median Earnings - Full Time</h3>
+                <Slide min={0} max={100} values={values_x[1]} type="vars" actualmin={0} step={1}/>
+                <h3>Median Earnings - Part Time</h3>
+                <Slide min={0} max={100} values={values_x[2]} type="vars" actualmin={0} step={1}/>
+                <h3>Health Insurance</h3>
+                <Slide min={0} max={100} values={values_x[3]} type="vars" actualmin={0} step={1}/>
+                <h3>Educational Level - Less Than A High School Degree</h3>
+                <Slide min={7} max={29.68} values={20} type="vars" actualmin={0} step={1}/>
+                <h3>Unemployment Rate</h3>
+                <Slide min={0} max={100} values={values_x[3]} type="vars" actualmin={0} step={1}/>
+                
+                <Divider className="divider" variant="middle" />
+
+                <Row className="justify-content-center rowblock">
+    <h4>Index Value: {average([20,30,50,80,100,80])}</h4>
+                </Row>
+
+              </div>
+              </section>
+
+              <section id ="section-3" class="bg-light page-section" className="section">
+
+              <div class="slidecontainer" className="info_section race">
+      <h2>Rescaling Variables Differentiated by Race</h2>
+      <p>Due to our commitment to intersectionality and to understanding how economic security is differentiated by race, we wanted to create a separate economic security index for white women and Black women, asides from our women's economic security index. 
+        However, both demographics have different ranges and if we rescale each to its range, we would not be able to compare values to each other. The two sliders below show the rescaled value that would be returned for a county if it's Median Earnings value was $32,500. 
+        The rescaled value for Black Women's Median Earnings is almost twice as high as for white women. Since Black Women's Median Earnings have a maximum of $37,344, a value of $32,500 would be high compared to most counties. In comparison, the value falls in the lower half of the distribution for white women since 
+        Median Earnings for white women have a much higher maximum.  
+      </p>
+      <h3>Median Earnings - Full Time for White Women</h3>
+      <Slide min={23500} max={45043} values={32500} type="rescale" actualmin={23838} step={500}/>
+      <h3>Median Earnings - Full Time for Black Women</h3>
+      <Slide min={16000} max={37344} values={32500} type="rescale" actualmin={16382} step={500}/>
+
+<div className="subheading">
+      <h3>One Scale for Both Races</h3></div>
+      <p>To account for that, we will use one range, where the minimum is the minimum of the distribution for either race and similarly for the maximum. The sliders below show the 
+        full range, with each race's distribution highlighted.</p>
+
+
+      
+      <h3>Median Earnings - Full Time for White Women</h3>
+      <Slide min={16000} max={45043} values={[23838, 45043]} type="rescale" actualmin={16382} step={1} multiple={"True"}/>
+      <h3>Median Earnings - Full Time for Black Women</h3>
+      <Slide min={16000} max={45043} values={[16382, 37344]} type="rescale" actualmin={16382} step={1} multiple={"True"}/>
+      
+      <h3>Combined Scale</h3>
+      <p>This last slider shows the combined distribution of the two races again. On the new scale, a value of $32,500 corresponds to 56. Now, county values will be comparable across race. </p>
+      <Slide min={16000} max={45043} values={32500} type="rescale" actualmin={16382} step={500}/>
+
+       <p> The values now are able to reflect two things: 
+         <Row>
+           <Col md={1}></Col>
+           <Col sm={10} >
+        <ul><li> As before, they show the relative economic security of the county for the given race of women depending on where they fall from 0 to 100. 
+          </li>
+          <li>But now, they also show us a measure of inequality in a county based on the difference in values for each race. </li></ul>
+          </Col>
+          </Row>
+        Counties with very different values for both races imply that one group of women generally have much higher earnings whereas counties with similar values mean that both races are facing similar conditions. 
+        <br />
+        <br />
+         One important thing to note with this new range is that it combines the data for both races, but does so without losing the detail that both provide us. This is <span style={{fontWeight: "bold"}}> not </span> the same range as the one for Median Earnings for all Women that we saw earlier. It has a lower minimum and a higher maximum, reflecting the racial dynamics of economic security. 
+      </p>
+    
+    </div>
+            </section>
+            {/* </div> */}
+            </Row>
+            <Row>
+              <h2>Index</h2>
+            </Row>
+            <Row className="rowblock">
+        <Col md={7}>
+          <Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map></Col>
+        <Col>            
+        <div className="indexdesc">
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        </div>
+    </Col>
+    </Row>
+
+    {/* <DemographicMap className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["IndexWhite", "IndexBlack"]} datainput = {indexdata} />} */}
+
+    <Row className="rowblock justify-content-between">
+      
+        <Col md={5}>
+          <Map datainput = {indexdata} variable ={"Index_White_M2"} height={425} width={325} className={"indexw"}></Map></Col>
+        
+        <Col md={5}>
+          <Map datainput = {indexdata} variable ={"Index_Black_M2"} height={425} width={325} className={"indexb"}></Map></Col>
+     
+        </Row>
+            
+            <section class="page-section" className="section">
+            <div className="info_section">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <img id ="EconImage" src = {require('../pictures/MSimage.png')} alt="Index Map"/>
+            </div>
+          </section>
+         
+        
 
         </Col>
         </Row>
+
         {/* </Container> */}
       </div>
     </div>
-    </div>
+ 
+ 
+    
+  </div>
 	)
 
 export default EconIndex

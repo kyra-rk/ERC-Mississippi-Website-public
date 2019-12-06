@@ -13,7 +13,6 @@
 }
 
 
-
 .econindex h1{
     /* text-align: left; */
     font-size: 40px;
@@ -38,7 +37,6 @@
   text-align: left;
   font-size: 20px;
 }
-
 
 .imgsize{
   width: 80px;
@@ -83,10 +81,10 @@
     margin-top: 30px;
   }
 
-  .map {
+  /* .map {
     height: 485px;
     border: 2px solid purple;
-  }
+  } */
 
   .indexdesc {
     height: 475px;
@@ -99,3 +97,46 @@
   margin-top: 10px;
   }
 
+  .vars.value h4 {
+    font-size: 40px;
+  }
+
+  .race .singleslider {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  
+  .subheading h3 {
+    font-size: 24px;
+  }
+
+  .section ul {
+    margin-top: 20px;
+    /* width: 80%; */
+  }
+
+  .section li {
+    margin-bottom: 25px;
+  }
+
+  .scrollspy {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    justify-content: center;
+    /* margin: 0 auto; */
+    /* left: 20px; */
+  }
+
+  /* #list-example 
+    {
+      position: fixed;
+      top: 80px;
+  }
+
+  .scrollspy-example {
+    overflow-y: scroll;
+    position: relative;
+    height: 100%;
+  } */
+  
