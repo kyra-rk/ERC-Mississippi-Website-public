@@ -73,7 +73,7 @@ const demographics = [
     
     render() {
       return (
-        <div className="DataPortal">
+        <div className="DataPortal" className="screenwidth">
             <h1>
               Data Portal
             </h1>

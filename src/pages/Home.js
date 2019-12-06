@@ -9,9 +9,8 @@ import WinC from '../pictures/WinC.jpg'
 import data_logo from '../pictures/database.svg'
 import stories_logo from '../pictures/stories.svg'
 import method_logo from '../pictures/tools.svg'
-import { Row, Col, Button } from 'react-bootstrap';
-import MLICCI from "../pictures/MLICCI.jpg";
 import 'bootstrap';
+import Fade from 'react-reveal/Fade';
 
 class Home extends React.Component {
 
@@ -28,9 +27,11 @@ class Home extends React.Component {
 
         <div className="homescreen">
             <div className="rectangle"></div>
+            <Fade duration={1000}>
             <div className="image">
                 <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
             </div>
+            </Fade>
             <div className="bannerwords">
                 <p>Make<wbr></wbr>
                     Women<wbr></wbr>
@@ -62,21 +63,27 @@ class Home extends React.Component {
             <div class="row text-center">
               <div class="col-md-4">
                 <span class="fa-stack fa-4x">
+                    <Fade duration={1500}>
                   <img src = {data_logo} alt="Data logo" id="FeatureLogo"/>
+                    </Fade>
                 </span>
                 <h4 class="service-heading">Data Portal</h4>
                 <p class="text-muted">The data portal has seven main categories: demographics, health, education, employment, income, housing, and government assistance. Within each category, there are several subcategories. Once you select a subcategory, you can toggle between the different gender and sex breakdowns. On each of these variable pages, you get a map, table, and histogram to get a comprehensive view of how each county measures in this particular variable. </p>
               </div>
               <div class="col-md-4">
                 <span class="fa-stack fa-4x">
+                    <Fade duration={1500} delay={500}>
                   <img src = {stories_logo} alt="Data logo" id="FeatureLogo"/>
+                    </Fade>
                 </span>
                 <h4 class="service-heading">Stories</h4>
                 <p class="text-muted">There are two ways to filter through stories, either by person or by topic. If you select by person, you will get a preview of each of the interviewees from the Women in Construction Program, and you can see more about each person and their full interview transcript. If you select by topic, you get to see all quotes that pertain to the topic you choose. Some of the interviewees requested not to be identified by name, instead they will be identified as Women in Construction Participant.</p>
               </div>
               <div class="col-md-4">
                 <span class="fa-stack fa-4x">
+                    <Fade duration={1500} delay={1000}>
                   <img src = {method_logo} alt="Methodology logo" id="FeatureLogo"/>
+                    </Fade>
                 </span>
                 <h4 class="service-heading">Methodology</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>

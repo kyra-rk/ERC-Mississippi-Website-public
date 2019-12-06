@@ -64,7 +64,7 @@ createHeader(){
   });
   const printbio=result.header.map((obj) => {
     return (
-      <p>{obj.bio}</p>
+      <p>{obj.longbio}</p>
     )
   });
   return [printheader, printinitials, printbio]
