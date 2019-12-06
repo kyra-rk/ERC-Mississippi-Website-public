@@ -3,8 +3,8 @@ const OHPersonData =
 {
 "id": 1,
 "header": [
-{"bio": "Claudine Logan is a mother of four and grandmother of two. Before Women in Construction, she worked as a supervisor for a construction firm in Jamaica, where she originally came from. Later, she lived in a shelter for women, where she found herself to be a mother figure to the other women living in the shelter. As someone who loves learning, Claudine enjoys getting hands-on with the construction training at WinC, and even hired a math teacher to improve at measurements. When Claudine graduates, she is looking forward to working at Ingalls Construction, where she has already secured a job at. She hopes to one day have her whole family under one roof, where her mother and son can be together with her and live in financial stability.",
-"realname": "Claudene Logan",
+{"bio": "Claudine is a mother of four and grandmother of two. Before Women in Construction, she worked as a supervisor for a construction firm in Jamaica, where she originally came from. Later, she lived in a shelter for women, where she found herself to be a mother figure to the other women living in the shelter. As someone who loves learning, Claudine enjoys getting hands-on with the construction training at WinC, and even hired a math teacher to improve at measurements. When Claudine graduates, she is looking forward to working at Ingalls Construction, where she has already secured a job at. She hopes to one day have her whole family under one roof, where her mother and son can be together with her and live in financial stability.",
+"realname": "Claudene",
 "initials": "CL",
 }],
 "interview": [
@@ -46,13 +46,13 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "My name is Claudene Logan. My name is Logan-Clauzelle.",
+"text": "My name is Claudene.",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "",
-"text": "I'm divorced. But, you know USCIS hasn't removed that yet so I still have to use it but (mutual laughter) I love my Logans so I use it for this or everything else that I'm in.",
+"text": "I'm divorced. But, you know USCIS hasn't removed that yet so I still have to use it.",
 "cat": [1],
 "important": "",
 },
@@ -1273,8 +1273,8 @@ const OHPersonData =
 {
 "id": 2,
 "header": [
-    {"bio": "Kandy Nickles was born in California, and split her youth in California and Texas. She has had a diverse education background: medical school, trade school, a semester of criminal justice, and business technology. With those certifications, she went from working for private investigators, to selling cars to owning a cleaning business, but she had to leave the business behind when she left an abusive relationship. Kandy did not want her daughter to learn that abuse is condoned, therefore left for a better future for the both of them. Kandy made her way to Mississippi after getting engaged to a Mississippian, and together with her daughter, they relocated. Having had experience with male-dominated industries, Kandy hopes to create more opportunities for women by opening her own construction firm that is exclusively run by women.",
-    "realname": "Kandy Nickles",
+    {"bio": "Kandy was born in California, and split her youth in California and Texas. She has had a diverse education background: medical school, trade school, a semester of criminal justice, and business technology. With those certifications, she went from working for private investigators, to selling cars to owning a cleaning business, but she had to leave the business behind when she left an abusive relationship. Kandy did not want her daughter to learn that abuse is condoned, therefore left for a better future for the both of them. Kandy made her way to Mississippi after getting engaged to a Mississippian, and together with her daughter, they relocated. Having had experience with male-dominated industries, Kandy hopes to create more opportunities for women by opening her own construction firm that is exclusively run by women.",
+    "realname": "Kandy",
     "initials": "KN",
     }],
 "interview": [
@@ -1286,7 +1286,7 @@ const OHPersonData =
 },
 {
 "speaker": "Kandy",
-"text": "My name is Kandy Nickles. 41. I'm Hispanic. I'm originally born and raised in California and I moved out to Texas.",
+"text": "My name is Kandy. 41. I'm Hispanic. I'm originally born and raised in California and I moved out to Texas.",
 "cat": [],
 "important": "",
 },
@@ -1451,8 +1451,8 @@ const OHPersonData =
 {
 "id": 3,
 "header": [
-    {"bio": "Krista Augustine is from a small country town in Louisiana, but she left Louisiana for bigger and better opportunities. Now, she lives in Mississippi with her twins girls and son. In Louisiana, Krista dropped out of high school after feeling that the school she was transferred to prevented her from succeeding. She later enrolled in Camelot College to pursue a degree in medical assistance and her GED, but after becoming pregnant, she wasn’t able to continue school. She has previously worked as a PCA (Physician Care Assistant) and in housekeeping, but has struggled over the years to find a well-paying job and to make ends meet due to childcare expenses she cannot afford and her ineligibility for SNAP benefits. As a student in the Women in Construction program, she is excited and thankful to be in the program and looks forward to what she will be able to accomplish after the program has ended.",
-    "realname": "Krista Augustine",
+    {"bio": "Krista is from a small country town in Louisiana, but she left Louisiana for bigger and better opportunities. Now, she lives in Mississippi with her twins girls and son. In Louisiana, Krista dropped out of high school after feeling that the school she was transferred to prevented her from succeeding. She later enrolled in Camelot College to pursue a degree in medical assistance and her GED, but after becoming pregnant, she wasn’t able to continue school. She has previously worked as a PCA (Physician Care Assistant) and in housekeeping, but has struggled over the years to find a well-paying job and to make ends meet due to childcare expenses she cannot afford and her ineligibility for SNAP benefits. As a student in the Women in Construction program, she is excited and thankful to be in the program and looks forward to what she will be able to accomplish after the program has ended.",
+    "realname": "Krista",
     "initials": "KA",
     }],
 "interview": [
@@ -1464,7 +1464,7 @@ const OHPersonData =
 },
 {
 "speaker": "Krista",
-"text": "Well my name is Krista Augustine. I'm originally from Louisiana. I'm the baby girl of six siblings.",
+"text": "Well my name is Krista. I'm originally from Louisiana. I'm the baby girl of six siblings.",
 "cat": [],
 "important": "",
 },

@@ -7,6 +7,7 @@ import { Row, Col, Button, Card, Accordion } from 'react-bootstrap';
 import '../styling/Transcript.css';
 import OHPersonData from '../data/OHPersonData'
 import topic_categories from '../data/topic_categories';
+import flip_card_items from '../data/flip_card_items';
 
 class OHPerson extends React.Component {
   constructor(props) {
@@ -50,14 +51,12 @@ createHeader(){
   let match = this.props.match;
   const personname = match.params.name;
 
-  var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
-  result = result[0];
-  const printheader= result.header.map((obj) => {
-    return (
-      <h1>{obj.realname}</h1>
-      )
-  }
-  );
+  // var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
+  // result = result[0];
+
+  var result = flip_card_items.filter(obj => obj.name===personname)
+  result = result[0]
+  const printheader = <h1>{result.personname}</h1>
   const printinitials=result.header.map((obj) => {
     return (
       <h1 className="initials">{obj.initials}</h1>

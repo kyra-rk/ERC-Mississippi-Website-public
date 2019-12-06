@@ -13,6 +13,11 @@ import data_white from '../data/data_white.json'
 import categories from '../data/Metadata'
 import topic_categories from '../data/topic_categories';
 import { throwStatement } from '@babel/types';
+import {Steps} from 'intro.js-react';
+import '../styling/introjs.css'
+import { Fab, IconButton, Tooltip } from '@material-ui/core';
+import HelpIcon from '@material-ui/icons/Help';
+import HelpOutlineSharpIcon from '@material-ui/icons/HelpOutlineSharp';
 // import '../styling/font-awesome.min.css'
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 // import Map from '../components/Map.js'
@@ -62,7 +67,31 @@ class DropdownBootstrap extends Component {
                 racegender: true,
                 demselected: 'A',
                 genderselected: 'F',
-                buttonselected: 'Women'
+                buttonselected: 'Women',
+                stepsEnabled: false,
+                initialStep:0,
+                steps: [
+                  {
+                    element: '.step1',
+                    intro: 'Begin by selecting a category to explore',
+                  },
+                  {
+                    element: '.step2',
+                    intro: 'Select if you want to look at the demographics for everyone',
+                  },
+                  {
+                    element: '.step3',
+                    intro: 'Explore a specific race',
+                  },
+                  {
+                    element: '.step4',
+                    intro: 'Explore a specific gender',
+                  },
+                  {
+                    element: '.step5',
+                    intro: 'Explore specific race and gender combinations',
+                  },
+                ],
             }
             this.createButtons = this.createButtons.bind(this)
             this.handleClick = this.handleClick.bind(this)
@@ -86,16 +115,16 @@ class DropdownBootstrap extends Component {
         }
         //Creates specific demographic filter buttons
         createDemButtons(){
-    
-          let everyonegridbutton = 
+
+          let everyonegridbutton =
           <Grid container xs = {6} sm={6} md={4} lg={3} >
-            <Grid container className="Everyone" sm={4}>
+            <Grid container className="Everyone step2" sm={4}>
 
             <Grid item xs ={12} sm={12} zeroMinWidth>
                      <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button>
             </Grid>
             </Grid>
-            <Grid container className="Race" xs = {12} sm={8} >
+            <Grid container className="Race step3" xs = {12} sm={8} >
 
             <Grid item xs = {6} sm={6}  zeroMinWidth>
             <Button id="dembutton" key ="White" className={`White dembutton ${this.state.buttonselected==="White"? "selected": ""} ${this.state.race ? "available": "unavailable"}`} value={["W", "A", "White"]} onClick={this.handleDemClick}>White</Button>
@@ -104,9 +133,9 @@ class DropdownBootstrap extends Component {
             <Button id="dembutton" key ="Black" className={`Black dembutton ${this.state.buttonselected==="Black"? "selected": ""} ${this.state.race ? "available": "unavailable"}`} value={["B", "A", "Black"]} onClick={this.handleDemClick}>Black</Button>
             </Grid>
             </Grid>
-            <Grid container className="Gender" sm={4} >
+            <Grid container className="Gender step4" sm={4} >
             <Grid item xs = {6} sm={12}>
-              <Button id="genderbutton" key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`}  value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button>          
+              <Button id="genderbutton" key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`}  value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button>
             </Grid>
             <Grid item xs ={6} sm={12} >
             <Button id="genderbutton" key="Men" className = {`Men dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Men"? "selected": ""}`} value={["A", "M", "Men"]} onClick={this.handleDemClick}>Men</Button>
@@ -115,7 +144,7 @@ class DropdownBootstrap extends Component {
             </Grid>
 
             </Grid>
-            <Grid container className="RaceGender" sm={8}  >
+            <Grid container className="RaceGender step5" sm={8}  >
             <Grid item xs = {6} sm={6} >
                      <Button id="Women" key ="WhiteWomen" className={`WhiteWomen dembutton available ${this.state.buttonselected==="WhiteWomen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["W", "F", "WhiteWomen"]} onClick={this.handleDemClick}>White Women</Button>
             </Grid>
@@ -130,7 +159,7 @@ class DropdownBootstrap extends Component {
             </Grid>
           </Grid>
           </Grid>
-          
+
 
           let everyonebutton =
           <Col sm = {4} md={"auto"}>
@@ -271,6 +300,8 @@ class DropdownBootstrap extends Component {
         render(){
            const varbuttons = this.createButtons();
            const [everyonebuttons, dembuttons, everyonebutton] = this.createDemButtons();
+           const {stepsEnabled,steps,initialStep} = this.state;
+
            let match = this.props.match;
            let variables = [];
            let labels = [];
@@ -315,9 +346,16 @@ class DropdownBootstrap extends Component {
                 <Container fluid="True">
                 {/* /* <h1>
 Data Portal                </h1> */}
+                  <Steps
+                    enabled={stepsEnabled}
+                    steps={steps}
+                    initialStep={initialStep}
+                    onStart={this.onStart}
+                    onExit={this.onExit}/>
+
                  <Row className="justify-content-md-center">
                 {/* <Router> */}
-                   <ButtonToolbar> {varbuttons}
+                   <ButtonToolbar className="step1"> {varbuttons}
                    </ButtonToolbar>
                    {/* <Switch>
                     <Route strict path={`${match.path}/:varabbreviation`}
@@ -335,7 +373,7 @@ Data Portal                </h1> */}
                   {dembuttons}
                   </Row>
                   </Row> */}
-                 
+
                  <section class="buttons">
                   <Row className="justify-content-center">
                   {everyonebutton}
@@ -343,17 +381,22 @@ Data Portal                </h1> */}
                  </section>
 
                   <p></p>
-               
+                  <Tooltip title="Demo" arrow>
+                    <IconButton color="default" className="iconbutton" onClick={this.onStart}>
+                      <HelpOutlineSharpIcon color="primary" />
+                    </IconButton>
+                  </Tooltip>
+
                   {/* <Row className="justify-content-md-center">
-              
+
                   {racebuttons}
-               
+
                   </Row>
                   <Row className="justify-content-md-center">
-                    
+
                       {genderbuttons}
-                
-              
+
+
                                   </Row> */}
 
 
@@ -361,9 +404,17 @@ Data Portal                </h1> */}
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
                  {this.state.currentvar && variables &&
             <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
+
           </Container>
-               
+
             )
+        }
+        onStart = () => {
+          this.setState(() => ({ stepsEnabled: true }));
+        };
+
+        onExit = () => {
+          this.setState(() => ({stepsEnabled: false}));
         }
     }
 

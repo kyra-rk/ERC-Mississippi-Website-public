@@ -29,7 +29,7 @@ const CreateNavBar = () => {
             <Navbar.Brand className="NavbarBrand" href="/"><h2>MS Women's Count</h2></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
+                <Nav className="ml-auto">
                     {links}
                     <span className="sr-only">{links}</span>
                 </Nav>

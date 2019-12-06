@@ -40,7 +40,7 @@
 
  .initial{
     color: purple;
-    font-size: 500%;
+    font-size: 420%;
 }
 
 #fullname {
@@ -49,5 +49,7 @@
     font-weight: 900;
     font-size: 16px;
     color: #000000;
+    font-size: 1em;
+    color: purple;
     text-align: left;
 }

@@ -53,6 +53,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
 .navbar-nav a {
   display: inline-block;
   text-align: right;
+  font-style: italic;
 }
 
 .navbar-nav a:hover {
