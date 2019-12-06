@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .import1 {
-    font-size: 24px;
+    font-size: 20px;
     font-style: italic;
     font-weight: bold;
     color: #d4a45c;
@@ -10,8 +13,12 @@
 }
 
 #speakername {
+
+    font-family: "Fira Sans";
     display: inline;
     text-align: left;
+    font-size: 12px;
+    margin-left: 20%;
 }
 
 .selected {
@@ -26,12 +33,18 @@
 }
 
 .transcriptbutton{
+
+    font-family: "Fira Sans";
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 900;
     margin: 5px;
     margin-bottom: 30px;
 }
 
 #transcriptquotes{
-    margin-left: 50px;
+
+    margin-left: 2%;
 }
 
 #personbio{
