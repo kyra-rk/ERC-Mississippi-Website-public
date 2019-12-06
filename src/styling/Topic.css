@@ -12,16 +12,21 @@
  	overflow: auto;
     height: auto;
  }
+
+ h1{
+     font-family: "Fira Sans";
+     padding-bottom:20px;
+ }
  
 .rightcolumn{
     margin-right: 0
 }
 
  #topicrow {
-     margin-bottom: 30px;
  }
 
  #buttonrow{
+     margin-bottom: -30px;
      font-family: "Fira Sans";
      position: absolute;
      bottom: 0;
@@ -29,7 +34,12 @@
  }
 
  .topicbutton {
-    margin: 5px;
+     font-family: "Fira Sans";
+     text-transform: uppercase;
+     font-size: 10px;
+     font-weight: 900;
+     margin: 5px;
+     margin-bottom:40px;
  }
 
  #personblock {
@@ -39,8 +49,10 @@
  }
 
  .initial{
+     font-family: "Fira Sans";
     color: purple;
     font-size: 420%;
+     padding-left: 100px;
 }
 
 #fullname {
@@ -52,4 +64,5 @@
     font-size: 1em;
     color: purple;
     text-align: left;
+    padding-left: 100px;
 }

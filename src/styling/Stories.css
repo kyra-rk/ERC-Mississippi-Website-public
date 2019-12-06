@@ -39,11 +39,18 @@
 .oh p {
     font-family: "Roboto";
     font-size: 15px;
+    margin-left: 10%;
+    text-align: center;
+    width: 80%;
+
 }
 
 .oh h3{
+
     font-family: "Fira Sans";
-    text-align: left;
-    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 30px;
 }
 
