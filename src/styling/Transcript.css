@@ -46,7 +46,16 @@
     font-weight: 900;
     margin: 5px;
     margin-bottom: 30px;
+    float: left;
+
 }
+
+/* doesn't work */
+/* #buttonsbar{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+} */
 
 #transcriptquotes{
     font-family: "Roboto";

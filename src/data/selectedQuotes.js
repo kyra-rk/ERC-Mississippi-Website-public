@@ -7,8 +7,8 @@ category: "Health",
 initials: "C",
 audio: "MSaudio.mp3",
 quotes: {
-    quote1: "Yes. So now I'm just looking forward to what's next. I'm excited. Just ready and waiting to just learn more and stuff.",
-    quote2: "As a matter of fact, I quit college at 19 and I got pregnant at 20.",
+    quote1: "I'm always family oriented so everything I've planned or think, I think about my kids, my mom, because my mom has never traveled. And I want her to be here with me so everything I'm doing..I'm working on getting my mom here so she could come visit and you know have the opportunity whether she wants to come or stay whatever.",
+    quote2: "",
 }
 },
 {name: "Person2",
