@@ -84,7 +84,7 @@ class Map extends Component {
 
 
        var x_bar = d3.scaleLinear()
-       .range([0.15*svgWidth, .6*svgWidth])
+       .range([0.15*svgWidth, .5*svgWidth])
        .domain([0,  d3.max(data, function(d){
          return parseFloat(d[variable]).toFixed(2);
        })
@@ -364,9 +364,17 @@ class Map extends Component {
                      val = thresholds[i]
                      i+=1
                  }
- 
+                 
+                 let adjust = 1
+                 let adjustx = 0
+                 if (max > 100000) {
+                     adjust = 2
+                     adjustx = margin2.left
+                 }
+                 
+
                  const x_dotplot = d3.scaleLinear()
-                         .rangeRound([margin2.left*3,  newwidth])
+                         .rangeRound([margin2.left*4,  newwidth-adjustx])
                          .domain([min, max]);
  
                  var histogram = d3.histogram()
@@ -380,7 +388,7 @@ class Map extends Component {
                  var maxy = Math.ceil(maxinabin/5)*5;
                  
                  var y_dotplot = d3.scaleLinear()
-                 .rangeRound([height-margin2.bottom*3, 0 ])
+                 .rangeRound([height-margin2.bottom*4, 0 ])
                  .domain([0,maxy]);
                  
                  var yradius = (y_dotplot(0) - y_dotplot(1)-1)/2
@@ -390,7 +398,7 @@ class Map extends Component {
  
                  var ylimit = (radius*2)*maxy
 
-                  y_dotplot.rangeRound([height-margin2.bottom*3, margin2.top]);
+                  y_dotplot.rangeRound([height-margin2.bottom*4, margin2.top]);
  
                  let binContainer = svg3.selectAll(".gBin")
                              .data(bins, function(b) { 
@@ -401,25 +409,44 @@ class Map extends Component {
  
                  let adjustheight = height - margin2.bottom
                 
-                 
-                 
+                
                  svg3.append("g")
                  .attr("class", "axis--x")
-                 .attr("transform", "translate(0," + (adjustheight-margin2.bottom) + ")")
+                 .attr("transform", "translate(0," + (adjustheight-margin2.bottom*adjust - margin2.bottom) + ")")
                  .call(d3.axisBottom(x_dotplot).ticks(thresholds.length+1).tickSize(-(height-margin2.top), 0, 0))
                  .selectAll("text")
                  .style("text-anchor", "end")
-                 .attr("transform", function(){ if (bindist > 1000) {return "rotate(-65)";} else {return "rotate(0)";}});
+                 .attr("transform", function(){ if (bindist > 1000) {return "rotate(-45)";} else {return "rotate(0)";}});
  
+                 svg3.append("text")             
+                    .attr("transform",
+                            "translate(" + (margin2.left + newwidth/2) + " ," + 
+                                        (adjustheight + margin2.bottom*2.5) + ")")
+                    .attr("class", "axis--x label")
+                    .style("text-anchor", "middle")
+                    .text("Value");
+
                  svg3.append("g")
                  .attr("class", "axis--y")
-                 .attr("transform", "translate(" + margin2.left*3 + ",0)")
+                 .attr("transform", "translate(" + margin2.left*4 + ",0)")
                  .call(d3.axisLeft(y_dotplot).ticks(maxinabin/5).tickSize(-svgWidth, 0, 0))
- 
+                
+
+                 svg3.append("text")      
+                 .style("text-anchor", "end")
+
+                //  .attr("transform", "rotate(-90)")       
+                    .attr("transform",
+                            "translate(" + (margin2.left*1.25) + " ," + 
+                                        (y_dotplot(maxy/2) - margin2.bottom*4) + ") rotate(-90)")
+
+                    .attr("class", "axis--y label")
+                    .text("Number of Counties");
+
                  let binContainerEnter = binContainer.enter()
                  .append("g")
                      .attr("class", "gBin")
-                     .attr("transform", d => "translate(" + (x_dotplot(d.x0) + x_dotplot(d.x1))/2 + "," + adjustheight + ")");
+                     .attr("transform", d => "translate(" + (x_dotplot(d.x0) + x_dotplot(d.x1))/2 + "," + (adjustheight-margin2.bottom) + ")");
  
                  binContainerEnter.selectAll("circle")
                      .data(d =>
@@ -653,20 +680,20 @@ class Map extends Component {
            <Col lg={{span: 11}}>
                <Row className="rowblock" >
                    <Col lg={{span: 5, offset: 1}}>
-                       <Row className="justify-content-center"><div className="maptitle"><h1> Map </h1></div></Row>
-                       <Row><Col className="mapclass"></Col></Row>
+                       <Row className="justify-content-center"><div className="maptitle"><h1> Spatial Distribution </h1></div></Row>
+                       <Row className="step6"><Col className="mapclass"></Col></Row>
                    </Col>
 
                    <Col lg={{span: 6}}>
                        <Row className="justify-content-center"><div className="maptitle"><h1> Dotplot Distribution </h1></div></Row>
-                       <Row><Col className="distribution"></Col></Row>
+                       <Row className="step7"><Col className="distribution"></Col></Row>
                    </Col>
                </Row>
                <Row className="rowblock" noGutters={true}>
                <Col  lg={{span: 5, offset: 1}} className="test">
                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim. Cras ornare arcu dui vivamus arcu. Tincidunt arcu non sodales neque sodales ut. Proin fermentum leo vel orci porta non pulvinar neque laoreet. Fusce ut placerat orci nulla pellentesque dignissim enim sit. Ac ut consequat semper viverra nam libero justo. Aliquet risus feugiat in ante metus dictum at. Mauris vitae ultricies leo integer. Fames ac turpis egestas maecenas pharetra.</div>
                    </Col>
-                   <Col lg ={{span: 5, offset: 1}} className="tablemap"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>
+                   <Col lg ={{span: 5, offset: 1}} className="tablemap step8"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>
                </Row>
            </Col>
        </Row>

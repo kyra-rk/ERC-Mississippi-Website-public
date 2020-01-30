@@ -178,6 +178,9 @@ margin-left: -15px;
 
 .maptitle h1{
   font-size: 15px;
+  /* font-size: 20px; */
+  text-decoration: underline;
+  
 }
 
 .description p {
@@ -226,7 +229,8 @@ div.legend {
 
 .top10header {
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
+  text-decoration: underline;
 }
 
 .dotplottitle {

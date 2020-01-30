@@ -42,7 +42,7 @@ class Topic extends Component {
       <Route path={`${prevpath}/:name`} component={OHPerson}/></Router>
       )
   }
-  
+  console.log(topic_categories);
   var buttons = topic_categories.map((obj) =>
     <div key={obj.name}>
       <Link to={`${this.props.match.path}/${obj.name}`}>

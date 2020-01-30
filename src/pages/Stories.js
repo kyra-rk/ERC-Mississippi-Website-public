@@ -36,9 +36,9 @@ export const Stories = ({ match }) => (
       If you are more interested in reading about one person's story, then select "By Person" button. You will see a biography of the WinC participant and the full transcript of their interview.
       If you are more interested in reading quotes related to a topic, then select "By Topic" button. You can get to toggle between the topics and see relevant quotes.
     </p>
-    <Button className="ohbutton" href ={`${match.url}/people`} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>By Person</Button>
+    <Button className="ohbutton" href ={`${match.url}/people`} style={{backgroundColor: "#eabd24", borderColor: "#d4a45c"}}>By Person</Button>
     {' '}
-    <Button className="ohbutton" href = {`${match.url}/topic`} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>By Topic</Button>
+    <Button className="ohbutton" href = {`${match.url}/topic`} style={{backgroundColor: "#eabd24", borderColor: "#d4a45c"}}>By Topic</Button>
     <Router>
       <Switch>
         <Route path={`${match.url}/people`} component={People}/>

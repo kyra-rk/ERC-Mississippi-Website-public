@@ -7,7 +7,7 @@ import '../styling/EconIndex.css';
 import { Row, Container, Collapse, Col, Button, Accordion, Card, CardGroup, Tab, Tabs, TabContent, Image} from 'react-bootstrap';
 import {Slider, Handles, Rail, Ticks, Tracks} from 'react-compound-slider'
 import Map from '../components/IndexMap'
-import DemographicMap from '../components/DemographicMaps'
+import IndexMap2 from '../components/IndexMap2'
 
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import Divider from '@material-ui/core/Divider';
@@ -150,7 +150,7 @@ class Slide extends React.Component{
       return(
         <div className={sliderClass}>
           <Row>
-            <Col sm={i}>
+            <Col sm={10}>
           <Slider
             mode = {2}
             step = {step}
@@ -385,7 +385,7 @@ function RankCalc(props){
 
 function average(arr){
   var finalstate=arr.reduce(function(state,a) { state.sum+=a;state.count+=1; return state },{sum:0,count:0}); 
-  return finalstate.sum/finalstate.count
+  return (finalstate.sum/finalstate.count).toFixed(2)
 }
   
 // function ListItemLink(props) {
@@ -408,7 +408,7 @@ export const EconIndex = () => (
       <div className="econindex">
       <Row className="justify-content-center" noGutters={"True"}>
 
-      {/* <Col sm={6} lg={2}> */}
+      <Col lg={1}>
 
 {/* <div id="list-example" >
 <a class="list-group-item list-group-item-action" href="#section-1">Item 1</a>
@@ -430,22 +430,42 @@ export const EconIndex = () => (
 {/* </div> */}
 <div className="scrollspy">
 <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current">
-<li><a href="#section-1">section 1</a></li>
-<li><a href="#section-2">section 2</a></li>
-<li><a href="#section-3">section 3</a></li>
+  <ul>
+<li><a href="#section-1">Variables in the Index</a></li>
+<li><a href="#section-2">Rescaling Variables</a></li>
+<li><a href="#section-3">Rescaling by Race</a></li>
+<li><a href="#section-4">Composing the Index</a></li>
+<li><a href="#section-5">Index Map</a></li>
+<li><a href="#section-6">Index Maps by Race</a></li>
+</ul>
 </Scrollspy>
 </div>
-{/* </Col>  */}
+</Col> 
 <Col sm={8}>
 
-        <h1>Index</h1>
-        
+        <h1>Women's Economic Security Index</h1>
+        <Row>
+          <h6>We highly recommend you read through our methodology for calculating the index, but if you would like to go straight to the
+              maps of the index, use the options on the left sidebar. 
+          </h6>
+        </Row>
 
             <Row className="justify-content-center">
+            <div class="anchor">
+              <a id="section-1"> </a>
+            </div>
 
+<section></section>
             <section class="page-section">
+            <Row>
+                <Col>
+
+               <div className="headerdiv indexheader"><h1 className="descriptionheader">Variables in the Index</h1></div>
+
+            </Col>
+            </Row>
               <div className="info_section">
-                <h1>What variables are part of our index?</h1>
+                {/* <h1>What variables are part of our index?</h1> */}
                 <div className="tabs">
                 <Vars />
                 </div>
@@ -456,10 +476,20 @@ export const EconIndex = () => (
 
             <Row className="justify-content-center" >
 {/* <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example"> */}
-            <section id ="section-1" class="bg-light page-section" className="section">
+<div class="anchor">
+              <a id="section-2"> </a>
+            </div>
+            <section class="bg-light page-section" className="section">
             <h1>How did we calculate the index?</h1>
+            <Row>
+                <Col>
+
+               <div className="headerdiv indexheader"><h1 className="descriptionheader">Rescaling Variables</h1></div>
+
+            </Col>
+            </Row>
               <div class="slidecontainer" className="info_section">
-                <h2>Rescaling Each Variable</h2>
+                {/* <h2>Rescaling Each Variable</h2> */}
                 <p>Most of our variables were on a scale of 0-100 since they were percentages, but we also had variables such as Median Income that had to be incorporated into the index. In order to ensure every variable was standardized in the same way, we rescaled each variable to be from 0-100 based on the range of the dataset.</p>
                 <p> Let's take Median Earnings for women working full time and Poverty as an example. 
                   The minimum value for Median Income is 18,500 and the maximum is 41,059. We let these correspond to 0 and 100, respectively. The county with the minimum value gets a value of 0 and the county with the highest value gets a value of 100. <span style={{fontWeight: "bold"}}>To calculate each county's rescaled value, we take its value, subtract the minimum from it and then divide over the range.</span> We get a fraction that we then multiply by 100. 
@@ -478,126 +508,193 @@ export const EconIndex = () => (
                 
               </div>
               </section>
-              <section id ="section-2" class="bg-light page-section" className="section">
+
+              <div class="anchor">
+              <a id="section-3"> </a>
+            </div>
+
+              <section  class="bg-light page-section" className="section">
+              <Row>
+                <Col>
+
+               <div className="headerdiv indexheader"><h1 className="descriptionheader">Rescaling by Race</h1></div>
+
+            </Col>
+            </Row>
+                  <div class="slidecontainer" className="info_section race">
+{/* <h2>Rescaling Variables Differentiated by Race</h2> */}
+<p>Due to our commitment to intersectionality and to understanding how economic security is differentiated by race, we wanted to create a separate economic security index for white women and Black women, asides from our women's economic security index. 
+However, both demographics have different ranges and if we rescale each to its range, we would not be able to compare values to each other. The two sliders below show the rescaled value that would be returned for a county if it's Median Earnings value was $32,500. 
+The rescaled value for Black Women's Median Earnings is almost twice as high as for white women. Since Black Women's Median Earnings have a maximum of $37,344, a value of $32,500 would be high compared to most counties. In comparison, the value falls in the lower half of the distribution for white women since 
+Median Earnings for white women have a much higher maximum.  
+</p>
+<h3>Median Earnings - Full Time for White Women</h3>
+<Slide min={23500} max={45043} values={32500} type="rescale" actualmin={23838} step={500}/>
+<h3>Median Earnings - Full Time for Black Women</h3>
+<Slide min={16000} max={37344} values={32500} type="rescale" actualmin={16382} step={500}/>
+
+<div className="subheading">
+<h3>One Scale for Both Races</h3></div>
+<p>To account for that, we will use one range, where the minimum is the minimum of the distribution for either race and similarly for the maximum. The sliders below show the 
+full range, with each race's distribution highlighted.</p>
+
+
+
+<h3>Median Earnings - Full Time for White Women</h3>
+<Slide min={16000} max={45043} values={[23838, 45043]} type="rescale" actualmin={16382} step={1} multiple={"True"}/>
+<h3>Median Earnings - Full Time for Black Women</h3>
+<Slide min={16000} max={45043} values={[16382, 37344]} type="rescale" actualmin={16382} step={1} multiple={"True"}/>
+
+<h3>Combined Scale</h3>
+<p>This last slider shows the combined distribution of the two races again. On the new scale, a value of $32,500 corresponds to 56. Now, county values will be comparable across race. </p>
+<Slide min={16000} max={45043} values={32500} type="rescale" actualmin={16382} step={500}/>
+
+<p> The values now are able to reflect two things: 
+<Row>
+<Col md={1}></Col>
+<Col sm={10} >
+<ul><li> As before, they show the relative economic security of the county for the given race of women depending on where they fall from 0 to 100. 
+</li>
+<li>But now, they also show us a measure of inequality in a county based on the difference in values for each race. </li></ul>
+</Col>
+</Row>
+Counties with very different values for both races imply that one group of women generally have much higher earnings whereas counties with similar values mean that both races are facing similar conditions. 
+<br />
+<br />
+One important thing to note with this new range is that it combines the data for both races, but does so without losing the detail that both provide us. This is <span style={{fontWeight: "bold"}}> not </span> the same range as the one for Median Earnings for all Women that we saw earlier. It has a lower minimum and a higher maximum, reflecting the racial dynamics of economic security. 
+</p>
+
+</div>
+
+
+              <div class="anchor">
+              <a id="section-4"> </a>
+            </div>
+              <section class="bg-light page-section" className="section">
+              <Row>
+                <Col>
+
+               <div className="headerdiv indexheader"><h1 className="descriptionheader">Composing the Index</h1></div>
+
+            </Col>
+            </Row>
 
               <div class="slidecontainer" className="info_section multiplevars">
                 <h2>Combining Variables Into Our Index</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <p>We do the same steps for each of our variables as shown below and we average them to get a final index value for a county. </p>
                 <h3>Poverty</h3>
-                <Slide min={0} max={100} values={values_x[0]} type="vars" actualmin={0} step={1} flip={"True"}/>
+                <Slide min={10} max={44.75} values={22} type="vars" actualmin={10.41} step={1} flip={"True"}/>
 
                 <h3>Median Earnings - Full Time</h3>
-                <Slide min={0} max={100} values={values_x[1]} type="vars" actualmin={0} step={1}/>
+                <Slide min={18500} max={41059} values={33000} type="vars" actualmin={18500} step={500}/>
                 <h3>Median Earnings - Part Time</h3>
-                <Slide min={0} max={100} values={values_x[2]} type="vars" actualmin={0} step={1}/>
+                <Slide min={4500} max={13694} values={9500} type="vars" actualmin={4523} step={1}/>
                 <h3>Health Insurance</h3>
-                <Slide min={0} max={100} values={values_x[3]} type="vars" actualmin={0} step={1}/>
+                <Slide min={78} max={92.85} values={87} type="vars" actualmin={78.55} step={1}/>
                 <h3>Educational Level - Less Than A High School Degree</h3>
-                <Slide min={7} max={29.68} values={20} type="vars" actualmin={0} step={1}/>
+                <Slide min={7} max={29.68} values={12} type="vars" actualmin={7.79} step={1} flip={"True"}/>
                 <h3>Unemployment Rate</h3>
-                <Slide min={0} max={100} values={values_x[3]} type="vars" actualmin={0} step={1}/>
+                <Slide min={4} max={24.9} values={10} type="vars" actualmin={4.5} step={1} flip={"True"}/>
                 
                 <Divider className="divider" variant="middle" />
 
                 <Row className="justify-content-center rowblock">
-    <h4>Index Value: {average([20,30,50,80,100,80])}</h4>
+    <h4>Index Value: {average([66,64,54,59,81,73])}</h4>
                 </Row>
-
+<p>This county would have a final index value of 66.17. As we can see through the rescaled values it gets for each variable, they are distributed from 54 to 81, which means
+  this county is generally on the higher end of the distribution for each variable. 
+</p>
               </div>
               </section>
 
-              <section id ="section-3" class="bg-light page-section" className="section">
 
-              <div class="slidecontainer" className="info_section race">
-      <h2>Rescaling Variables Differentiated by Race</h2>
-      <p>Due to our commitment to intersectionality and to understanding how economic security is differentiated by race, we wanted to create a separate economic security index for white women and Black women, asides from our women's economic security index. 
-        However, both demographics have different ranges and if we rescale each to its range, we would not be able to compare values to each other. The two sliders below show the rescaled value that would be returned for a county if it's Median Earnings value was $32,500. 
-        The rescaled value for Black Women's Median Earnings is almost twice as high as for white women. Since Black Women's Median Earnings have a maximum of $37,344, a value of $32,500 would be high compared to most counties. In comparison, the value falls in the lower half of the distribution for white women since 
-        Median Earnings for white women have a much higher maximum.  
-      </p>
-      <h3>Median Earnings - Full Time for White Women</h3>
-      <Slide min={23500} max={45043} values={32500} type="rescale" actualmin={23838} step={500}/>
-      <h3>Median Earnings - Full Time for Black Women</h3>
-      <Slide min={16000} max={37344} values={32500} type="rescale" actualmin={16382} step={500}/>
-
-<div className="subheading">
-      <h3>One Scale for Both Races</h3></div>
-      <p>To account for that, we will use one range, where the minimum is the minimum of the distribution for either race and similarly for the maximum. The sliders below show the 
-        full range, with each race's distribution highlighted.</p>
-
-
-      
-      <h3>Median Earnings - Full Time for White Women</h3>
-      <Slide min={16000} max={45043} values={[23838, 45043]} type="rescale" actualmin={16382} step={1} multiple={"True"}/>
-      <h3>Median Earnings - Full Time for Black Women</h3>
-      <Slide min={16000} max={45043} values={[16382, 37344]} type="rescale" actualmin={16382} step={1} multiple={"True"}/>
-      
-      <h3>Combined Scale</h3>
-      <p>This last slider shows the combined distribution of the two races again. On the new scale, a value of $32,500 corresponds to 56. Now, county values will be comparable across race. </p>
-      <Slide min={16000} max={45043} values={32500} type="rescale" actualmin={16382} step={500}/>
-
-       <p> The values now are able to reflect two things: 
-         <Row>
-           <Col md={1}></Col>
-           <Col sm={10} >
-        <ul><li> As before, they show the relative economic security of the county for the given race of women depending on where they fall from 0 to 100. 
-          </li>
-          <li>But now, they also show us a measure of inequality in a county based on the difference in values for each race. </li></ul>
-          </Col>
-          </Row>
-        Counties with very different values for both races imply that one group of women generally have much higher earnings whereas counties with similar values mean that both races are facing similar conditions. 
-        <br />
-        <br />
-         One important thing to note with this new range is that it combines the data for both races, but does so without losing the detail that both provide us. This is <span style={{fontWeight: "bold"}}> not </span> the same range as the one for Median Earnings for all Women that we saw earlier. It has a lower minimum and a higher maximum, reflecting the racial dynamics of economic security. 
-      </p>
-    
-    </div>
-            </section>
+                      </section>
             {/* </div> */}
             </Row>
+
+            <div class="anchor">
+              <a id="section-5"> </a>
+            </div>
+            <section className="section">
             <Row>
-              <h2>Index</h2>
+                <Col>
+
+               <div className="headerdiv indexheader"><h1 className="descriptionheader">Index</h1></div>
+
+            </Col>
             </Row>
+            {/* <Row>
+              <h2>Index</h2>
+            </Row> */}
             <Row className="rowblock">
-        <Col md={7}>
+        <Col lg={7}>
           <Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map></Col>
         <Col>            
         <div className="indexdesc">
-          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+          <div>We finally map all the index values by county to see how it distributes across the state. Some More Explanation Here. <br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
         </div>
     </Col>
     </Row>
+    </section>
 
-    {/* <DemographicMap className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["IndexWhite", "IndexBlack"]} datainput = {indexdata} />} */}
+    <div class="anchor">
+              <a id="section-6"> </a>
+            </div>
 
-    <Row className="rowblock justify-content-between">
-      
-        <Col md={5}>
-          <Map datainput = {indexdata} variable ={"Index_White_M2"} height={425} width={325} className={"indexw"}></Map></Col>
-        
-        <Col md={5}>
-          <Map datainput = {indexdata} variable ={"Index_Black_M2"} height={425} width={325} className={"indexb"}></Map></Col>
-     
-        </Row>
             
-            <section class="page-section" className="section">
+            
+            {/* <section class="page-section" className="section">
             <div className="info_section">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               <img id ="EconImage" src = {require('../pictures/MSimage.png')} alt="Index Map"/>
             </div>
-          </section>
+          </section> */}
          
-        
+         <section className="section">
+
+<Row>
+                <Col>
+
+               <div className="headerdiv indexheader"><h1 className="descriptionheader">Index Maps by Race</h1></div>
+
+            </Col>
+            </Row>
+            </section>
 
         </Col>
         </Row>
 
         {/* </Container> */}
-      </div>
-    </div>
+  
+    {/* <IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} /> */}
+
+    {/* <Row>
+      <Col sm={2}></Col>
+      <Col sm={8}>
+    <section className="section">
+
+<Row>
+                <Col>
+
+               <div className="headerdiv indexheader"><h1 className="descriptionheader">Index Maps by Race</h1></div>
+
+            </Col>
+            </Row>
+
+    <IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} />
+
+           </section> 
+           <Col sm={2}></Col>
+<div>TESTING OUT </div>
+    </Col>
+    </Row> */}
+</div>
+
+</div>
  
- 
+<IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} />
+
     
   </div>
 	)

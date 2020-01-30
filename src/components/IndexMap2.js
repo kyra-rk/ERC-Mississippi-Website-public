@@ -17,7 +17,6 @@ class DemographicMaps extends Component {
         this.mapElement = React.createRef();
         this.componentDidMount = this.componentDidMount.bind(this)
         this.drawMap =this.drawMap.bind(this)
-        this.componentDidUpdate = this.componentDidUpdate.bind(this)
         this.setUp =this.setUp.bind(this)
         this.insertLegend = this.insertLegend.bind(this)
     }
@@ -44,23 +43,6 @@ class DemographicMaps extends Component {
 
 }
 
-    componentDidUpdate(prevProps){
-        if (this.props.variables != prevProps.variables){
-            const [width, height, projection, missing] = this.setUp();
-            console.log("didupdate: ", width)
-            let variables = this.props.variables;
-            let labels = this.props.labels;
-            variables.forEach((obj, i) => this.drawMap(`.demmapclass${i}`, obj, width, height, projection))
-
-            // this.drawMap(".demmapclass1", this.props.variables[0],width, height, projection);
-            // this.drawMap(".demmapclass2", variables[1], width, height, projection);
-            // this.drawMap(".demmapclass3", variables[2], width, height, projection);
-            // this.drawMap(".demmapclass4", variables[3], width, height, projection);
-            this.insertLegend(missing);
-        }
-        
-    }
-
     setUp() {
         var missing;
         // // let svgWidth = ReactDOM.findDOMNode(this.mapElement).width
@@ -70,12 +52,12 @@ class DemographicMaps extends Component {
         svgWidth -= parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
         var svgHeight;
         console.log(this.props.labels.length)
-        if (this.props.labels.length==2){
-            svgHeight = .75*svgWidth;
-        }
-        else {
+        // if (this.props.labels.length==2){
+        //     svgHeight = .75*svgWidth;
+        // }
+        // else {
             svgHeight = svgWidth*1.3;
-        }
+        // }
         // console.log(svgWidth, svgHeight)
         const projection = d3.geoTransverseMercator()
         .rotate([88 + 50/60,-29 - 30/60])
@@ -255,7 +237,7 @@ class DemographicMaps extends Component {
         else {
             var x = d3.scaleLinear()
             .domain(color.domain())
-            .rangeRound([.26*svgWidth, .76*svgWidth]);
+            .rangeRound([.2*svgWidth, .95*svgWidth]);
         }
         
 
@@ -354,7 +336,7 @@ class DemographicMaps extends Component {
     //    );
    return (
       <Container fluid="True">
-       <Row className="rowblock step9">
+       {/* <Row className="rowblock">
             <Row>
                 <Col>
 
@@ -362,22 +344,28 @@ class DemographicMaps extends Component {
 
             </Col>
             </Row>
-            <Row className="justify-content-center">
-            <Col lg={10}>
+            <Row>
+            <Col>
               <div className="distexplanation">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-               {/* <p>Quick description here</p> */}
            </Col>
            </Row>
-        </Row>
-        <Row className="rowblock">
-            <Col lg={{span: 12}}>
+        </Row> */}
+        <Row noGutters={"True"}>
+        <Col lg={2}></Col>
+
+            <Col lg={{span: 7}}>
                <Row className="rowblock justify-content-md-center">
                    
-                   <Col lg={{span: colspan}}>
+                   <Col md={{span: 6}}>
                        <Row className="justify-content-md-center"><div className="maptitle"><h1> {this.props.labels[0]}</h1></div></Row>
                        <Row><Col className="demmapclass0"></Col></Row>
                    </Col>
-                   {mapstest}
+
+                   <Col md={{span: 6}}>
+                       <Row className="justify-content-md-center"><div className="maptitle"><h1> {this.props.labels[1]}</h1></div></Row>
+                       <Row><Col className="demmapclass1"></Col></Row>
+                   </Col>
+                   
                    {/* <Col lg={{span: 3}}>
                        <Row className="justify-content-md-center"><div className="maptitle"><h1> Map 2</h1></div></Row>
                        <Row><Col className="demmapclass1"></Col></Row>
@@ -394,6 +382,15 @@ class DemographicMaps extends Component {
                </Row>
                <Row className="rowblock" ><Col className="legend"></Col></Row>
            </Col>
+           <Col lg={2}>
+           <Row className="rowblock justify-content-md-center">
+<div className="indexracedesc"><p>The index values by race span from 14-93, with 93 being the most economically secure and 14 being the least economically secure county. 
+               We see higher relative values for both races in areas around Jackson, Biloxi, and at the north, counties close to Memphis, Tennessee. 
+                We also see that for most counties, there is a huge disparity between both races and white women are more economically secure than Black women. 
+                </p>
+                </div>
+                </Row></Col>
+
        </Row>
        </Container>
    )

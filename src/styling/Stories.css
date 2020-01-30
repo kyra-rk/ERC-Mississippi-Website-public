@@ -1,33 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .ohtop{
   /* background-color: #d4a45c; */
   margin-top: -30px;
 }
 
 .ohbutton{
-    margin-top: 30px;
-    margin-bottom: 20px;
-    width: 45%;
+
+    font-family: "Roboto";
+    margin-top: 10px;
+    margin-bottom: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 20%;
+    background-color: #6d1b6c;
 }
 
 .ohtop h1{
-    text-align: left;
+    font-family: "Fira Sans";
+    font-weight: bold;
+    letter-spacing: -1.5px;
+    position: relative;
+    text-align: center;
     font-size: 40px;
-    /* color: white; */
-    padding-top: 30px;
-  }
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
 
 .ohtop p{
-  /* color: white; */
-  text-align: left;
-  padding-bottom: 20px;
+    font-family: "Roboto";
+    margin-left: 10%;
+    text-align: center;
+    padding-bottom: 20px;
+    width: 80%;
+}
+
+.oh p {
+    font-family: "Roboto";
+    font-size: 15px;
+    /* margin-left: 10%; */
+    text-align: left;
+    /* width: 80%; */
+
 }
 
 .oh h3{
-    text-align: left;
-    font-size: 30px;
+
+    font-family: "Fira Sans";
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 30px;
 }
 
-.oh p{
-    text-align: left;
-    font-size: 15px;
-  }

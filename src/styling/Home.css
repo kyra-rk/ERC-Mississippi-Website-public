@@ -14,10 +14,12 @@
   position:absolute;
   align: left;
   margin-left: -55%;
-  margin-bottom: 20%;
+  /* margin-bottom: 10%; */
   width: 600px;
-  height: 800px;
+  height: 700px;
   background-color: #642563;
+  overflow: hidden;
+  /* border-bottom: 5px solid gray; */
 }
 
 mark.yellow {
@@ -29,22 +31,23 @@ mark.yellow {
 .image{
   display: inline-block;
   position: relative;
-  margin-top: 6%;
+  margin-top: 3%;
   margin-left: -29%;
-  margin-bottom: 10%;
+  margin-bottom: 3.75%;
+  border: 3px solid teal;
 
-  box-shadow: -70px 60px 220px rgba(0, 0, 0, 0.32);
+  /* box-shadow: -70px 60px 220px rgba(0, 0, 0, 0.32); */
 }
 
 #HomeBanner{
-  width: 490px;
-  height: 440px;
+  width: 650px;
+  height: 600px;
 }
 
 .bannerwords{
 
   display: inline-block;
-  margin-left: 100px;
+  margin-left: 10%;
   width: 100px;
   color: #000000;
   font-family: "Fira Sans";
@@ -60,9 +63,39 @@ mark.yellow {
   /* text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.15); */
 }
 
-.introduction{
-  margin: 50px 150px 50px 150px;
+.page-section {
+  /* border-top: 3px solid #642563; */
+}
+.page-section.first {
+  background-color: white;
+  color: #6c757d;
+}
+
+/* .page-section {
+  background-color: white;
+} */
+.introduction {
+  /* margin: 0px 150px 0px 150px;
+  padding-top: 50px;
+  padding-bottom: 50px; */
+  padding: 50px 150px;
+
   font-family: 'Roboto';
+}
+
+#services {
+   margin: 0px 150px 0px 150px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-family: 'Roboto';
+}
+
+#services div.introduction {
+  padding-bottom: 0px;
+}
+
+.first h1 {
+  color: teal;
 }
 
 .introduction h1{
@@ -70,7 +103,7 @@ mark.yellow {
   font-family: "Fira Sans";
   font-weight: bold;
   letter-spacing: -1.5px;
-  margin-top: 15%;
+  /* margin-top: 15%; */
   position: relative;
   text-align: center;
   font-size: 60px;
@@ -79,7 +112,7 @@ mark.yellow {
 .introduction h2{
 
   letter-spacing: -1.5px;
-  font-weight: normal;
+  font-weight: bold;
   margin-top: -5%;
   font-family: "Fira Sans";
   position: relative;
@@ -94,13 +127,14 @@ mark.yellow {
   text-align: center;
   font-size: 50px;
   font-family: 'Roboto';
-  padding: 100px;
+  padding: 10px;
+  margin-top: 30px;
 }
 
 .introduction p{
   text-align: center;
   font-size: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .Howto{

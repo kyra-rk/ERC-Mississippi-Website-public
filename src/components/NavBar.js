@@ -15,7 +15,7 @@ const CreateNavBar = () => {
                            {url: "/comparison", name: "Compare Data"}, 
                            {url: "/index", name: "Index"}, 
                            {url: "/stories", name: "Stories"},
-                           {url: "/methodology", name: "Methodology"},
+                           // {url: "/methodology", name: "Methodology"},
                            {url: "/about", name: "About"},
                            {url: "/contact", name: "Contact"}];
 
@@ -26,7 +26,7 @@ const CreateNavBar = () => {
     
     return (
         <Navbar collapseOnSelect expand="xl" className="navigation" variant="dark" sticky="top">
-            <Navbar.Brand className="NavbarBrand" href="/"><h2>MS Women's Count</h2></Navbar.Brand>
+            <Navbar.Brand className="NavbarBrand" href="/"><h2>Make Women Count</h2></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto">
