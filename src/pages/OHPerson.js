@@ -64,7 +64,7 @@ createHeader(){
   });
   const printbio=result.header.map((obj) => {
     return (
-      <p>{obj.longbio}</p>
+      <p id="personbio">{obj.longbio}</p>
     )
   });
   return [printheader, printinitials, printbio]
@@ -140,9 +140,9 @@ annotationwidth = 4
           {printinitials}
           </div>
         </Col> */}
-        <Col sm={8}>
+        <Col sm={10}>
           <h1>{printheader}</h1>
-          <p id="personbio">{printbio}</p>
+          {printbio}
         </Col>
       </Row>
         <div>

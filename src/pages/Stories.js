@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import {BrowserRouter as Router,Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router,Route, Switch, Link} from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import Topic from './Topic'
 import People from './People'
@@ -29,17 +29,18 @@ export const Stories = ({ match }) => (
     </p>
     </div>
     </div>
-    <div className="screenwidth">
     <div className="oh">
+
+    <div className="screenwidth">
     <h3>How do I navigate this page?</h3>
     <p>
-      If you are more interested in reading about one person's story, then select "By Person" button. You will see a biography of the WinC participant and the full transcript of their interview.
-      If you are more interested in reading quotes related to a topic, then select "By Topic" button. You can get to toggle between the topics and see relevant quotes.
+      If you are more interested in reading about one person's story, then select "By Person" button. You will see a biography of the WinC participant and the full transcript of their interview. You can highlight transcript text by topic to easily find relevant quotations. 
+      If you are more interested in reading quotes related to a topic, then select "By Topic" button. You can toggle between the topics and see relevant quotes. Check our Methodology page to understand what each of the topics mean.
     </p>
-    <Button className="ohbutton" href ={`${match.url}/people`} style={{backgroundColor: "#eabd24", borderColor: "#d4a45c"}}>By Person</Button>
-    {' '}
-    <Button className="ohbutton" href = {`${match.url}/topic`} style={{backgroundColor: "#eabd24", borderColor: "#d4a45c"}}>By Topic</Button>
     <Router>
+    <Button as={Link} className="ohbutton" to={`${match.url}/people`} style={{backgroundColor: "teal", borderColor: "teal"}}>By Person</Button>
+    {' '}
+    <Button as={Link} className="ohbutton" to= {`${match.url}/topic`} style={{backgroundColor: "teal", borderColor: "teal"}}>By Topic</Button>
       <Switch>
         <Route path={`${match.url}/people`} component={People}/>
         <Route path={`${match.url}/topic`} component={Topic}/>

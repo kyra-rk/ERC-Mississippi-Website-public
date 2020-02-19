@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../styling/Map.css'
-import {Row, Col, Container} from 'react-bootstrap'
+import {Row, Col, Container, Card} from 'react-bootstrap'
 import json from '../data/Mississippi-Counties.json'
 import * as d3 from "d3";
 // import d3tip from "d3-tip";
@@ -674,7 +674,8 @@ class Map extends Component {
                {/* <p>Quick description here</p> */}
            </Col>
            <Col lg={{span: 10, offset: 1}}>
-              <div className="distexplanation">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+              <div className="distexplanation"> <p>Short description of the variable will go here. </p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                {/* <p>Quick description here</p> */}
            </Col>
            <Col lg={{span: 11}}>
@@ -690,8 +691,10 @@ class Map extends Component {
                    </Col>
                </Row>
                <Row className="rowblock" noGutters={true}>
-               <Col  lg={{span: 5, offset: 1}} className="test">
-               <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim. Cras ornare arcu dui vivamus arcu. Tincidunt arcu non sodales neque sodales ut. Proin fermentum leo vel orci porta non pulvinar neque laoreet. Fusce ut placerat orci nulla pellentesque dignissim enim sit. Ac ut consequat semper viverra nam libero justo. Aliquet risus feugiat in ante metus dictum at. Mauris vitae ultricies leo integer. Fames ac turpis egestas maecenas pharetra.</div>
+               <Col  lg={{span: 5, offset: 1}} className="longdesc">
+               <div><p> Longer description of variable and info on the source will go here.</p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim. 
+               <Card className="relatedinfo"><Card.Body><Card.Title>Related Info</Card.Title><Card.Text>See our Stories Page for more insight on how these data show up in women's lives day to day. </Card.Text> </Card.Body></Card>
+               </div>
                    </Col>
                    <Col lg ={{span: 5, offset: 1}} className="tablemap step8"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>
                </Row>

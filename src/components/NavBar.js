@@ -1,6 +1,8 @@
 /*navbar component that will always be on top of website*/
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap'
+
+import { NavLink} from 'react-router-dom'
 import '../styling/App.css';
 
 /*Calling the CreateNavBar const that is the const lower down*/
@@ -12,17 +14,17 @@ const CreateNavBar = () => {
     const nav_bar_items = [{url: "/", name: "Home"}, 
                          //  {url: "/dataportal", name: "Data Portal"},
                            {url: "/dataportal", name: "Data Portal"},
-                           {url: "/comparison", name: "Compare Data"}, 
-                           {url: "/index", name: "Index"}, 
+                        //    {url: "/comparison", name: "Compare Data"}, 
+                           {url: "/indexinfo", name: "Index"}, 
                            {url: "/stories", name: "Stories"},
-                           // {url: "/methodology", name: "Methodology"},
+                           {url: "/methodology", name: "Methodology"},
                            {url: "/about", name: "About"},
                            {url: "/contact", name: "Contact"}];
 
     const links = nav_bar_items.map((obj) => 
-    <Nav.Link href = {obj.url} key={obj.name}>
+    <NavLink className="nav-link header" to= {obj.url} key={obj.name}>
         {obj.name}
-    </Nav.Link>);
+    </NavLink>);
     
     return (
         <Navbar collapseOnSelect expand="xl" className="navigation" variant="dark" sticky="top">

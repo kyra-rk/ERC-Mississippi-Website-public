@@ -46,6 +46,7 @@ class Home extends React.Component {
             <h1>Welcome</h1>
                 <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.
                 Our site uses both qualitative and quantitative data to provide a comprehensive understanding of the unique challenges women encounter.
+                We used this data to develop a women's economic security index that will inform our own policy initiatives.  
                 The information was gathered from a variety of sources, such as American Community Survey from the US Census Bureau and interviews with Women in Construction.
                 This project is a collaboration between Mississippi Low-Income Childcare Initiative and Barnard College's Empirical Reasoning Center & Mississippi Semester class.
                 </p>

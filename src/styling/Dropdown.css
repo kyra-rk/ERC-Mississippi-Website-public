@@ -196,3 +196,17 @@ span.MuiIconButton-label {
     color: purple;
 } */
 /* Container { background-color: lightpink; } */
+
+.relatedinfo.card > .card-body {
+    background-color: teal;
+    color: white;
+    padding: 0 10;
+
+}
+
+.relatedinfo > .card-body > p {
+    margin: 0 2rem;
+}
+.relatedinfo > .card-text:last-child {
+    margin-bottom: .75rem;
+}
