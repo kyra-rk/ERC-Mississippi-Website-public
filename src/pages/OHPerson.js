@@ -75,7 +75,7 @@ createHeader(){
     const personname = match.params.name;
 
     const buttons = topic_categories.map((obj, index) =>
-      <Button onClick={this.handleClick} value={index+1} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
+   <Button onClick={this.handleClick} value={index+1} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
         {obj.name}
       </Button>
     );
@@ -107,23 +107,28 @@ annotationwidth = 4
         //     </Card>
         //   </Accordion>
       }
-      return (<Row >
-        <Col sm={1}></Col>
+      return (<div><Row >
+        {/* <Col sm={1}>
+        </Col> */}
         <Col sm={{span: 1}} id="speakername">
           <h5>{obj.speaker}</h5>
         </Col>
         <Col sm={1}></Col>
-        <Col sm={transcriptwidth}>
+        </Row>
+        <Row>
+        <Col sm={1}></Col>
+        <Col sm={9}>
           <div className={`${classnames} import${obj.important}`}>
             <p id="transcriptquotes">{obj.text}</p>
           </div>
         </Col>
-        <Col sm={annotationwidth}>
+        <Col sm={2}>
           <div>
             {annotation}
           </div>
         </Col>
-      </Row>)
+      </Row>
+      </div>)
     });
   }
     return [buttons, printtranscript]
@@ -145,12 +150,12 @@ annotationwidth = 4
           {printbio}
         </Col>
       </Row>
-        <div>
-          <Row className="justify-content-center">
+        <Row>
+          <Col sm={2} className="buttonsbar">
           {buttons}
-          </Row>
-          <div>{printtranscript}</div>
-        </div>
+          </Col>
+          <Col sm={10}>{printtranscript}</Col>
+        </Row>
         </div>
 
 
