@@ -693,7 +693,7 @@ class Map extends Component {
                <Row className="rowblock" noGutters={true}>
                <Col  lg={{span: 5, offset: 1}} className="longdesc">
                <div><p> Longer description of variable and info on the source will go here.</p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim. 
-               <Card className="relatedinfo"><Card.Body><Card.Title>Related Info</Card.Title><Card.Text>See our Stories Page for more insight on how these data show up in women's lives day to day. </Card.Text> </Card.Body></Card>
+               <a href="stories"><Card className="relatedinfo"><Card.Body><Card.Title>Related Info</Card.Title><Card.Text>See our Stories Page for more insight on how these data show up in women's lives day to day. </Card.Text> </Card.Body></Card></a>
                </div>
                    </Col>
                    <Col lg ={{span: 5, offset: 1}} className="tablemap step8"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>

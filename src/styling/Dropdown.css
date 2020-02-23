@@ -210,3 +210,7 @@ span.MuiIconButton-label {
 .relatedinfo > .card-text:last-child {
     margin-bottom: .75rem;
 }
+
+.relatedinfo.card > .card-body:hover {
+    background-color: black;
+}
