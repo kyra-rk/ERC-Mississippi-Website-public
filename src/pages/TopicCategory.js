@@ -39,7 +39,9 @@ class TopicCategory extends Component {
 			</Col>
 			<Col lg={8} className="rightcolumn">
 				<Row className="Quote-Container">
-					<p>{`{obj}.{this.props.match.params.name}.{obj.quote1}`}</p>
+					<p>{`obj.${this.props.match.params.name}.quote1`}</p>
+					{/* <p>{obj.`${this.props.match.params.name}`.quote1}</p> */}
+					<p>{obj.Relationships.quote1}</p>
 				</Row>
 					<hr/>
 				<Row className="Quote-Container">
