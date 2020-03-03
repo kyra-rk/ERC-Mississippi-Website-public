@@ -26,7 +26,8 @@ class TopicCategory extends Component {
 	
 //redirect gets rid of flipcard component but doesnt seem to work when just typing out url
     render (){
-    var topiccat = selectedQuotes.map((obj) =>
+	var topic = this.props.match.params.name;
+    var topiccat = selectedQuotes.map((obj) => 
 	<Col lg={6} key={obj.name}>
 		<Row id="personblock">
 			<Col lg={4}>
@@ -39,9 +40,7 @@ class TopicCategory extends Component {
 			</Col>
 			<Col lg={8} className="rightcolumn">
 				<Row className="Quote-Container">
-					<p>{`obj.${this.props.match.params.name}.quote1`}</p>
-					{/* <p>{obj.`${this.props.match.params.name}`.quote1}</p> */}
-					<p>{obj.Relationships.quote1}</p>
+					<p>{obj[topic].quote1}</p>
 				</Row>
 					<hr/>
 				<Row className="Quote-Container">
@@ -55,7 +54,7 @@ class TopicCategory extends Component {
 			</Col>
 		</Row>
 	</Col>
-        );
+	 );
 
         return (
 			<div>
