@@ -44,7 +44,7 @@ class TopicCategory extends Component {
 				</Row>
 					<hr/>
 				<Row className="Quote-Container">
-					<p>{obj.quotes.quote2}</p>
+					<p>{obj[topic].quote2}</p>
 				</Row>
 				<Row id="buttonrow">
 					<Button variant="outline-info" onClick={this.handleClick} value={obj.name}>
