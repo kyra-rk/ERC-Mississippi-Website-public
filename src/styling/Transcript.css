@@ -45,17 +45,20 @@
     font-size: 1rem;
     /* font-weight: 900; */
     margin: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     float: left;
+    /* position: relative; */
 
 }
 
 /* doesn't work */
-/* #buttonsbar{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-} */
+div.buttonsbar {
+    position: fixed;
+    left: 10px;
+    top: 500px;
+    display: grid;
+
+}
 
 #transcriptquotes{
     font-family: "Roboto";
