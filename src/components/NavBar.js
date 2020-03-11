@@ -14,6 +14,7 @@ const CreateNavBar = () => {
     const nav_bar_items = [{url: "/", name: "Home"}, 
                          //  {url: "/dataportal", name: "Data Portal"},
                            {url: "/dataportal", name: "Data Portal"},
+                           {url: "/dataportal2", name: "Data Portal2"},
                         //    {url: "/comparison", name: "Compare Data"}, 
                            {url: "/indexinfo", name: "Index"}, 
                            {url: "/stories", name: "Stories"},

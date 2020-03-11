@@ -19,6 +19,7 @@ import { Fab, IconButton, Tooltip } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/Help';
 import HelpOutlineSharpIcon from '@material-ui/icons/HelpOutlineSharp';
 import { borderRight } from '@material-ui/system';
+import Buttons from '../components/Buttons';
 // import '../styling/font-awesome.min.css'
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 // import Map from '../components/Map.js'
@@ -52,7 +53,7 @@ const demographics = [
     ]},
 ]
 
-class DropdownBootstrap extends Component {
+class DropdownBootstrap_2 extends Component {
         constructor(props) {
             super(props);
             this.state = {
@@ -381,11 +382,12 @@ Data Portal                </h1> */}
                 {/* <Router> */}
                 <Col sm={1}></Col>
                 <Col sm={12} lg={10}>
-                   <ButtonToolbar className="step1"> {varbuttons}
+                   <ButtonToolbar className="step1"> {Buttons}
+                   {/* {varbuttons} */}
                    </ButtonToolbar>
                    <section class="buttons">
                   <Row className="justify-content-center">
-                  <Col lg={10}>{everyonebutton}</Col>
+                  <Col lg={10}>{Buttons}</Col>
                   </Row>
                  </section>
                 </Col>
@@ -406,10 +408,10 @@ Data Portal                </h1> */}
                 </Row>
 
 
-                {this.state.currentvar &&
-            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
-                 {/* {this.state.currentvar && variables &&
-            <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
+                {/* {this.state.currentvar &&
+            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
+                 {this.state.currentvar && variables &&
+            <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
 
           </Container>
 
@@ -424,7 +426,7 @@ Data Portal                </h1> */}
         }
     }
 
-    export default DropdownBootstrap;
+    export default DropdownBootstrap_2;
 
 
     //P_High_school_graduate_(includes_equivalency)_E_F

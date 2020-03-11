@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import DataPortal from './pages/DataPortal'
 import DropdownBootstrap from './components/DropdownBootstrap'
+import DropdownBootstrap_2 from './components/DropdownBootstrap_2'
 import Stories from './pages/Stories'
 import EconIndex from './pages/EconIndex'
 import NavBar from './components/NavBar'
@@ -31,6 +32,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home}/>
            <Route path="/dataportal" component={DropdownBootstrap}/>
+           <Route path="/dataportal2" component={DropdownBootstrap_2}/>
           <Route path="/comparison" component={Comparison}/>
             <Route path="/indexinfo" component={EconIndex}/>
             <Route path="/stories" component={Stories}/>
