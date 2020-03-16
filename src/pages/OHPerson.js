@@ -59,7 +59,7 @@ createHeader(){
 
   var result = flip_card_items.filter(obj => obj.name===personname)
   result = result[0]
-  const printheader = <h1>{result.personname}</h1>
+  const printheader = <h1 className="header">{result.personname}</h1>
   const printinitials=result.header.map((obj) => {
     return (
       <h1 className="initials">{obj.initials}</h1>
@@ -153,7 +153,7 @@ annotationwidth = 4
       </Row>
         <Row>
           <Col sm = {3} md={2}>
-         <StickyBox offsetTop={80}>
+         <StickyBox offsetTop={85}>
                 {buttons}
            </StickyBox> 
            </Col>

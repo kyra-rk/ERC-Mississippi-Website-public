@@ -12,6 +12,9 @@
     text-align: center;
 }
 
+.header {
+    margin-top: 30px;
+}
 .h1{
 
     font-family: "Fira Sans";
@@ -41,6 +44,7 @@
 .transcriptbutton{
 
     font-family: "Fira Sans";
+
     margin: 5px;
     margin-bottom: 10px;
     width: 100%;

@@ -34,7 +34,7 @@ class People extends Component {
     }
     
     var flipcards = flip_card_items.map((obj) =>
-        <Col sm={4} key={obj.name}>
+        <Col sm={6} md={4} key={obj.name}>
             <Card className="flipcard">
             <Card.Img variant="top" src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
             <Card.Body>
