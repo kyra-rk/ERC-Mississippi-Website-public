@@ -41,23 +41,16 @@
 .transcriptbutton{
 
     font-family: "Fira Sans";
-    /* text-transform: uppercase; */
-    font-size: 1rem;
-    /* font-weight: 900; */
     margin: 5px;
     margin-bottom: 10px;
-    float: left;
-    /* position: relative; */
-
+    width: 100%;
+    padding: 5px;
+	top: 0;
+ 
 }
 
-/* doesn't work */
-div.buttonsbar {
-    position: fixed;
-    left: 10px;
-    top: 200px;
-    display: grid;
-
+#transcriptbutton {
+    font-size: .75rem;
 }
 
 #transcriptquotes{

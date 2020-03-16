@@ -4,6 +4,8 @@
 import React from 'react';
 // import person from '../pictures/person.png';
 import { Row, Col, Button, Card, Accordion } from 'react-bootstrap';
+// import {StickyContainer, Sticky} from 'react-sticky'
+import StickyBox from 'react-sticky-box';
 import '../styling/Transcript.css';
 import OHPersonData from '../data/OHPersonData'
 import topic_categories from '../data/topic_categories';
@@ -47,6 +49,7 @@ class OHPerson extends React.Component {
   }
 }
 
+
 createHeader(){
   let match = this.props.match;
   const personname = match.params.name;
@@ -75,10 +78,11 @@ createHeader(){
     const personname = match.params.name;
 
     const buttons = topic_categories.map((obj, index) =>
-   <Button onClick={this.handleClick} value={index+1} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
+   <Button onClick={this.handleClick} value={index+1} id="transcriptbutton" className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
         {obj.name}
       </Button>
     );
+
     //id has person# so removing the word person then matching with number and then add cat# to name of class
     var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
     result = result[0];
@@ -96,29 +100,21 @@ createHeader(){
 </Card>
 transcriptwidth = 5
 annotationwidth = 4
-        // <Accordion defaultActiveKey="1">
-        //     <Card>
-        //       <Accordion.Toggle as={Card.Header} eventKey="0">
-        //         Learn more
-        //       </Accordion.Toggle>
-        //       <Accordion.Collapse eventKey="0">
-        //         <Card.Body>{obj.annotation}</Card.Body>
-        //       </Accordion.Collapse>
-        //     </Card>
-        //   </Accordion>
+
       }
       return (<div>
         <Row >
-        <Col sm={2}>
-        </Col>
-        <Col>
-        <Row>
-        <Col sm={{span: 1}} id="speakername">
+        {/* <Col sm={2}>
+        </Col>  */}
+
+        <Col sm={10}>
+        <Row className="justify-content-left">
+        <Col sm={{offset: 1, span: 1}} id="speakername">
           <h5>{obj.speaker}</h5>
         </Col>
-        <Col sm={1}></Col>
+        {/* <Col sm={1}></Col> */}
         </Row>
-        <Row className="justify-content-center">
+        <Row className="justify-content-left">
         <Col sm={12}>
           <div className={`${classnames} import${obj.important}`}>
             <p id="transcriptquotes">{obj.text}</p>
@@ -126,6 +122,7 @@ annotationwidth = 4
         </Col>
         </Row>
         </Col>
+        
         <Col sm={2}>
           <div>
             {annotation}
@@ -155,10 +152,12 @@ annotationwidth = 4
         </Col>
       </Row>
         <Row>
-          <Col sm={2} className="buttonsbar">
-          {buttons}
-          </Col>
-          <Col sm={12}>{printtranscript}</Col>
+          <Col sm = {3} md={2}>
+         <StickyBox offsetTop={80}>
+                {buttons}
+           </StickyBox> 
+           </Col>
+          <Col sm={9} md={10}>{printtranscript}</Col>
         </Row>
         </div>
 

@@ -269,7 +269,7 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "‘Cause she was just letting you be.",
+"text": "ï¿½Cause she was just letting you be.",
 "cat": [],
 "important": "",
 },
@@ -665,7 +665,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "But their funds are stuff so they pay for him for after school and on holidays or when school- ‘cause say for tomorrow, tomorrow is Friday, school don't keep tomorrow. It's out. But they pay for the entire day.",
+"text": "But their funds are stuff so they pay for him for after school and on holidays or when school- ï¿½cause say for tomorrow, tomorrow is Friday, school don't keep tomorrow. It's out. But they pay for the entire day.",
 "cat": [4],
 "important": "",
 },
@@ -767,7 +767,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "‘Cause he's not used to it and he understands because sometimes he be like, 'Mom, I'm okay.' You know sometimes it's so hard, I even cried the other day when he said that. I'm like 'you're just 10 what do you know about understanding what I'm saying to you,' like that to tell me that it's okay",
+"text": "ï¿½Cause he's not used to it and he understands because sometimes he be like, 'Mom, I'm okay.' You know sometimes it's so hard, I even cried the other day when he said that. I'm like 'you're just 10 what do you know about understanding what I'm saying to you,' like that to tell me that it's okay",
 "cat": [3],
 "important": "",
 },
@@ -1061,7 +1061,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "How am I going to get- ‘cause I paid HHA [Home Health Assistance]. I tried for a CNA certification but when I got to the HHA part, you know what that means? Home health care.",
+"text": "How am I going to get- ï¿½cause I paid HHA [Home Health Assistance]. I tried for a CNA certification but when I got to the HHA part, you know what that means? Home health care.",
 "cat": [2, 7],
 "important": "",
 },
@@ -1235,7 +1235,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "And respect goes where it comes from. So it's heard and not given. So whatever they say, and even if I do something wrong ‘cause sometimes we have this teacher and she'll be like you can go home. Like if a phone rings in the closet, in the lockers or whatever and the person go to stop or it whatever, she says, 'you can go. I'll see you tomorrow.' I'm like, if she ever told me one day, I'm going to be on my knees. I'm gonna be like, please don't send me home. So yeah, I'm on my path and I'm happy. Thanks to WinC again and again and again.",
+"text": "And respect goes where it comes from. So it's heard and not given. So whatever they say, and even if I do something wrong ï¿½cause sometimes we have this teacher and she'll be like you can go home. Like if a phone rings in the closet, in the lockers or whatever and the person go to stop or it whatever, she says, 'you can go. I'll see you tomorrow.' I'm like, if she ever told me one day, I'm going to be on my knees. I'm gonna be like, please don't send me home. So yeah, I'm on my path and I'm happy. Thanks to WinC again and again and again.",
 "cat": [],
 "important": "",
 },
@@ -1253,13 +1253,13 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "Well not really because I think I said it all. But I know you're doing stuff about poverty, whatever ladies are going through and stuff like that. But, I think I can handle this now that I'm better at math now. And I've only gotten a teacher for 2 days. And I'm better at math and measures than I've been in all my life and I'm 45 about to be 46. And it's Sophia. She's an amazing teacher. ‘Cause she- if you don't understand something, she break it down so low, that you just get right up here with everybody else. And you know, I did a math test and I passed it the first time. I didn't have to do a second one. I'm like, yes!",
+"text": "Well not really because I think I said it all. But I know you're doing stuff about poverty, whatever ladies are going through and stuff like that. But, I think I can handle this now that I'm better at math now. And I've only gotten a teacher for 2 days. And I'm better at math and measures than I've been in all my life and I'm 45 about to be 46. And it's Sophia. She's an amazing teacher. ï¿½Cause she- if you don't understand something, she break it down so low, that you just get right up here with everybody else. And you know, I did a math test and I passed it the first time. I didn't have to do a second one. I'm like, yes!",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "",
-"text": "So I just want to say thanks to all the teachers and you know everyone that works here. The staff, they're amazing family. I love them. And I appreciate everything. And you, I'm glad you were the one who interviewed me too. I would be grateful for anyone but to meet a fellow Jamaican ‘cause your mom is Jamaica, you're a Jamaican.",
+"text": "So I just want to say thanks to all the teachers and you know everyone that works here. The staff, they're amazing family. I love them. And I appreciate everything. And you, I'm glad you were the one who interviewed me too. I would be grateful for anyone but to meet a fellow Jamaican ï¿½cause your mom is Jamaica, you're a Jamaican.",
 "cat": [1],
 "important": "",
 },
@@ -1317,7 +1317,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "My dad had his own business and my mom did all the accounting and took care of all the paperwork. So we were okay. Then we made them move my fourth grade year back to California. We were living in Texas, made it back to California, and then I ended up, when we moved back to- I was born in California then we moved to Texas when I was a little girl and then I was in Texas all the way up until my 4th grade year, then my parents, we packed up and moved back to California and I stayed there ‘till I turned 18, just about.",
+"text": "My dad had his own business and my mom did all the accounting and took care of all the paperwork. So we were okay. Then we made them move my fourth grade year back to California. We were living in Texas, made it back to California, and then I ended up, when we moved back to- I was born in California then we moved to Texas when I was a little girl and then I was in Texas all the way up until my 4th grade year, then my parents, we packed up and moved back to California and I stayed there ï¿½till I turned 18, just about.",
 "cat": [],
 "important": "",
 },
@@ -1365,7 +1365,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "But it was the hardest thing in my life because I've never, I never knew what it was to have a child by myself, like a child at all because I've never had any kids until I was in my 30s but to be a single parent mom, it was just like, there are so- I closed up everything, wrapped up everything and was making my move back to California with my family and I met my fiancé on my way out and I took off to California, he came to Mississippi and my first time coming out here to visit him was in March 27th. I said Imma go visit him and see what Mississippi's about and if he don't propose to me I'm gonna just call it off because I don't want a long distant relationship.",
+"text": "But it was the hardest thing in my life because I've never, I never knew what it was to have a child by myself, like a child at all because I've never had any kids until I was in my 30s but to be a single parent mom, it was just like, there are so- I closed up everything, wrapped up everything and was making my move back to California with my family and I met my fiancï¿½ on my way out and I took off to California, he came to Mississippi and my first time coming out here to visit him was in March 27th. I said Imma go visit him and see what Mississippi's about and if he don't propose to me I'm gonna just call it off because I don't want a long distant relationship.",
 "cat": [1],
 "important": "",
 },
@@ -1377,7 +1377,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I came out here and I got here on Friday and then Saturday night, we were at the casino, both of us. And then he was acting so nervous and moving around I was just like, I said, 'oh Jesus go over there ‘cause you keep going back. You're like pacing back and forth' and then he's just like 'I didn't know that.' He was trying to figure out how it was funny. So that eventually he was like, 'are you hungry, you want to go get something?' I said, 'yeah I think we can.' And then he pops the question on me and I was just like- oh I was like 'Yes!' I said, 'Oh my God I love the ring.' And then he was just like so is that a yes? And I'm like, 'yes, yes!'",
+"text": "I came out here and I got here on Friday and then Saturday night, we were at the casino, both of us. And then he was acting so nervous and moving around I was just like, I said, 'oh Jesus go over there ï¿½cause you keep going back. You're like pacing back and forth' and then he's just like 'I didn't know that.' He was trying to figure out how it was funny. So that eventually he was like, 'are you hungry, you want to go get something?' I said, 'yeah I think we can.' And then he pops the question on me and I was just like- oh I was like 'Yes!' I said, 'Oh my God I love the ring.' And then he was just like so is that a yes? And I'm like, 'yes, yes!'",
 "cat": [1],
 "important": "",
 },
@@ -1981,7 +1981,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I thank these ladies so, so, so much because they're molding us to be…they're really molding us to... it's just a program but with this job program they teach us so much. There's so much they give us.",
+"text": "I thank these ladies so, so, so much because they're molding us to beï¿½they're really molding us to... it's just a program but with this job program they teach us so much. There's so much they give us.",
 "cat": [],
 "important": "",
 },
