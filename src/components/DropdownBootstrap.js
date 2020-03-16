@@ -61,6 +61,7 @@ class DropdownBootstrap extends Component {
                 varname: "Population Estimates",
                 varabbreviation: 'Female_Population',
                 vardesc: '',
+                varlongdesc: '',
                 varlocation: {index1: 0, index2: 0},
                 dataset: datacomplete,
                 race: true,
@@ -69,12 +70,12 @@ class DropdownBootstrap extends Component {
                 demselected: 'A',
                 genderselected: 'F',
                 buttonselected: 'Women',
-                stepsEnabled: false,
+                stepsEnabled: true,
                 initialStep:0,
                 steps: [
                   {
                     element: '.step1',
-                    intro: 'Begin by selecting a category to explore',
+                    intro: 'Take this tour to understand how to use this tool. You can skip the tour by clicking on the Skip button. The first step to using this tool is selecting a category to explore and choosing a variable from it.',
                   },
                   {
                     element: '.step2',
@@ -246,6 +247,9 @@ class DropdownBootstrap extends Component {
 
         handleClick(index,i, event){
           const matchingvar = categories[index].variables[i];
+          var desc = matchingvar.description;
+          var longerdesc = matchingvar.longdesc;
+          console.log(desc)
           var demselected = this.state.demselected;
           var genderselected = this.state.genderselected;
           var buttonselected = this.state.buttonselected;
@@ -271,7 +275,7 @@ class DropdownBootstrap extends Component {
           var abbreviation = this.getabbreviation(matchingvar, demselected, genderselected);
 
           this.setState({currentvar: true, varlocation: {index1: index,index2: i}, varname: matchingvar.name, varabbreviation: abbreviation,
-            race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected})
+            race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected, vardesc: desc, varlongdesc: longerdesc})
         }
 
         handleDemClick(event){
@@ -332,7 +336,7 @@ class DropdownBootstrap extends Component {
            if (this.state.currentvar){
             //  console.log(this.state.varlocation.index1)
             let matchingvar = categories[this.state.varlocation.index1].variables[this.state.varlocation.index2];
-
+            
             if (this.state.racegender){
               let abbrev1 = this.getabbreviation(matchingvar, "W", "M");
               let abbrev2 = this.getabbreviation(matchingvar, "W", "F")
@@ -407,7 +411,7 @@ Data Portal                </h1> */}
 
 
                 {this.state.currentvar &&
-            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
+            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected} vardesc={this.state.vardesc} longdesc={this.state.varlongdesc}/>}
                  {/* {this.state.currentvar && variables &&
             <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
 

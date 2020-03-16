@@ -7,7 +7,7 @@ import '../styling/App.css';
 
 /*Calling the CreateNavBar const that is the const lower down*/
 const Buttons = () => {
-    return (<DropdownButton>title={"TEST"} key={1} variant={"Info"}>
+    return (<DropdownButton title={"TEST"} key={1} variant={"Info"}>
     <Dropdown.Item>MORE TESTING</Dropdown.Item>
     </DropdownButton>)
 }

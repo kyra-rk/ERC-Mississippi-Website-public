@@ -1,7 +1,12 @@
-const OHPersonData = 
+const OHPersonData =
 [
 {
 "id": 1,
+"header": [
+{"bio": "Claudine is a mother of four and grandmother of two. Before Women in Construction, she worked as a supervisor for a construction firm in Jamaica, where she originally came from. Later, she lived in a shelter for women, where she found herself to be a mother figure to the other women living in the shelter. As someone who loves learning, Claudine enjoys getting hands-on with the construction training at WinC, and even hired a math teacher to improve at measurements. When Claudine graduates, she is looking forward to working at Ingalls Construction, where she has already secured a job at. She hopes to one day have her whole family under one roof, where her mother and son can be together with her and live in financial stability.",
+"realname": "Claudene",
+"initials": "CL",
+}],
 "interview": [
 {
 "speaker": "Interviewer",
@@ -23,7 +28,7 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "Well um-",
+"text": "Well umï¿½",
 "cat": [],
 "important": "",
 },
@@ -41,13 +46,13 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "My name is Claudene Logan. My name is Logan-Clauzelle.",
+"text": "My name is Claudene.",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "",
-"text": "I'm divorced. But, you know USCIS hasn't removed that yet so I still have to use it but (mutual laughter) I love my Logans so I use it for this or everything else that I'm in.",
+"text": "I'm divorced. But, you know USCIS hasn't removed that yet so I still have to use it.",
 "cat": [1],
 "important": "",
 },
@@ -95,7 +100,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "Amazing. My mom met my dad, an American man, in I don't even know what year. She- so My mom left for me to go to Canada. Halfway through when she was in college because her sister got sponsored and like her sister allowed for her and my grandmother to come. And then my mom and my dad at church and everyone in my family was like: why are you marrying an American man? I don't know what you're doing. And she was like, 'No I'm in love like he's perfect.' Anyways they had two kids in Canada but they got a divorce. But she is happy as well. (Mutual laughter) You know it's- it's a good- it's a good thing.",
+"text": "Amazing. My mom met my dad, an American man, in I don't even know what year. Sheï¿½ so My mom left for me to go to Canada. Halfway through when she was in college because her sister got sponsored and like her sister allowed for her and my grandmother to come. And then my mom and my dad at church and everyone in my family was like: why are you marrying an American man? I don't know what you're doing. And she was like, 'No I'm in love like he's perfect.' Anyways they had two kids in Canada but they got a divorce. But she is happy as well. (Mutual laughter) You know it's... it's a good... it's a good thing.",
 "cat": [],
 "important": "",
 },
@@ -119,7 +124,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I'm gonna go back home and do whatever.",
+"text": "Iï¿½m gonna go back home and do whatever.",
 "cat": [],
 "important": "",
 },
@@ -130,14 +135,14 @@ const OHPersonData =
 "important": "",
 },
 {
-"speaker": "",
-"text": "But I was working at a casino and this man just like- you know, I ask him because I was a porter so I cleaned the machines and ashtrays and stuff.",
+"speaker": "Claudene",
+"text": "But I was working at a casino and this man just likeï¿½ you know, I ask him because I was a porter so I cleaned the machines and ashtrays and stuff.",
 "cat": [2],
 "important": "",
 },
 {
 "speaker": "",
-"text": "So I was like, 'excuse me, I'd like to clean the ashtray' or whatever.",
+"text": "So I was like, ï¿½excuse me, I'd like to clean the ashtrayï¿½ or whatever.",
 "cat": [],
 "important": "",
 },
@@ -149,13 +154,13 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "He's like, 'I'm serious.'",
+"text": "He's like, I'm serious.",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "Interviewer",
-"text": "'The Lord is sending my queen,' I love that. That's- that's a good line. (laughs) It's a good line.",
+"text": "ï¿½The Lord is sending my queen, I love that. That's that's a good line. (laughs) It's a good line.",
 "cat": [],
 "important": "",
 },
@@ -173,7 +178,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I was there with a friend so the friend was like 'ugh'. When I went to take my jacket off the friend came to take it because he was in the army so he couldn't sit in the casino. And he- he wasn't uh- we were in a unisex bathroom so he came out and he saw the guy and he was like 'is this your girlfriend?' The guy said 'no, but I would like her to be.' So he says, 'she would never be your girlfriend, she gon be my Queen.' I started laughing and walked away.",
+"text": "I was there with a friend so the friend was like 'ugh'. When I went to take my jacket off the friend came to take it because he was in the army so he couldn't sit in the casino. And heï¿½ he wasn't uhï¿½ we were in a unisex bathroom so he came out and he saw the guy and he was like ï¿½is this your girlfriend?ï¿½ The guy said ï¿½no, but I would like her to be.ï¿½ So he says, ï¿½she would never be your girlfriend, she gon be my Queen.ï¿½ I started laughing and walked away.",
 "cat": [1],
 "important": "",
 },
@@ -197,7 +202,7 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "Okay. I'm always family-oriented so everything I've planned or think, I think about- I think about my kids, my mom, because my mom has never traveled.",
+"text": "Okay. I'm always family-oriented so everything I've planned or think, I think aboutï¿½ I think about my kids, my mom, because my mom has never traveled.",
 "cat": [1, 4],
 "important": "",
 },
@@ -218,6 +223,7 @@ const OHPersonData =
 "text": "So I used to work in construction in Jamaica. Not hands-on working, I was a supervisor/manager in a construction firm.",
 "cat": [2],
 "important": "",
+"annotation": "According to https://statinja.gov.jm/LabourForce/NewLFS.aspx, women account for only 2.97% of construction workers in Jamaica.",
 },
 {
 "speaker": "",
@@ -269,7 +275,7 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "‘Cause she was just letting you be.",
+"text": "ï¿½Cause she was just letting you be.",
 "cat": [],
 "important": "",
 },
@@ -335,7 +341,7 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "I want my kids- for me really, I want to have- it's always about them.",
+"text": "I want my kidsï¿½ for me really, I want to haveï¿½ itï¿½s always about them.",
 "cat": [4],
 "important": "",
 },
@@ -347,7 +353,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I don't want to have- I want to have a business, yes.",
+"text": "I don't want to haveï¿½ I want to have a business, yes.",
 "cat": [2],
 "important": "",
 },
@@ -491,7 +497,7 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "You know and the kids- I normally take care of kids and stuff so they just...like that but I would get up and just wonder what's going to happen next. I don't know.",
+"text": "You know and the kidsï¿½ I normally take care of kids and stuff so they just...like that but I would get up and just wonder what's going to happen next. I don't know.",
 "cat": [5],
 "important": "",
 },
@@ -515,7 +521,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "That's so beautiful. So you spoke about 10 year old, what does your household look like? How many people are in your family or live under your roof? And I know you have children in Jamaica and Florida, if you could go over how many children you have in total and how old they are. And if you have any other people that..that depend on you financially who may live- live with you. Just describe your household in general.",
+"text": "That's so beautiful. So you spoke about 10 year old, what does your household look like? How many people are in your family or live under your roof? And I know you have children in Jamaica and Florida, if you could go over how many children you have in total and how old they are. And if you have any other people that..that depend on you financially who may liveï¿½ live with you. Just describe your household in general.",
 "cat": [],
 "important": "",
 },
@@ -539,7 +545,7 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "I finished high school, graduated grade 11 and I went to- have you ever heard of 'Artists?'",
+"text": "I finished high school, graduated grade 11 and I went toï¿½ have you ever heard of ï¿½Artists?ï¿½",
 "cat": [7],
 "important": "",
 },
@@ -593,7 +599,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "Here we are. Do you think it'll be easy or difficult for your children to get a college degree, if that's what they want. And if you think it'll be difficult or easy, why or why not? And in terms of- or I guess that's the first question, so your 10 year old son, do you think it'll be easy for him to go to a good college?",
+"text": "Here we are. Do you think it'll be easy or difficult for your children to get a college degree, if that's what they want. And if you think it'll be difficult or easy, why or why not? And in terms ofï¿½ or I guess that's the first question, so your 10 year old son, do you think it'll be easy for him to go to a good college?",
 "cat": [],
 "important": "",
 },
@@ -665,7 +671,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "But their funds are stuff so they pay for him for after school and on holidays or when school- ‘cause say for tomorrow, tomorrow is Friday, school don't keep tomorrow. It's out. But they pay for the entire day.",
+"text": "But their funds are stuff so they pay for him for after school and on holidays or when schoolï¿½ ï¿½cause say for tomorrow, tomorrow is Friday, school don't keep tomorrow. It's out. But they pay for the entire day.",
 "cat": [4],
 "important": "",
 },
@@ -695,7 +701,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "Okay. And how many people, so in terms of- you talked about your son, would it be difficult for you to leave work or for your son to find time to go to programs or whatever if there weren't some assistance? How many people in your household, it's just you and your son, are working and earning an income? So, it's just you right?",
+"text": "Okay. And how many people, so in terms ofï¿½ you talked about your son, would it be difficult for you to leave work or for your son to find time to go to programs or whatever if there weren't some assistance? How many people in your household, it's just you and your son, are working and earning an income? So, it's just you right?",
 "cat": [],
 "important": "",
 },
@@ -767,13 +773,13 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "‘Cause he's not used to it and he understands because sometimes he be like, 'Mom, I'm okay.' You know sometimes it's so hard, I even cried the other day when he said that. I'm like 'you're just 10 what do you know about understanding what I'm saying to you,' like that to tell me that it's okay",
+"text": "ï¿½Cause he's not used to it and he understands because sometimes he be like, ï¿½Mom, I'm okay.ï¿½ You know sometimes it's so hard, I even cried the other day when he said that. I'm like ï¿½you're just 10 what do you know about understanding what I'm saying to you,ï¿½ like that to tell me that itï¿½s okay",
 "cat": [3],
 "important": "",
 },
 {
 "speaker": "",
-"text": "You know because a lot of people ask me, especially my family, why am I in Mississippi? But they don't understand. Mississippi is, I felt closer to home because the people here, well mainly the ones I get to interact with on a daily basis, they kind of- they are loving. They're only, you know- they have a lot of hospitality in them.",
+"text": "You know because a lot of people ask me, especially my family, why am I in Mississippi? But they don't understand. Mississippi is, I felt closer to home because the people here, well mainly the ones I get to interact with on a daily basis, they kind ofï¿½ they are loving. They're only, you knowï¿½ they have a lot of hospitality in them.",
 "cat": [1],
 "important": "",
 },
@@ -791,19 +797,19 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "You know because a lot of people ask me, especially my family, why am I in Mississippi? But they don't understand. Mississippi is, I felt closer to home because the people here, well mainly the ones I get to interact with on a daily basis, they kind of- they are loving. They're only, you know- they have a lot of hospitality in them.",
+"text": "You know because a lot of people ask me, especially my family, why am I in Mississippi? But they don't understand. Mississippi is, I felt closer to home because the people here, well mainly the ones I get to interact with on a daily basis, they kind ofï¿½ they are loving. They're only, you knowï¿½ they have a lot of hospitality in them.",
 "cat": [],
 "important": 1.0,
 },
 {
 "speaker": "Interviewer",
-"text": "Do you have any- are there any times you have difficulty paying your monthly expenses?",
+"text": "Do you have anyï¿½ are there any times you have difficulty paying your monthly expenses?",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "Claudene",
-"text": "That will be more times than I do now. Cause I've been to- days or weeks when I couldn't be able to do nothing.",
+"text": "That will be more times than I do now. ï¿½Cause I've been toï¿½ days or weeks when I couldn't be able to do nothing.",
 "cat": [5],
 "important": "",
 },
@@ -839,7 +845,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I couldn't do- I couldn't pay nothing because at the end of the month because I've been sent home so much, not just me but a lot of us. Saying that it's slow or whatever.",
+"text": "I couldn't doï¿½ I couldn't pay nothing because at the end of the month because I've been sent home so much, not just me but a lot of us. Saying that it's slow or whatever.",
 "cat": [1],
 "important": "",
 },
@@ -881,7 +887,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "But sometimes I would like talk to her. She's the only one that would ever say: 'Here's some gas when you are low you probably wouldn't ask me but you know here it is' or whatever.",
+"text": "But sometimes I would like talk to her. She's the only one that would ever say: ï¿½Here's some gas when you are low you probably wouldn't ask me but you know here it isï¿½ or whatever.",
 "cat": [1],
 "important": "",
 },
@@ -893,7 +899,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "Because, I'm a Jamaican sometime if you have flour and you don't have meat you just you know pick it up put it in some grease and you get some fritters and you're full.",
+"text": "Because, I'm a Jamaican sometime if you have flour and you don't have meat you just you know pick it up put it in some grease and you get some fritters and youï¿½re full.",
 "cat": [3],
 "important": "",
 },
@@ -947,7 +953,7 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "I am not and what's preventing is having a well-paying job. Because if I- and when I have that job then I know I can manage, you know, my money so that I know that I can take care of whatever and still save some for later. You know so until then. I'm not.",
+"text": "I am not and what's preventing is having a well-paying job. Because if Iï¿½ and when I have that job then I know I can manage, you know, my money so that I know that I can take care of whatever and still save some for later. You know so until then. I'm not.",
 "cat": [2, 8],
 "important": "",
 },
@@ -959,7 +965,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "Have you been able to get support through public programs, such as TANF, SNAP, Medicaid, or child care certificates? And if you've been able to get support, is it enough?",
+"text": "Have you been able to get support through public programs, such as TANF, SNAP, Medicaid, or child care certificates? And if youï¿½ve been able to get support, is it enough?",
 "cat": [],
 "important": "",
 },
@@ -995,7 +1001,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "It was actually my roommate while I was in shelter. I heard talk about it just a little bit just walking by and it just stopped by ears. So I stopped, went back and I asked her. And she told me she had- I have to come to this interview or something like within a week. I'm like, 'can I get the info.' And she sent me- she referred me to the site and I went on the got the info, called them ,and they book me on the same one. So we came here and she's in there now.",
+"text": "It was actually my roommate while I was in shelter. I heard talk about it just a little bit just walking by and it just stopped by ears. So I stopped, went back and I asked her. And she told me she hadï¿½ I have to come to this interview or something like within a week. I'm like, ï¿½can I get the info.ï¿½ And she sent meï¿½ she referred me to the site and I went on the got the info, called them ,and they book me on the same one. So we came here and she's in there now.",
 "cat": [2],
 "important": "",
 },
@@ -1061,7 +1067,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "How am I going to get- ‘cause I paid HHA [Home Health Assistance]. I tried for a CNA certification but when I got to the HHA part, you know what that means? Home health care.",
+"text": "How am I going to getï¿½ ï¿½cause I paid HHA [Home Health Assistance]. I tried for a CNA certification but when I got to the HHA part, you know what that means? Home health care.",
 "cat": [2, 7],
 "important": "",
 },
@@ -1103,7 +1109,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "What about sexism and experiences with-?",
+"text": "What about sexism and experiences withï¿½?",
 "cat": [],
 "important": "",
 },
@@ -1115,13 +1121,13 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "Do you think, and this is kind of a side question, do you think that coming from Jamaica gave you a unique perspective on racism and sexism? Since you, for example my mom came to America and she was just kind of like, 'what is like- what is this racism and what is the sexism? What are sort of the definitions of these terms?' Do you think that it gave you a unique perspective on these on these meanings?",
+"text": "Do you think, and this is kind of a side question, do you think that coming from Jamaica gave you a unique perspective on racism and sexism? Since you, for example my mom came to America and she was just kind of like, ï¿½what is likeï¿½ what is this racism and what is the sexism? What are sort of the definitions of these terms?ï¿½ Do you think that it gave you a unique perspective on these on these meanings?",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "Claudene",
-"text": "I think what it does coming from Jamaica with us growing up among all the races. It makes us more- we're like, why people feel this way?",
+"text": "I think what it does coming from Jamaica with us growing up among all the races. It makes us moreï¿½ we're like, why people feel this way?",
 "cat": [3],
 "important": "",
 },
@@ -1181,7 +1187,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I met with her and we get to talking and stuff. So she asked me a little bit about the construction because she was over there and I was talking over here my friend. And we get to talking and she said, 'I like your perspective, I like where you're going with this. So what if you don't get into Ingalls like right off the bat or whatever. What's your backup plan?' So I'm like 'I'm going to walk up to any construction site, any local construction it doesn't matter. I just want to get my hands on some construction while my application is in process' and whatever. She's like, okay hold on. And she picked up her phone and she made a call. This gentleman actually worked at Ingalls for years. And is now working on her brother's house. So she got me a job with him.",
+"text": "I met with her and we get to talking and stuff. So she asked me a little bit about the construction because she was over there and I was talking over here my friend. And we get to talking and she said, ï¿½I like your perspective, I like where you're going with this. So what if you don't get into Ingalls like right off the bat or whatever. What's your backup plan?ï¿½ So I'm like ï¿½I'm going to walk up to any construction site, any local construction it doesn't matter. I just want to get my hands on some construction while my application is in processï¿½ and whatever. She's like, okay hold on. And she picked up her phone and she made a call. This gentleman actually worked at Ingalls for years. And is now working on her brother's house. So she got me a job with him.",
 "cat": [1, 2],
 "important": "",
 },
@@ -1193,7 +1199,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "So I'm like 'you don't have no idea how blessed you are. Bless this day I met you.' She was like, what. I said 'you have no idea because I needed a job. I don't want to just graduate and go sit down and wait.' I like to work, you know so, I'm just grateful.",
+"text": "So I'm like ï¿½you don't have no idea how blessed you are. Bless this day I met you.ï¿½ She was like, what. I said ï¿½you have no idea because I needed a job. I don't want to just graduate and go sit down and wait.ï¿½ I like to work, you know so, I'm just grateful.",
 "cat": [1],
 "important": "",
 },
@@ -1223,7 +1229,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "And like I told the ladies, especially one of them I talked to all the time and I told her- I said, 'listen if it's only one person gonna graduate from this school or this class, which all of us do, but if it's one person, that person gonna be me.'",
+"text": "And like I told the ladies, especially one of them I talked to all the time and I told herï¿½ I said, ï¿½listen if it's only one person gonna graduate from this school or this class, which all of us do, but if it's one person, that person gonna be me.ï¿½",
 "cat": [5],
 "important": "",
 },
@@ -1235,13 +1241,13 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "And respect goes where it comes from. So it's heard and not given. So whatever they say, and even if I do something wrong ‘cause sometimes we have this teacher and she'll be like you can go home. Like if a phone rings in the closet, in the lockers or whatever and the person go to stop or it whatever, she says, 'you can go. I'll see you tomorrow.' I'm like, if she ever told me one day, I'm going to be on my knees. I'm gonna be like, please don't send me home. So yeah, I'm on my path and I'm happy. Thanks to WinC again and again and again.",
+"text": "And respect goes where it comes from. So it's heard and not given. So whatever they say, and even if I do something wrong ï¿½cause sometimes we have this teacher and she'll be like you can go home. Like if a phone rings in the closet, in the lockers or whatever and the person go to stop or it whatever, she says, ï¿½you can go. I'll see you tomorrow.ï¿½ I'm like, if she ever told me one day, I'm going to be on my knees. I'm gonna be like, please don't send me home. So yeah, I'm on my path and I'm happy. Thanks to WinC again and again and again.",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "",
-"text": "And like I told the ladies, especially one of them I talked to all the time and I told her- I said, 'listen if it's only one person gonna graduate from this school or this class, which all of us do, but if it's one person, that person gonna be me.'",
+"text": "And like I told the ladies, especially one of them I talked to all the time and I told herï¿½ I said, ï¿½listen if it's only one person gonna graduate from this school or this class, which all of us do, but if it's one person, that person gonna be me.ï¿½",
 "cat": [],
 "important": 1.0,
 },
@@ -1253,19 +1259,24 @@ const OHPersonData =
 },
 {
 "speaker": "Claudene",
-"text": "Well not really because I think I said it all. But I know you're doing stuff about poverty, whatever ladies are going through and stuff like that. But, I think I can handle this now that I'm better at math now. And I've only gotten a teacher for 2 days. And I'm better at math and measures than I've been in all my life and I'm 45 about to be 46. And it's Sophia. She's an amazing teacher. ‘Cause she- if you don't understand something, she break it down so low, that you just get right up here with everybody else. And you know, I did a math test and I passed it the first time. I didn't have to do a second one. I'm like, yes!",
+"text": "Well not really because I think I said it all. But I know you're doing stuff about poverty, whatever ladies are going through and stuff like that. But, I think I can handle this now that I'm better at math now. And I've only gotten a teacher for 2 days. And I'm better at math and measures than I've been in all my life and I'm 45 about to be 46. And it's Sophia. She's an amazing teacher. ï¿½Cause sheï¿½ if you don't understand something, she break it down so low, that you just get right up here with everybody else. And you know, I did a math test and I passed it the first time. I didn't have to do a second one. I'm like, yes!",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "",
-"text": "So I just want to say thanks to all the teachers and you know everyone that works here. The staff, they're amazing family. I love them. And I appreciate everything. And you, I'm glad you were the one who interviewed me too. I would be grateful for anyone but to meet a fellow Jamaican ‘cause your mom is Jamaica, you're a Jamaican.",
+"text": "So I just want to say thanks to all the teachers and you know everyone that works here. The staff, they're amazing family. I love them. And I appreciate everything. And you, I'm glad you were the one who interviewed me too. I would be grateful for anyone but to meet a fellow Jamaican ï¿½cause your mom is Jamaica, you're a Jamaican.",
 "cat": [1],
 "important": "",
 },
 ]},
 {
 "id": 2,
+"header": [
+    {"bio": "Kandy was born in California, and split her youth in California and Texas. She has had a diverse education background: medical school, trade school, a semester of criminal justice, and business technology. With those certifications, she went from working for private investigators, to selling cars to owning a cleaning business, but she had to leave the business behind when she left an abusive relationship. Kandy did not want her daughter to learn that abuse is condoned, therefore left for a better future for the both of them. Kandy made her way to Mississippi after getting engaged to a Mississippian, and together with her daughter, they relocated. Having had experience with male-dominated industries, Kandy hopes to create more opportunities for women by opening her own construction firm that is exclusively run by women.",
+    "realname": "Kandy",
+    "initials": "KN",
+    }],
 "interview": [
 {
 "speaker": "Interviewer",
@@ -1275,7 +1286,7 @@ const OHPersonData =
 },
 {
 "speaker": "Kandy",
-"text": "My name is Kandy Nickles. 41. I'm Hispanic. I'm originally born and raised in California and I moved out to Texas.",
+"text": "My name is Kandy. 41. I'm Hispanic. I'm originally born and raised in California and I moved out to Texas.",
 "cat": [],
 "important": "",
 },
@@ -1293,7 +1304,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I had my own business. I was- I do a house cleaning business and residential and a whole lot.",
+"text": "I had my own business. I wasï¿½ I do a house cleaning business and residential and a whole lot.",
 "cat": [2],
 "important": "",
 },
@@ -1302,10 +1313,11 @@ const OHPersonData =
 "text": "I went to medical school in billing and coding and graduated. I went to a trade school and got business and office and then took a semester criminal justice and this school that I was going through paid for the semester at the University and Texas so I'm kind of a little bit certified in a little bit in everything.",
 "cat": [2, 7],
 "important": "",
+"annotation": "Check our map to see the percentage of women with Bachelor's Degrees education across counties in Mississippi."
 },
 {
 "speaker": "",
-"text": "Growing up my dad's a general contractor so he did concrete and fencing and building. My mom she's always been a full-time mom of seven. I'm number four so I got three older sisters and two younger brothers and a sister.",
+"text": "Growing up my dad's a general contractor so he did concrete and fencing and building. My mom sheï¿½s always been a full-time mom of seven. I'm number four so I got three older sisters and two younger brothers and a sister.",
 "cat": [],
 "important": "",
 },
@@ -1317,13 +1329,13 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "My dad had his own business and my mom did all the accounting and took care of all the paperwork. So we were okay. Then we made them move my fourth grade year back to California. We were living in Texas, made it back to California, and then I ended up, when we moved back to- I was born in California then we moved to Texas when I was a little girl and then I was in Texas all the way up until my 4th grade year, then my parents, we packed up and moved back to California and I stayed there ‘till I turned 18, just about.",
+"text": "My dad had his own business and my mom did all the accounting and took care of all the paperwork. So we were okay. Then we made them move my fourth grade year back to California. We were living in Texas, made it back to California, and then I ended up, when we moved back toï¿½ I was born in California then we moved to Texas when I was a little girl and then I was in Texas all the way up until my 4th grade year, then my parents, we packed up and moved back to California and I stayed there ï¿½till I turned 18, just about.",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "",
-"text": "Then I went off to school and to a dorm. First day that I turned- on my 18th birthday was my first day at the school. I was sitting and we were in a big old class first day orientation and I was nervous because I'd never been away from home. I never was- I was sheltered you know and so it was new to me. And then I sat there for two years two and a half years and I got a lot of experience, that's when I was able to take a semester of criminal justice because I got into the legal field and I wanted to be an FBI agent. That was always my thing. Federal investigations services but then when I, I did get into it it was totally not what I thought. Not like TV. So I ended up taking office in business technology learning computers and whatnot.",
+"text": "Then I went off to school and to a dorm. First day that I turnedï¿½ on my 18th birthday was my first day at the school. I was sitting and we were in a big old class first day orientation and I was nervous because I'd never been away from home. I never wasï¿½ I was sheltered you know and so it was new to me. And then I sat there for two years two and a half years and I got a lot of experience, that's when I was able to take a semester of criminal justice because I got into the legal field and I wanted to be an FBI agent. That was always my thing. Federal investigations services but then when I, I did get into it it was totally not what I thought. Not like TV. So I ended up taking office in business technology learning computers and whatnot.",
 "cat": [7],
 "important": "",
 },
@@ -1365,25 +1377,25 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "But it was the hardest thing in my life because I've never, I never knew what it was to have a child by myself, like a child at all because I've never had any kids until I was in my 30s but to be a single parent mom, it was just like, there are so- I closed up everything, wrapped up everything and was making my move back to California with my family and I met my fiancé on my way out and I took off to California, he came to Mississippi and my first time coming out here to visit him was in March 27th. I said Imma go visit him and see what Mississippi's about and if he don't propose to me I'm gonna just call it off because I don't want a long distant relationship.",
+"text": "But it was the hardest thing in my life because I've never, I never knew what it was to have a child by myself, like a child at all because I've never had any kids until I was in my 30s but to be a single parent mom, it was just like, there are soï¿½ I closed up everything, wrapped up everything and was making my move back to California with my family and I met my fiancï¿½ on my way out and I took off to California, he came to Mississippi and my first time coming out here to visit him was in March 27th. I said Imma go visit him and see what Mississippi's about and if he don't propose to me I'm gonna just call it off because I don't want a long distant relationship.",
 "cat": [1],
 "important": "",
 },
 {
 "speaker": "",
-"text": "You know my daughter and everything she's getting ready to start kindergarten and I'm giving her- I don't want to work, I don't want to. Not her first year of school. I want to devote all my time to her cause it's up to me that's the most important. And so that's what I did.",
+"text": "You know my daughter and everything she's getting ready to start kindergarten and I'm giving her I don't want to work, I don't want to. Not her first year of school. I want to devote all my time to her cause it's up to me that's the most important. And so that's what I did.",
 "cat": [4],
 "important": "",
 },
 {
 "speaker": "",
-"text": "I came out here and I got here on Friday and then Saturday night, we were at the casino, both of us. And then he was acting so nervous and moving around I was just like, I said, 'oh Jesus go over there ‘cause you keep going back. You're like pacing back and forth' and then he's just like 'I didn't know that.' He was trying to figure out how it was funny. So that eventually he was like, 'are you hungry, you want to go get something?' I said, 'yeah I think we can.' And then he pops the question on me and I was just like- oh I was like 'Yes!' I said, 'Oh my God I love the ring.' And then he was just like so is that a yes? And I'm like, 'yes, yes!'",
+"text": "I came out here and I got here on Friday and then Saturday night, we were at the casino, both of us. And then he was acting so nervous and moving around I was just like, I said, 'oh Jesus go over there cause you keep going back. You're like pacing back and forth and then he's just like I didn't know that. He was trying to figure out how it was funny. So that eventually he was like, 'are you hungry, you want to go get something?' I said, 'yeah I think we can.' And then he pops the question on me and I was just like oh I was like 'Yes!' I said, 'Oh my God I love the ring.' And then he was just like so is that a yes? And I'm like, 'yes, yes!'",
 "cat": [1],
 "important": "",
 },
 {
 "speaker": "",
-"text": "So then I wrapped up everything and flew back Sunday and then I was like well I guess I'm moving to Mississippi. So that's why, how I came out here but he gave me that year with my daughter- she's just got in first grade.",
+"text": "So then I wrapped up everything and flew back Sunday and then I was like well I guess I'm moving to Mississippi. So that's why, how I came out here but he gave me that year with my daughterï¿½ she's just got in first grade.",
 "cat": [3, 4],
 "important": "",
 },
@@ -1395,7 +1407,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I didn't know how many years or how long back it was that I had heard $7.25 minimum wage, you know? Everything else is way- it's already like $9 and $8. Close to 9 I think is the lowest I've heard. And when I got here they said minimum wage was $7 I was like, oh my god.",
+"text": "I didn't know how many years or how long back it was that I had heard $7.25 minimum wage, you know? Everything else is wayï¿½ it's already like $9 and $8. Close to 9 I think is the lowest I've heard. And when I got here they said minimum wage was $7 I was like, oh my god.",
 "cat": [],
 "important": "",
 },
@@ -1431,13 +1443,18 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "So it was just like- even to get a job away from there I would just spend the money on gas and try to find somewhere to pay because I had to pay for child care and my- I had only worked part time because I don't know nobody you know that a of work full time",
+"text": "So it was just likeï¿½ even to get a job away from there I would just spend the money on gas and try to find somewhere to pay because I had to pay for child care and myï¿½ I had only worked part time because I don't know nobody you know that a of work full time",
 "cat": [],
 "important": "",
 },
 ]},
 {
 "id": 3,
+"header": [
+    {"bio": "Krista is from a small country town in Louisiana, but she left Louisiana for bigger and better opportunities. Now, she lives in Mississippi with her twins girls and son. In Louisiana, Krista dropped out of high school after feeling that the school she was transferred to prevented her from succeeding. She later enrolled in Camelot College to pursue a degree in medical assistance and her GED, but after becoming pregnant, she wasnâ€™t able to continue school. She has previously worked as a PCA (Physician Care Assistant) and in housekeeping, but has struggled over the years to find a well-paying job and to make ends meet due to childcare expenses she cannot afford and her ineligibility for SNAP benefits. As a student in the Women in Construction program, she is excited and thankful to be in the program and looks forward to what she will be able to accomplish after the program has ended.",
+    "realname": "Krista",
+    "initials": "KA",
+    }],
 "interview": [
 {
 "speaker": "Interviewer",
@@ -1447,7 +1464,7 @@ const OHPersonData =
 },
 {
 "speaker": "Krista",
-"text": "Well my name is Krista Augustine. I'm originally from Louisiana. I'm the baby girl of six siblings.",
+"text": "Well my name is Krista. I'm originally from Louisiana. I'm the baby girl of six siblings.",
 "cat": [],
 "important": "",
 },
@@ -1555,7 +1572,7 @@ const OHPersonData =
 },
 {
 "speaker": "Krista",
-"text": "Yes ma'am. And helping with PCA...I love to be able to help the elderly. Exercise, I exercise with them. They teach me, I teach them. I help them, they help me. And being able to know that I'm helping someone that need help, it makes me feel good inside. It makes really feel good inside to know that I can help the disabled to the young, not only disabled, the young. I done help a lot of different people.",
+"text": "Yes maï¿½am. And helping with PCA...I love to be able to help the elderly. Exercise, I exercise with them. They teach me, I teach them. I help them, they help me. And being able to know that Iï¿½m helping someone that need help, it makes me feel good inside. It makes really feel good inside to know that I can help the disabled to the young, not only disabled, the young. I done help a lot of different people.",
 "cat": [2, 5],
 "important": "",
 },
@@ -1591,7 +1608,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "So the place you were working for was it a company or was it like-",
+"text": "So the place you were working for was it a company or was it likeï¿½",
 "cat": [],
 "important": "",
 },
@@ -1603,7 +1620,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "It was called 'All About You Health Care.' It was a company.",
+"text": "It was called ï¿½All About You Health Care.ï¿½ It was a company.",
 "cat": [],
 "important": "",
 },
@@ -1657,7 +1674,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "And she's also housekeeping for like 10 years. My dad is at working in Angola State Penitentiary. He'd been there for 43 years so he and my mom been separated for over 20 years, but there's still a marriage. And my mom, she sacrificed a lot for us. My dad is the one that make us ....He's right from wrong. He's stuck on righteousness, you know because he figures that we know what's right from wrong. But my mom, she's still to this point that she's there for her kids. You know right is wrong...right is right and wrong is wrong but she's there.",
+"text": "And she's also housekeeping for like 10 years. My dad is at working in Angola State Penitentiary. He'd been there for 43 years so he and my mom been separated for over 20 years, but there's still a marriage. And my mom, she sacrificed a lot for us. My dad is the one that make us ....Heï¿½s right from wrong. He's stuck on righteousness, you know because he figures that we know what's right from wrong. But my mom, she's still to this point that she's there for her kids. You know right is wrong...right is right and wrong is wrong but she's there.",
 "cat": [],
 "important": "",
 },
@@ -1669,7 +1686,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "So, it's kind of better for me now, I can say and I'm getting...I'm molding myself to be a better person. And I love it. I love the person I'm becoming right now. Because my mom saying 'you're dedicated to be someone hon.' I said 'Yes ma'am. I'm definitely going to be someone.'",
+"text": "So, it's kind of better for me now, I can say and I'm getting...I'm molding myself to be a better person. And I love it. I love the person I'm becoming right now. Because my mom saying ï¿½you're dedicated to be someone hon. I said 'Yes ma'am. I'm definitely going to be someone.'",
 "cat": [5],
 "important": "",
 },
@@ -1711,7 +1728,7 @@ const OHPersonData =
 },
 {
 "speaker": "Krista",
-"text": "My community is like, we're very small it's like. Maybe where I'm from, we have maybe 2000 people from and most of those people is my family and it's very...it's a small...it's called Simmesport. I use Marksville because that's like the bigger part of where I'm from but Simmesport, Louisiana is where I'm originally from and it's a very, very, very small county. There is no place...it's nothing to do there. Like, there is no Wal-Mart. You have to go drive 20 minutes to go to Wal-mart. There's no McDonalds. I don't know, it's like maybe three, four convenience stores in rows. It's dirt roads. So that's where I'm from. That's where exactly where I am from.",
+"text": "My community is like, we're very small it's like. Maybe where I'm from, we have maybe 2000 people from and most of those people is my family and it's very...it's a small...it's called Simmesport. I use Marksville because thatï¿½s like the bigger part of where I'm from but Simmesport, Louisiana is where I'm originally from and itï¿½s a very, very, very small county. There is no place...it's nothing to do there. Like, there is no Wal-Mart. You have to go drive 20 minutes to go to Wal-mart. There's no McDonalds. I don't know, it's like maybe three, four convenience stores in rows. It's dirt roads. So that's where I'm from. That's where exactly where I am from.",
 "cat": [],
 "important": "",
 },
@@ -1729,7 +1746,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "What do you feel like were some of the obstacles that you faced in terms of not being able to finish school? And by that you mean high school or you mean-",
+"text": "What do you feel like were some of the obstacles that you faced in terms of not being able to finish school? And by that you mean high school or you meanï¿½",
 "cat": [],
 "important": "",
 },
@@ -1747,7 +1764,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "You're meaning like- can you explain to me more, like your question?",
+"text": "You're meaning likeï¿½ can you explain to me more, like your question?",
 "cat": [],
 "important": "",
 },
@@ -1759,7 +1776,7 @@ const OHPersonData =
 },
 {
 "speaker": "Krista",
-"text": "The reason I didn't finish school was because in 11th grade I got golds [gold tooth cap]. My principal sent me to alternative school and there was like obstacles. I was dancing and I was in band, I was cymbal-playing. So when she sent me to alternative school, it kind of flunked me, you know.",
+"text": "The reason I didnï¿½t finish school was because in 11th grade I got golds [gold tooth cap]. My principal sent me to alternative school and there was like obstacles. I was dancing and I was in band, I was cymbal-playing. So when she sent me to alternative school, it kind of flunked me, you know.",
 "cat": [7],
 "important": "",
 },
@@ -1807,7 +1824,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "But it was just different obstacles. Like the community sometimes, sometimes the community can hold you back from a lot. You have to have this wrong mentality and then my sisters- they're not really like a big sister to me. You know, I'm like a big sister to them. So, it was kind of rough for me to know what was the really right thing that I want to do because now they see what kind of person that I am and they see that I want...and they wasn't really there to be like 'well this is my little sister. We can help with her this and help with that.' They was always calling me for the help so.",
+"text": "But it was just different obstacles. Like the community sometimes, sometimes the community can hold you back from a lot. You have to have this wrong mentality and then my sistersï¿½ they're not really like a big sister to me. You know, I'm like a big sister to them. So, it was kind of rough for me to know what was the really right thing that I want to do because now they see what kind of person that I am and they see that I want...and they wasn't really there to be like 'well this is my little sister. We can help with her this and help with that. They was always calling me for the help so.",
 "cat": [1],
 "important": "",
 },
@@ -1861,7 +1878,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "Yeah. I noticed that you keep using the word 'bad person.' I'm just curious to know who else went to the alternative school.",
+"text": "Yeah. I noticed that you keep using the word 'bad person. I'm just curious to know who else went to the alternative school.",
 "cat": [],
 "important": "",
 },
@@ -1897,7 +1914,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "So yeah of course, when you don't have the right person to tell you to just go through it and of course my sisters and my mom they weren't there to tell me: 'Well just finish it, just go through, you almost there.' So they was like 'well don't worry about it.' They was more of 'Well don't worry about it. If this is how you feel, don't worry about it.'",
+"text": "So yeah of course, when you don't have the right person to tell you to just go through it and of course my sisters and my mom they weren't there to tell me: ï¿½Well just finish it, just go through, you almost there. So they was like well don't worry about it. They was more of 'Well don't worry about it. If this is how you feel, don't worry about it.'",
 "cat": [1],
 "important": "",
 },
@@ -1945,13 +1962,13 @@ const OHPersonData =
 },
 {
 "speaker": "Krista",
-"text": "Women in Construction is, I'm going to be honest, it's very new to me. I'm loving it. I love it. This year, I never thought about women in construction from where I'm from. I never thought women can do construction. So it's very new to me.",
+"text": "Women in Construction is, I'm going to be honest, itï¿½s very new to me. I'm loving it. I love it. This year, I never thought about women in construction from where I'm from. I never thought women can do construction. So it's very new to me.",
 "cat": [3],
 "important": "",
 },
 {
 "speaker": "",
-"text": "My kids, I come home every day, they see how excited- I'm very excited.",
+"text": "My kids, I come home every day, they see how excitedï¿½ I'm very excited.",
 "cat": [],
 "important": "",
 },
@@ -1981,13 +1998,13 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "I thank these ladies so, so, so much because they're molding us to be…they're really molding us to... it's just a program but with this job program they teach us so much. There's so much they give us.",
+"text": "I thank these ladies so, so, so much because they're molding us to beï¿½they're really molding us to... it's just a program but with this job program they teach us so much. There's so much they give us.",
 "cat": [],
 "important": "",
 },
 {
 "speaker": "",
-"text": "So yeah definitely, when I graduate here, I'm going to definitely proceed and hopefully I have a job waiting on me but then I'm going to concentrate on working for myself. If it's going out to people's house fixing anything or building benches. I'm going to build my momma a bench (inaudible). But it's going to, yeah Women in Construction is going to be my career. Medical assistance, it may be something I may part-time do again but I don't think I will. I don't think I will.",
+"text": "So yeah definitely, when I graduate here, I'm going to definitely proceed and hopefully I have a job waiting on me but then I'm going to concentrate on working for myself. If it's going out to people's house fixing anything or building benches. I'm going to build my momma a bench (inaudible). But it's going to, yeah Women in Construction is going to be my career. Medical assistance, it may be something I may part-time do again but I don't think I will. I donï¿½t think I will.",
 "cat": [2],
 "important": "",
 },
@@ -2005,19 +2022,19 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "So I'm letting them know, my daughters always said... 'Mom I want to be like you.' So when I hear them say that, I be like I know you watching me. So I'm going to continue molding myself to be greater and greater so whatever I do is...what I'm doing, you can do it as well. So I make sure I do the right thing because I know my kids are watching me. ",
+"text": "So I'm letting them know, my daughters always said... 'Mom I want to be like you. So when I hear them say that, I be like I know you watching me. So I'm going to continue molding myself to be greater and greater so whatever I do is...what I'm doing, you can do it as well. So I make sure I do the right thing because I know my kids are watching me. ",
 "cat": [4, 5],
 "important": "",
 },
 {
 "speaker": "",
-"text": "I do want them to grow up as being the greatest they can be, sticking together. I don't want them to leave each other of course. Especially my twins, I don't want them to leave each other. I want them to work. I want them to always be independent. I want them to help each other when needed and I want them to feel...I don't never want them to not communicate with each other. Never. I want them to always stick together. I don't care if they're 50 million miles away. I want them to always call each other and check on each other. Definitely. Help each other out. Have a dream. I want them to have a dream and right now that's what we focus on. I know they're still young. They're very very young but I want them to know that 'what all do y'all want to do,' you know, 'what do you want to do? And whatever you want to do, you definitely can do it. Don't think that you can't do it. You can do it.'",
+"text": "I do want them to grow up as being the greatest they can be, sticking together. I don't want them to leave each other of course. Especially my twins, I don't want them to leave each other. I want them to work. I want them to always be independent. I want them to help each other when needed and I want them to feel...I don't never want them to not communicate with each other. Never. I want them to always stick together. I don't care if they're 50 million miles away. I want them to always call each other and check on each other. Definitely. Help each other out. Have a dream. I want them to have a dream and right now that's what we focus on. I know they're still young. They're very very young but I want them to know that 'what all do y'all want to do,' you know, 'what do you want to do? And whatever you want to do, you definitely can do it. Don't think that you can't do it. You can do it.ï¿½",
 "cat": [4],
 "important": "",
 },
 {
 "speaker": "",
-"text": "And my son of course I hope-",
+"text": "And my son of course I hopeï¿½",
 "cat": [],
 "important": "",
 },
@@ -2047,7 +2064,7 @@ const OHPersonData =
 },
 {
 "speaker": "Interviewer",
-"text": "What were your children's experience like moving from Louisiana to Mississippi? What was that like going to a different school, you know, a different environment?",
+"text": "What were your childrenï¿½s experience like moving from Louisiana to Mississippi? What was that like going to a different school, you know, a different environment?",
 "cat": [],
 "important": "",
 },
@@ -2065,7 +2082,7 @@ const OHPersonData =
 },
 {
 "speaker": "",
-"text": "So when we did move from there my kids kind of...it's different from them now as they can say 'you know Mom I have this kind of friend.'-",
+"text": "So when we did move from there my kids kind of...it's different from them now as they can say 'you know Mom I have this kind of friend.'",
 "cat": [],
 "important": "",
 },

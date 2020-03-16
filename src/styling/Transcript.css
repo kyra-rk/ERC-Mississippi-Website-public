@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-.import1 {
+.import1 p#transcriptquotes {
     font-size: 20px;
     font-style: italic;
     font-weight: bold;
@@ -55,7 +55,7 @@
 div.buttonsbar {
     position: fixed;
     left: 10px;
-    top: 500px;
+    top: 200px;
     display: grid;
 
 }

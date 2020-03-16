@@ -198,9 +198,10 @@ span.MuiIconButton-label {
 /* Container { background-color: lightpink; } */
 
 .relatedinfo.card > .card-body {
-    background-color: teal;
-    color: white;
+    background-color: #ffd524;;
+    color: #6d1b6c;
     padding: 0 10;
+    /* text-decoration: underline; */
 
 }
 
@@ -212,5 +213,8 @@ span.MuiIconButton-label {
 }
 
 .relatedinfo.card > .card-body:hover {
-    background-color: black;
+    background-color: #ffd524;
+    border-color: #6d1b6c;
+    color: #6d1b6c;
+    
 }

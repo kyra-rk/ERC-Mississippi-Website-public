@@ -107,20 +107,24 @@ annotationwidth = 4
         //     </Card>
         //   </Accordion>
       }
-      return (<div><Row >
-        {/* <Col sm={1}>
-        </Col> */}
+      return (<div>
+        <Row >
+        <Col sm={2}>
+        </Col>
+        <Col>
+        <Row>
         <Col sm={{span: 1}} id="speakername">
           <h5>{obj.speaker}</h5>
         </Col>
         <Col sm={1}></Col>
         </Row>
-        <Row>
-        <Col sm={1}></Col>
-        <Col sm={9}>
+        <Row className="justify-content-center">
+        <Col sm={12}>
           <div className={`${classnames} import${obj.important}`}>
             <p id="transcriptquotes">{obj.text}</p>
           </div>
+        </Col>
+        </Row>
         </Col>
         <Col sm={2}>
           <div>
@@ -154,7 +158,7 @@ annotationwidth = 4
           <Col sm={2} className="buttonsbar">
           {buttons}
           </Col>
-          <Col sm={10}>{printtranscript}</Col>
+          <Col sm={12}>{printtranscript}</Col>
         </Row>
         </div>
 

@@ -250,25 +250,25 @@ class DropdownBootstrap_2 extends Component {
           var demselected = this.state.demselected;
           var genderselected = this.state.genderselected;
           var buttonselected = this.state.buttonselected;
-          var error=false;
-          if (this.state.genderselected!=="A" && this.state.demselected!=="A" && matchingvar.racegender===false){
-            error = true;
-          }
-          else if (this.state.demselected !== "A"  && matchingvar.race === false){
-            error = true;
-          }
-          else if (this.state.genderselected !== "A" && matchingvar.gender === false){
-            error = true;
-          }
-          if (error === true){
-            demselected = "A"
-            genderselected = "A"
-            if (document.getElementsByClassName(["selected"])[0]!==undefined){
-              document.getElementsByClassName(["selected"])[0].classList.remove("selected");
-            }
-            document.getElementsByClassName(["Everyone"])[0].classList.add("selected");
-            buttonselected = "Everyone"
-          }
+          // var error=false;
+          // if (this.state.genderselected!=="A" && this.state.demselected!=="A" && matchingvar.racegender===false){
+          //   error = true;
+          // }
+          // else if (this.state.demselected !== "A"  && matchingvar.race === false){
+          //   error = true;
+          // }
+          // else if (this.state.genderselected !== "A" && matchingvar.gender === false){
+          //   error = true;
+          // }
+          // if (error === true){
+          //   demselected = "A"
+          //   genderselected = "A"
+          //   if (document.getElementsByClassName(["selected"])[0]!==undefined){
+          //     document.getElementsByClassName(["selected"])[0].classList.remove("selected");
+          //   }
+          //   document.getElementsByClassName(["Everyone"])[0].classList.add("selected");
+          //   buttonselected = "Everyone"
+          // }
           var abbreviation = this.getabbreviation(matchingvar, demselected, genderselected);
 
           this.setState({currentvar: true, varlocation: {index1: index,index2: i}, varname: matchingvar.name, varabbreviation: abbreviation,
@@ -382,7 +382,7 @@ Data Portal                </h1> */}
                 {/* <Router> */}
                 <Col sm={1}></Col>
                 <Col sm={12} lg={10}>
-                   <ButtonToolbar className="step1"> {Buttons}
+                   <ButtonToolbar className="step1"> {varbuttons}
                    {/* {varbuttons} */}
                    </ButtonToolbar>
                    <section class="buttons">

@@ -13,7 +13,9 @@ class Map extends Component {
             color: d3.scaleQuantile().range(["#fde8f4","#dfb9cf","#b76293","#79064b", "#30031e"]),
             variable: this.props.variable,
             variablename: this.props.varname,
-            variabledescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            variabledescription: this.props.vardesc,
+            longerdescription: this.props.longdesc,
+            // variabledescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
             group: this.props.group,
         };
         this.componentDidMount = this.componentDidMount.bind(this)
@@ -36,7 +38,7 @@ class Map extends Component {
     componentDidUpdate(prevProps){
 
         if (this.props.variable != prevProps.variable){
-            this.setState({variable: this.props.variable, variablename: this.props.varname, group: this.props.group});
+            this.setState({variable: this.props.variable, variablename: this.props.varname, group: this.props.group, variabledescription: this.props.vardesc, longerdescription: this.props.longdesc});
         }
         this.drawMap();
         this.drawDotplot();
@@ -46,6 +48,7 @@ class Map extends Component {
     drawTopTen(){
         let variable = this.state.variable;
         let topdata = this.state.dataset;
+        let bottomdata =this.state.dataset;
         let color= this.state.color;
         topdata = topdata.sort(function (a, b) {
             return b[variable]-a[variable];
@@ -54,12 +57,13 @@ class Map extends Component {
           topdata = topdata.filter(function(d){
               return d[variable] != "NA"
           })
-          topdata = topdata.filter(function(d,i){
-            //   console.log(d[variable])
-          return i < 10;
-         });
+        //   topdata = topdata.filter(function(d,i){
+        //     //   console.log(d[variable])
+        //   return i < 10;
+        //  });
 
-         let data = topdata;
+
+         let data = topdata
 
          var margin2 = {
             top: 10,
@@ -75,6 +79,11 @@ class Map extends Component {
         var newHeight = newWidth/1.3
         var width = newWidth - margin2.left - margin2.right;
         var height = newHeight - margin2.top - margin2.bottom;
+
+        var div = d3.select("div.tooltip")               
+        .style("opacity", 0);
+    var arrow = d3.select("div.arrow")
+        .style("opacity", 0);
 
         var svg2 = d3.select(".tablemap").append("svg")
                 .attr("class", "singlevarsvg")
@@ -149,6 +158,20 @@ class Map extends Component {
                    d3.selectAll("circle.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
                 .style("stroke", "yellow")
                 .style("stroke-width", 3);
+                console.log(d);
+                div.transition()        
+                             .duration(200)      
+                             .style("opacity", .9);    
+                         arrow.transition()
+                             .duration(200)
+                             .style("opacity", .9);
+                         div.html(d.Geography.substring(0,d.Geography.length-20) + " County <br/>"  + d[variable].toFixed(2))  
+                             .style("left", (d3.event.pageX + 10) + "px")     
+                             .style("top", (d3.event.pageY - 70) + "px");    
+ 
+                         arrow.html("▼")
+                         .style("left", (d3.event.pageX + 6) + "px")     
+                         .style("top", (d3.event.pageY - 12) + "px")
 
                 })
                 .on("mouseout", function(d){
@@ -299,6 +322,7 @@ class Map extends Component {
 
     drawDotplot(){
         let variable = this.state.variable;
+        let variabledesc = this.state.variabledescription
         let data = this.state.dataset;
         var margin2 = {
          top: 10,
@@ -424,7 +448,7 @@ class Map extends Component {
                                         (adjustheight + margin2.bottom*2.5) + ")")
                     .attr("class", "axis--x label")
                     .style("text-anchor", "middle")
-                    .text("Value");
+                    .text(variabledesc);
 
                  svg3.append("g")
                  .attr("class", "axis--y")
@@ -665,6 +689,8 @@ class Map extends Component {
     }
 
    render() {
+       console.log(this.state.variabledescription);
+       console.log(this.props.vardesc)
 
    return (
       <div>
@@ -674,8 +700,9 @@ class Map extends Component {
                {/* <p>Quick description here</p> */}
            </Col>
            <Col lg={{span: 10, offset: 1}}>
-              <div className="distexplanation"> <p>Short description of the variable will go here. </p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+              <div className="distexplanation"> <p>{this.state.variabledescription} </p>
+              {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. */}
+              </div>
                {/* <p>Quick description here</p> */}
            </Col>
            <Col lg={{span: 11}}>
@@ -692,8 +719,9 @@ class Map extends Component {
                </Row>
                <Row className="rowblock" noGutters={true}>
                <Col  lg={{span: 5, offset: 1}} className="longdesc">
-               <div><p> Longer description of variable and info on the source will go here.</p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim. 
-               <a href="stories"><Card className="relatedinfo"><Card.Body><Card.Title>Related Info</Card.Title><Card.Text>See our Stories Page for more insight on how these data show up in women's lives day to day. </Card.Text> </Card.Body></Card></a>
+               <div><p> {this.state.longerdescription}</p> 
+               {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim.  */}
+               <a href="stories"><Card className="relatedinfo"><Card.Body><Card.Title>Related Info</Card.Title><Card.Text>Click here to see our Stories Page for more insight on how these data show up in women's lives on a day to day basis. </Card.Text> </Card.Body></Card></a>
                </div>
                    </Col>
                    <Col lg ={{span: 5, offset: 1}} className="tablemap step8"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>
