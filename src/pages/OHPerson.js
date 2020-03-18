@@ -12,6 +12,8 @@ import topic_categories from '../data/topic_categories';
 import flip_card_items from '../data/flip_card_items';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 
 class OHPerson extends React.Component {
   constructor(props) {
@@ -32,8 +34,11 @@ class OHPerson extends React.Component {
   }
 
   handleIconClick = (val) => {
-    var line = this.state.linefocus+val
-    this.setState({linefocus: line})
+    if (val==-1 & this.state.linefocus!=0 | val==1){
+      var line = this.state.linefocus+val
+      this.setState({linefocus: line})
+    }
+    if (val==1 & this.state.lie)
     console.log(this.state)
     // elem.scrollIntoView();
   }
@@ -60,19 +65,19 @@ class OHPerson extends React.Component {
       }
       // var row = document.getElementById(`row-${this.state.selectedcat}`);
       // row.style.border = "2px solid red"
-      // var newElement = document.createElement(p);
+      // var newElement = document.createElement(Col);
       // newElement.setAttribute('class', "add");
       // row.appendChild(newElement);
+      // newElement.style.border = "2px solid red";
   }
   if (this.state.linefocus !== prevState.linefocus & this.state.linefocus > 0){
+    var color = topic_categories.filter((obj,i) => i+1 == this.state.selectedcat)[0].color
+
     var elem = document.getElementsByClassName(`section-${this.state.selectedcat}-${this.state.linefocus}`)[0]
     elem.scrollIntoView({behavior: "smooth", block: "center"});
     var childelem = document.querySelectorAll(`.section-${this.state.selectedcat}-${this.state.linefocus} p#transcriptquotes`)[0]
-    // childelem.style.transition = "text-shadow 2s"
-    childelem.style.textShadow="4px 4px 12px rgba(38, 143, 255, 0.5)"
-    // childelem.style.transition = "text-shadow 2s"
-    // childelem.style.textShadow="none"
-
+    // childelem.style.textShadow="4px 4px 12px rgba(38, 143, 255, 0.5)"
+    childelem.style.textShadow=`4px 4px 12px ${color}`
   }
 }
 
@@ -103,20 +108,32 @@ createHeader(){
   createTranscript(){
     let match = this.props.match;
     const personname = match.params.name;
-
-    const buttons = topic_categories.map((obj, index) =>
-      <Row key={`row-${index+1}`} id={`row-${index+1}`} noGutters={true}>
-       <Col sm={10}>
-       <Button key={index+1} onClick={this.handleClick} value={index+1} id={`transcriptbutton ${index+1}`} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
-        {obj.name}
-      </Button> 
-      </Col>
-      <Col sm={1}>
-      <RemoveCircleIcon key={`minusbutton-${index+1}`} value={-1} onClick={() => this.handleIconClick(-1)} className="minus"></RemoveCircleIcon>
-      <AddCircleIcon key={`addbutton-${index+1}`} value={+1} onClick={() => this.handleIconClick(1)} className="add"></AddCircleIcon>
-      </Col>
-      </Row>
-    );
+    let currentcat = this.state.selectedcat;
+    const buttons = topic_categories.map((obj, index) => {
+      console.log(index+1)
+      console.log(currentcat)
+      const header = 
+      <Col sm={10}>
+      <Button key={index+1} onClick={this.handleClick} value={index+1} id={`transcriptbutton ${index+1}`} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
+       {obj.name}
+     </Button> 
+     </Col>
+      if (index+1 == currentcat){
+        return (<Row key={`row-${index+1}`} id={`row-${index+1}`} noGutters={true}>
+        {header}
+        <Col sm={1}>
+        <ArrowDropDownCircleIcon key={`minusbutton-${index+1}`} value={-1} onClick={() => this.handleIconClick(-1)} className="minus reverse"></ArrowDropDownCircleIcon>
+        <ArrowDropDownCircleIcon key={`addbutton-${index+1}`} value={+1} onClick={() => this.handleIconClick(1)} className="add"></ArrowDropDownCircleIcon>
+        </Col>
+        </Row>)
+      }
+      else {
+        return (
+        <Row key={`row-${index+1}`} id={`row-${index+1}`} noGutters={true}>
+{header}</Row>)
+      }
+      
+     } );
 
     //id has person# so removing the word person then matching with number and then add cat# to name of class
     var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
@@ -142,11 +159,9 @@ createHeader(){
       var annotationwidth = 0
       if (obj.annotation){
         annotation =
-        <section><a className="anchor" id="section-1"> </a>
         <Card className="annotation">
           <Card.Body>{obj.annotation}</Card.Body>
         </Card>
-        </section>
         transcriptwidth = 5
         annotationwidth = 4
 

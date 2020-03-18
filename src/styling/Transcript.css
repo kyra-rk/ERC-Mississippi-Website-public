@@ -88,16 +88,6 @@
     font-size: 20px;
 }
 
-a.anchor {
-    display: block;
-    position: relative;
-    top: -100px;
-    /* visibility: hidden; */
-}
-
-a.hidden p {
-    opacity: 0;
-}
 
 div.card {
     margin-bottom: 20px;
@@ -105,4 +95,8 @@ div.card {
 
 svg.MuiSvgIcon-root {
     font-size: 1.5rem;
+}
+
+.reverse {
+    transform: rotate(180deg);
 }
