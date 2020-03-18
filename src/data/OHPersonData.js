@@ -218,6 +218,7 @@ const OHPersonData =
 "text": "So I used to work in construction in Jamaica. Not hands-on working, I was a supervisor/manager in a construction firm.",
 "cat": [2],
 "important": "",
+"annotation": "According to https://statinja.gov.jm/LabourForce/NewLFS.aspx, women account for only 2.97% of construction workers in Jamaica.",
 },
 {
 "speaker": "",

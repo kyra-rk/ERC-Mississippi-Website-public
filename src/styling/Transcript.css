@@ -25,7 +25,7 @@
     display: inline;
     text-align: left;
     font-size: 12px;
-    /* margin-left: 20%; */
+    margin-left: 4%;
     /* margin-right: 10px; */
 }
 
@@ -60,6 +60,7 @@
 #transcriptquotes{
     font-family: "Roboto";
     /* margin-left: 2%; */
+    
 }
 
 #personbio{
@@ -85,4 +86,23 @@
     height: 100px;
     vertical-align: middle;
     font-size: 20px;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -100px;
+    /* visibility: hidden; */
+}
+
+a.hidden p {
+    opacity: 0;
+}
+
+div.card {
+    margin-bottom: 20px;
+}
+
+svg.MuiSvgIcon-root {
+    font-size: 1.5rem;
 }

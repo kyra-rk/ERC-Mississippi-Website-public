@@ -10,7 +10,7 @@ import data_logo from '../pictures/database.svg'
 import stories_logo from '../pictures/stories.svg'
 import method_logo from '../pictures/tools.svg'
 import 'bootstrap';
-import Fade from 'react-reveal/Fade';
+// import Fade from 'react-reveal/Fade';
 
 class Home extends React.Component {
 
@@ -20,9 +20,9 @@ class Home extends React.Component {
 
 
   render() {
-      const { showDiv1 } = this.state;
-      const { showDiv2 } = this.state;
-      const { showDiv3 } = this.state;
+      // const { showDiv1 } = this.state;
+      // const { showDiv2 } = this.state;
+      // const { showDiv3 } = this.state;
       return (
 
         <div className="homescreen">
