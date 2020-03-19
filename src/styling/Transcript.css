@@ -44,7 +44,6 @@
 .transcriptbutton{
 
     font-family: "Fira Sans";
-
     margin: 5px;
     margin-bottom: 10px;
     width: 100%;
@@ -99,4 +98,13 @@ svg.MuiSvgIcon-root {
 
 .reverse {
     transform: rotate(180deg);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.filters {
+    padding: 0px;
 }
