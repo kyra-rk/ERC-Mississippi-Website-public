@@ -41,13 +41,16 @@
     font-size: 15px;
     /* margin-left: 10%; */
     text-align: left;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 15px;
 
 
 }
 
+.oh p:focus {
+    text-shadow: 2px 2px 8px rgba(38, 143, 255, 0.5);
+}
 .oh h3{
 
     font-family: "Fira Sans";

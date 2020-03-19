@@ -12,6 +12,9 @@
     text-align: center;
 }
 
+.header {
+    margin-top: 30px;
+}
 .h1{
 
     font-family: "Fira Sans";
@@ -22,7 +25,7 @@
     display: inline;
     text-align: left;
     font-size: 12px;
-    /* margin-left: 20%; */
+    margin-left: 4%;
     /* margin-right: 10px; */
 }
 
@@ -41,28 +44,23 @@
 .transcriptbutton{
 
     font-family: "Fira Sans";
-    /* text-transform: uppercase; */
-    font-size: 1rem;
-    /* font-weight: 900; */
+
     margin: 5px;
     margin-bottom: 10px;
-    float: left;
-    /* position: relative; */
-
+    width: 100%;
+    padding: 5px;
+	top: 0;
+ 
 }
 
-/* doesn't work */
-div.buttonsbar {
-    position: fixed;
-    left: 10px;
-    top: 200px;
-    display: grid;
-
+#transcriptbutton {
+    font-size: .75rem;
 }
 
 #transcriptquotes{
     font-family: "Roboto";
     /* margin-left: 2%; */
+    
 }
 
 #personbio{
@@ -88,4 +86,17 @@ div.buttonsbar {
     height: 100px;
     vertical-align: middle;
     font-size: 20px;
+}
+
+
+div.card {
+    margin-bottom: 20px;
+}
+
+svg.MuiSvgIcon-root {
+    font-size: 1.5rem;
+}
+
+.reverse {
+    transform: rotate(180deg);
 }

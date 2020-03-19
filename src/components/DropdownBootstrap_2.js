@@ -19,7 +19,7 @@ import { Fab, IconButton, Tooltip } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/Help';
 import HelpOutlineSharpIcon from '@material-ui/icons/HelpOutlineSharp';
 import { borderRight } from '@material-ui/system';
-import Buttons from '../components/Buttons';
+// import Buttons from '../components/Buttons';
 // import '../styling/font-awesome.min.css'
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 // import Map from '../components/Map.js'
@@ -387,7 +387,9 @@ Data Portal                </h1> */}
                    </ButtonToolbar>
                    <section class="buttons">
                   <Row className="justify-content-center">
-                  <Col lg={10}>{Buttons}</Col>
+                  <Col lg={10}>
+                    {/* <Buttons></Buttons> */}
+                    </Col>
                   </Row>
                  </section>
                 </Col>
