@@ -134,7 +134,43 @@ createHeader(){
       }
       
      } );
+     const horbuttons = topic_categories.map((obj, index) => {
+      return (<Col sm={"auto"} className="filters">
+      <Button key={index+1} onClick={this.handleClick} value={index+1} id={`transcriptbutton ${index+1}`} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
+      {obj.name}
+    </Button> </Col>)
+      console.log(index+1)
+      console.log(currentcat)
+      const header = 
 
+      <Button key={index+1} onClick={this.handleClick} value={index+1} id={`transcriptbutton ${index+1}`} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
+       {obj.name}
+     </Button> 
+
+      if (index+1 == currentcat){
+        return (
+          <Col sm={"auto"}>
+         
+        
+        <Row >
+        <ArrowDropDownCircleIcon key={`minusbutton-${index+1}`} value={-1} onClick={() => this.handleIconClick(-1)} className="minus reverse"></ArrowDropDownCircleIcon>
+        <ArrowDropDownCircleIcon key={`addbutton-${index+1}`} value={+1} onClick={() => this.handleIconClick(1)} className="add"></ArrowDropDownCircleIcon>
+        </Row>
+        <Row>
+          {header}
+          </Row>
+          </Col>
+        
+        )
+      }
+      else {
+        return (
+          <Col sm={"auto"}> 
+      
+<Row>{header}</Row></Col>)
+      }
+      
+     } );
     //id has person# so removing the word person then matching with number and then add cat# to name of class
     var result = OHPersonData.filter(obj => obj.id == personname.substring(6));
     result = result[0];
@@ -203,14 +239,15 @@ createHeader(){
       </div>)
     });
   }
-    return [buttons, printtranscript]
+    return [buttons, horbuttons, printtranscript]
   }
 
   render(){
       const [printheader, printinitials, printbio] = this.createHeader()
-      const [buttons, printtranscript] = this.createTranscript()
+      const [buttons, horbuttons, printtranscript] = this.createTranscript()
       
       return (
+        <section>
         <div>
         <Row className="ohpersonrow justify-content-center">
         {/* <Col sm={3}>
@@ -225,14 +262,19 @@ createHeader(){
       </Row>
         <Row>
           <Col sm = {3} md={2}>
-         <StickyBox offsetTop={85}>
+         {/* <StickyBox offsetTop={85}>
                 {buttons}
-           </StickyBox> 
+           </StickyBox>  */}
            </Col>
           <Col sm={9} md={10}>{printtranscript}</Col>
         </Row>
         </div>
-
+        <Row className="justify-content-center">
+        <Row className="footer">
+          {horbuttons}
+</Row>
+        </Row>
+        </section>
 
       );
 
