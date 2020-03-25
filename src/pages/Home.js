@@ -71,7 +71,33 @@ class Home extends React.Component {
           </div>
         </section>
 
-        <section class="page-section" id="services">
+
+        <section class="page-section second">
+          <div className="introduction">
+              <h1>Statistics</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            <div class="container">
+              <div class="row text-center">
+                <div class="col-md-4">
+                    <h4 class="statistics_num">#48</h4>
+                  <p class="text-muted"> Mississippi is ranked 48 among US states. </p>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="statistics_num">2.9M</h4>
+                  <p class="text-muted">Mississippi has a population of 2.9 million</p>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="statistics_num">32%</h4>
+                  <p class="text-muted">32% of people in Mississippi are college educated</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="page-section first">
+          <section id="services">
                 <div className="introduction">
                   <h2>Features</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
@@ -125,29 +151,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-        </section>
-
-        <section class="page-section first">
-          <div className="introduction">
-              <h1>Statistics</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-            <div class="container">
-              <div class="row text-center">
-                <div class="col-md-4">
-                    <h4 class="statictics_num">#48</h4>
-                  <p class="text-muted"> Mississippi is ranked 48 among US states. </p>
-                </div>
-                <div class="col-md-4">
-                    <h4 class="statictics_num">2.9M</h4>
-                  <p class="text-muted">Mississippi has a population of 2.9 million</p>
-                </div>
-                <div class="col-md-4">
-                    <h4 class="statictics_num">32%</h4>
-                  <p class="text-muted">32% of people in Mississippi are college educated</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
         </section>
 
         {/*<section class="page-section first">
@@ -177,9 +181,10 @@ class Home extends React.Component {
           </div>
         </section>*/}
 
-        <section class="page-section">
+        <section class="page-section second">
           <div className="introduction">
             <h1>Scroll Demo</h1>
+            <p> The different features of Make Women Coount </p>
             <div className="row">
             <div style={{overflow: 'auto' }}>
               <div style={{display: 'flex', alignItems: 'flex-start' }}>

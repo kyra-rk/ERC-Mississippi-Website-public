@@ -71,6 +71,11 @@ mark.yellow {
   color: #6c757d;
 }
 
+.page-section.second{
+  background-color: #642563;
+  color: #FFFFFF;
+}
+
 /* .page-section {
   background-color: white;
 } */
@@ -79,7 +84,6 @@ mark.yellow {
   padding-top: 50px;
   padding-bottom: 50px; */
   padding: 50px 150px;
-
   font-family: 'Roboto';
 }
 
@@ -178,12 +182,12 @@ mark.yellow {
   text-transform: none;
 }
 
-.statictics_num {
-  font-size: 70px;
-  color: #671e65;
+.statistics_num {
+  font-size: 80px;
+  color: #FFFFFF;
   font-weight: 900;
   font-family: "Fira Sans";
-  margin: 15px 0;
+  margin: 15px 0px 15px;
   text-transform: none;
 }
 
@@ -199,7 +203,7 @@ mark.yellow {
   margin-top: 20px;
   margin: auto;
   display: flex;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 white, 0 6px 8px 0 white;
 }
 
 .text-muted{
