@@ -1,15 +1,14 @@
 
 
-/* #dropdown-variants-Info {
+#dropdown-variants-Info {
     background-color: #ffd524;
     border-color: #ffd524;
     color: #6d1b6c;
     font-weight: 600;
     border: 2px solid white;
-} */
+}
 
 .dropdown-toggle.btn.btn-info {
-    /* background: linear-gradient(45deg, #ffd524 30%, #FF8E53 90%); */
     background-color: #ffd524;
     border-color: #ffd524;
     color: #6d1b6c;
@@ -29,26 +28,26 @@ button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button
 }
 
 .dembutton.btn-primary:not(:disabled):not(.disabled):active, .dembutton.btn-primary:not(:disabled):not(.disabled).active, .show > .dembutton.btn-primary.dropdown-toggle {
-    background-color:#399696;
-    border-color: #399696;
+    background-color:#d07eda;
+    border-color: #d07eda;
     color: white;
 }
 
 .available#Men:active {
-    background-color:#399696;
-    border-color: #399696;
+    background-color:#d07eda;
+    border-color: #d07eda;
     color: white;
 }
 
 .available#Women:active {
-    background-color:#399696;
-    border-color: #399696;
+    background-color:#d07eda;
+    border-color: #d07eda;
     color: white;
 }
 
 .available#dembutton:active {
-    background-color:#399696;
-    border-color: #399696;
+    background-color:#d07eda;
+    border-color: #d07eda;
     color: white;
 }
 
@@ -59,7 +58,6 @@ button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button
     /* line-height: 1; */
     /* margin-top: .5rem; */
     font-size: .75rem;
-    border: 2px solid;
     /* border-radius: 0; */
 
 }
@@ -84,19 +82,19 @@ button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button
 
 .available.btn.btn-primary {
     background-color:transparent;
-    color: #399696;
-    border-color:#399696;
+    color: purple;
+    border-color: purple;
 }
 
 .available.btn.btn-primary:hover {
-    background-color:#399696;
-    border-color: #399696;
+    background-color:#d07eda;
+    border-color: #d07eda;
     color: white;
 }
 
 .available.selected.btn.btn-primary {
-    background-color: #399696;
-    border-color: #399696;
+    background-color: #d07eda;
+    border-color: #d07eda;
     color: white;
 }
 
@@ -126,52 +124,15 @@ div.btn-toolbar {
     border-bottom: 3px solid white;
 }
 
-.fab {
+.iconbutton {
   margin: 0px;
-  top: 0;
+  top: 'auto';
   right: 0px;
-  bottom: 0px;
+  bottom: 20px;
   left: 'auto';
   position: 'fixed';
 }
 
-svg.MuiSvgIcon-root {
-    font-size: 2.5rem;
-}
-
-svg.MuiSvgIcon-root.MuiSvgIcon-colorPrimary path {
-    fill: purple;
-}
-
-button.MuiButtonBase-root {
-    display: flex;
-    /* position: fixed; */
-    /* margin-top: -10px; */
-    right: 10px;
-
-}
-span.MuiIconButton-label {
-    display: block;
-
-}
-
-.MuiIconButton-label p {
-    font-size: 12px;
-}
-
-.MuiGrid-root.Race, .Everyone {
-    border-bottom: 1px dashed teal;
-    /* margin-bottom: 2px; */
-    padding-bottom: 2px;
-}
-
-.MuiGrid-root.Gender, .Everyone {
-    border-right: 1px dashed teal;
-}
-
-.MuiGrid-root.Gender, .RaceGender {
-    padding-top: 5px;
-}
 /* .Race .MuiGrid-item {
     border-right: 1px solid white;
 }
