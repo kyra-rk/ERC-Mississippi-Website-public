@@ -34,15 +34,15 @@ class People extends Component {
     }
     
     var flipcards = flip_card_items.map((obj) =>
-        <Col sm={4} key={obj.name}>
-            <Card>
+        <Col sm={6} md={4} key={obj.name}>
+            <Card className="flipcard">
             <Card.Img variant="top" src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
             <Card.Body>
             <Card.Title>{obj.personname}</Card.Title>
             <Card.Text>
             {obj.bio}
             </Card.Text>
-            <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>
+            <Button variant="outline-info" onClick={this.handleClick} value={obj.name} >
                             See more
                         </Button>
             </Card.Body>
@@ -69,14 +69,16 @@ class People extends Component {
         );
 
         return (
+            <Router>
             <Row className="justify-content-md-center">
                 {flipcards}
-            <Router>
+            
                 <Switch>
                 <Route exact path={`${this.props.match.path}/:name`} component={OHPerson}/>
                 </Switch>
+                </Row>
             </Router>
-            </Row>
+            
         )
     }
 

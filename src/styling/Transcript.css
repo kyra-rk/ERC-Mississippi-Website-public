@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-.import1 {
+.import1 p#transcriptquotes {
     font-size: 20px;
     font-style: italic;
     font-weight: bold;
@@ -12,6 +12,9 @@
     text-align: center;
 }
 
+.header {
+    margin-top: 30px;
+}
 .h1{
 
     font-family: "Fira Sans";
@@ -22,7 +25,7 @@
     display: inline;
     text-align: left;
     font-size: 12px;
-    /* margin-left: 20%; */
+    margin-left: 4%;
     /* margin-right: 10px; */
 }
 
@@ -41,29 +44,27 @@
 .transcriptbutton{
 
     font-family: "Fira Sans";
-    /* text-transform: uppercase; */
-    font-size: 10px;
-    font-weight: 900;
     margin: 5px;
-    margin-bottom: 30px;
-    float: left;
-
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+	top: 0;
+ 
 }
 
-/* doesn't work */
-/* #buttonsbar{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-} */
+#transcriptbutton {
+    font-size: .75rem;
+}
 
 #transcriptquotes{
     font-family: "Roboto";
     /* margin-left: 2%; */
+    
 }
 
 #personbio{
     text-align: justify;
+    width: 90%
 }
 
 #transcriptpic{
@@ -84,4 +85,26 @@
     height: 100px;
     vertical-align: middle;
     font-size: 20px;
+}
+
+
+div.card {
+    margin-bottom: 20px;
+}
+
+svg.MuiSvgIcon-root {
+    font-size: 1.5rem;
+}
+
+.reverse {
+    transform: rotate(180deg);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.filters {
+    padding: 0px;
 }

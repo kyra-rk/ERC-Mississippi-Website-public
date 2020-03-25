@@ -44,11 +44,13 @@ class Vars extends React.Component{
         onSelect={key => this.setState({key})}
         className = "tabsformat"
       >
-        <Tab eventKey="var1" title={<span><img src = {poverty_logo} className="imgsize"/></span>} className="tabsformat"><h4>Poverty</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
-        <Tab eventKey="var2" title={<span><img src = {health_logo} className="imgsize"/></span>} className="tabsformat"><h4>Health Insurance</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
-        <Tab eventKey="var3" title={<span><img src = {earnings_logo}className="imgsize"/></span>} className="tabsformat"><h4>Earnings</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
-        <Tab eventKey="var4" title={<span><img src = {employment_logo}className="imgsize"/></span>} className="tabsformat"><h4>Employment</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
-        <Tab eventKey="var5" title={<span><img src = {education_logo}className="imgsize"/></span>} className="tabsformat"><h4>Education</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
+        <Tab eventKey="var1" title={<span><img src = {poverty_logo} className="imgsize"/></span>} className="tabsformat"><h4>Poverty</h4><h5>Percent with Income Below Poverty</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
+        <Tab eventKey="var2" title={<span><img src = {health_logo} className="imgsize"/></span>} className="tabsformat"><h4>Health Insurance</h4><h5>Percent With Health Insurance</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
+        <Tab eventKey="var3" title={<span><img src = {earnings_logo}className="imgsize"/></span>} className="tabsformat"><h4>Earnings: </h4> <ul><h5>Median Earnings-Full Time</h5>
+        <h5>Median Earnings - Part Time/Other</h5></ul><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        </Tab>
+        <Tab eventKey="var4" title={<span><img src = {employment_logo}className="imgsize"/></span>} className="tabsformat"><h4>Employment</h4><h5>Unemployment Rate</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
+        <Tab eventKey="var5" title={<span><img src = {education_logo}className="imgsize"/></span>} className="tabsformat"><h4>Education</h4><h5>Percent with Less than a High School Degree</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
       </Tabs>
     );
   }
@@ -312,7 +314,8 @@ export function Handle({
           textAlign: 'center',
           cursor: 'pointer',
           borderRadius: '50%',
-          backgroundColor: '#2C4870',
+          backgroundColor: "teal",
+          // backgroundColor: '#2C4870',
           color: '#333',
         }}
         {...getHandleProps(id)}
@@ -363,7 +366,8 @@ export function Track({ source, target, getTrackProps }) {
         height: 10,
         zIndex: 1,
         marginTop: 35,
-        backgroundColor: '#546C91',
+        backgroundColor: "teal",
+        // backgroundColor: '#546C91',
         borderRadius: 5,
         cursor: 'pointer',
         left: `${source.percent}%`,
@@ -444,6 +448,17 @@ export const EconIndex = () => (
 <Col sm={8}>
 
         <h1>Women's Economic Security Index</h1>
+
+        <Row className="justify-content-center" >
+        <section class="bg-light page-section" className="section">
+<p> We developed a women's economic security index for Mississippi that goes beyond traditional understandings of economic security, that is limited to poverty. 
+Our index also attempts to capture the ways in which race intersects with gender to affect the economic conditions of women in Mississippi. 
+
+</p>
+
+</section>
+</Row>
+
         <Row>
           <h6>We highly recommend you read through our methodology for calculating the index, but if you would like to go straight to the
               maps of the index, use the options on the left sidebar. 

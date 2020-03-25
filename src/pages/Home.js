@@ -28,9 +28,9 @@ class Home extends React.Component {
 
 
   render() {
-      const { showDiv1 } = this.state;
-      const { showDiv2 } = this.state;
-      const { showDiv3 } = this.state;
+      // const { showDiv1 } = this.state;
+      // const { showDiv2 } = this.state;
+      // const { showDiv3 } = this.state;
       return (
 
         <div className="homescreen">
@@ -64,6 +64,7 @@ class Home extends React.Component {
             <h1>Welcome</h1>
                 <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.
                 Our site uses both qualitative and quantitative data to provide a comprehensive understanding of the unique challenges women encounter.
+                We used this data to develop a women's economic security index that will inform our own policy initiatives.
                 The information was gathered from a variety of sources, such as American Community Survey from the US Census Bureau and interviews with Women in Construction.
                 This project is a collaboration between Mississippi Low-Income Childcare Initiative and Barnard College's Empirical Reasoning Center & Mississippi Semester class.
                 </p>
@@ -212,7 +213,7 @@ class Home extends React.Component {
               <div style={{display: 'flex', alignItems: 'flex-start' }}>
                 <StickyBox offsetTop={80}>
                   <h3>Stories</h3>
-                  Read through stories we collected from women in the Women in Construction Job Training Program. Explore either by person or topic.                
+                  Read through stories we collected from women in the Women in Construction Job Training Program. Explore either by person or topic.
                 </StickyBox>
                 <div>
                   <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video>

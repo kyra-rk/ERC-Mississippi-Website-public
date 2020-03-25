@@ -9,6 +9,11 @@
     margin-bottom: 30px;
   }
 
-.methodbuttons{
-    margin-bottom: 1000px;
+.methodbuttons {
+    margin-bottom: 50px;
+}
+
+a.methodbutton {
+  margin-left: 10px;
+  margin-right: 10px;
 }

@@ -19,6 +19,7 @@ import { Fab, IconButton, Tooltip } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/Help';
 import HelpOutlineSharpIcon from '@material-ui/icons/HelpOutlineSharp';
 import { borderRight } from '@material-ui/system';
+// import Buttons from '../components/Buttons';
 // import '../styling/font-awesome.min.css'
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 // import Map from '../components/Map.js'
@@ -52,7 +53,7 @@ const demographics = [
     ]},
 ]
 
-class DropdownBootstrap extends Component {
+class DropdownBootstrap_2 extends Component {
         constructor(props) {
             super(props);
             this.state = {
@@ -61,7 +62,6 @@ class DropdownBootstrap extends Component {
                 varname: "Population Estimates",
                 varabbreviation: 'Female_Population',
                 vardesc: '',
-                varlongdesc: '',
                 varlocation: {index1: 0, index2: 0},
                 dataset: datacomplete,
                 race: true,
@@ -70,12 +70,12 @@ class DropdownBootstrap extends Component {
                 demselected: 'A',
                 genderselected: 'F',
                 buttonselected: 'Women',
-                stepsEnabled: true,
+                stepsEnabled: false,
                 initialStep:0,
                 steps: [
                   {
                     element: '.step1',
-                    intro: 'Take this tour to understand how to use this tool. You can skip the tour by clicking on the Skip button. The first step to using this tool is selecting a category to explore and choosing a variable from it.',
+                    intro: 'Begin by selecting a category to explore',
                   },
                   {
                     element: '.step2',
@@ -247,35 +247,32 @@ class DropdownBootstrap extends Component {
 
         handleClick(index,i, event){
           const matchingvar = categories[index].variables[i];
-          var desc = matchingvar.description;
-          var longerdesc = matchingvar.longdesc;
-          console.log(desc)
           var demselected = this.state.demselected;
           var genderselected = this.state.genderselected;
           var buttonselected = this.state.buttonselected;
-          var error=false;
-          if (this.state.genderselected!=="A" && this.state.demselected!=="A" && matchingvar.racegender===false){
-            error = true;
-          }
-          else if (this.state.demselected !== "A"  && matchingvar.race === false){
-            error = true;
-          }
-          else if (this.state.genderselected !== "A" && matchingvar.gender === false){
-            error = true;
-          }
-          if (error === true){
-            demselected = "A"
-            genderselected = "A"
-            if (document.getElementsByClassName(["selected"])[0]!==undefined){
-              document.getElementsByClassName(["selected"])[0].classList.remove("selected");
-            }
-            document.getElementsByClassName(["Everyone"])[0].classList.add("selected");
-            buttonselected = "Everyone"
-          }
+          // var error=false;
+          // if (this.state.genderselected!=="A" && this.state.demselected!=="A" && matchingvar.racegender===false){
+          //   error = true;
+          // }
+          // else if (this.state.demselected !== "A"  && matchingvar.race === false){
+          //   error = true;
+          // }
+          // else if (this.state.genderselected !== "A" && matchingvar.gender === false){
+          //   error = true;
+          // }
+          // if (error === true){
+          //   demselected = "A"
+          //   genderselected = "A"
+          //   if (document.getElementsByClassName(["selected"])[0]!==undefined){
+          //     document.getElementsByClassName(["selected"])[0].classList.remove("selected");
+          //   }
+          //   document.getElementsByClassName(["Everyone"])[0].classList.add("selected");
+          //   buttonselected = "Everyone"
+          // }
           var abbreviation = this.getabbreviation(matchingvar, demselected, genderselected);
 
           this.setState({currentvar: true, varlocation: {index1: index,index2: i}, varname: matchingvar.name, varabbreviation: abbreviation,
-            race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected, vardesc: desc, varlongdesc: longerdesc})
+            race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected})
         }
 
         handleDemClick(event){
@@ -336,7 +333,7 @@ class DropdownBootstrap extends Component {
            if (this.state.currentvar){
             //  console.log(this.state.varlocation.index1)
             let matchingvar = categories[this.state.varlocation.index1].variables[this.state.varlocation.index2];
-            
+
             if (this.state.racegender){
               let abbrev1 = this.getabbreviation(matchingvar, "W", "M");
               let abbrev2 = this.getabbreviation(matchingvar, "W", "F")
@@ -386,10 +383,13 @@ Data Portal                </h1> */}
                 <Col sm={1}></Col>
                 <Col sm={12} lg={10}>
                    <ButtonToolbar className="step1"> {varbuttons}
+                   {/* {varbuttons} */}
                    </ButtonToolbar>
                    <section class="buttons">
                   <Row className="justify-content-center">
-                  <Col lg={10}>{everyonebutton}</Col>
+                  <Col lg={10}>
+                    {/* <Buttons></Buttons> */}
+                    </Col>
                   </Row>
                  </section>
                 </Col>
@@ -410,10 +410,10 @@ Data Portal                </h1> */}
                 </Row>
 
 
-                {this.state.currentvar &&
-            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected} vardesc={this.state.vardesc} longdesc={this.state.varlongdesc}/>}
-                 {/* {this.state.currentvar && variables &&
-            <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
+                {/* {this.state.currentvar &&
+            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
+                 {this.state.currentvar && variables &&
+            <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
 
           </Container>
 
@@ -428,7 +428,7 @@ Data Portal                </h1> */}
         }
     }
 
-    export default DropdownBootstrap;
+    export default DropdownBootstrap_2;
 
 
     //P_High_school_graduate_(includes_equivalency)_E_F

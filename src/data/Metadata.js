@@ -14,6 +14,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Population stimates of urban and rural population, housing units, and characteristics reflect boundaries of urban areas defined based on Census 2010 data",
+"longdesc": "The ACS defines population as all people, male and female, child and adult, living in a given geographic area.",
 },
 {
 "name": "Single households",
@@ -25,6 +26,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Female and male householder, Family household; Percent",
+"longdesc": "Single householders are defined as family households (married couples), female-householders (a female maintaining a household with no husband of the householder present) or male householders (a male maintaining a household with nowife of the household present), according to the ACS. A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Definitions from ACS.",
 },
 {
 "name": "Nonfamily households",
@@ -36,6 +38,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Nonfamily household; Percent",
+"longdesc": "A nonfamily household consists of a householder living alone (a one-person household) or where the householder shares the home only with people to whom he/she is not related (e.g., a roomate). A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Definitions from ACS.",
 },
 {
 "name": "Single households with minors",
@@ -47,6 +50,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Female and male single householder, family household, households with one or more people under 18 years old; Percent",
+"longdesc": "Single householders are defined as family households (married couples), female-householders (a female maintaining a household with no husband of the householder present) or male householders (a male maintaining a household with nowife of the household present), according to the ACS. A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Minors are members of the household under the age of 18. Definitions from ACS.",
 },
 {
 "name": "nonfamily households with minors",
@@ -58,6 +62,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Nonfamily household; Percent, households with one or more people under 18 years old",
+"longdesc": "A nonfamily household consists of a householder living alone (a one-person household) or where the householder shares the home only with people to whom he/she is not related (e.g., a roomate). A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Minors are all members of the household under the age of 18. Definitions from ACS.",
 },
 {
 "name": "single households with seniors",
@@ -69,6 +74,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Female and male single householder, family household, households with one or more people 60 years and over; Percent",
+"longdesc": "Single householders are defined as family households (married couples), female-householders (a female maintaining a household with no husband of the householder present) or male householders (a male maintaining a household with nowife of the household present), according to the ACS. A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Seniors are all members of the household age 65 or older. Definitions from ACS.",
 },
 {
 "name": "nonfamily households with seniors",
@@ -80,6 +86,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Nonfamily household; Percent, households with one or more people 60 years and over",
+"longdesc": "A nonfamily household consists of a householder living alone (a one-person household) or where the householder shares the home only with people to whom he/she is not related (e.g., a roomate). A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Seniors are all members of the household age 65 or older. Definitions from ACS.",
 },
 {
 "name": "single households with own minors",
@@ -91,6 +98,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Female and male single householder, family household, households with own children of the householder under 18 years old",
+"longdesc": "Single householders are defined as family households (married couples), female-householders (a female maintaining a household with no husband of the householder present) or male householders (a male maintaining a household with nowife of the household present), according to the ACS. A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Minors are members of the family under the age of 18. Definitions from ACS.",
 },
 {
 "name": "single households without minors",
@@ -102,6 +110,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Female and male single householder; Percent, family household, households with any under 18 years old",
+"longdesc": "Single householders are defined as family households (married couples), female-householders (a female maintaining a household with no husband of the householder present) or male householders (a male maintaining a household with nowife of the household present), according to the ACS. A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Minors are members of the family under the age of 18, so those without minors either have no children or have no children under age 18. Definitions from ACS.",
 },
 {
 "name": "nonfamily households without minors",
@@ -113,6 +122,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Nonfamily household; Percent, households without any under 18 years old",
+"longdesc": "A nonfamily household consists of a householder living alone (a one-person household) or where the householder shares the home only with people to whom he/she is not related (e.g., a roomate). A household includes all the people who occupy a housing unit (such as a house or apartment) as their usual place of residence. A household includes the related family members and all the unrelated people, if any, such as lodgers, foster children, wards, or employees who share the housing unit. A person living alone in a housing unit, or a group of unrelated people sharing a housing unit such as partners or roomers, is also counted as a household. The count of households excludes group quarters. There are two major categories of households, family and nonfamily. Minors are members of the family under the age of 18, so those without minors either have no children or have no children under age 18. Definitions from ACS.",
 },
 ],},
 {
@@ -129,6 +139,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Total; - some schooling",
+"longdesc": "Counts anyone that has a school enrollment record. School enrollment is only recorded if the schooling advances a person toward an elementary school certificate, a high school diploma, or a college, university, or professional school (such as law or medicine) degree.   Data from American Community Survey.",
 },
 {
 "name": "Educational Level Less Than High School",
@@ -140,6 +151,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Total; - less than 12th grade or no high school diploma or equivalency received",
+"longdesc": "This category includes people of compulsory school attendance age or above who were not enrolled in school and were not high school graduates. These people may be referred to as “high school dropouts.” There is no restriction on when they “dropped out” of school; therefore, they may have dropped out before high school and never attended high school. Data from American Community Survey.",
 },
 {
 "name": "Educational Level High School",
@@ -151,6 +163,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Total; - high school graduate (includes equivalency)",
+"longdesc": "This category includes people whose highest degree was a high school diploma or its equivalent.  People who reported completing the 12th grade but not receiving a diploma are not included. Data from American Community Survey.",
 },
 {
 "name": "Educational Level College",
@@ -162,6 +175,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Total; - some college experience and associate's degree",
+"longdesc": "People who did not receive bachelor's or associate's degree but report some college. “Some college” is in two categories: “Some college credit, but less than 1 year of college credit” and “1 or more years of college credit, no degree.” Data from American Community Survey.",
 },
 {
 "name": "Educational Level Bachelor's Degree or Higher",
@@ -173,6 +187,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Total; - Bachelor's degree or higher (includes Master's, Professional school, and Doctorate degrees)",
+"longdesc": "Bachelor's degree included people whose highest degree is an associate’s degree, which generally requires 2 years of college level work and is either in an occupational program that prepares them for a specific occupation, or an academic program primarily in the arts and sciences.  And people who received a master’s, or professional or doctorate degree. Data from American Community Survey.",
 },
 ],},
 {
@@ -189,6 +204,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Income in the past 12 months at or above poverty level:",
+"longdesc": "Poverty thresholds vary depending on the size of the family unit  and the number of children under 18 years in the family. In 2018, the poverty threshold for an individual under 65 years is $12,784. For a family of four (two parents, two children) the threshold is $25,465. For each additional child, the threshold increases by between $3,000 and $5,000. The specific thresholds for each year since 1978 can be found here. Source: https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-poverty-thresholds.html",
 },
 {
 "name": "People with Income Below Poverty",
@@ -200,6 +216,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Income in the past 12 months below poverty level:",
+"longdesc": "Poverty thresholds vary depending on the size of the family unit  and the number of children under 18 years in the family. In 2018, the poverty threshold for an individual under 65 years is $12,784. For a family of four (two parents, two children) the threshold is $25,465. For each additional child, the threshold increases by between $3,000 and $5,000. The specific thresholds for each year since 1978 can be found here. Source: https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-poverty-thresholds.html",
 },
 {
 "name": "Median Earnings",
@@ -211,6 +228,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Median earnings in the past 12 months (in 2016 inflation-adjusted dollars) -- - Total (dollars):",
+"longdesc": "This category shows Median Earnings for men and women above the age of 16 with earnings in the past 12 months. Median earnings is calculated through finding the median across earnings of both full time and non full time male and female workers above age 16. The ACS defines median income as a division of the income distribution into two equal groups, one having incomes above the median, and other having incomes below the median.",
 },
 {
 "name": "Median Earnings - Full Time",
@@ -222,6 +240,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Median earnings in the past 12 months (in 2016 inflation-adjusted dollars) -- - Worked full-time, year-round in the past 12 mongths (dollars)",
+"longdesc": "This category shows Median Earnings for men and women above the age of 16 with earnings in the past 12 months who are specifically employed full-time (as opposed to part-time, cyclically, etc.). The ACS defines full-time work as those who work 35 hours a week or more and 50 weeks a year or more.",
 },
 {
 "name": "Median Earnings - Not Full Time",
@@ -233,6 +252,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Estimate; Median earnings in the past 12 months (in 2016 inflation-adjusted dollars) -- - Other (dollars)",
+"longdesc": "This category shows Median Earnings for men and women above the age of 16 with earnings in the past 12 months who are NOT employed full-time, meaning all workers who don't meet the requirement of working at least 35 hours a week for 50 or more weeks a year, according to the ACS.",
 },
 {
 "name": "Gender Wage Gap",
@@ -244,6 +264,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Women's earnings as a percentage of men's earning; Estimate; Civilian employed population 16 years and over with earnings",
+"longdesc": "The data shows gender wage gaps across a variety of employments and industries, starting with Civilian employed population 16 years and over with earnings. It splits this up by women's median earnings and men's median earnings (a division of income distribution for two equal grou[s of each gender, with one having incomes above the median and the other with incomes below the median). Then, it finds the percentage of men's earnings that women constitute, because they consistenly make less money than men do in this data set. The data does not specify full-time or part time employment. Data from AFF.",
 },
 ],},
 {
@@ -260,6 +281,7 @@ const Metadata =
 "race": true,
 "racegender": false,
 "description": "Percent; both male and female with health insurance coverage",
+"longdesc": "Percent of the population with health insurance is calculated through summing all people with health insurance and without health insurance, finding the percent of those with it of the aggregate. It does this across all ages and genders, as well as the categories of private or publci insurances, and combinations of insurance plans.",
 },
 {
 "name": "People above 64 years old with health insurance",
@@ -271,6 +293,7 @@ const Metadata =
 "race": true,
 "racegender": false,
 "description": "Percent; both male and female above 64 years old with health insurance coverage",
+"longdesc": "Calculated through a sum of the item 65-74, and 74 and up, to find all the people of the parameter of 64+ of both genders. Then, find the percentage of those with health insurance out of the sum of with health insurance and without health insurance of the age group.",
 },
 {
 "name": "People with private health insurance",
@@ -282,6 +305,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; both male and female that have private health insurance coverage",
+"longdesc": "This category includes people of all ages and genders who either DO have private health insurance, or who LACK it. The data takes a binary approach to the question-- if you have it, you are marked with private insurance and if you don't, you are marked that you don't have it, because the public health insurance category does NOT return direct opposite values of this one. Private health insurance includes plans like employer-based health insurance, direct-purchase health insurance plans, and Tricare/military plans, as well as combinations of plans.",
 },
 {
 "name": "People with public health insurance",
@@ -293,6 +317,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; both male and female that have public health insurance coverage",
+"longdesc": "This category includes people of all ages and genders who either have or don't have public insurance, and similar to the above category, takes a binary approach. This is revealed through the fact that those who have public and don't have public insurances are not equal to the complement of the above category. Public health insurance includes things like Medicare, Medicaid, and VA Coverage, as well as combinations of different public plans.",
 },
 ],},
 {
@@ -309,6 +334,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Percent; civilians  who are unemployed (out of people who are in the labor force) - all age groups",
+"longdesc": "Unemployment rate is calculated through dividing the number of unemployed persons by the sum of unemployed and employed (the labor force). The data set shows this across factors like races, ages, and different levels of educational attainment. Note that the variable, unemployment, doesn't include people who have left the labor force altogether.  The data does not specify full-time or non-full time workers also, but it does specify that all people counted are over age 16. According to the ACS, Employed includes all civilians 16 years old and over who were either (1) at work -- those who did any work at all during the reference week as paid employees, worked in their own business or profession, worked on their own farm, or worked 15 hours or more as unpaid workers on a family farm or in a family business; or (2) were with a job but not at work -- those who did not work during the reference week but had jobs or businesses from which they were temporarily absent due to illness, bad weather, industrial dispute, vacation, or other personal reasons. Excluded from the employed are people whose only activity consisted of work around the house or unpaid volunteer work for religious, charitable, and similar organizations; also excluded are people on active duty in the United States Armed Forces. The reference week is the calendar week preceding the date on which the respondents completed their questionnaires or were interviewed. This week may not be the same for all respondents.",
 },
 {
 "name": "Occupation - Healthcare",
@@ -320,6 +346,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Percent; healthcare diagnosing and treating practitioners, health technologists and technicians, healthcare support, and personal care and service occupations",
+"longdesc": "This data-set includes the civilian employed popualtion 16 years or over (see Unemployment rate metadata for definition of employed/civilian employed). Specifically, those employed in the healthcare sector fall under the category of having an occupation in the Healthcare and Social Assistance sector. According to the ACS, the Health Care and Social Assistance sector comprises establishments providing health care and social assistance for individuals. The industries in this sector are arranged on a continuum starting with those establishments providing medical care exclusively, continuing with those providing health care and social assistance, and finally finishing with those providing only social assistance. The services provided by establishments in this sector are delivered by trained professionals. Health Care and Social Assistance establishments are classified in the North American Industry Classification System as Sector 62.",
 },
 {
 "name": "Occupation - Legal",
@@ -331,6 +358,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; Legal occupations (including law enforcement workers and supervisors)",
+"longdesc": "This data-set includes the civilian employed popualtion 16 years or over (see Unemployment rate metadata for definition of employed/civilian employed). Specifically, those employed in the Legal sector, according to the NAICS, defines this as This industry comprises offices of legal practitioners known as lawyers or attorneys (i.e., counselors-at-law) primarily engaged in the practice of law. Establishments in this industry may provide expertise in a range or in specific areas of law, such as criminal law, corporate law, family and estate law, patent law, real estate law, or tax law. Establishments of legal practitioners (except lawyers or attorneys) primarily engaged in providing specialized legal or paralegal services are classified in Industry 54119, Other Legal Services.",
 },
 {
 "name": "Occupation - Sales",
@@ -342,6 +370,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Percent; Sales, office, and administrative support and related occupations",
+"longdesc": "This data-set includes the civilian employed popualtion 16 years or over (see Unemployment rate metadata for definition of employed/civilian employed). American Fact Finder defines sales occupations as including sales and related occupations, and office and adminstrative support related occupations.",
 },
 {
 "name": "Occupation - Business",
@@ -353,6 +382,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Percent;Management, business, and financial occupations",
+"longdesc": "This data-set includes the civilian employed popualtion 16 years or over (see Unemployment rate metadata for definition of employed/civilian employed). American Fact Finder defines business occupations as including management occupations and business and financial operations occupations.",
 },
 {
 "name": "Occupation - Construction",
@@ -364,6 +394,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Percent; building and maintenance, farming/fishing/forrestry, installation and repair occupations",
+"longdesc": "This data-set includes the civilian employed popualtion 16 years or over (see Unemployment rate metadata for definition of employed/civilian employed). American Fact finder defines this category as those who are in farming, fishing, and forestry occupations, construction and extraction occupations, and installation, maintenance, and repair opccupations.",
 },
 {
 "name": "Occupation - Food",
@@ -375,6 +406,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; food preparation and serving related occupation",
+"longdesc": "This data-set includes the civilian employed popualtion 16 years or over (see Unemployment rate metadata for definition of employed/civilian employed). AFF defines food occupations as falling under the broader category of service occupations, and it includes food preparation and serving-related occupations.",
 },
 {
 "name": "Occupation - Transport",
@@ -386,6 +418,7 @@ const Metadata =
 "race": true,
 "racegender": true,
 "description": "Percent; production, transportation and moving occupations",
+"longdesc": "This data-set includes the civilian employed popualtion 16 years or over (see Unemployment rate metadata for definition of employed/civilian employed). American Fact Finder defines this category as those who are employed in the category of production, transportation, and material moving occipations.",
 },
 ],},
 {
@@ -402,6 +435,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Mean Commute Time",
+"longdesc": "nan",
 },
 {
 "name": "Means of Transportation to work - by car",
@@ -413,6 +447,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; Workeres 16 years old and above go to work by Car, truck, or van",
+"longdesc": "People who are over the age of 16 who transport to work by car, van, or truck, both alone OR in a carpool (2 or more people in one type of non-public transportation vehicle). Does not specify those who are employed full-time. The ACS defines work as those employed and at at work in the past week.",
 },
 {
 "name": "Commuting Time to work less than 30 minutes",
@@ -424,6 +459,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; Mean travel time to work less than 30 minutes - workers 16 years old",
+"longdesc": "The ACS defines commuting time as the total number of minutes that it usually took the worker to get from home to work (one-way) during the employment status reference week. This dataset breaks the question down by gender, and doesn't specify whether all workers are all over 16 years old, or whether they work full time or not.",
 },
 {
 "name": "Commuting time to work 30 to 60 minutes",
@@ -435,6 +471,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; Mean travel time to work more than 30 minutes but less than 60 minutes - workers 16 years old and above",
+"longdesc": "The ACS defines commuting time as the total number of minutes that it usually took the worker to get from home to work (one-way) during the employment status reference week. This dataset breaks the question down by gender, and doesn't specify whether all workers are all over 16 years old, or whether they work full time or not.",
 },
 {
 "name": "Commuting time to work more than 60 minutes",
@@ -446,6 +483,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; Mean travel time to work more than 60 minutes - workers 16 years old and above",
+"longdesc": "The ACS defines commuting time as the total number of minutes that it usually took the worker to get from home to work (one-way) during the employment status reference week. This dataset breaks the question down by gender, and doesn't specify whether all workers are all over 16 years old, or whether they work full time or not.",
 },
 ],},
 {
@@ -462,6 +500,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent; Percent; Living in household with Supplemental Security Income (SSI), cash public assistance income, or Food Stamps/SNAP in the past 12 months: - In family households",
+"longdesc": "Government programs are defined as Supplemental Security Income (SSI), cash public assistance income, or Food Stamps/SNAP. Family households include households led by a married-couple family. A family includes a householder and one or more people living in the same household who are related to the householder by birth, marriage, or adoption. All people in a household who are related to the householder are regarded as members of his or her family. A family household may contain people not related to the householder, but those people are not included as part of the householder's family in census tabulations. Thus, the number of family households is equal to the number of families, but family households may include more members than do families. A household can contain only one family for purposes of census tabulations. Not all households contain families since a household may comprise a group of unrelated people or one person living alone (ACS definition).",
 },
 {
 "name": "TANF payment",
@@ -473,6 +512,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Estimate; total TANF payment",
+"longdesc": "TANF stands for Temporary Assistance for Needy Families, according to the Mississippi Department of Health and Human Services Report for FIscal Year 2018. It provides assistance for needy families with children up to 18 years old who are deprived of at least one parent and their caretaker relatives who do not enough income or resurces to meet their everyday needs, and is designed to help needy families achieve self-sufficiency through employment and training activities (definition from report).",
 },
 {
 "name": "Single household Family on SNAP",
@@ -484,6 +524,7 @@ const Metadata =
 "race": true,
 "racegender": false,
 "description": "Percent; Households receiving food stamps/SNAP; HOUSEHOLD TYPE - Other family: - Single householder without spouse present",
+"longdesc": "Single household families are families led by non-married-couple families. SNAP is The Supplemental Nutrition Assistance Program, the name for what was formerly known as the federal Food Stamp Program, as of October 1, 2008. SNAP is a low-income assistance program that is uniform in its eligibility requirements and benefit levels across states (except for Alaska and Hawaii). While the definitions of income, household composition, and the resource income cutoffs are different from those used in the official measure of poverty, a household's eligibility for the program is determined by a standard that is tied to the poverty level. (ACS definition)",
 },
 {
 "name": "Single household with minors on SNAP",
@@ -495,6 +536,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent households receiving food stamps/SNAP; Margin of Error; HOUSEHOLD TYPE - With children under 18 years - Other family: - Single householder without spouse present",
+"longdesc": "Single household families are families led by non-married-couple families. SNAP is The Supplemental Nutrition Assistance Program, the name for what was formerly known as the federal Food Stamp Program, as of October 1, 2008. SNAP is a low-income assistance program that is uniform in its eligibility requirements and benefit levels across states (except for Alaska and Hawaii). While the definitions of income, household composition, and the resource income cutoffs are different from those used in the official measure of poverty, a household's eligibility for the program is determined by a standard that is tied to the poverty level. (ACS definition) Minors are children under the age of 18.",
 },
 {
 "name": "Single household family w/o minors on SNAP",
@@ -506,6 +548,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent households receiving food stamps/SNAP; Estimate; HOUSEHOLD TYPE - No children under 18 years - Other family: - Single household without spouse present",
+"longdesc": "Single household families are families led by non-married-couple families. They could either have no minor children, or consider children over the age of 18 as part of their household. SNAP is The Supplemental Nutrition Assistance Program, the name for what was formerly known as the federal Food Stamp Program, as of October 1, 2008. SNAP is a low-income assistance program that is uniform in its eligibility requirements and benefit levels across states (except for Alaska and Hawaii). While the definitions of income, household composition, and the resource income cutoffs are different from those used in the official measure of poverty, a household's eligibility for the program is determined by a standard that is tied to the poverty level. (ACS definition) ",
 },
 {
 "name": "Single household family not on SNAP",
@@ -517,6 +560,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Households not receiving food stamps/SNAP; Estimate; HOUSEHOLD TYPE - Other family: - Single householder without spouse present",
+"longdesc": "Single household families are families led by non-married-couple families. Families not on SNAP do not consume any of the services of the Supplemental Nutrition Assistance Program, formerly known as Food Stamps.",
 },
 {
 "name": "Single household family not on SNAP with minors",
@@ -528,6 +572,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent households not receiving food stamps/SNAP; Estimate; HOUSEHOLD TYPE - With children under 18 years - Other family: - Single householder without spouse present",
+"longdesc": "Single household families are families led by non-married-couple families. Families not on SNAP do not consume any of the services of the Supplemental Nutrition Assistance Program, formerly known as Food Stamps. Families with minors have at least one child under the age of 18.",
 },
 ],},
 {
@@ -544,6 +589,7 @@ const Metadata =
 "race": true,
 "racegender": false,
 "description": "Percent; Total - Owner occupied housing",
+"longdesc": "Owner-occupied housing is defined as as housing unit where the owner or co-owner lives in the unit even if it is mortgaged or not fully paid for.  A housing unit is defined as a house, an apartment, a mobile home or trailer, a group of rooms, or a single room occupied as separate living quarters, or if vacant, intended for occupancy as separate living quarters. Separate living quarters are those in which the occupants live separately from any other individuals in the building and which have direct access from outside the building or through a common hall. For vacant units, the criteria of separateness and direct access are applied to the intended occupants whenever possible. Definitions for owner-occupied housing and housing unit are from ACS.",
 },
 {
 "name": "Renter-occupied housing",
@@ -555,6 +601,7 @@ const Metadata =
 "race": true,
 "racegender": false,
 "description": "Percent; Total - Renter occupied housing",
+"longdesc": "Renter-occupied housing is defined as a housing unit that is occupied but not owner occupied, whether it is rented for cash rent or occupied without payment of cash rent. A housing unit is defined as a house, an apartment, a mobile home or trailer, a group of rooms, or a single room occupied as separate living quarters, or if vacant, intended for occupancy as separate living quarters. Separate living quarters are those in which the occupants live separately from any other individuals in the building and which have direct access from outside the building or through a common hall. For vacant units, the criteria of separateness and direct access are applied to the intended occupants whenever possible. Definitions for renter-occupied housing and housing unit from ACS.",
 },
 {
 "name": "Rent",
@@ -566,6 +613,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Estimate; Median gross rent",
+"longdesc": "Rent, or gross rent, is defined as the amount of the contract rent plus the estimated average monthly cost of utilities (electricity, gas, and water and sewer) and fuels (oil, coal, kerosene, wood, etc.) if these are paid for by the renter (or paid for the renter by someone else). Gross rent is intended to eliminate differentials which result from varying practices with respect to the inclusion of utilities and fuels as part of the rental payment. Contract rent is defined as the monthly rent agreed to or contracted for, regardless of any furnishings, utilities, fees, meals, or services that may be included. For vacant units, it is the monthly rent asked for the rental unit at the time of interview. Definitions for gross rent and contract rent from ACS.",
 },
 {
 "name": "Single Householder occupied housing",
@@ -577,6 +625,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent single household without spouse present, family household; Estimate; HOUSING TENURE - Owner-occupied housing units",
+"longdesc": " Single householders are defined as female-householders (a female maintaining a household with no husband of the householder present) or male householders (a male maintaining a household with nowife of the household present), according to the ACS. Owner-occupied housing is defined as as housing unit where the owner or co-owner lives in the unit even if it is mortgaged or not fully paid for.  A housing unit is defined as a house, an apartment, a mobile home or trailer, a group of rooms, or a single room occupied as separate living quarters, or if vacant, intended for occupancy as separate living quarters. Separate living quarters are those in which the occupants live separately from any other individuals in the building and which have direct access from outside the building or through a common hall. For vacant units, the criteria of separateness and direct access are applied to the intended occupants whenever possible. Definitions for owner-occupied housing and housing unit are from ACS.",
 },
 {
 "name": "Single Householder renter housing",
@@ -588,6 +637,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent single household without spouse present, family household; Estimate; HOUSING TENURE - Renter-occupied housing units",
+"longdesc": "Single householders are defined as female-householders (a female maintaining a household with no husband of the householder present) or male householders (a male maintaining a household with nowife of the household present), according to the ACS. Renter-occupied housing is defined as a housing unit that is occupied but not owner occupied, whether it is rented for cash rent or occupied without payment of cash rent. A housing unit is defined as a house, an apartment, a mobile home or trailer, a group of rooms, or a single room occupied as separate living quarters, or if vacant, intended for occupancy as separate living quarters. Separate living quarters are those in which the occupants live separately from any other individuals in the building and which have direct access from outside the building or through a common hall. For vacant units, the criteria of separateness and direct access are applied to the intended occupants whenever possible. Definitions for renter-occupied housing and housing unit from ACS.",
 },
 {
 "name": "Nonfamily household occupied housing",
@@ -599,6 +649,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent nonfamily household; Estimate; HOUSING TENURE - Owner-occupied housing units",
+"longdesc": "A nonfamily household consists of a householder living alone (a one-person household) or where the householder shares the home only with people to whom he/she is not related (e.g., a roomate) (according to ACS). Owner-occupied housing is defined as as housing unit where the owner or co-owner lives in the unit even if it is mortgaged or not fully paid for.  A housing unit is defined as a house, an apartment, a mobile home or trailer, a group of rooms, or a single room occupied as separate living quarters, or if vacant, intended for occupancy as separate living quarters. Separate living quarters are those in which the occupants live separately from any other individuals in the building and which have direct access from outside the building or through a common hall. For vacant units, the criteria of separateness and direct access are applied to the intended occupants whenever possible. Definitions for owner-occupied housing and housing unit are from ACS.",
 },
 {
 "name": "Nonfamily household renter housing",
@@ -610,6 +661,7 @@ const Metadata =
 "race": false,
 "racegender": false,
 "description": "Percent nonfamily household; Estimate; HOUSING TENURE - Renter-occupied housing units",
+"longdesc": "A nonfamily household consists of a householder living alone (a one-person household) or where the householder shares the home only with people to whom he/she is not related (e.g., a roomate) (according to ACS). Renter-occupied housing is defined as a housing unit that is occupied but not owner occupied, whether it is rented for cash rent or occupied without payment of cash rent. A housing unit is defined as a house, an apartment, a mobile home or trailer, a group of rooms, or a single room occupied as separate living quarters, or if vacant, intended for occupancy as separate living quarters. Separate living quarters are those in which the occupants live separately from any other individuals in the building and which have direct access from outside the building or through a common hall. For vacant units, the criteria of separateness and direct access are applied to the intended occupants whenever possible. Definitions for renter-occupied housing and housing unit from ACS.",
 },
 ],},
 ]

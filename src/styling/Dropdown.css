@@ -157,3 +157,25 @@ div.btn-toolbar {
     color: purple;
 } */
 /* Container { background-color: lightpink; } */
+
+.relatedinfo.card > .card-body {
+    background-color: #ffd524;;
+    color: #6d1b6c;
+    padding: 0 10;
+    /* text-decoration: underline; */
+
+}
+
+.relatedinfo > .card-body > p {
+    margin: 0 2rem;
+}
+.relatedinfo > .card-text:last-child {
+    margin-bottom: .75rem;
+}
+
+.relatedinfo.card > .card-body:hover {
+    background-color: #ffd524;
+    border-color: #6d1b6c;
+    color: #6d1b6c;
+    
+}

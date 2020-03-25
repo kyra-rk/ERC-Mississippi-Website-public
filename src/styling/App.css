@@ -30,7 +30,7 @@ code {
 }
 
 /*@navbar is same color as MLICCI color*/
-.navigation{
+.navigation {
   background-color: #652264;
   margin-bottom: 30px;
   font-family: Fira Sans;
@@ -38,7 +38,7 @@ code {
 }
 
 @media only screen and (min-width: 1200px) {
-  .navigation{
+  .navigation {
     height: 80px;
     line-height: 80px;
   }
@@ -54,6 +54,11 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
   display: inline-block;
   text-align: right;
   font-style: italic;
+  
+}
+
+.ml-auto > a.nav-link.header.active {
+  color: rgba(255, 255, 255, .5);
 }
 
 .navbar-nav a:hover {

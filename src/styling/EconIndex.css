@@ -21,7 +21,7 @@
 
 .econindex p{
     text-align: justify;
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 30px;
   }
 .info_section{
@@ -60,10 +60,13 @@
 .tab-content{
   margin: 0 auto;
   margin-top: 30px;
-  width: 70%;
+  width: 80%;
   justify-content: center;
 }
 
+.tab-content h5 {
+ margin-top:15px;
+}
   .value h4 {
     font-size: 44px;
   }
@@ -166,6 +169,8 @@
 
   .indexheader {
     margin-top: 15px;
+    padding: 5px 20px;
+
     /* width: 60%; */
   }
 
