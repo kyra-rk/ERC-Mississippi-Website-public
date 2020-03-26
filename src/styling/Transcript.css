@@ -103,6 +103,7 @@ svg.MuiSvgIcon-root {
 .footer {
     position: fixed;
     bottom: 0;
+    background-color: white;
 }
 
 .filters {
