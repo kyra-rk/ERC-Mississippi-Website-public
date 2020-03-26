@@ -71,6 +71,11 @@ mark.yellow {
   color: #6c757d;
 }
 
+.page-section.second{
+  background-color: #642563;
+  color: #FFFFFF;
+}
+
 /* .page-section {
   background-color: white;
 } */
@@ -79,7 +84,6 @@ mark.yellow {
   padding-top: 50px;
   padding-bottom: 50px; */
   padding: 50px 150px;
-
   font-family: 'Roboto';
 }
 
@@ -178,10 +182,28 @@ mark.yellow {
   text-transform: none;
 }
 
+.statistics_num {
+  font-size: 80px;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-family: "Fira Sans";
+  margin: 15px 0px 15px;
+  text-transform: none;
+}
+
 #FeatureLogo{
   margin-top: -20%;
   width: 45%;
   height: 45%;
+}
+
+#video{
+  width: 90%;
+  height: 90%;
+  margin-top: 20px;
+  margin: auto;
+  display: flex;
+  box-shadow: 0 4px 8px 0 white, 0 6px 8px 0 white;
 }
 
 .text-muted{
@@ -191,3 +213,10 @@ mark.yellow {
   font-family: "Roboto";
 }
 
+.carousel_caption h3{
+  color: #00000;
+}
+
+.video-demo{
+  margin-top: 80px;
+}
