@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 /*import ReactDOM from 'react-dom';*/
 /*import prettyBytes from 'pretty-bytes';*/
-import AnimatedNumber from 'react-animated-number';
+// import AnimatedNumber from 'react-animated-number';
 import ReactTextTransition, { presets } from "react-text-transition";
 
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min);
