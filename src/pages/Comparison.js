@@ -99,7 +99,7 @@ class Comparison extends Component {
 
   }
 
-  handleClick(index, i){
+  handleClick(index, i, event){
     //console.log(event.target.value)
     console.log(index, i)
     const matchingvar = categories[index].variables[i];
@@ -128,6 +128,17 @@ class Comparison extends Component {
       this.selectedbuttons.var2.varname2 = ""
       this.selectedbuttons.var2.varabbreviation2 = ""
     }
+    gconsole.log(event.target)
+    for (var i=0; i<2; i++){
+      for (var j=0; j<2; j++){
+        console.log(data[i].vars[j].name)
+        if(data[i].vars[j].name===event.target.value){
+          data[i].vars[j].icon=(data[i].vars[j].icon==="Plus")? "Minus":"Plus"
+        }
+
+      }
+    }
+    console.log(this.state.varselected)
     this.setState({currentvar: true, varname1: this.selectedbuttons.var1.varname1,  varname2: this.selectedbuttons.var2.varname2, varabbreviation1: this.selectedbuttons.var1.varabbreviation1, varabbreviation2: this.selectedbuttons.var2.varabbreviation2,
       race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected})
   }
