@@ -11,13 +11,13 @@ import ComparisonMap from '../components/ComparisonMaps'
 import styling from '../styling/Comparison.css'
 const varselected = "P_High_school_graduate_(includes_equivalency)_E_F"
 
-let data = 
-[{name: "Income", 
-vars: [{name: "Variable 1", icon: "Plus"}, {name: "Percent in Poverty", icon: "Plus"}]}, 
-{name: "Education", 
-vars: [{name: "Percent with high school degree", icon: "Plus"}, {name: "Variable 2", icon: "Plus"}]}
+// let data = 
+// [{name: "Income", 
+// vars: [{name: "Variable 1", icon: "Plus"}, {name: "Percent in Poverty", icon: "Plus"}]}, 
+// {name: "Education", 
+// vars: [{name: "Percent with high school degree", icon: "Plus"}, {name: "Variable 2", icon: "Plus"}]}
 
-]
+// ]
 
 
 
@@ -117,6 +117,7 @@ class Comparison extends Component {
       this.selectedbuttons.var1.varabbreviation1 = abbreviation
     }
     else if(this.selectedbuttons.var2.varname2 === "" && this.selectedbuttons.var1.varname1 !== matchingvar.name){
+      console.log("SHOULD UPDATE SECOND VAR")
       this.selectedbuttons.var2.varname2 = matchingvar.name
       this.selectedbuttons.var2.varabbreviation2 = abbreviation
     }
@@ -128,38 +129,42 @@ class Comparison extends Component {
       this.selectedbuttons.var2.varname2 = ""
       this.selectedbuttons.var2.varabbreviation2 = ""
     }
-    gconsole.log(event.target)
-    for (var i=0; i<2; i++){
-      for (var j=0; j<2; j++){
-        console.log(data[i].vars[j].name)
-        if(data[i].vars[j].name===event.target.value){
-          data[i].vars[j].icon=(data[i].vars[j].icon==="Plus")? "Minus":"Plus"
-        }
+    // console.log(event.target)
+    // for (var i=0; i<2; i++){
+    //   for (var j=0; j<2; j++){
+    //     console.log(data[i].vars[j].name)
+    //     if(data[i].vars[j].name===event.target.value){
+    //       data[i].vars[j].icon=(data[i].vars[j].icon==="Plus")? "Minus":"Plus"
+    //     }
 
-      }
-    }
-    console.log(this.state.varselected)
+    //   }
+    // }
+    // console.log(this.state.varselected)
+    console.log("This is the second var at the moment!")
+    console.log(this.selectedbuttons.var2.varname2)
     this.setState({currentvar: true, varname1: this.selectedbuttons.var1.varname1,  varname2: this.selectedbuttons.var2.varname2, varabbreviation1: this.selectedbuttons.var1.varabbreviation1, varabbreviation2: this.selectedbuttons.var2.varabbreviation2,
       race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected})
+    console.log("UPDATED state")
+    console.log(this.state)
   }
 
   render(){
     // let icon = Plus
     // if (varselected==="P_High_school_graduate_(includes_equivalency)_E_F") {
     //   icon = Dash}
-    const cards = data.map((obj, index) => 
+    const cards = categories.map((obj, index) => 
     <Card>
-      <Card.Header>{obj.name}</Card.Header>
-      {obj.vars.map((item, i) => {
+      <Card.Header>{obj.catname}</Card.Header>
+      {obj.variables.map((item, i) => {
         let icon = ""
         let itemName = item.name
         if (item.icon==="Plus"){
 
-          icon = <AddCircleIcon value={itemName} onClick={this.handleClick}className="add"></AddCircleIcon>
+          icon = <AddCircleIcon value={itemName} onClick={this.handleSelection}className="add"></AddCircleIcon>
           // icon = <Octicon className="plus" icon={Plus}></Octicon>
         }
         else {
-          icon = <RemoveCircleIcon value={itemName} onClick={this.handleClick} className="minus"></RemoveCircleIcon>
+          icon = <RemoveCircleIcon value={itemName} onClick={this.handleSelection} className="minus"></RemoveCircleIcon>
 
           // icon = <Octicon className="minus" icon={Dash}></Octicon>
         }

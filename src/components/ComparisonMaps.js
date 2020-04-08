@@ -37,6 +37,9 @@ class Map extends Component {
         if (this.props.variable != prevProps.variable){
             this.setState({variable: this.props.variable, variablename: this.props.varname});
         }
+        if (this.props.variable2 != prevProps.variable2){
+            this.setState({variable2: this.props.variable2, variablename2: this.props.varname2});
+        }
         // console.log("REDRAWING")
         this.drawMap();
     }
@@ -49,7 +52,11 @@ class Map extends Component {
         // let svgWidth = 300;
         // let svgHeight = 300;
         let variable = this.state.variable;
+        console.log("VAR1 IN THE MAP")
+        console.log(variable)
         let variable2 = this.state.variable2;
+        console.log("VAR2 IN THE MAP")
+        console.log(variable2)
         let data = this.state.dataset;
         
         var center = d3.geoCentroid(json)
