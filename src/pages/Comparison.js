@@ -11,13 +11,39 @@ import ComparisonMap from '../components/ComparisonMaps'
 import styling from '../styling/Comparison.css'
 const varselected = "P_High_school_graduate_(includes_equivalency)_E_F"
 
+let data = categories.map((obj, index) =>
+    [{name: obj.catname, 
+      variables: obj.variables.map((item, i) => 
+          [{name: item.name, icon: "Plus"}]
+      )
+    }]
+)
+// var data = categories.map( function(category, i) {
+//       var data = { "category": category.catname,
+//                    "varname": category.variables[i]
+//                   }
+//       return data;
+//  });
+// let data = Object.keys(categories).forEach(function(key) {
+// });
 // let data = 
 // [{name: "Income", 
 // vars: [{name: "Variable 1", icon: "Plus"}, {name: "Percent in Poverty", icon: "Plus"}]}, 
 // {name: "Education", 
 // vars: [{name: "Percent with high school degree", icon: "Plus"}, {name: "Variable 2", icon: "Plus"}]}
-
 // ]
+console.log("THIS IS THE DATA JSON")
+console.log(data)
+console.log(data[0][0].name)
+const read_categories = data.map((obj, index) =>
+    console.log(obj[0].name)
+)
+const read_variables = data.map((obj, index) =>
+    // console.log(obj[0].variables)
+    obj[0].variables.map((item, i) => 
+      console.log(item[0].name)
+    )
+)
 
 
 
@@ -98,67 +124,71 @@ class Comparison extends Component {
     return abbrev;
 
   }
-
-  handleClick(index, i, event){
-    //console.log(event.target.value)
-    console.log(index, i)
-    const matchingvar = categories[index].variables[i];
-    console.log(matchingvar)
-    // const matchingvar = categories[].variables[event.target.name[2]]
-    var demselected = this.state.demselected;
-    var genderselected = this.state.genderselected;
-    var buttonselected = this.state.buttonselected;
-    console.log("This is the")
-    console.log(matchingvar.name)
-    console.log(this.selectedbuttons.var1.varname1)
-    var abbreviation = this.getabbreviation(matchingvar, demselected, genderselected);
-    if(this.selectedbuttons.var1.varname1 === ""){
-      this.selectedbuttons.var1.varname1 = matchingvar.name
-      this.selectedbuttons.var1.varabbreviation1 = abbreviation
-    }
-    else if(this.selectedbuttons.var2.varname2 === "" && this.selectedbuttons.var1.varname1 !== matchingvar.name){
-      console.log("SHOULD UPDATE SECOND VAR")
-      this.selectedbuttons.var2.varname2 = matchingvar.name
-      this.selectedbuttons.var2.varabbreviation2 = abbreviation
-    }
-    else if(this.selectedbuttons.var1.varname1 === matchingvar.name){
-      this.selectedbuttons.var1.varname1 = ""
-      this.selectedbuttons.var1.varabbreviation1 = ""
-    }
-    else if(this.selectedbuttons.var2.varname2 === matchingvar.name){
-      this.selectedbuttons.var2.varname2 = ""
-      this.selectedbuttons.var2.varabbreviation2 = ""
-    }
-    // console.log(event.target)
+  handleSelection(event){
+    console.log("HANDLE SELECTION")
+    console.log(event.target.value)
     // for (var i=0; i<2; i++){
     //   for (var j=0; j<2; j++){
-    //     console.log(data[i].vars[j].name)
-    //     if(data[i].vars[j].name===event.target.value){
+    //     console.log(categories[i].variables[j].name)
+    //     if(categories[i].variables[j].name===event.target.value){
     //       data[i].vars[j].icon=(data[i].vars[j].icon==="Plus")? "Minus":"Plus"
     //     }
 
     //   }
     // }
-    // console.log(this.state.varselected)
-    console.log("This is the second var at the moment!")
-    console.log(this.selectedbuttons.var2.varname2)
-    this.setState({currentvar: true, varname1: this.selectedbuttons.var1.varname1,  varname2: this.selectedbuttons.var2.varname2, varabbreviation1: this.selectedbuttons.var1.varabbreviation1, varabbreviation2: this.selectedbuttons.var2.varabbreviation2,
-      race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected})
-    console.log("UPDATED state")
-    console.log(this.state)
+
+  }
+
+  handleClick(index, i, event){
+    // console.log(event.target.value)
+    console.log("INDEX")
+    console.log(index)
+    // const matchingvar = categories[index].variables[i];
+    // console.log(matchingvar)
+    // // const matchingvar = categories[].variables[event.target.name[2]]
+    // var demselected = this.state.demselected;
+    // var genderselected = this.state.genderselected;
+    // var buttonselected = this.state.buttonselected;
+    // console.log("This is the")
+    // console.log(matchingvar.name)
+    // console.log(this.selectedbuttons.var1.varname1)
+    // var abbreviation = this.getabbreviation(matchingvar, demselected, genderselected);
+    // if(this.selectedbuttons.var1.varname1 === ""){
+    //   this.selectedbuttons.var1.varname1 = matchingvar.name
+    //   this.selectedbuttons.var1.varabbreviation1 = abbreviation
+    // }
+    // else if(this.selectedbuttons.var2.varname2 === "" && this.selectedbuttons.var1.varname1 !== matchingvar.name){
+    //   console.log("SHOULD UPDATE SECOND VAR")
+    //   this.selectedbuttons.var2.varname2 = matchingvar.name
+    //   this.selectedbuttons.var2.varabbreviation2 = abbreviation
+    // }
+    // else if(this.selectedbuttons.var1.varname1 === matchingvar.name){
+    //   this.selectedbuttons.var1.varname1 = ""
+    //   this.selectedbuttons.var1.varabbreviation1 = ""
+    // }
+    // else if(this.selectedbuttons.var2.varname2 === matchingvar.name){
+    //   this.selectedbuttons.var2.varname2 = ""
+    //   this.selectedbuttons.var2.varabbreviation2 = ""
+    // }
+    // console.log("This is the second var at the moment!")
+    // console.log(this.selectedbuttons.var2.varname2)
+    // this.setState({currentvar: true, varname1: this.selectedbuttons.var1.varname1,  varname2: this.selectedbuttons.var2.varname2, varabbreviation1: this.selectedbuttons.var1.varabbreviation1, varabbreviation2: this.selectedbuttons.var2.varabbreviation2,
+    //   race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected})
+    // console.log("UPDATED state")
+    // console.log(this.state)
   }
 
   render(){
     // let icon = Plus
     // if (varselected==="P_High_school_graduate_(includes_equivalency)_E_F") {
     //   icon = Dash}
-    const cards = categories.map((obj, index) => 
+    const cards = data.map((obj, index) => 
     <Card>
-      <Card.Header>{obj.catname}</Card.Header>
-      {obj.variables.map((item, i) => {
+      <Card.Header>{obj[0].name}</Card.Header>
+      {obj[0].variables.map((item, i) => {
         let icon = ""
-        let itemName = item.name
-        if (item.icon==="Plus"){
+        let itemName = item[0].name
+        if (item[0].icon==="Plus"){
 
           icon = <AddCircleIcon value={itemName} onClick={this.handleSelection}className="add"></AddCircleIcon>
           // icon = <Octicon className="plus" icon={Plus}></Octicon>
@@ -169,7 +199,7 @@ class Comparison extends Component {
           // icon = <Octicon className="minus" icon={Dash}></Octicon>
         }
         return (
-        <Button variant="outline-primary" key={i} onClick={() => this.handleClick(index, i)} value={item.name}>{item.name} {icon}</Button>
+        <Button variant="outline-primary" key={i} onClick={this.handleSelection} value={item.name}>{item.name} {icon}</Button>
       )})}
       </Card>
     )
