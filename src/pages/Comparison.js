@@ -126,7 +126,7 @@ class Comparison extends Component {
   }
   handleSelection(event){
     console.log("HANDLE SELECTION")
-    console.log(event.target.value)
+    console.log(event.target)
     // for (var i=0; i<2; i++){
     //   for (var j=0; j<2; j++){
     //     console.log(categories[i].variables[j].name)
