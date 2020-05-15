@@ -43,6 +43,7 @@ class Topic extends Component {
       )
   }
   console.log(topic_categories);
+  //The style in the button makes it so that the buttons are colored based on what the topic_categories.js specifies its color to be
   var buttons = topic_categories.map((obj) =>
     <div key={obj.name}>
       <Link to={`${this.props.match.path}/${obj.name}`}>
@@ -50,6 +51,7 @@ class Topic extends Component {
       </Link>
     </div>
   );
+  //The route will redirect you to the person's transcript page, but the reason why it is on this level too is so that when it redirects, it'll not show this topic.js page, i.e. not show the topic buttons
       return (
         <div>
         <h1>Choose a Topic</h1>

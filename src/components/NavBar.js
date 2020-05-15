@@ -21,12 +21,13 @@ const CreateNavBar = () => {
                            {url: "/methodology", name: "Methodology"},
                            {url: "/about", name: "About"},
                            {url: "/contact", name: "Contact"}];
-
+/*const links specifies which url to head to and denotes it with a unique key, then makes the page display whichever file has that same name*/
     const links = nav_bar_items.map((obj) => 
     <NavLink className="nav-link header" to= {obj.url} key={obj.name}>
         {obj.name}
     </NavLink>);
-    
+/*Navbar.Brand is the "logo" of the website, seen in the left of the navbar*/
+/*Having navbar.toggle and navbar.collapse makes it responsive so that when the screenwidth is under a certain cutoff, the navbar will collapse*/    
     return (
         <Navbar collapseOnSelect expand="xl" className="navigation" variant="dark" sticky="top">
             <Navbar.Brand className="NavbarBrand" href="/"><h2>Make Women Count</h2></Navbar.Brand>
