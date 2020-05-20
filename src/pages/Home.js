@@ -33,11 +33,12 @@ class Home extends React.Component {
       // const { showDiv3 } = this.state;
       return (
 
+        // first section of homepage
         <div className="homescreen">
-            <div className="rectangle"></div>
-            {/* <Fade duration={1000}> */}
-            <div className="image">
-              <Carousel id ="HomeBanner">
+            {/*<div className="rectangle"></div>*/}
+            {/*<Fade duration={1000}>*/}
+            {/*}<div className="image">*/}
+              {/*<Carousel id ="HomeBanner">
                 <Carousel.Item>
                   <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
                 </Carousel.Item>
@@ -47,18 +48,52 @@ class Home extends React.Component {
                 <Carousel.Item>
                   <img src = {Report} alt="Women in Construction" id ="HomeBanner"/>
                 </Carousel.Item>
-              </Carousel>
+              </Carousel>*/}
+            {/*</div>*/}
+            {/*</Fade>*/}
+            <section>
+            <div className ="banner">
+              <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
             </div>
-            {/* </Fade> */}
             <div className="bannerwords">
-                <p>Make<wbr></wbr>
+                {/*<p>Make<wbr></wbr>
                     Women<wbr></wbr>
                     <mark className="yellow">Count</mark>
-                    {/*<img src = "https://cdn3.iconfinder.com/data/icons/glypho-free/64/map-pin-marker-circle-512.png"*/}
-                         {/*width="90"*/}
-                         {/*alt="Map Icon"/>*/}
-                </p>
+                    <img src = "https://cdn3.iconfinder.com/data/icons/glypho-free/64/map-pin-marker-circle-512.png"
+                         width="90"
+                         alt="Map Icon"/>
+                </p>*/}
+                <p> MAKE WOMEN COUNT</p>
             </div>
+            <div className="bannercaption">
+              <p>Understanding Women in Mississippi</p>
+
+              {/*arrow feature - click feature not added*/}
+              <div id="arrow-down">
+                <i class="down"></i>
+              </div>
+            </div>
+            </section>
+
+        {/*slideshow feature (react-bootstrap carousel)*/}
+        {/*need to make sure carousel dimensions are right images used*/}
+        <section>
+          <div className="rectangle"></div>
+          <div className="image">
+            <Carousel id ="carousel">
+              <Carousel.Item>
+                <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src = {WinCLogo} alt="Women in Construction" id ="HomeBanner"/>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src = {Report} alt="Women in Construction" id ="HomeBanner"/>
+              </Carousel.Item>
+            </Carousel>
+          </div>
+        </section>
+
         <section class="page-section first">
           <div className="introduction">
             <h1>Welcome</h1>
@@ -71,7 +106,7 @@ class Home extends React.Component {
           </div>
         </section>
 
-
+        {/*Statistics section*/}
         <section class="page-section second">
           <div className="introduction">
               <h1>Statistics</h1>
@@ -96,6 +131,7 @@ class Home extends React.Component {
         </section>
 
 
+        {/*Features section*/}
         <section class="page-section first">
           <section id="services">
                 <div className="introduction">
@@ -181,6 +217,8 @@ class Home extends React.Component {
           </div>
         </section>*/}
 
+        {/*Video Demo Section*/}
+        {/* if video is not loading or file not found error, try downloading the video from the drive and replace file*/}
         <section class="page-section second">
           <div className="introduction">
             <h1>Scroll Demo</h1>

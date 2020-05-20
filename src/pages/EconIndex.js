@@ -103,7 +103,7 @@ class Slide extends React.Component{
 
     if (flip) {
       i = 8
-        info =  
+        info =
         <Col sm={4}>
           <Row>
           <Col sm={2}><h2>=</h2></Col>
@@ -128,21 +128,21 @@ class Slide extends React.Component{
       <Col sm={3}><h2>=</h2></Col>
       <Col sm={9}>
       <div className={"value"}>      <h4><RankCalc value={values} min={actualmin} max={domain[1]} /> </h4>
-      <h6>Rescaled Value</h6>  
+      <h6>Rescaled Value</h6>
     </div>
     </Col>
     </Row>
     </Col>
     }
     if (type=== "rescale"){
-      sliderClass = "singleslider" 
-      minmax =       
+      sliderClass = "singleslider"
+      minmax =
     <Col sm={i}>
       <Row>
         <Col >
           <h6>Minimum: {actualmin}</h6>
         </Col>
-        <Col>              
+        <Col>
           <h6>Maximum: {domain[1]}</h6>
         </Col>
       </Row>
@@ -203,7 +203,7 @@ class Slide extends React.Component{
                   {ticks.map(tick => (
                     <Tick key={tick.id} tick={tick} count={ticks.length}/>
                   ))}
-                  
+
                   {/* <Tick className="actualmintick" key = {`$$-${actualmin}`} tick={{id: `$$-${actualmin}`,value: actualmin, percent: (actualmin-domain[0])/(domain[1]-domain[0])}} count={12}></Tick> */}
                   {/* <Tick key={`$$-${domain[1]}`} tick={{id: `$$-${domain[1]}`,value: domain[1], percent: 100}} count={12}></Tick> */}
 
@@ -275,7 +275,7 @@ class Slide extends React.Component{
                   {ticks.map(tick => (
                     <Tick key={tick.id} tick={tick} count={ticks.length}/>
                   ))}
-                  
+
                   {/* <Tick className="actualmintick" key = {`$$-${actualmin}`} tick={{id: `$$-${actualmin}`,value: actualmin, percent: (actualmin-domain[0])/(domain[1]-domain[0])}} count={12}></Tick> */}
                   {/* <Tick key={`$$-${domain[1]}`} tick={{id: `$$-${domain[1]}`,value: domain[1], percent: 100}} count={12}></Tick> */}
 
@@ -388,10 +388,10 @@ function RankCalc(props){
 }
 
 function average(arr){
-  var finalstate=arr.reduce(function(state,a) { state.sum+=a;state.count+=1; return state },{sum:0,count:0}); 
+  var finalstate=arr.reduce(function(state,a) { state.sum+=a;state.count+=1; return state },{sum:0,count:0});
   return (finalstate.sum/finalstate.count).toFixed(2)
 }
-  
+
 // function ListItemLink(props) {
 //   return <ListItem button component="a" {...props} />;
 // }
@@ -404,7 +404,7 @@ export const EconIndex = () => (
 	// 	<img id ="EconImage" src = {require('../pictures/MSimage.png')} alt="Index Map"/>
 	// 	</div>
   //   </div>
-  
+
   <div>
 	  {/* <iframe src="https://storymaps.arcgis.com/stories/931e709e07914cb8824e9a6d3747729f" height="500px" width="100%"/> */}
 
@@ -444,24 +444,76 @@ export const EconIndex = () => (
 </ul>
 </Scrollspy>
 </div>
-</Col> 
+</Col>
 <Col sm={8}>
 
-        <h1>Women's Economic Security Index</h1>
+        <h1 className="titles">Women's Economic Security Index</h1>
 
         <Row className="justify-content-center" >
         <section class="bg-light page-section" className="section">
-<p> We developed a women's economic security index for Mississippi that goes beyond traditional understandings of economic security, that is limited to poverty. 
-Our index also attempts to capture the ways in which race intersects with gender to affect the economic conditions of women in Mississippi. 
+<p> We developed a women's economic security index for Mississippi that goes beyond traditional understandings of economic security, that is limited to poverty.
+Our index also attempts to capture the ways in which race intersects with gender to affect the economic conditions of women in Mississippi.
 
 </p>
+
+{/* Bottom maps moved to the top */}
+{/* Index Maps by Race need to be resized */}
+<Row className="justify-content-center rowblock">
+  <h4>Index Value: {average([66,64,54,59,81,73])}</h4>
+</Row>
+
+<p>This county would have a final index value of 66.17. As we can see through the rescaled values it gets for each variable, they are distributed from 54 to 81, which means
+  this county is generally on the higher end of the distribution for each variable.
+</p>
+
 
 </section>
 </Row>
 
+<div class="anchor">
+  <a id="section-5"> </a>
+</div>
+<section className="section">
+<Row>
+    <Col>
+
+   <div className="headerdiv indexheader"><h1 className="descriptionheader">Index</h1></div>
+
+</Col>
+</Row>
+
+<Row className="rowblock">
+<Col lg={7}>
+<Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map></Col>
+<Col>
+<div className="indexdesc">
+<div>We finally map all the index values by county to see how it distributes across the state. Some More Explanation Here. <br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
+</div>
+</Col>
+</Row>
+</section>
+
+<section className="section">
+
+<Row>
+       <Col>
+
+      <div className="headerdiv indexheader"><h1 className="descriptionheader">Index Maps by Race</h1></div>
+
+   </Col>
+   </Row>
+   </section>
+
+   <div className="indexdesc">
+   <IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} />
+   </div>
+
+{/* END OF MAPS */}
+
         <Row>
           <h6>We highly recommend you read through our methodology for calculating the index, but if you would like to go straight to the
-              maps of the index, use the options on the left sidebar. 
+              maps of the index, use the options on the left sidebar.
           </h6>
         </Row>
 
@@ -486,7 +538,7 @@ Our index also attempts to capture the ways in which race intersects with gender
                 </div>
               </div>
             </section>
-          
+
     </Row>
 
             <Row className="justify-content-center" >
@@ -506,21 +558,21 @@ Our index also attempts to capture the ways in which race intersects with gender
               <div class="slidecontainer" className="info_section">
                 {/* <h2>Rescaling Each Variable</h2> */}
                 <p>Most of our variables were on a scale of 0-100 since they were percentages, but we also had variables such as Median Income that had to be incorporated into the index. In order to ensure every variable was standardized in the same way, we rescaled each variable to be from 0-100 based on the range of the dataset.</p>
-                <p> Let's take Median Earnings for women working full time and Poverty as an example. 
-                  The minimum value for Median Income is 18,500 and the maximum is 41,059. We let these correspond to 0 and 100, respectively. The county with the minimum value gets a value of 0 and the county with the highest value gets a value of 100. <span style={{fontWeight: "bold"}}>To calculate each county's rescaled value, we take its value, subtract the minimum from it and then divide over the range.</span> We get a fraction that we then multiply by 100. 
+                <p> Let's take Median Earnings for women working full time and Poverty as an example.
+                  The minimum value for Median Income is 18,500 and the maximum is 41,059. We let these correspond to 0 and 100, respectively. The county with the minimum value gets a value of 0 and the county with the highest value gets a value of 100. <span style={{fontWeight: "bold"}}>To calculate each county's rescaled value, we take its value, subtract the minimum from it and then divide over the range.</span> We get a fraction that we then multiply by 100.
                   This corresponds essentially to rankings. Counties with higher rescaled values have higher values for that variable relative to the other counties. The slider below shows what a county with a Median Income of 23,500 would have as its rescaled value: 22. Intuitively, a value of 22 would mean that this county is in the first quartile of the distribution and is relatively not doing as well as most counties.
 
     </p>
                   <Slide min={18500} max={41059} values={23500} type="rescale" actualmin={18500} step={500}/>
 
     <p>
-    Now, let's take Poverty as our example. 
+    Now, let's take Poverty as our example.
 
-                  The minimum value for the percent of women in poverty was 10.41 and the maximum was 44.75. We calculate the index similarly and the slider below shows what a county with 27% of women in poverty would have as its rescaled value: 48. Intuitively, a value of 48 would mean that this county falls in the middle of the distribution of all the counties. 
-                  There is one more step for rescaling poverty. With Median Earnings, a higher rescaled value means the county is more economically secure. However, with the way we've rescaled poverty, a higher rescaled value corresponds to higher levels of poverty and thus economic insecurity. To account for that, we will subtract the rescaled value from 100 so that the scale is reversed and the county with the highest level of poverty corresponds to a ranking of 0 and the county with the lowest level of poverty corresponds to a ranking of 100. 
+                  The minimum value for the percent of women in poverty was 10.41 and the maximum was 44.75. We calculate the index similarly and the slider below shows what a county with 27% of women in poverty would have as its rescaled value: 48. Intuitively, a value of 48 would mean that this county falls in the middle of the distribution of all the counties.
+                  There is one more step for rescaling poverty. With Median Earnings, a higher rescaled value means the county is more economically secure. However, with the way we've rescaled poverty, a higher rescaled value corresponds to higher levels of poverty and thus economic insecurity. To account for that, we will subtract the rescaled value from 100 so that the scale is reversed and the county with the highest level of poverty corresponds to a ranking of 0 and the county with the lowest level of poverty corresponds to a ranking of 100.
     </p>
                   <Slide min={10} max={44.75} values={27} type="rescale" actualmin={10.41} step={.5} flip={"True"}/>
-                
+
               </div>
               </section>
 
@@ -538,10 +590,10 @@ Our index also attempts to capture the ways in which race intersects with gender
             </Row>
                   <div class="slidecontainer" className="info_section race">
 {/* <h2>Rescaling Variables Differentiated by Race</h2> */}
-<p>Due to our commitment to intersectionality and to understanding how economic security is differentiated by race, we wanted to create a separate economic security index for white women and Black women, asides from our women's economic security index. 
-However, both demographics have different ranges and if we rescale each to its range, we would not be able to compare values to each other. The two sliders below show the rescaled value that would be returned for a county if it's Median Earnings value was $32,500. 
-The rescaled value for Black Women's Median Earnings is almost twice as high as for white women. Since Black Women's Median Earnings have a maximum of $37,344, a value of $32,500 would be high compared to most counties. In comparison, the value falls in the lower half of the distribution for white women since 
-Median Earnings for white women have a much higher maximum.  
+<p>Due to our commitment to intersectionality and to understanding how economic security is differentiated by race, we wanted to create a separate economic security index for white women and Black women, asides from our women's economic security index.
+However, both demographics have different ranges and if we rescale each to its range, we would not be able to compare values to each other. The two sliders below show the rescaled value that would be returned for a county if it's Median Earnings value was $32,500.
+The rescaled value for Black Women's Median Earnings is almost twice as high as for white women. Since Black Women's Median Earnings have a maximum of $37,344, a value of $32,500 would be high compared to most counties. In comparison, the value falls in the lower half of the distribution for white women since
+Median Earnings for white women have a much higher maximum.
 </p>
 <h3>Median Earnings - Full Time for White Women</h3>
 <Slide min={23500} max={45043} values={32500} type="rescale" actualmin={23838} step={500}/>
@@ -550,7 +602,7 @@ Median Earnings for white women have a much higher maximum.
 
 <div className="subheading">
 <h3>One Scale for Both Races</h3></div>
-<p>To account for that, we will use one range, where the minimum is the minimum of the distribution for either race and similarly for the maximum. The sliders below show the 
+<p>To account for that, we will use one range, where the minimum is the minimum of the distribution for either race and similarly for the maximum. The sliders below show the
 full range, with each race's distribution highlighted.</p>
 
 
@@ -564,19 +616,19 @@ full range, with each race's distribution highlighted.</p>
 <p>This last slider shows the combined distribution of the two races again. On the new scale, a value of $32,500 corresponds to 56. Now, county values will be comparable across race. </p>
 <Slide min={16000} max={45043} values={32500} type="rescale" actualmin={16382} step={500}/>
 
-<p> The values now are able to reflect two things: 
+<p> The values now are able to reflect two things:
 <Row>
 <Col md={1}></Col>
 <Col sm={10} >
-<ul><li> As before, they show the relative economic security of the county for the given race of women depending on where they fall from 0 to 100. 
+<ul><li> As before, they show the relative economic security of the county for the given race of women depending on where they fall from 0 to 100.
 </li>
 <li>But now, they also show us a measure of inequality in a county based on the difference in values for each race. </li></ul>
 </Col>
 </Row>
-Counties with very different values for both races imply that one group of women generally have much higher earnings whereas counties with similar values mean that both races are facing similar conditions. 
+Counties with very different values for both races imply that one group of women generally have much higher earnings whereas counties with similar values mean that both races are facing similar conditions.
 <br />
 <br />
-One important thing to note with this new range is that it combines the data for both races, but does so without losing the detail that both provide us. This is <span style={{fontWeight: "bold"}}> not </span> the same range as the one for Median Earnings for all Women that we saw earlier. It has a lower minimum and a higher maximum, reflecting the racial dynamics of economic security. 
+One important thing to note with this new range is that it combines the data for both races, but does so without losing the detail that both provide us. This is <span style={{fontWeight: "bold"}}> not </span> the same range as the one for Median Earnings for all Women that we saw earlier. It has a lower minimum and a higher maximum, reflecting the racial dynamics of economic security.
 </p>
 
 </div>
@@ -610,14 +662,14 @@ One important thing to note with this new range is that it combines the data for
                 <Slide min={7} max={29.68} values={12} type="vars" actualmin={7.79} step={1} flip={"True"}/>
                 <h3>Unemployment Rate</h3>
                 <Slide min={4} max={24.9} values={10} type="vars" actualmin={4.5} step={1} flip={"True"}/>
-                
+
                 <Divider className="divider" variant="middle" />
 
                 <Row className="justify-content-center rowblock">
-    <h4>Index Value: {average([66,64,54,59,81,73])}</h4>
+                  <h4>Index Value: {average([66,64,54,59,81,73])}</h4>
                 </Row>
 <p>This county would have a final index value of 66.17. As we can see through the rescaled values it gets for each variable, they are distributed from 54 to 81, which means
-  this county is generally on the higher end of the distribution for each variable. 
+  this county is generally on the higher end of the distribution for each variable.
 </p>
               </div>
               </section>
@@ -643,10 +695,10 @@ One important thing to note with this new range is that it combines the data for
             </Row> */}
             <Row className="rowblock">
         <Col lg={7}>
-          <Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map></Col>
-        <Col>            
+          {/*<Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map>*/}</Col>
+        <Col>
         <div className="indexdesc">
-          <div>We finally map all the index values by county to see how it distributes across the state. Some More Explanation Here. <br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          <div>We finally map all the index values by county to see how it distributes across the state. Some More Explanation Here. <br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
         </div>
     </Col>
@@ -657,15 +709,15 @@ One important thing to note with this new range is that it combines the data for
               <a id="section-6"> </a>
             </div>
 
-            
-            
+
+
             {/* <section class="page-section" className="section">
             <div className="info_section">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               <img id ="EconImage" src = {require('../pictures/MSimage.png')} alt="Index Map"/>
             </div>
           </section> */}
-         
+
          <section className="section">
 
 <Row>
@@ -681,7 +733,7 @@ One important thing to note with this new range is that it combines the data for
         </Row>
 
         {/* </Container> */}
-  
+
     {/* <IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} /> */}
 
     {/* <Row>
@@ -699,7 +751,7 @@ One important thing to note with this new range is that it combines the data for
 
     <IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} />
 
-           </section> 
+           </section>
            <Col sm={2}></Col>
 <div>TESTING OUT </div>
     </Col>
@@ -707,10 +759,10 @@ One important thing to note with this new range is that it combines the data for
 </div>
 
 </div>
- 
-<IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} />
 
-    
+{/*<IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} />*/}
+
+
   </div>
 	)
 

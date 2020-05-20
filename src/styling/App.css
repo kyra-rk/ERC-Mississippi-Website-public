@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 
 @font-face {
   font-family: 'Muli-Black';
@@ -33,15 +38,17 @@ code {
 .navigation {
   background-color: #652264;
   margin-bottom: 30px;
-  font-family: Fira Sans;
+  font-family: Montserrat;
   margin-bottom: 20px;
-  border: 1px solid teal;
+  /*border: 1px solid teal;*/
+  box-shadow: 0 6px 4px -2px rgba(0,0,0,.2);
 }
 
 @media only screen and (min-width: 1200px) {
   .navigation {
     height: 80px;
     line-height: 80px;
+    font-family: "Open Sans";
   }
 }
 
@@ -60,6 +67,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
 
 .ml-auto > a.nav-link.header.active {
   color: rgba(255, 255, 255, .5);
+  font-family: Roboto;
 }
 
 .navbar-nav a:hover {
@@ -71,6 +79,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
   text-align: right;
   letter-spacing: -2px;
   font-weight: 900;
+  font-family: "Open Sans";
 }
 
 .DataPortal h1{
