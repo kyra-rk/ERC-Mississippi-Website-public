@@ -15,7 +15,7 @@ class Map extends Component {
             color: d3.scaleQuantile().range(["#edc0da","#f9bbe0","#b2598e","#9b3070","#63053d"]),
             color2: d3.scaleQuantile().range(["#eff3ff","#bdd7e7","#6baed6","#3182bd","#08519c"]),
             variable: this.props.variable,
-            variablename: this.props.varname,
+            variablename: this.props.varname1,
             variable2: this.props.variable2,
             variablename2: this.props.varname2,
             variabledescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
@@ -37,6 +37,9 @@ class Map extends Component {
         if (this.props.variable != prevProps.variable){
             this.setState({variable: this.props.variable, variablename: this.props.varname});
         }
+        if (this.props.variable2 != prevProps.variable2){
+            this.setState({variable2: this.props.variable2, variablename2: this.props.varname2});
+        }
         // console.log("REDRAWING")
         this.drawMap();
     }
@@ -49,7 +52,11 @@ class Map extends Component {
         // let svgWidth = 300;
         // let svgHeight = 300;
         let variable = this.state.variable;
+        console.log("VAR1 IN THE MAP")
+        console.log(variable)
         let variable2 = this.state.variable2;
+        console.log("VAR2 IN THE MAP")
+        console.log(variable2)
         let data = this.state.dataset;
         
         var center = d3.geoCentroid(json)

@@ -135,7 +135,7 @@ createHeader(){
       
      } );
      const horbuttons = topic_categories.map((obj, index) => {
-      return (<Col sm={"auto"} className="filters">
+      return (<Col sm={2} className="filters">
       <Button key={index+1} onClick={this.handleClick} value={index+1} id={`transcriptbutton ${index+1}`} className="transcriptbutton" style={{backgroundColor: obj.color, borderColor: obj.color}} >
       {obj.name}
     </Button> </Col>)
@@ -270,7 +270,7 @@ createHeader(){
         </Row>
         </div>
         <Row className="justify-content-center">
-        <Row className="footer">
+        <Row className="footer" >
           {horbuttons}
 </Row>
         </Row>

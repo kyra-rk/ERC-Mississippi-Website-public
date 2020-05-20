@@ -25,6 +25,8 @@ class TopicCategory extends Component {
 	}
 	
 //redirect gets rid of flipcard component but doesnt seem to work when just typing out url
+//{obj[topic].quote1} (and for quote 2) is named this way because of the way the quotes are organized in the selectedQuotes.js file
+//One person is a column that takes up half the page, then within that person, there is one row which is composed of two column--the left column contains two rows which are for the name and initial, and the right column contains two rows for the two quotes
     render (){
 	var topic = this.props.match.params.name;
     var topiccat = selectedQuotes.map((obj) => 
