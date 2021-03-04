@@ -70,6 +70,8 @@ class People extends Component {
 
         return (
             <Router>
+                        <div className="screenwidth">
+
             <Row className="justify-content-md-center">
                 {flipcards}
             
@@ -77,6 +79,7 @@ class People extends Component {
                 <Route exact path={`${this.props.match.path}/:name`} component={OHPerson}/>
                 </Switch>
                 </Row>
+                </div>
             </Router>
             
         )

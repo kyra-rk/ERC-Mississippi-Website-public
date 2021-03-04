@@ -158,7 +158,7 @@ class Map extends Component {
                    d3.selectAll("circle.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
                 .style("stroke", "yellow")
                 .style("stroke-width", 3);
-                console.log(d);
+                // console.log(d);
                 div.transition()        
                              .duration(200)      
                              .style("opacity", .9);    
@@ -417,7 +417,7 @@ class Map extends Component {
                  
                  var yradius = (y_dotplot(0) - y_dotplot(1)-1)/2
                  var xradius = (x_dotplot(min + (bins[0].x1 - bins[0].x0))-x_dotplot(min))/2
-                 console.log(xradius, yradius)
+                //  console.log(xradius, yradius)
                  var radius = Math.min(xradius, yradius)
  
                  var ylimit = (radius*2)*maxy
@@ -689,8 +689,8 @@ class Map extends Component {
     }
 
    render() {
-       console.log(this.state.variabledescription);
-       console.log(this.props.vardesc)
+    //    console.log(this.state.variabledescription);
+    //    console.log(this.props.vardesc)
 
    return (
       <div>

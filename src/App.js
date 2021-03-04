@@ -20,7 +20,16 @@ import Comparison from './pages/Comparison'
 import { Nav } from 'react-bootstrap';
 // import DropdownBootstrap from './components/DropdownBootstrap'
 
-
+const nav_bar_items = [{url: "/", name: "Home"}, 
+                         //  {url: "/dataportal", name: "Data Portal"},
+                           {url: "/dataportal", name: "Data Portal"},
+                           {url: "/dataportal2", name: "Data Portal2"},
+                           {url: "/comparison", name: "Compare Data"}, 
+                           {url: "/indexinfo", name: "Index"}, 
+                           {url: "/stories", name: "Stories"},
+                           {url: "/methodology", name: "Methodology"},
+                           {url: "/about", name: "About"},
+                           {url: "/contact", name: "Contact"}];
 /*made home link be exact path "/" , any non matching url goes to nomatch page*/
 
 class App extends Component {
@@ -28,7 +37,7 @@ class App extends Component {
     return (
         <Router>
         <div className="App">
-        <NavBar />
+        <NavBar links={nav_bar_items} brand="Make Women Count"/>
           <Switch>
             <Route exact path="/" component={Home}/>
            <Route path="/dataportal" component={DropdownBootstrap}/>

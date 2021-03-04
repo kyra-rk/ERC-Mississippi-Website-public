@@ -7,7 +7,8 @@ import DemographicMap from '../components/DemographicMaps'
 import '../styling/App.css';
 import '../styling/Dropdown.css'
 import data_general from '../data/data_general_ms.json';
-import datacomplete from '../data/datacomplete.json'
+// import datacomplete from '../data/datacomplete.json'
+import datacomplete from '../data/Data_Complete_20210302-2.json'
 import data_black from '../data/data_black.json'
 import data_white from '../data/data_white.json'
 import categories from '../data/Metadata'
@@ -205,6 +206,7 @@ class DropdownBootstrap extends Component {
         }
 
         getabbreviation(matchingvar, demselected, genderselected){
+          console.log("GET ABBREVIATION", demselected, genderselected, matchingvar.universe, matchingvar.type)
           var abbrev = "";
           var genderabbrev = "";
           var totalabbrev = "";
@@ -249,11 +251,12 @@ class DropdownBootstrap extends Component {
           const matchingvar = categories[index].variables[i];
           var desc = matchingvar.description;
           var longerdesc = matchingvar.longdesc;
-          console.log(desc)
           var demselected = this.state.demselected;
           var genderselected = this.state.genderselected;
           var buttonselected = this.state.buttonselected;
           var error=false;
+          console.log("Single household info: ", matchingvar.race
+          )
           if (this.state.genderselected!=="A" && this.state.demselected!=="A" && matchingvar.racegender===false){
             error = true;
           }
@@ -263,6 +266,7 @@ class DropdownBootstrap extends Component {
           else if (this.state.genderselected !== "A" && matchingvar.gender === false){
             error = true;
           }
+          console.log("ERROR", error);
           if (error === true){
             demselected = "A"
             genderselected = "A"

@@ -132,6 +132,9 @@
     margin-bottom: 25px;
   }
 
+  .unexpanded {
+    position: relative;
+  }
   .scrollspy {
     position: fixed;
     top: 180px;
@@ -140,13 +143,14 @@
     /* margin: 0 auto; */
     left: -5px;
   }
+  
 
   .scrollspy ul {
     list-style-type:none;
     text-align: left;
   }
 
-  .scrollspy li {
+  .scrollspy li{
     padding: 2px;
     /* background-color: teal; */
     margin: 5px 0;

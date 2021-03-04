@@ -11,7 +11,7 @@ import Report from '../pictures/Report.jpg'
 import data_logo from '../pictures/database.svg'
 import stories_logo from '../pictures/stories.svg'
 import method_logo from '../pictures/tools.svg'
-import data_portal_demo from '../pictures/Data_portal_demo.mp4'
+// import data_portal_demo from '../pictures/Data_portal_demo.mp4'
 import 'bootstrap';
 import Fade from 'react-reveal/Fade';
 import {Card, Button, Carousel, Figure} from 'react-bootstrap';
@@ -80,15 +80,15 @@ class Home extends React.Component {
               <div class="row text-center">
                 <div class="col-md-4">
                     <h4 class="statistics_num">#48</h4>
-                  <p class="text-muted"> Mississippi is ranked 48 among US states. </p>
+                  <p class="text-muted-home"> Mississippi is ranked 48 among US states. </p>
                 </div>
                 <div class="col-md-4">
                     <h4 class="statistics_num">2.9M</h4>
-                  <p class="text-muted">Mississippi has a population of 2.9 million</p>
+                  <p class="text-muted-home">Mississippi has a population of 2.9 million</p>
                 </div>
                 <div class="col-md-4">
                     <h4 class="statistics_num">32%</h4>
-                  <p class="text-muted">32% of people in Mississippi are college educated</p>
+                  <p class="text-muted-home">32% of people in Mississippi are college educated</p>
                 </div>
               </div>
             </div>
@@ -193,7 +193,7 @@ class Home extends React.Component {
                 The data portal has seven main categories: demographics, health, education, employment, income, housing, and government assistance.
                 </StickyBox>
                 <div>
-                  <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video>
+                  {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
                 </div>
               </div>
             </div>
@@ -207,7 +207,7 @@ class Home extends React.Component {
                 Read through our process of calculating a Women's Economic Security Index and visualize the distribution of the index across counties.
                 </StickyBox>
                 <div>
-                  <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video>
+                  {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
                 </div>
               </div>
             </div>
@@ -221,7 +221,7 @@ class Home extends React.Component {
                   Read through stories we collected from women in the Women in Construction Job Training Program. Explore either by person or topic.
                 </StickyBox>
                 <div>
-                  <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video>
+                  {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
                 </div>
               </div>
             </div>

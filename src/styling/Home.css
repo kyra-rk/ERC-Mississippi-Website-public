@@ -206,11 +206,12 @@ mark.yellow {
   box-shadow: 0 4px 8px 0 white, 0 6px 8px 0 white;
 }
 
-.text-muted{
+.text-muted-home{
   margin-left:12%;
   margin-top:10%;
   width:75%;
   font-family: "Roboto";
+  color: white !important;
 }
 
 .carousel_caption h3{

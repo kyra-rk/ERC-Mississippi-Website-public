@@ -1,0 +1,43 @@
+---
+title: "Clean Variablle Names"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(stringr)
+data <- read.csv("Data_COMPLETE_cleaned.csv")
+head(data)
+
+##Adjust all Single Family Variable Names
+names(data)[str_detect(names(data), ".HH_Family.|.HH_SingleFamily.|.W.MinorFamily.|.W.MinorsFamily.")] <- c( "P_HH_SingleFamily_MaleNoWife",  "P_HH_SingleFamily_FemaleNoHusband" ,"P_HH_W.MinorsSingleFamily_MaleNoWife"    ,   "P_HHOnSNAP_W.MinorsSingleFamily_MaleNoWife" ,"P_HHNotOnSNAP_W.MinorsSingleFamily_MaleNoWife"  ,  "P_HH_W.MinorsSingleFamily_FemaleNoHusband" , "P_HHOnSNAP_W.MinorsSingleFamily_FemaleNoHusband" ,   "P_HHNotOnSNAP_W.MinorsSingleFamily_FemaleNoHusband", "P_HH_SingleFamily_W.Seniors_MaleNoWife", "P_HH_SingleFamily_W.Seniors_FemaleNoHusband" , "P_HH_SingleFamily_W.OwnMinors_MaleNoWife" ,  "P_HH_SingleFamily_W.OwnMinors_FemaleNoHusband" ,  "P_Total_HH_SingleFamily_B"  ,  "P_HH_SingleFamily_MaleNoWife_B" ,  "P_HH_SingleFamily_FemaleNoHusband_B" ,  "P_Total_HH_SingleFamily_W"  ,"P_HH_SingleFamily_MaleNoWife_W",  "P_HH_SingleFamily_FemaleNoHusband_W" )  
+
+##Adjust remaining Single Family Variable Names
+unchanged <- names(data)[str_detect(names(data), ".(?<!Gov.)((?<!.Single)Family.)")][11:14]
+newnames <- str_replace_all(names(data)[str_detect(names(data), ".(?<!Gov.)((?<!.Single)Family.)")][-c(11:14)], "Family", "SingleFamily")
+names(data)[str_detect(names(data), ".(?<!Gov.)((?<!.Single)Family.)")] <- append(newnames, unchanged, 10)
+
+##Add total to Gov Programs variable name
+names(data)[str_detect(names(data), "P_HHOnGovPrograms_Family$")] <- "P_Total_HHOnGovPrograms_Family"
+
+##Divide wage gap by 100 since was already in percent form when it got multiplied by 100
+data$P_TotaLGenderWageGap <- data$P_Total_GenderWageGap/100
+
+#P_HH_W.Minors
+#P_HHOnSNAP_W.Minors
+
+unchanged2 <- names(data)[str_detect(names(data), "Family$|Minors$|Seniors$")][c(7,8,10,11)]
+newnames2 <- names(data)[str_detect(names(data), "Family$|Minors$|Seniors$")][-c(7,8,10,11)] %>% 
+  str_replace("Total_", "") %>%
+  str_replace("P_H", "P_Total_H")
+
+combinednames <- append(newnames2, unchanged2[1:2], 6)
+combinednames<- append(combinednames, unchanged2[3:4], 9)
+names(data)[str_detect(names(data), "Family$|Minors$|Seniors$")] <- combinednames
+
+write.csv(data, "Data_COMPLETE_cleaned_20210302.csv", row.names = F)
+```
+

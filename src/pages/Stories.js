@@ -37,6 +37,8 @@ export const Stories = ({ match }) => (
       If you are more interested in reading about one person's story, then select "By Person" button. You will see a biography of the WinC participant and the full transcript of their interview. You can highlight transcript text by topic to easily find relevant quotations. 
       If you are more interested in reading quotes related to a topic, then select "By Topic" button. You can toggle between the topics and see relevant quotes. Check our Methodology page to understand what each of the topics mean.
     </p>
+    </div>
+
     <Router>
     <Button as={Link} className="ohbutton" to={`${match.url}/people`} style={{backgroundColor: "teal", borderColor: "teal"}}>By Person</Button>
     {' '}
@@ -48,7 +50,6 @@ export const Stories = ({ match }) => (
         <Route component={NoMatch}/>
       </Switch>
     </Router>
-    </div>
     </div>
   </div>
 )

@@ -51,6 +51,7 @@ class Topic extends Component {
     </div>
   );
       return (
+        <div className="screenwidth">
         <div>
         <h1>Choose a Topic</h1>
         <Router>
@@ -60,6 +61,7 @@ class Topic extends Component {
             <Route exact path={`/stories/people/:name`} component={OHPerson}/>
           </Switch>
         </Router>
+        </div>
       </div>
     )
   }

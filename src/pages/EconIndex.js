@@ -4,10 +4,13 @@
  */
 import React,{ Component } from 'react';
 import '../styling/EconIndex.css';
-import { Row, Container, Collapse, Col, Button, Accordion, Card, CardGroup, Tab, Tabs, TabContent, Image} from 'react-bootstrap';
+import { Row, Dropdown, DropdownButton, Container, Collapse, Col, Button, Accordion, Card, CardGroup, Tab, Tabs, TabContent, Image} from 'react-bootstrap';
+import NavBar from '../components/NavBar'
 import {Slider, Handles, Rail, Ticks, Tracks} from 'react-compound-slider'
 import Map from '../components/IndexMap'
 import IndexMap2 from '../components/IndexMap2'
+import { scroller, Element} from "react-scroll";
+
 
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import Divider from '@material-ui/core/Divider';
@@ -395,44 +398,100 @@ function average(arr){
 // function ListItemLink(props) {
 //   return <ListItem button component="a" {...props} />;
 // }
+const anchor_items = [{url: "#section-1", name: "Variables in the Index"}, 
+                         //  {url: "/dataportal", name: "Data Portal"},
+                         {url: "#section-2", name: "Rescaling Variables"},
+                         {url: "#section-3", name: "Rescaling by Race"},
+                         {url: "#section-4", name: "Composing the Index"},
+                         {url: "#section-5", name: "Index Map"},
+                           {url: "#section-6", name: "Index Maps by Race"}
+
+                          ];
 
 export const EconIndex = () => (
-	//   <div className="screenwidth">
-	// 	<div className="econindex">
-	//     <h1>Index</h1>
-	// 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	// 	<img id ="EconImage" src = {require('../pictures/MSimage.png')} alt="Index Map"/>
-	// 	</div>
-  //   </div>
-  
+
   <div>
-	  {/* <iframe src="https://storymaps.arcgis.com/stories/931e709e07914cb8824e9a6d3747729f" height="500px" width="100%"/> */}
 
     <div className="screenwidth">
+    <div className="econindex">
+
+<Row className="justify-content-center" noGutters={"True"}>
+  <Col sm={12} lg={8}>
+  <h1>Women's Economic Security Index</h1>
+
+<Row className="justify-content-center" >
+<section class="bg-light page-section" className="section">
+<p> We developed a women's economic security index for Mississippi that goes beyond traditional understandings of economic security, that is limited to poverty. 
+Our index also attempts to capture the ways in which race intersects with gender to affect the economic conditions of women in Mississippi. 
+
+</p>
+
+</section>
+</Row>
+
+<Row>
+  <h6>We highly recommend you read through our methodology for calculating the index, but if you would like to go straight to the
+      maps of the index, use the options on the left sidebar. 
+  </h6>
+</Row>
+
+    <Row className="justify-content-center">
+    <div class="anchor">
+      <a id="section-1"> </a>
+    </div>
+
+<section></section>
+    <section class="page-section">
+    <Row>
+        <Col>
+
+       <div className="headerdiv indexheader"><h1 className="descriptionheader">Variables in the Index</h1></div>
+
+    </Col>
+    </Row>
+      <div className="info_section">
+        {/* <h1>What variables are part of our index?</h1> */}
+        <div className="tabs">
+        <Vars />
+        </div>
+      </div>
+    </section>
+  
+</Row>
+  <Row>
+                <Col>
+
+               <div className="headerdiv indexheader"><h1 className="descriptionheader">Index</h1></div>
+
+            </Col>
+            </Row>
+            {/* <Row>
+              <h2>Index</h2>
+            </Row> */}
+            <Row className="rowblock">
+        <Col lg={7}>
+          <Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map></Col>
+        <Col>            
+        <div className="indexdesc">
+          <div>We finally map all the index values by county to see how it distributes across the state. Some More Explanation Here. <br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
+        </div>
+    </Col>
+    </Row>
+  <Row><Col>
+        <div className="headerdiv indexheader"><h1 className="descriptionheader">Index Maps by Race</h1></div>
+    </Col></Row>
+    </Col>
+    </Row>
+    </div>
+    <div>  <IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} /></div>
+
       <div className="econindex">
+
       <Row className="justify-content-center" noGutters={"True"}>
+    
 
-      <Col lg={1}>
-
-{/* <div id="list-example" >
-<a class="list-group-item list-group-item-action" href="#section-1">Item 1</a>
-<a class="list-group-item list-group-item-action" href="#section-2">Item2</a>
-<a class="list-group-item list-group-item-action" href="#section-3">Item 3</a> */}
-{/* <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-  {/* <List>
-  <ListItemLink className = "list-group-item list-group-item-action" href="#section-1">
-<ListItemText primary="Spam" />
-</ListItemLink>
-<ListItemLink href="#section-2">
-<ListItemText primary="Spam" />
-</ListItemLink>
-<ListItemLink href="#section-3">
-<ListItemText primary="Spam" />
-</ListItemLink>
-  </List> */}
-
-{/* </div> */}
-<div className="scrollspy">
+{/* <div className="scrollspy">
 <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current">
   <ul>
 <li><a href="#section-1">Variables in the Index</a></li>
@@ -442,55 +501,21 @@ export const EconIndex = () => (
 <li><a href="#section-5">Index Map</a></li>
 <li><a href="#section-6">Index Maps by Race</a></li>
 </ul>
+      <Col sm={12} lg={1}>
+<Dropdown className="expanded">
+          {anchor_items.map((obj, i)=>
+            <Dropdown.Item eventKey="i" href={obj.url}>{obj.name}</Dropdown.Item>
+          )}
+</Dropdown> 
+</Col>
 </Scrollspy>
-</div>
-</Col> 
-<Col sm={8}>
+</div> */}
 
-        <h1>Women's Economic Security Index</h1>
+<Col sm={12} lg={8}>
 
-        <Row className="justify-content-center" >
-        <section class="bg-light page-section" className="section">
-<p> We developed a women's economic security index for Mississippi that goes beyond traditional understandings of economic security, that is limited to poverty. 
-Our index also attempts to capture the ways in which race intersects with gender to affect the economic conditions of women in Mississippi. 
-
-</p>
-
-</section>
-</Row>
-
-        <Row>
-          <h6>We highly recommend you read through our methodology for calculating the index, but if you would like to go straight to the
-              maps of the index, use the options on the left sidebar. 
-          </h6>
-        </Row>
-
-            <Row className="justify-content-center">
-            <div class="anchor">
-              <a id="section-1"> </a>
-            </div>
-
-<section></section>
-            <section class="page-section">
-            <Row>
-                <Col>
-
-               <div className="headerdiv indexheader"><h1 className="descriptionheader">Variables in the Index</h1></div>
-
-            </Col>
-            </Row>
-              <div className="info_section">
-                {/* <h1>What variables are part of our index?</h1> */}
-                <div className="tabs">
-                <Vars />
-                </div>
-              </div>
-            </section>
-          
-    </Row>
+ 
 
             <Row className="justify-content-center" >
-{/* <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example"> */}
 <div class="anchor">
               <a id="section-2"> </a>
             </div>
@@ -624,7 +649,6 @@ One important thing to note with this new range is that it combines the data for
 
 
                       </section>
-            {/* </div> */}
             </Row>
 
             <div class="anchor">
@@ -643,7 +667,8 @@ One important thing to note with this new range is that it combines the data for
             </Row> */}
             <Row className="rowblock">
         <Col lg={7}>
-          <Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map></Col>
+          {/* <Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map> */}
+          </Col>
         <Col>            
         <div className="indexdesc">
           <div>We finally map all the index values by county to see how it distributes across the state. Some More Explanation Here. <br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -655,16 +680,7 @@ One important thing to note with this new range is that it combines the data for
 
     <div class="anchor">
               <a id="section-6"> </a>
-            </div>
-
-            
-            
-            {/* <section class="page-section" className="section">
-            <div className="info_section">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <img id ="EconImage" src = {require('../pictures/MSimage.png')} alt="Index Map"/>
-            </div>
-          </section> */}
+            </div>            
          
          <section className="section">
 
@@ -679,31 +695,6 @@ One important thing to note with this new range is that it combines the data for
 
         </Col>
         </Row>
-
-        {/* </Container> */}
-  
-    {/* <IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} /> */}
-
-    {/* <Row>
-      <Col sm={2}></Col>
-      <Col sm={8}>
-    <section className="section">
-
-<Row>
-                <Col>
-
-               <div className="headerdiv indexheader"><h1 className="descriptionheader">Index Maps by Race</h1></div>
-
-            </Col>
-            </Row>
-
-    <IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} />
-
-           </section> 
-           <Col sm={2}></Col>
-<div>TESTING OUT </div>
-    </Col>
-    </Row> */}
 </div>
 
 </div>
