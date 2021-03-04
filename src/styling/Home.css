@@ -59,9 +59,11 @@ mark.yellow {
 }
 
 .banner{
-  align: left;
+  /* align: left; */
   text-align: center;
   filter: brightness(50%);
+  position: relative;
+  text-align: center;
 }
 
 div.carousel-item img {
@@ -79,32 +81,45 @@ div.carousel-caption {
 .bannerwords{
 
   display: inline-block;
-  margin-left: 2%;
+  /* margin-left: 2%; */
   /*width: 100px;*/
   color: #FFFFFF;
   /*font-family: "Fira Sans";*/
+  
+  position: absolute;
+  left: 0%;
+  top: 35%;
+  width: 90%;
+  text-align: center;
+  justify-content: center;
+
+  /* text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.15); */
+}
+
+.bannerwords h1{
   font-family: "Oswald";
   font-weight: 1000;
   font-size: 100px;
   line-height: 100%;
   letter-spacing: 1.5px;
-  position: absolute;
-  left: 20%;
-  top: 45%;
-  text-align: center;
-
-  /* text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.15); */
 }
 
-.bannercaption{
+@media only screen and (min-width: 750px) {
+  .bannerwords {
+   top: 45%;
+   width: 100%;
+  }
+}
+
+.bannerwords p{
     display: inline-block;
     font-family: "Roboto";
     color: #FFFFFF;
     font-size: 40px;
     font-weight: 100;
-    top: 60%;
+    /* top: 60%;
     left: 30%;
-    position: absolute;
+    position: absolute; */
 }
 
 .button1{
@@ -129,6 +144,10 @@ div.carousel-caption {
 .page-section.second{
   background-color: #642563;
   color: #FFFFFF;
+}
+
+.second p {
+  text-align: center !important;
 }
 
 /* .page-section {
@@ -205,6 +224,10 @@ div.carousel-caption {
 .container{
   margin-bottom: 10%;
 }
+.container p {
+  text-align: left;
+}
+
 .introduction div.container {
   margin-bottom: 0%;
 }

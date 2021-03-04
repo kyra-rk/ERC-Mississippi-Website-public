@@ -20,6 +20,7 @@ import Comparison from './pages/Comparison'
 import People from './pages/People'
 import { Nav } from 'react-bootstrap';
 import OHPerson from './pages/OHPerson';
+import TopicCategory from './pages/TopicCategory'
 // import DropdownBootstrap from './components/DropdownBootstrap'
 
 const nav_bar_items = [{url: "/", name: "Home"}, 
@@ -52,6 +53,8 @@ class App extends Component {
             <Route path="/contact" component={Contact}/>
             {/* <Route exact path="/stories/people" component={Stories}/> */}
             <Route path="/stories/people/:name" component={OHPerson}/>
+            <Route path="/stories/topic/:name" component={TopicCategory}/>
+
             {/* <Route path="/people/:name" component={OHPerson}/> */}
             {/* <Route path="/stories/:name" component={OHPerson}/> */}
 

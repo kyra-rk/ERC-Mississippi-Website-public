@@ -53,18 +53,22 @@ class Topic extends Component {
   );
   //The route will redirect you to the person's transcript page, but the reason why it is on this level too is so that when it redirects, it'll not show this topic.js page, i.e. not show the topic buttons
       return (
-        <div className="screenwidth">
         <div>
+                  <div className="screenwidth">
+
         <h1>Choose a Topic</h1>
+        </div>
+
+
         <Router>
           <Row className="justify-content-md-center">{buttons}</Row>
           <Switch>
             <Route path={`${this.props.match.path}/:name`} render={(props) => <TopicCategory {...props} redirectperson={this.redirectperson}/>}/>                
             <Route exact path={`/stories/people/:name`} component={OHPerson}/>
+            <Route exact path={`${this.props.match.path}`}/>
           </Switch>
         </Router>
         </div>
-      </div>
     )
   }
 

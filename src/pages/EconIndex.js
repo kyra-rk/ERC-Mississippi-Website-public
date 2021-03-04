@@ -45,7 +45,7 @@ class Vars extends React.Component{
       <Tabs
         activeKey={this.state.key}
         onSelect={key => this.setState({key})}
-        className = "tabsformat"
+        className = "tabsformat" fill
       >
         <Tab eventKey="var1" title={<span><img src = {poverty_logo} className="imgsize"/></span>} className="tabsformat"><h4>Poverty</h4><h5>Percent with Income Below Poverty</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
         <Tab eventKey="var2" title={<span><img src = {health_logo} className="imgsize"/></span>} className="tabsformat"><h4>Health Insurance</h4><h5>Percent With Health Insurance</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></Tab>
@@ -435,13 +435,13 @@ Our index also attempts to capture the ways in which race intersects with gender
 
 {/* Bottom maps moved to the top */}
 {/* Index Maps by Race need to be resized */}
-<Row className="justify-content-center rowblock">
+{/* <Row className="justify-content-center rowblock">
   <h4>Index Value: {average([66,64,54,59,81,73])}</h4>
 </Row>
 
 <p>This county would have a final index value of 66.17. As we can see through the rescaled values it gets for each variable, they are distributed from 54 to 81, which means
   this county is generally on the higher end of the distribution for each variable.
-</p>
+</p> */}
 
 
 </section>

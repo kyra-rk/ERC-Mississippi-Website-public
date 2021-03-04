@@ -17,9 +17,10 @@
 
 
 .econindex h1{
-    text-align: left;
+    text-align: center;
     font-size: 40px;
     margin-top: 20px;
+    margin-bottom: 2%;
     font-family: "Open Sans";
   }
 
@@ -45,10 +46,17 @@
 }
 
 .imgsize{
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media only screen and (min-width: 750px) {
+  .imgsize {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .tabsformat{

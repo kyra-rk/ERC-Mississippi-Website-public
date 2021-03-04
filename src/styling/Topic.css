@@ -13,6 +13,9 @@
     height: auto;
  }
 
+ .Quote-Container p {
+     text-align: left;
+ }
  h1 {
      font-family: "Fira Sans";
      /* padding-bottom:20px; */
@@ -32,7 +35,9 @@
      bottom: 0;
      right: 20px;
  }
-
+.topiccat {
+    margin-bottom: 2%;
+}
  .topicbutton {
      font-family: "Fira Sans";
      /* text-transform: uppercase; */
@@ -52,7 +57,8 @@
      font-family: "Fira Sans";
     color: purple;
     font-size: 420%;
-     padding-left: 100px;
+     padding-left: 5%;
+     justify-content: center;
 }
 
 #fullname {
@@ -64,5 +70,6 @@
     font-size: 1em;
     color: purple;
     text-align: left;
-    padding-left: 100px;
+    padding-left: 5%;
+    justify-content: center;
 }

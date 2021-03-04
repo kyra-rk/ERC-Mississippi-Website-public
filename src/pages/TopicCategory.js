@@ -7,6 +7,8 @@ import '../styling/Topic.css';
 import { Col, Row, Button } from 'react-bootstrap';
 import selectedQuotes from '../data/selectedQuotes';
 import {BrowserRouter as Router,Route, Switch, Redirect } from 'react-router-dom';
+import { withRouter } from "react-router";
+
 import OHPerson from './OHPerson'
 
 /*created TopicCategory const that references the data in selectedQuotes*/
@@ -30,9 +32,9 @@ class TopicCategory extends Component {
     render (){
 	var topic = this.props.match.params.name;
     var topiccat = selectedQuotes.map((obj) => 
-	<Col lg={6} key={obj.name}>
+	<Col md={6} lg={4} key={obj.name}>
 		<Row id="personblock">
-			<Col lg={4}>
+			<Col lg={3}>
 				<Row className="initial">
 					{obj.initials}
 				</Row>
@@ -40,7 +42,7 @@ class TopicCategory extends Component {
 					{obj.fullname}
 				</Row>
 			</Col>
-			<Col lg={8} className="rightcolumn">
+			<Col lg={{span: 8, offset: 1}} className="rightcolumn">
 				<Row className="Quote-Container">
 					<p>{obj[topic].quote1}</p>
 				</Row>
@@ -60,10 +62,13 @@ class TopicCategory extends Component {
 
         return (
 			<div>
-			<h1>{this.props.match.params.name}</h1>
+			<h1 className="topiccat">{this.props.match.params.name}</h1>
+			<div className="screenwidth">
+
 				<Row className="justify-content-md-center">
 					{topiccat}
 				</Row>
+				</div>
 			</div>
         )
     }
@@ -71,4 +76,4 @@ class TopicCategory extends Component {
 } 
 
 
-export default TopicCategory;
+export default withRouter(TopicCategory);

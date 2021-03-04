@@ -11,22 +11,34 @@ import Report from '../pictures/Report.jpg'
 import data_logo from '../pictures/database.svg'
 import stories_logo from '../pictures/stories.svg'
 import method_logo from '../pictures/tools.svg'
-// import data_portal_demo from '../pictures/Data_portal_demo.mp4'
+import data_portal_demo from '../pictures/Data_portal_demo.mp4'
 import 'bootstrap';
 import Fade from 'react-reveal/Fade';
 import {Card, Button, Carousel, Figure, Row, Col} from 'react-bootstrap';
 import AnimatedNumber from 'react-animated-number';
 import HomepageStats from '../components/HomepageStats'
 import StickyBox from 'react-sticky-box';
-
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import smoothscroll from 'smoothscroll-polyfill';
 
 
 class Home extends React.Component {
-
-  state = {
-      showDiv: true
+  constructor(props){
+    super(props)
+  this.state = {
+      showDiv: true,
+  }
+  this.myRef = React.createRef()
+  this.handleClick = this.handleClick.bind(this)
   }
 
+  handleClick() {
+    smoothscroll.polyfill();
+    const y = this.myRef.current.getBoundingClientRect().top - 90;
+    // console.log(this.myRef.current.getBoundingClientRect())
+    window.scrollTo({top: y, behavior: 'smooth'});
+    // this.myRef.current.scrollIntoView({behavior: "smooth"});
+  }
 
   render() {
       // const { showDiv1 } = this.state;
@@ -51,21 +63,22 @@ class Home extends React.Component {
                          width="90"
                          alt="Map Icon"/>
                 </p>*/}
-                <p> MAKE WOMEN COUNT</p>
-            </div>
-            <div className="bannercaption">
-              <p>Understanding Women in Mississippi</p>
+                <h1> MAKE WOMEN COUNT</h1>
+            {/* </div> */}
+            {/* <div className="bannercaption"> */}
+              <p>Understanding the Experience of Women in Mississippi</p>
 
               {/*arrow feature - click feature not added*/}
-              <div id="arrow-down">
+              <div id="arrow-down" onClick={this.handleClick}>
                 <i class="down"></i>
               </div>
+             {/* <AddCircleIcon onClick={this.handleClick} className="add"></AddCircleIcon> */}
             </div>
             </section>
 
         {/*slideshow feature (react-bootstrap carousel)*/}
         {/*need to make sure carousel dimensions are right images used*/}
-        <section class="page-section first">
+        <section class="page-section first" ref={this.myRef}>
           <Row>
             <Col xl={6}>
                         <div className="introduction">
@@ -234,7 +247,7 @@ class Home extends React.Component {
                 The data portal has seven main categories: demographics, health, education, employment, income, housing, and government assistance.
                 </StickyBox>
                 <div>
-                  {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
+                  <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video>
                 </div>
               </div>
             </div>

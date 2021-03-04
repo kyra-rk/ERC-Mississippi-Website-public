@@ -11,6 +11,7 @@ import People from './People'
 import OHPerson from './OHPerson'
 import NoMatch from './NoMatch'
 import '../styling/Stories.css'
+import TopicCategory from './TopicCategory';
 
 /**
  * match.path keeps oralhistories in url but allows to add topic or story
@@ -54,6 +55,8 @@ export const Stories = ({ match }) => (
         <Route exact path={`${match.url}/people`} component={People}/>
         <Route exact path={`${match.url}/topic`} component={Topic}/>
         <Route path={`${match.url}/people/:name`} component={OHPerson}/>
+        <Route path={`${match.url}/topic/:name`} component={TopicCategory}/>
+
         <Route exact path={match.path}/>
         <Route component={NoMatch}/>
       </Switch>
