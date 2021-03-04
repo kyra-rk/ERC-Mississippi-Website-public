@@ -35,13 +35,14 @@ code {
   margin-bottom: 30px;
   font-family: Fira Sans;
   margin-bottom: 20px;
-  border: 1px solid teal;
+  box-shadow: 0 5px 5px -5px rgba(0,0,0,.5)
+  /* border: 1px solid teal; */
 }
 
 @media only screen and (min-width: 1200px) {
   .navigation {
-    height: 80px;
-    line-height: 80px;
+    height: 90px;
+    line-height: 90px;
   }
 }
 

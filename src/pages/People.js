@@ -6,6 +6,7 @@
 import React, {Component} from 'react';
 import { Row, Col, Button, Card } from 'react-bootstrap';
 import {BrowserRouter as Router,Route, Switch, Redirect} from 'react-router-dom';
+import { withRouter } from "react-router";
 import '../styling/FlipCard.css';
 import flip_card_items from '../data/flip_card_items'
 import OHPerson from './OHPerson'
@@ -27,11 +28,31 @@ class People extends Component {
     }
 //redirect gets rid of flipcard component but doesnt seem to work when just typing out url
     render (){
+        // console.log(this.props.history)
+        // console.log("personselected", this.state.personselected)
     if (this.state.personselected===true){
         return (<Router><Redirect to={`${this.props.match.path}/${this.state.name}`}/>                 
         <Route path={`${this.props.match.path}/:name`} component={OHPerson}/></Router>
         )
     }
+    console.log(this.props.match.path)
+    
+    var flipcards_partner = flip_card_items.map((obj) =>
+        <Col sm={6} md={4} key={obj.name}>
+            <Card className="flipcard">
+            <Card.Img variant="top" src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
+            <Card.Body>
+            <Card.Title>Test</Card.Title>
+            <Card.Text>
+            </Card.Text>
+            <Button variant="outline-info" value={obj.name} >
+                            See more
+                        </Button>
+            </Card.Body>
+            
+            </Card>
+        </Col>
+        )
     
     var flipcards = flip_card_items.map((obj) =>
         <Col sm={6} md={4} key={obj.name}>
@@ -45,41 +66,32 @@ class People extends Component {
             <Button variant="outline-info" onClick={this.handleClick} value={obj.name} >
                             See more
                         </Button>
+          {/* <Button as={Link}  to={`${this.props.match.url}/people/${obj.name}`} variant="outline-info" >See More</Button> */}
+      
             </Card.Body>
             
             </Card>
-
-
-            {/* <div className="flip-card">
-                <div className="flip-card-inner">
-                    <div className="flip-card-front">
-                        <img src = {require(`../pictures/${obj.image}`)} alt={obj.name}/>
-                        <h6>{obj.personname}</h6>
-                    </div>
-                    <div className="flip-card-back">
-                        <h6>{obj.personname}</h6> 
-                        <p>{obj.bio}</p>
-                        <Button variant="outline-info" onClick={this.handleClick} value={obj.name}>
-                            See more
-                        </Button>
-                    </div>
-                </div>
-            </div> */}
         </Col>
         );
-
+    
         return (
             <Router>
-                        <div className="screenwidth">
-
+            <div className="screenwidth">
+            <div className="headerdiv"><h1 class="descriptionheader">WinC Participant Interviews</h1></div>
             <Row className="justify-content-md-center">
                 {flipcards}
             
                 <Switch>
-                <Route exact path={`${this.props.match.path}/:name`} component={OHPerson}/>
+                <Route path={`${this.props.match.path}/:name`} component={OHPerson}/>
+                <Route exact path={`${this.props.match.path}`}/>
+
                 </Switch>
-                </Row>
-                </div>
+            </Row>
+            <div className="headerdiv"><h1 class="descriptionheader">Partner Interviews</h1></div>
+            <Row className="justify-content-md-center">
+            {flipcards_partner}
+</Row>
+            </div>
             </Router>
             
         )
@@ -88,4 +100,4 @@ class People extends Component {
 } 
 
 
-export default People;
+export default withRouter(People);

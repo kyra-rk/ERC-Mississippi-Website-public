@@ -31,8 +31,8 @@ class Map extends Component {
 
     this.drawMap();
     this.drawDotplot();
-    this.drawTopTen();
-    // this.drawTopTenSmaller();
+    // this.drawTopTen();
+    this.drawTopTenSmaller();
 }
 
     componentDidUpdate(prevProps){
@@ -42,7 +42,9 @@ class Map extends Component {
         }
         this.drawMap();
         this.drawDotplot();
-        this.drawTopTen();
+        // this.drawTopTen();
+        this.drawTopTenSmaller();
+
     }
 
     drawTopTen(){
@@ -398,7 +400,7 @@ class Map extends Component {
                  
 
                  const x_dotplot = d3.scaleLinear()
-                         .rangeRound([margin2.left*4,  newwidth-adjustx])
+                         .rangeRound([margin2.left*5,  newwidth-adjustx])
                          .domain([min, max]);
  
                  var histogram = d3.histogram()
@@ -440,7 +442,8 @@ class Map extends Component {
                  .call(d3.axisBottom(x_dotplot).ticks(thresholds.length+1).tickSize(-(height-margin2.top), 0, 0))
                  .selectAll("text")
                  .style("text-anchor", "end")
-                 .attr("transform", function(){ if (bindist > 1000) {return "rotate(-45)";} else {return "rotate(0)";}});
+                 .attr("transform", "rotate(-30)");
+                //  .attr("transform", function(){ if (bindist > 1000) {return "rotate(-30)";} else {return "rotate(0)";}});
  
                  svg3.append("text")             
                     .attr("transform",
@@ -452,7 +455,7 @@ class Map extends Component {
 
                  svg3.append("g")
                  .attr("class", "axis--y")
-                 .attr("transform", "translate(" + margin2.left*4 + ",0)")
+                 .attr("transform", "translate(" + margin2.left*5 + ",0)")
                  .call(d3.axisLeft(y_dotplot).ticks(maxinabin/5).tickSize(-svgWidth, 0, 0))
                 
 
@@ -461,7 +464,7 @@ class Map extends Component {
 
                 //  .attr("transform", "rotate(-90)")       
                     .attr("transform",
-                            "translate(" + (margin2.left*1.25) + " ," + 
+                            "translate(" + (margin2.left*1.5) + " ," + 
                                         (y_dotplot(maxy/2) - margin2.bottom*4) + ") rotate(-90)")
 
                     .attr("class", "axis--y label")
@@ -695,36 +698,36 @@ class Map extends Component {
    return (
       <div>
       <Row className="rowblock">
-           <Col lg={{span: 8}}>
+           <Col md={{span: 8}}>
               <div className="headerdiv"><h1 className="descriptionheader"> {`${this.state.variablename} (${this.state.group})`}</h1></div>
                {/* <p>Quick description here</p> */}
            </Col>
-           <Col lg={{span: 10, offset: 1}}>
+           <Col md={{span: 10, offset: 1}}>
               <div className="distexplanation"> <p>{this.state.variabledescription} </p>
               {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. */}
               </div>
                {/* <p>Quick description here</p> */}
            </Col>
-           <Col lg={{span: 11}}>
-               <Row className="rowblock" >
-                   <Col lg={{span: 5, offset: 1}}>
+           <Col lg={{span: 12}} xl={11}>
+               <Row className="rowblock dotmap" >
+                   <Col lg={6} xl={{span: 5, offset: 1}}>
                        <Row className="justify-content-center"><div className="maptitle"><h1> Spatial Distribution </h1></div></Row>
                        <Row className="step6"><Col className="mapclass"></Col></Row>
                    </Col>
 
-                   <Col lg={{span: 6}}>
+                   <Col md={{span: 6}}>
                        <Row className="justify-content-center"><div className="maptitle"><h1> Dotplot Distribution </h1></div></Row>
                        <Row className="step7"><Col className="distribution"></Col></Row>
                    </Col>
                </Row>
                <Row className="rowblock" noGutters={true}>
-               <Col  lg={{span: 5, offset: 1}} className="longdesc">
+               <Col  md={{span: 5, offset: 1}} className="longdesc">
                <div><p> {this.state.longerdescription}</p> 
                {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim.  */}
                <a href="stories"><Card className="relatedinfo"><Card.Body><Card.Title>Related Info</Card.Title><Card.Text>Click here to see our Stories Page for more insight on how these data show up in women's lives on a day to day basis. </Card.Text> </Card.Body></Card></a>
                </div>
                    </Col>
-                   <Col lg ={{span: 5, offset: 1}} className="tablemap step8"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>
+                   <Col md={{span: 5, offset: 1}} className="tablemap step8"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>
                </Row>
            </Col>
        </Row>

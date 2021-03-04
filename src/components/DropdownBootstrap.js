@@ -385,9 +385,9 @@ Data Portal                </h1> */}
                     onStart={this.onStart}
                     onExit={this.onExit}/>
 
-                 <Row className="justify-content-md-center">
+                 <Row className="justify-content-center">
                 {/* <Router> */}
-                <Col sm={1}></Col>
+                {/* <Col sm={1}></Col> */}
                 <Col sm={12} lg={10}>
                    <ButtonToolbar className="step1"> {varbuttons}
                    </ButtonToolbar>
@@ -397,7 +397,7 @@ Data Portal                </h1> */}
                   </Row>
                  </section>
                 </Col>
-                   <Col>
+                   <Col lg={12} className="demobutton">
                    <IconButton color="default" className="iconbutton" onClick={this.onStart}>
                       <HelpIcon color="primary" />
                       <p>Click here for Demo</p>

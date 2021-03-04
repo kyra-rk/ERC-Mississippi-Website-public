@@ -16,7 +16,7 @@
   margin-left: -55%;
   /* margin-bottom: 10%; */
   width: 600px;
-  height: 700px;
+  height: 715px;
   background-color: #642563;
   overflow: hidden;
   /* border-bottom: 5px solid gray; */
@@ -34,7 +34,7 @@ mark.yellow {
   margin-top: 3%;
   margin-left: -29%;
   margin-bottom: 3.75%;
-  border: 3px solid teal;
+  /* border: 3px solid teal; */
 
   /* box-shadow: -70px 60px 220px rgba(0, 0, 0, 0.32); */
 }
@@ -42,6 +42,18 @@ mark.yellow {
 #HomeBanner{
   width: 650px;
   height: 600px;
+}
+
+div.carousel-item img {
+  width: 650px;
+  height: 600px;
+}
+
+div.carousel-caption {
+  background-color:  #eabd24 !important;
+  padding: 2px;
+  /* color: teal; */
+  font-weight: bold;
 }
 
 .bannerwords{
@@ -150,6 +162,9 @@ mark.yellow {
 
 .container{
   margin-bottom: 10%;
+}
+.introduction div.container {
+  margin-bottom: 0%;
 }
 
 #div1{

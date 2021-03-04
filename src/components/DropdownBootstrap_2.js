@@ -124,14 +124,17 @@ class DropdownBootstrap_2 extends Component {
 
         createButtons(){
             //Maps categories to a new DropdownButton
+
             let buttons =  categories.map((obj, index) => (
                     <DropdownButton
                         title={obj.catname}
                         variant={obj.variant.toLowerCase()}
                         key={index}>
-                    {obj.variables.map((item, i) => (
-                         <Dropdown.Item eventKey={i} onClick={this.handleClick.bind(this,index, i)} key={i}>{item.name}</Dropdown.Item>
-                    ))}
+                    {obj.variables.map((item, i) => {
+                      if (item.race || item.gender){
+                         return <Dropdown.Item eventKey={i} onClick={this.handleClick.bind(this,index, i)} key={i}>{item.name}</Dropdown.Item>
+                      }  }
+                    )}
                     </DropdownButton>
             ))
             return buttons;
@@ -380,7 +383,7 @@ Data Portal                </h1> */}
 
                  <Row className="justify-content-md-center">
                 {/* <Router> */}
-                <Col sm={1}></Col>
+                {/* <Col sm={1}></Col> */}
                 <Col sm={12} lg={10}>
                    <ButtonToolbar className="step1"> {varbuttons}
                    {/* {varbuttons} */}
@@ -393,12 +396,12 @@ Data Portal                </h1> */}
                   </Row>
                  </section>
                 </Col>
-                   <Col>
+                   {/* <Col>
                    <IconButton color="default" className="iconbutton" onClick={this.onStart}>
                       <HelpIcon color="primary" />
                       <p>Click here for Demo</p>
                     </IconButton>
-                    </Col>
+                    </Col> */}
                    {/* <Switch>
                     <Route strict path={`${match.path}/:varabbreviation`}
                     render={(routeProps) => (
@@ -409,12 +412,12 @@ Data Portal                </h1> */}
                 </Router> */}
                 </Row>
 
-
+                <div className="demmaps">
                 {/* {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
                  {this.state.currentvar && variables &&
             <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
-
+</div>
           </Container>
 
             )

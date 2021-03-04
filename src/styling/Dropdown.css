@@ -115,7 +115,9 @@ button.dropdown-toggle.btn.btn-info:not(:disabled):not(.disabled):active, button
 }
 
 div.btn-toolbar {
+    margin-top: 10px;
     margin-bottom: 10px;
+    justify-content: center;
 }
 
 
@@ -133,6 +135,14 @@ div.btn-toolbar {
   position: 'fixed';
 }
 
+svg.MuiSvgIcon-root.MuiSvgIcon-colorPrimary path {
+    fill: #6d1b6c;
+}
+
+.demobutton {
+    margin-top: 20px;
+    height: 20px;
+}
 /* .Race .MuiGrid-item {
     border-right: 1px solid white;
 }
@@ -178,4 +188,8 @@ div.btn-toolbar {
     border-color: #6d1b6c;
     color: #6d1b6c;
     
+}
+
+.demmaps {
+    margin-bottom: 10%;
 }

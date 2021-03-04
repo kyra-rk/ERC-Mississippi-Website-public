@@ -206,6 +206,9 @@ margin-left: -15px;
   padding-top: 20px;
 }
 
+.dotmap {
+  margin-right: 2% !important;
+}
 
 .demmapclass1, .demmapclass2, .demmapclass3 {
   border-left: 2px dashed rgba(185, 142, 167, 0.5);

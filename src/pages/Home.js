@@ -39,14 +39,18 @@ class Home extends React.Component {
             <div className="image">
               <Carousel id ="HomeBanner">
                 <Carousel.Item>
-                  <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
+                  <img src = {WinC} alt="Women in Construction" className="d-block"/>
+                  <Carousel.Caption>One of the Participants of Women in Construction</Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img src = {WinCLogo} alt="Women in Construction" id ="HomeBanner"/>
+                  <img src = {Report} alt="Women in Construction" className="d-block"/>
+                  <Carousel.Caption>Report - Placeholder</Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img src = {Report} alt="Women in Construction" id ="HomeBanner"/>
+                  <img src = {WinCLogo} alt="Women in Construction" className="d-block"/>
+                  <Carousel.Caption>Women in Construction</Carousel.Caption>
                 </Carousel.Item>
+
               </Carousel>
             </div>
             {/* </Fade> */}

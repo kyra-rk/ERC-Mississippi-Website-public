@@ -4,6 +4,8 @@
 import React from "react";
 // import person from '../pictures/person.png';
 import { Row, Col, Button, Card, Accordion } from "react-bootstrap";
+import { withRouter } from "react-router";
+
 // import {StickyContainer, Sticky} from 'react-sticky'
 import StickyBox from "react-sticky-box";
 import "../styling/Transcript.css";
@@ -61,7 +63,7 @@ class OHPerson extends React.Component {
 
   //for when new topic button is selected, it will change the highlighted quotes by editing classname (prevprops needed for some reason to not have delay problem)
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.state)
+    // console.log(this.state)
     if (prevState.linefocus > 0) {
       document.querySelectorAll(
         `.section-${prevState.selectedcat}-${prevState.linefocus} p#transcriptquotes`
@@ -119,7 +121,7 @@ class OHPerson extends React.Component {
 
     var result = flip_card_items.filter(obj => obj.name === personname);
     result = result[0];
-    const printheader = <h1 className="header">{result.personname}</h1>;
+    const printheader = <h1 className="personheader">{result.personname}</h1>;
     const printinitials = result.header.map(obj => {
       return <h2 className="initials">{obj.initials}</h2>;
     });
@@ -138,8 +140,8 @@ class OHPerson extends React.Component {
     const personname = match.params.name;
     let currentcat = this.state.selectedcat;
     const buttons = topic_categories.map((obj, index) => {
-      console.log(index + 1);
-      console.log(currentcat);
+      // console.log(index + 1);
+      // console.log(currentcat);
       const header = (
         <Col sm={10}>
           <Button
@@ -193,7 +195,7 @@ class OHPerson extends React.Component {
     const horbuttons = topic_categories.map((obj, index) => {
       // console.log(this.state.selectedcat)
       // console.log(index+1)
-      console.log(+this.state.selectedcat === +(index+1) ? "selectedbutton": "notselectedbutton")
+      // console.log(+this.state.selectedcat === +(index+1) ? "selectedbutton": "notselectedbutton")
       // const selected = this.state.selectedcat
       return (
         <Col sm={3} className="filters">
@@ -209,8 +211,8 @@ class OHPerson extends React.Component {
           </Button>{" "}
         </Col>
       );
-      console.log(index + 1);
-      console.log(currentcat);
+      // console.log(index + 1);
+      // console.log(currentcat);
       const header = (
         <Button
           key={index + 1}
@@ -355,7 +357,11 @@ class OHPerson extends React.Component {
     }
 
     return (
+  
       <section>
+            <div className="oh">
+
+<div className="screenwidth">
         <div className="screenwidth">
         <div>
           <Row className="ohpersonrow justify-content-center">
@@ -386,6 +392,8 @@ class OHPerson extends React.Component {
           </Row>
         </div>
         </div>
+        </div>
+      </div>
         <Row className="justify-content-center footer">
           {/* <Col className="footer justify-content-center"> */}
            <Col sm={3}>
@@ -401,8 +409,9 @@ class OHPerson extends React.Component {
               {/* </Row> */}
         </Row>
       </section>
+ 
     );
   }
 }
 
-export default OHPerson;
+export default withRouter(OHPerson);
