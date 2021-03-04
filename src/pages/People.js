@@ -54,6 +54,7 @@ class People extends Component {
         </Col>
         )
     
+//it's called flip card because they used to be able to flip when hovered. we got rid of that feature, but the naming wasn't changed    
     var flipcards = flip_card_items.map((obj) =>
         <Col sm={6} md={4} key={obj.name}>
             <Card className="flipcard">

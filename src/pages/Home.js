@@ -14,10 +14,11 @@ import method_logo from '../pictures/tools.svg'
 // import data_portal_demo from '../pictures/Data_portal_demo.mp4'
 import 'bootstrap';
 import Fade from 'react-reveal/Fade';
-import {Card, Button, Carousel, Figure} from 'react-bootstrap';
+import {Card, Button, Carousel, Figure, Row, Col} from 'react-bootstrap';
 import AnimatedNumber from 'react-animated-number';
 import HomepageStats from '../components/HomepageStats'
 import StickyBox from 'react-sticky-box';
+
 
 
 class Home extends React.Component {
@@ -33,15 +34,43 @@ class Home extends React.Component {
       // const { showDiv3 } = this.state;
       return (
 
+        // first section of homepage
         <div className="homescreen">
-            <div className="rectangle"></div>
-            {/* <Fade duration={1000}> */}
-            <div className="image">
-              <Carousel id ="HomeBanner">
-                <Carousel.Item>
-                  <img src = {WinC} alt="Women in Construction" className="d-block"/>
-                  <Carousel.Caption>One of the Participants of Women in Construction</Carousel.Caption>
-                </Carousel.Item>
+            {/*<div className="rectangle"></div>*/}
+            {/*<Fade duration={1000}>*/}
+            {/*</Fade>*/}
+            <section>
+            <div className ="banner">
+              <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
+            </div>
+            <div className="bannerwords">
+                {/*<p>Make<wbr></wbr>
+                    Women<wbr></wbr>
+                    <mark className="yellow">Count</mark>
+                    <img src = "https://cdn3.iconfinder.com/data/icons/glypho-free/64/map-pin-marker-circle-512.png"
+                         width="90"
+                         alt="Map Icon"/>
+                </p>*/}
+                <p> MAKE WOMEN COUNT</p>
+            </div>
+            <div className="bannercaption">
+              <p>Understanding Women in Mississippi</p>
+
+              {/*arrow feature - click feature not added*/}
+              <div id="arrow-down">
+                <i class="down"></i>
+              </div>
+            </div>
+            </section>
+
+        {/*slideshow feature (react-bootstrap carousel)*/}
+        {/*need to make sure carousel dimensions are right images used*/}
+        <section class="page-section first">
+          <Row>
+            <Col xl={6}>
+                        <div className="introduction">
+          {/*}<div className="image">*/}
+              <Carousel id ="carousel">
                 <Carousel.Item>
                   <img src = {Report} alt="Women in Construction" className="d-block"/>
                   <Carousel.Caption>Report - Placeholder</Carousel.Caption>
@@ -50,20 +79,11 @@ class Home extends React.Component {
                   <img src = {WinCLogo} alt="Women in Construction" className="d-block"/>
                   <Carousel.Caption>Women in Construction</Carousel.Caption>
                 </Carousel.Item>
-
               </Carousel>
-            </div>
-            {/* </Fade> */}
-            <div className="bannerwords">
-                <p>Make<wbr></wbr>
-                    Women<wbr></wbr>
-                    <mark className="yellow">Count</mark>
-                    {/*<img src = "https://cdn3.iconfinder.com/data/icons/glypho-free/64/map-pin-marker-circle-512.png"*/}
-                         {/*width="90"*/}
-                         {/*alt="Map Icon"/>*/}
-                </p>
-            </div>
-        <section class="page-section first">
+            {/*</div>*/}
+          </div>
+          </Col>
+          <Col xl={6}>
           <div className="introduction">
             <h1>Welcome</h1>
                 <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.
@@ -73,9 +93,23 @@ class Home extends React.Component {
                 This project is a collaboration between Mississippi Low-Income Childcare Initiative and Barnard College's Empirical Reasoning Center & Mississippi Semester class.
                 </p>
           </div>
+          </Col>
+          </Row>
         </section>
 
+        {/* <section class="page-section first">
+          <div className="introduction">
+            <h1>Welcome</h1>
+                <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.
+                Our site uses both qualitative and quantitative data to provide a comprehensive understanding of the unique challenges women encounter.
+                We used this data to develop a women's economic security index that will inform our own policy initiatives.
+                The information was gathered from a variety of sources, such as American Community Survey from the US Census Bureau and interviews with Women in Construction.
+                This project is a collaboration between Mississippi Low-Income Childcare Initiative and Barnard College's Empirical Reasoning Center & Mississippi Semester class.
+                </p>
+          </div>
+        </section> */}
 
+        {/*Statistics section*/}
         <section class="page-section second">
           <div className="introduction">
               <h1>Statistics</h1>
@@ -100,6 +134,7 @@ class Home extends React.Component {
         </section>
 
 
+        {/*Features section*/}
         <section class="page-section first">
           <section id="services">
                 <div className="introduction">
@@ -185,6 +220,8 @@ class Home extends React.Component {
           </div>
         </section>*/}
 
+        {/*Video Demo Section*/}
+        {/* if video is not loading or file not found error, try downloading the video from the drive and replace file*/}
         <section class="page-section second">
           <div className="introduction">
             <h1>Scroll Demo</h1>

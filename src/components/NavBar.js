@@ -21,7 +21,8 @@ const CreateNavBar = props => {
     //                        {url: "/methodology", name: "Methodology"},
     //                        {url: "/about", name: "About"},
     //                        {url: "/contact", name: "Contact"}];
-   
+   /*links specifies which url to head to and denotes it with a unique key, then makes the page display whichever file has that same name*/
+
     var links = props.navbaritems.map((obj, i) => 
         <Nav.Link className="nav-link header" as={Link} to={obj.url}  eventKey={i}>
             {obj.name}
@@ -30,7 +31,10 @@ const CreateNavBar = props => {
     
     
     return (
-        <Navbar expand={props.sidebar? "sm": "xl"} className="navigation" variant="dark" sticky="top" collapseOnSelect={!props.sidebar} expanded={props.sidebar}>
+        /*Navbar.Brand is the "logo" of the website, seen in the left of the navbar*/
+/*Having navbar.toggle and navbar.collapse makes it responsive so that when the screenwidth is under a certain cutoff, the navbar will collapse*/
+
+        <Navbar expand={props.sidebar? "sm": "xl"} className="navigation" variant="dark" sticky="top" collapseOnSelect={!props.sidebar} expanded={props.sidebar}> 
             {props.brand && <Navbar.Brand className="NavbarBrand" href="/"><h2>{props.brand}</h2></Navbar.Brand>}
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -44,4 +48,3 @@ const CreateNavBar = props => {
 };
 
 export default NavBar;
-

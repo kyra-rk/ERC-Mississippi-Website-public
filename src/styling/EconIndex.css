@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald");
+
 #EconImage {
     width: 20%;
     height: 20%;
@@ -17,12 +20,14 @@
     text-align: left;
     font-size: 40px;
     margin-top: 20px;
+    font-family: "Open Sans";
   }
 
 .econindex p{
     text-align: justify;
     font-size: 16px;
     margin-bottom: 30px;
+    font-family: "Open Sans";
   }
 .info_section{
     /* margin: 100px 150px 0px 0px; */
@@ -112,7 +117,7 @@
     margin-top: 25px;
     margin-bottom: 25px;
   }
-  
+
   .subheading h3 {
     font-size: 24px;
   }
@@ -184,7 +189,7 @@
     font-size: 30px;
     text-align: center;
   }
-  /* #list-example 
+  /* #list-example
     {
       position: fixed;
       top: 80px;
@@ -195,7 +200,7 @@
     position: relative;
     height: 100%;
   } */
-  
+
   .indexracedesc p {
     font-size: 14px;
     text-align: left;
@@ -205,4 +210,8 @@
     margin-top: 60px;
     margin-left: 20px;
     /* margin-left: 40px; */
+  }
+
+  .titles {
+    font-family: "Oswald";
   }

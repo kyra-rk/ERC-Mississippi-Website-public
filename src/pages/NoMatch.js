@@ -4,6 +4,7 @@
  */
 import React from 'react';
 
+/**This page should catch any links that are not existent within our website and take it to a 404 page not found */
 export const NoMatch = () => (
 	  <div>
 	    <h1>No Match</h1>
