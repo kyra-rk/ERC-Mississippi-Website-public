@@ -430,8 +430,7 @@ Our index also attempts to capture the ways in which race intersects with gender
 </Row>
 
 <Row>
-  <h6>We highly recommend you read through our methodology for calculating the index, but if you would like to go straight to the
-      maps of the index, use the options on the left sidebar. 
+  <h6>We highly recommend you read through our methodology for calculating the index, which is included below our maps for the index. 
   </h6>
 </Row>
 
@@ -651,47 +650,9 @@ One important thing to note with this new range is that it combines the data for
                       </section>
             </Row>
 
-            <div class="anchor">
-              <a id="section-5"> </a>
-            </div>
-            <section className="section">
-            <Row>
-                <Col>
-
-               <div className="headerdiv indexheader"><h1 className="descriptionheader">Index</h1></div>
-
-            </Col>
-            </Row>
-            {/* <Row>
-              <h2>Index</h2>
-            </Row> */}
-            <Row className="rowblock">
-        <Col lg={7}>
-          {/* <Map datainput = {indexdata} variable ={"Index"} height={485} width={400} className={"index"}></Map> */}
-          </Col>
-        <Col>            
-        <div className="indexdesc">
-          <div>We finally map all the index values by county to see how it distributes across the state. Some More Explanation Here. <br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
-        </div>
-    </Col>
-    </Row>
-    </section>
-
-    <div class="anchor">
-              <a id="section-6"> </a>
-            </div>            
+ 
          
-         <section className="section">
-
-<Row>
-                <Col>
-
-               <div className="headerdiv indexheader"><h1 className="descriptionheader">Index Maps by Race</h1></div>
-
-            </Col>
-            </Row>
-            </section>
+ 
 
         </Col>
         </Row>
@@ -699,7 +660,6 @@ One important thing to note with this new range is that it combines the data for
 
 </div>
  
-<IndexMap2 className = "demmaps" variables = {["Index_White_M2", "Index_Black_M2"]} labels = {["Index White", "Index Black"]} datainput = {indexdata} />
 
     
   </div>
