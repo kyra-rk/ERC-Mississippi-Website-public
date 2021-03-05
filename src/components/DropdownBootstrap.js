@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import MapTest from '../pages/MapTest'
 import DemographicMap from '../components/DemographicMaps'
+import ChildCareMap from '../components/ChildCareMap'
 import '../styling/App.css';
 import '../styling/Dropdown.css'
 import data_general from '../data/data_general_ms.json';
@@ -57,6 +58,7 @@ class DropdownBootstrap extends Component {
         constructor(props) {
             super(props);
             this.state = {
+                childcare: false,
                 currentvar: true,
                 match: this.props.match,
                 varname: "Population Estimates",
@@ -121,6 +123,13 @@ class DropdownBootstrap extends Component {
             this.handleClick = this.handleClick.bind(this)
             this.createDemButtons = this.createDemButtons.bind(this)
             this.handleDemClick = this.handleDemClick.bind(this)
+            this.handleChildCareClick = this.handleChildCareClick.bind(this)
+        }
+
+        handleChildCareClick(){
+          this.setState({childcare: true, race: false,
+            gender: false,
+            racegender: false});
         }
 
         createButtons(){
@@ -186,27 +195,12 @@ class DropdownBootstrap extends Component {
           </Grid>
 </Row>
 
-          let everyonebutton =
-          <Col sm = {4} md={"auto"}>
-            <Row><Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button></Row>
-            <div><Row><Button id="genderbutton" key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`}  value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button></Row>
-            <Row><Button id="genderbutton" key="Men" className = {`Men dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Men"? "selected": ""}`} value={["A", "M", "Men"]} onClick={this.handleDemClick}>Men</Button></Row>
-            </div>
-          </Col>
-          let otherbuttons =
-          demographics.map((group, index)=>(
-            <Col sm ={4} md={"auto"}>
-              <Row><Button id="dembutton" key={`${group.class}`} className = {`${group.class} dembutton ${this.state.race ? "available": "unavailable"} ${this.state.buttonselected=== group.class ? "selected": ""}`} value={[group.abbreviation, "A", group.class]} onClick={this.handleDemClick}>{group.name}</Button></Row>
-                {group.subgroup.map((gender, i) => (
-                 <Row> <Button key={`${gender.class}`} className = {`${gender.class} dembutton ${this.state.racegender ? "available": "unavailable"} ${this.state.buttonselected=== gender.class ? "selected": ""}`}  id={`${gender.name}`} value={[group.abbreviation, gender.abbreviation, gender.class]} onClick={this.handleDemClick}>{gender.name}</Button></Row>
-                ))}
-            </Col>
-          ))
-          return [ everyonebutton, otherbuttons, everyonegridbutton];
+  
+          return [ everyonegridbutton];
         }
 
         getabbreviation(matchingvar, demselected, genderselected){
-          console.log("GET ABBREVIATION", demselected, genderselected, matchingvar.universe, matchingvar.type)
+          // console.log("GET ABBREVIATION", demselected, genderselected, matchingvar.universe, matchingvar.type)
           var abbrev = "";
           var genderabbrev = "";
           var totalabbrev = "";
@@ -243,6 +237,7 @@ class DropdownBootstrap extends Component {
               abbrev += "_" + demselected;
             }
           }
+          console.log(abbrev)
           return abbrev;
 
         }
@@ -278,7 +273,7 @@ class DropdownBootstrap extends Component {
           }
           var abbreviation = this.getabbreviation(matchingvar, demselected, genderselected);
 
-          this.setState({currentvar: true, varlocation: {index1: index,index2: i}, varname: matchingvar.name, varabbreviation: abbreviation,
+          this.setState({childcare: false, currentvar: true, varlocation: {index1: index,index2: i}, varname: matchingvar.name, varabbreviation: abbreviation,
             race: matchingvar.race, gender: matchingvar.gender, racegender: matchingvar.racegender, demselected: demselected, genderselected: genderselected, buttonselected: buttonselected, vardesc: desc, varlongdesc: longerdesc})
         }
 
@@ -295,84 +290,17 @@ class DropdownBootstrap extends Component {
           }
         }
 
-        handleNewRaceDemClick(event){
-          if (this.state.currentvar) {
-            console.log("NewDem button clicked")
-            const matchingvar = categories[this.state.varindex[0]].variables[this.state.varindex[2]]
-            console.log("Matchingvar: " + matchingvar)
-            var abbreviation = this.getabbreviation(matchingvar, event.target.value[0], this.state.genderselected)
-            console.log("Abbreviation: " + abbreviation)
-            // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
-            this.setState({demselected: event.target.value[0], varabbreviation: abbreviation,
-          varname: matchingvar.name, buttonselected: event.target.value.slice(4,)});
-          }
-          else {
-            this.setState({demselected: event.target.value[0],buttonselected: event.target.value.slice(4,)})
-          }
-        }
-
-        handleNewGenderDemClick(event){
-          if (this.state.currentvar) {
-            console.log("NewDem button clicked")
-            const matchingvar = categories[this.state.varindex[0]].variables[this.state.varindex[2]]
-            console.log("Matchingvar: " + matchingvar)
-            var abbreviation = this.getabbreviation(matchingvar, this.state.demselected, event.target.value[2])
-            console.log("Abbreviation: " + abbreviation)
-            // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
-            this.setState({ genderselected: event.target.value[2], varabbreviation: abbreviation,
-          varname: matchingvar.name, buttonselected: event.target.value.slice(4,)});
-          }
-          else {
-            this.setState({genderselected: event.target.value[2], buttonselected: event.target.value.slice(4,)})
-          }
-        }
-
 
         render(){
-          console.log(this.state)
            const varbuttons = this.createButtons();
-           const [everyonebuttons, dembuttons, everyonebutton] = this.createDemButtons();
+           const everyonebutton = this.createDemButtons();
            const {stepsEnabled,steps,initialStep} = this.state;
-
            let match = this.props.match;
-           let variables = [];
-           let labels = [];
            if (this.state.currentvar){
             //  console.log(this.state.varlocation.index1)
             let matchingvar = categories[this.state.varlocation.index1].variables[this.state.varlocation.index2];
-            
-            if (this.state.racegender){
-              let abbrev1 = this.getabbreviation(matchingvar, "W", "M");
-              let abbrev2 = this.getabbreviation(matchingvar, "W", "F")
-              let abbrev3 = this.getabbreviation(matchingvar, "B", "M")
-              let abbrev4 = this.getabbreviation(matchingvar, "B", "F")
-              variables = [abbrev1, abbrev2, abbrev3, abbrev4];
-              labels = ["White Men", "White Women", "Black Men", "Black Women"];
-            }
-            else if (this.state.gender & !this.state.race){
-              let abbrev1 = this.getabbreviation(matchingvar, "A", "M");
-              let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
-              variables = [abbrev1, abbrev2];
-              labels = ["Men", "Women"];
-
-            }
-            else if (this.state.gender & this.state.race){
-              let abbrev1 = this.getabbreviation(matchingvar, "A", "M");
-              let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
-              let abbrev3 = this.getabbreviation(matchingvar, "W", "A");
-              let abbrev4 = this.getabbreviation(matchingvar, "B", "A");
-              variables = [abbrev1, abbrev2, abbrev3, abbrev4];
-              labels = ["Men", "Women", "White Population", "Black Population"];
-            }
-            else if(this.state.race) {
-              let abbrev1 = this.getabbreviation(matchingvar, "W", "A");
-              let abbrev2 = this.getabbreviation(matchingvar, "B", "A");
-              variables = [abbrev1, abbrev2];
-              labels = ["White Population", "Black Population"];
-            }
           }
-          console.log(variables, labels);
-          console.log(this.state.varabbreviation)
+
 
             return (
                 <Container fluid="True">
@@ -390,6 +318,11 @@ Data Portal                </h1> */}
                 {/* <Col sm={1}></Col> */}
                 <Col sm={12} lg={10}>
                    <ButtonToolbar className="step1"> {varbuttons}
+                    <DropdownButton
+                        title="Childcare"
+                        variant={"info"}>
+                         <Dropdown.Item onClick={this.handleChildCareClick}>CCDF Eligible Children</Dropdown.Item>
+                    </DropdownButton>
                    </ButtonToolbar>
                    <section class="buttons">
                   <Row className="justify-content-center">
@@ -414,8 +347,10 @@ Data Portal                </h1> */}
                 </Row>
 
 
-                {this.state.currentvar &&
+                {!this.state.childcare &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected} vardesc={this.state.vardesc} longdesc={this.state.varlongdesc}/>}
+                 {this.state.childcare && 
+                 <ChildCareMap />}
                  {/* {this.state.currentvar && variables &&
             <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
 

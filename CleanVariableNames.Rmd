@@ -1,5 +1,5 @@
 ---
-title: "Clean Variablle Names"
+title: "Clean Variable Names"
 output: html_document
 ---
 
@@ -22,6 +22,8 @@ names(data)[str_detect(names(data), ".(?<!Gov.)((?<!.Single)Family.)")] <- appen
 
 ##Add total to Gov Programs variable name
 names(data)[str_detect(names(data), "P_HHOnGovPrograms_Family$")] <- "P_Total_HHOnGovPrograms_Family"
+
+names(data)[str_detect(names(data), ".Nonfamily")] <- str_replace_all(names(data)[str_detect(names(data), ".Nonfamily")], "P_H", "P_Total_H")
 
 ##Divide wage gap by 100 since was already in percent form when it got multiplied by 100
 data$P_TotaLGenderWageGap <- data$P_Total_GenderWageGap/100

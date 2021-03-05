@@ -203,6 +203,7 @@ margin-left: -15px;
 .distexplanation {
   text-align: left;
   padding-top: 20px;
+  margin-left: 2%;
 }
 
 .dotmap {
@@ -215,6 +216,18 @@ margin-left: -15px;
 
 }
 
+.demmaps {
+  margin-bottom: 10%;
+}
+
+.demmapscontainer {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.demmapscontainer svg.legend {
+ margin-bottom: 5%;
+}
 div.legend {
   /* border: 6px solid rgba(185, 142, 167, 0.5); */
 }
@@ -247,3 +260,12 @@ div.legend {
   padding-top: 20px;
 }
 
+
+/* .legendimage 
+{
+  width: 30% !important;
+} */
+
+.legendimage img {
+  width: 30%;
+}

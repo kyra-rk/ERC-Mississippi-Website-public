@@ -1,0 +1,30 @@
+---
+title: "IntegrateRemainingData"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#install.packages("dplyr")
+library(dplyr)
+data <- read.csv("Data_COMPLETE_cleaned_20210302.csv")
+head(data)
+
+newdata <- read.csv("MS_Project_Data.csv")
+names(newdata)[names(newdata) %in% names(data)]
+
+data <- data[, !(names(data) %in% names(newdata))]
+
+mergeddata <- merge(data, newdata, by.x="Geography", by.y="NAME")
+ncol(mergeddata)
+mergeddata <- subset(mergeddata, select = -c(GEO_ID))
+ncol(mergeddata)
+
+
+write.csv(mergeddata, "Data_COMPLETE_cleaned_20210302.csv", row.names = F)
+
+```
+

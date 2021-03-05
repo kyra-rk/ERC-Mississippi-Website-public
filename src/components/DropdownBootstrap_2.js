@@ -412,7 +412,7 @@ Data Portal                </h1> */}
                 </Router> */}
                 </Row>
 
-                <div className="demmaps">
+                <div className="demmapscontainer">
                 {/* {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
                  {this.state.currentvar && variables &&

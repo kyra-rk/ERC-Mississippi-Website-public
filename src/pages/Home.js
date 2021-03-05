@@ -64,6 +64,8 @@ class Home extends React.Component {
                          alt="Map Icon"/>
                 </p>*/}
                 <h1> MAKE WOMEN COUNT</h1>
+                {/* <h1> MAKE WOMEN <span className="yellow">COUNT</span></h1> */}
+
             {/* </div> */}
             {/* <div className="bannercaption"> */}
               <p>Understanding the Experience of Women in Mississippi</p>
@@ -188,18 +190,18 @@ class Home extends React.Component {
               <div class="col-md-4">
                 <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500} delay={1000}> */}
-                  <a href="index">
+                  <a href="indexinfo">
                     <img src = {method_logo} alt="Methodology logo" id="FeatureLogo"/>
                   </a>
                     {/* </Fade> */}
                 </span>
-                <a href="index">
+                <a href="indexinfo">
                   <h4 class="service-heading">Economic Security Index</h4>
                 </a>
                 <p class="text-muted">Read through our process of calculating a Women's Economic Security Index and visualize the distribution of the index across counties.
                 See how we differentiated the index by race to capture the combined effects of race and gender.
                 </p>
-                <Button variant="primary" href="index">Go to Index</Button>
+                <Button variant="primary" href="indexinfo">Go to Index</Button>
               </div>
             </div>
           </div>

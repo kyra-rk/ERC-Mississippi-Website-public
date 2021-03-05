@@ -32,18 +32,18 @@ let data = categories.map((obj, index) =>
 // {name: "Education", 
 // vars: [{name: "Percent with high school degree", icon: "Plus"}, {name: "Variable 2", icon: "Plus"}]}
 // ]
-console.log("THIS IS THE DATA JSON")
-console.log(data)
-console.log(data[0][0].name)
-const read_categories = data.map((obj, index) =>
-    console.log(obj[0].name)
-)
-const read_variables = data.map((obj, index) =>
-    // console.log(obj[0].variables)
-    obj[0].variables.map((item, i) => 
-      console.log(item[0].name)
-    )
-)
+// console.log("THIS IS THE DATA JSON")
+// console.log(data)
+// console.log(data[0][0].name)
+// const read_categories = data.map((obj, index) =>
+//     console.log(obj[0].name)
+// )
+// const read_variables = data.map((obj, index) =>
+//     // console.log(obj[0].variables)
+//     obj[0].variables.map((item, i) => 
+//       console.log(item[0].name)
+//     )
+// )
 
 
 
@@ -125,8 +125,8 @@ class Comparison extends Component {
 
   }
   handleSelection(event){
-    console.log("HANDLE SELECTION")
-    console.log(event.target)
+    // console.log("HANDLE SELECTION")
+    // console.log(event.target)
     // for (var i=0; i<2; i++){
     //   for (var j=0; j<2; j++){
     //     console.log(categories[i].variables[j].name)
@@ -141,8 +141,8 @@ class Comparison extends Component {
 
   handleClick(index, i, event){
     // console.log(event.target.value)
-    console.log("INDEX")
-    console.log(index)
+    // console.log("INDEX")
+    // console.log(index)
     // const matchingvar = categories[index].variables[i];
     // console.log(matchingvar)
     // // const matchingvar = categories[].variables[event.target.name[2]]

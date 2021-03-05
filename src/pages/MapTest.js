@@ -338,7 +338,7 @@ class Map extends Component {
          var svgWidth = document.getElementsByClassName(["mapclass"])[0].clientWidth
         var computedMapStyle = window.getComputedStyle(document.getElementsByClassName(["mapclass"])[0], null);
          svgWidth = svgWidth - parseFloat(computedMapStyle.paddingLeft) + parseFloat(computedMapStyle.paddingRight);
-        let svgHeight = svgWidth/1.175;
+        let svgHeight = svgWidth/1.3;
      // let svgHeight = document.getElementsByClassName(["mapclass"])[0].clientHeight
  //    svgHeight = svgWidth/1.3
          svgWidth = newsvgWidth;
@@ -708,26 +708,26 @@ class Map extends Component {
               </div>
                {/* <p>Quick description here</p> */}
            </Col>
-           <Col lg={{span: 12}} xl={11}>
-               <Row className="rowblock dotmap" >
-                   <Col lg={6} xl={{span: 5, offset: 1}}>
+           <Col sm={{span: 12}} xl={11}>
+               <Row className="rowblock dotmap justify-content-center" >
+                   <Col sm={10} md={6} xl={{span: 5, offset: 1}}>
                        <Row className="justify-content-center"><div className="maptitle"><h1> Spatial Distribution </h1></div></Row>
                        <Row className="step6"><Col className="mapclass"></Col></Row>
                    </Col>
 
-                   <Col md={{span: 6}}>
+                   <Col  sm={10} md={6} xl={6}>
                        <Row className="justify-content-center"><div className="maptitle"><h1> Dotplot Distribution </h1></div></Row>
                        <Row className="step7"><Col className="distribution"></Col></Row>
                    </Col>
                </Row>
-               <Row className="rowblock" noGutters={true}>
-               <Col  md={{span: 5, offset: 1}} className="longdesc">
+               <Row className="rowblock justify-content-center" noGutters={true}>
+               <Col  sm={10} md = {8} lg={{span: 5, offset: 1}} className="longdesc">
                <div><p> {this.state.longerdescription}</p> 
                {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim.  */}
                <a href="stories"><Card className="relatedinfo"><Card.Body><Card.Title>Related Info</Card.Title><Card.Text>Click here to see our Stories Page for more insight on how these data show up in women's lives on a day to day basis. </Card.Text> </Card.Body></Card></a>
                </div>
                    </Col>
-                   <Col md={{span: 5, offset: 1}} className="tablemap step8"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>
+                   <Col sm={10} md={6} lg={{span: 5, offset: 1}} className="tablemap step8"><div className="top10title"><h2 className="top10header">Counties with the Highest Values</h2></div></Col>
                </Row>
            </Col>
        </Row>
