@@ -30,6 +30,11 @@ class Home extends React.Component {
   }
   this.myRef = React.createRef()
   this.handleClick = this.handleClick.bind(this)
+  this.componentDidMount=this.componentDidMount.bind(this)
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
   }
 
   handleClick() {

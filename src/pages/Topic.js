@@ -54,7 +54,7 @@ class Topic extends Component {
   //The route will redirect you to the person's transcript page, but the reason why it is on this level too is so that when it redirects, it'll not show this topic.js page, i.e. not show the topic buttons
       return (
         <div>
-                  <div className="screenwidth">
+        <div className="screenwidth">
 
         <h1>Choose a Topic</h1>
         </div>
