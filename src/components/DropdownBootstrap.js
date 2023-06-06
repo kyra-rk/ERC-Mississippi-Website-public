@@ -10,9 +10,11 @@ import '../styling/Dropdown.css'
 import data_general from '../data/data_general_ms.json';
 // import datacomplete from '../data/datacomplete.json'
 import datacomplete from '../data/Data_Complete_20210302-2.json'
+import datacomplete2 from '../data/Data_Test_2022_12_23.json'
 import data_black from '../data/data_black.json'
 import data_white from '../data/data_white.json'
 import categories from '../data/Metadata'
+import categories2 from '../data/Metadata_2022_12_23'
 import topic_categories from '../data/topic_categories';
 import { throwStatement } from '@babel/types';
 import {Steps} from 'intro.js-react';
@@ -66,7 +68,7 @@ class DropdownBootstrap extends Component {
                 vardesc: '',
                 varlongdesc: '',
                 varlocation: {index1: 0, index2: 0},
-                dataset: datacomplete,
+                dataset: datacomplete2,
                 race: true,
                 gender: true,
                 racegender: true,
@@ -134,7 +136,7 @@ class DropdownBootstrap extends Component {
 
         createButtons(){
             //Maps categories to a new DropdownButton
-            let buttons =  categories.map((obj, index) => (
+            let buttons =  categories2.map((obj, index) => (
                     <DropdownButton
                         title={obj.catname}
                         variant={obj.variant.toLowerCase()}
@@ -195,55 +197,57 @@ class DropdownBootstrap extends Component {
           </Grid>
 </Row>
 
-  
+
           return [ everyonegridbutton];
         }
 
         getabbreviation(matchingvar, demselected, genderselected){
           // console.log("GET ABBREVIATION", demselected, genderselected, matchingvar.universe, matchingvar.type)
           var abbrev = "";
-          var genderabbrev = "";
-          var totalabbrev = "";
-          if (matchingvar.type === "P"){
-            abbrev+= "P_";
-          }
-          if (matchingvar.universe==="H"){
-            if (genderselected==="F"){
-              genderabbrev = "_FemaleNoHusband"
-            }
-            else if (genderselected==="M"){
-              genderabbrev = "_MaleNoWife"
-            }
-            else if (genderselected==="A"){
-              totalabbrev = "Total_"
-            }
-            abbrev= abbrev + totalabbrev + matchingvar.abbreviation + genderabbrev
-            if (demselected !== "A"){
-              abbrev += "_" + demselected;
-            }
-          }
-          else if (matchingvar.universe==="I"){
-            if (genderselected==="A"){
-              genderabbrev= "Total_"
-            }
-            if (genderselected==="F"){
-              genderabbrev = "Female_"
-            }
-            else if (genderselected==="M"){
-              genderabbrev = "Male_"
-            }
-            abbrev = abbrev+ genderabbrev + matchingvar.abbreviation
-            if (demselected !== "A"){
-              abbrev += "_" + demselected;
-            }
-          }
+          console.log(matchingvar);
+          abbrev = matchingvar.abbreviation + "_" + genderselected + "_" + demselected
+          // var genderabbrev = "";
+          // var totalabbrev = "";
+          // if (matchingvar.type === "P"){
+          //   abbrev+= "P_";
+          // }
+          // if (matchingvar.universe==="H"){
+          //   if (genderselected==="F"){
+          //     genderabbrev = "_FemaleNoHusband"
+          //   }
+          //   else if (genderselected==="M"){
+          //     genderabbrev = "_MaleNoWife"
+          //   }
+          //   else if (genderselected==="A"){
+          //     totalabbrev = "Total_"
+          //   }
+          //   abbrev= abbrev + totalabbrev + matchingvar.abbreviation + genderabbrev
+          //   if (demselected !== "A"){
+          //     abbrev += "_" + demselected;
+          //   }
+          // }
+          // else if (matchingvar.universe==="I"){
+          //   if (genderselected==="A"){
+          //     genderabbrev= "Total_"
+          //   }
+          //   if (genderselected==="F"){
+          //     genderabbrev = "Female_"
+          //   }
+          //   else if (genderselected==="M"){
+          //     genderabbrev = "Male_"
+          //   }
+          //   abbrev = abbrev+ genderabbrev + matchingvar.abbreviation
+          //   if (demselected !== "A"){
+          //     abbrev += "_" + demselected;
+          //   }
+          // }
           console.log(abbrev)
           return abbrev;
 
         }
 
         handleClick(index,i, event){
-          const matchingvar = categories[index].variables[i];
+          const matchingvar = categories2[index].variables[i];
           var desc = matchingvar.description;
           var longerdesc = matchingvar.longdesc;
           var demselected = this.state.demselected;
@@ -279,7 +283,7 @@ class DropdownBootstrap extends Component {
 
         handleDemClick(event){
           if (this.state.currentvar) {
-            const matchingvar = categories[this.state.varlocation.index1].variables[this.state.varlocation.index2]
+            const matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2]
             var abbreviation = this.getabbreviation(matchingvar, event.target.value[0], event.target.value[2])
             // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
             this.setState({demselected: event.target.value[0], genderselected: event.target.value[2], varabbreviation: abbreviation,
@@ -298,7 +302,7 @@ class DropdownBootstrap extends Component {
            let match = this.props.match;
            if (this.state.currentvar){
             //  console.log(this.state.varlocation.index1)
-            let matchingvar = categories[this.state.varlocation.index1].variables[this.state.varlocation.index2];
+            let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
           }
 
 
@@ -348,8 +352,9 @@ Data Portal                </h1> */}
 
 
                 {!this.state.childcare &&
-            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected} vardesc={this.state.vardesc} longdesc={this.state.varlongdesc}/>}
-                 {this.state.childcare && 
+            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected} vardesc={this.state.vardesc} longdesc={this.state.varlongdesc}/>
+          }
+                 {this.state.childcare &&
                  <ChildCareMap />}
                  {/* {this.state.currentvar && variables &&
             <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
