@@ -16,10 +16,28 @@ import "bootstrap";
 import Fade from "react-reveal/Fade";
 import { Card, Button, Carousel, Figure, Row, Col } from "react-bootstrap";
 import AnimatedNumber from "react-animated-number";
-import HomepageStats from "../components/HomepageStats";
+import HomepageStats from "../components/HomepageStats"; 
 import StickyBox from "react-sticky-box";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import smoothscroll from "smoothscroll-polyfill";
+
+{/* General Comments: 
+  - Why don't we use HomepageStats?
+  - Feature page format/styling inconsistent with others.
+  - Image is not centered within it's col? When shortening page width it is left justified.
+  - Statistics large numbers overlap when shortening page width.
+  - Features description (introdution class I think) has too much padding.
+  - Features "col-md-4" class is organized well but too much padding on the side (even on website mode).
+  - Features icons are too small when shortening page width. 
+  - Features writing overflows it's given box. 
+    ↪ Look at the "text-muted" class. It is far bigger. Try bind width? 
+  - Scroll demos are OK but too much margin on right and left.
+  Q: What is the difference between margin and padding?
+  - Maybe consider putting scroll demo video and description side by side initially
+    ↪ and adjust when window size is small? OR alternatively, to make life easy 
+    ↪ just put the one after the other vertically. 
+  - Missing Index and Stories videos.
+*/}
 
 class Home extends React.Component {
   constructor(props) {
