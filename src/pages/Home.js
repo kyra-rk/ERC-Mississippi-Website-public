@@ -2,118 +2,144 @@
  * Program file for the Home Page
  * Made a const and exported it as "Home" to reference in App.js
  */
-import React from 'react';
-import '../styling/App.css'
-import '../styling/Home.css'
-import WinC from '../pictures/WinC.jpg'
-import WinCLogo from '../pictures/WinCLogo.png'
-import Report from '../pictures/Report.jpg'
-import data_logo from '../pictures/database.svg'
-import stories_logo from '../pictures/stories.svg'
-import method_logo from '../pictures/tools.svg'
-import data_portal_demo from '../pictures/Data_portal_demo.mp4'
-import 'bootstrap';
-import Fade from 'react-reveal/Fade';
-import {Card, Button, Carousel, Figure, Row, Col} from 'react-bootstrap';
-import AnimatedNumber from 'react-animated-number';
-import HomepageStats from '../components/HomepageStats'
-import StickyBox from 'react-sticky-box';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import smoothscroll from 'smoothscroll-polyfill';
-
+import React from "react";
+import "../styling/App.css";
+import "../styling/Home.css";
+import WinC from "../pictures/WinC.jpg";
+import WinCLogo from "../pictures/WinCLogo.png";
+import Report from "../pictures/Report.jpg";
+import data_logo from "../pictures/database.svg";
+import stories_logo from "../pictures/stories.svg";
+import method_logo from "../pictures/tools.svg";
+import data_portal_demo from "../pictures/Data_portal_demo.mp4";
+import "bootstrap";
+import Fade from "react-reveal/Fade";
+import { Card, Button, Carousel, Figure, Row, Col } from "react-bootstrap";
+import AnimatedNumber from "react-animated-number";
+import HomepageStats from "../components/HomepageStats";
+import StickyBox from "react-sticky-box";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import smoothscroll from "smoothscroll-polyfill";
 
 class Home extends React.Component {
-  constructor(props){
-    super(props)
-  this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
       showDiv: true,
-  }
-  this.myRef = React.createRef()
-  this.handleClick = this.handleClick.bind(this)
-  this.componentDidMount=this.componentDidMount.bind(this)
+    };
+    this.myRef = React.createRef();
+    // syntax for using functions
+    this.handleClick = this.handleClick.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
+  // once the page loads, what to do - scroll to the top of the page
   componentDidMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   handleClick() {
     smoothscroll.polyfill();
     const y = this.myRef.current.getBoundingClientRect().top - 90;
     // console.log(this.myRef.current.getBoundingClientRect())
-    window.scrollTo({top: y, behavior: 'smooth'});
+    window.scrollTo({ top: y, behavior: "smooth" });
     // this.myRef.current.scrollIntoView({behavior: "smooth"});
   }
 
+  /* render needed to create result */
   render() {
-      // const { showDiv1 } = this.state;
-      // const { showDiv2 } = this.state;
-      // const { showDiv3 } = this.state;
-      return (
+    // java script can go here
+    // const { showDiv1 } = this.state;
+    // const { showDiv2 } = this.state;
+    // const { showDiv3 } = this.state;
 
-        // first section of homepage
-        <div className="homescreen">
-            {/*<div className="rectangle"></div>*/}
-            {/*<Fade duration={1000}>*/}
-            {/*</Fade>*/}
-            <section>
-            <div className ="banner">
-              <img src = {WinC} alt="Women in Construction" id ="HomeBanner"/>
-            </div>
-            <div className="bannerwords">
-                {/*<p>Make<wbr></wbr>
+    // write html inside the return
+    return (
+      // first section of homepage
+      <div className="homescreen">
+        {/*<div className="rectangle"></div>*/}
+        {/*<Fade duration={1000}>*/}
+        {/*</Fade>*/}
+        {/* section 1 - contains heading, subtitle arrow down 
+            why no class associated with this section? */}
+        <section>
+          <div className="banner">
+            <img src={WinC} alt="Women in Construction" id="HomeBanner" />
+          </div>
+          <div className="bannerwords">
+            {/*<p>Make<wbr></wbr>
                     Women<wbr></wbr>
                     <mark className="yellow">Count</mark>
                     <img src = "https://cdn3.iconfinder.com/data/icons/glypho-free/64/map-pin-marker-circle-512.png"
                          width="90"
                          alt="Map Icon"/>
                 </p>*/}
-                <h1> MAKE WOMEN COUNT</h1>
-                {/* <h1> MAKE WOMEN <span className="yellow">COUNT</span></h1> */}
-
+            <h1> MAKE WOMEN COUNT</h1> {/* main heading of the website  */}
+            {/* <h1> MAKE WOMEN <span className="yellow">COUNT</span></h1> */}
             {/* </div> */}
             {/* <div className="bannercaption"> */}
-              <p>Understanding the Experience of Women in Mississippi</p>
-
-              {/*arrow feature - click feature not added*/}
-              <div id="arrow-down" onClick={this.handleClick}>
-                <i class="down"></i>
-              </div>
-             {/* <AddCircleIcon onClick={this.handleClick} className="add"></AddCircleIcon> */}
+            <p>Understanding the Experience of Women in Mississippi</p>
+            {/*arrow feature - click feature not added*/}
+            {/* the arrow only goes down one section. why not go down to features or something? */}
+            <div id="arrow-down" onClick={this.handleClick}>
+              <i class="down"></i>
             </div>
-            </section>
+            {/* <AddCircleIcon onClick={this.handleClick} className="add"></AddCircleIcon> */}
+          </div>
+        </section>
 
         {/*slideshow feature (react-bootstrap carousel)*/}
         {/*need to make sure carousel dimensions are right images used*/}
+        {/* section 1 - image and welcome */}
+        {/* the image starts to overtake the welcoome message as the window width decreases (currently xl=6) */}
         <section class="page-section first" ref={this.myRef}>
           <Row>
             <Col xl={6}>
-                        <div className="introduction">
-          {/*}<div className="image">*/}
-              <Carousel id ="carousel">
-                <Carousel.Item>
-                  <img src = {Report} alt="Women in Construction" className="d-block"/>
-                  <Carousel.Caption>Report - Placeholder</Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img src = {WinCLogo} alt="Women in Construction" className="d-block"/>
-                  <Carousel.Caption>Women in Construction</Carousel.Caption>
-                </Carousel.Item>
-              </Carousel>
-            {/*</div>*/}
-          </div>
-          </Col>
-          <Col xl={6}>
-          <div className="introduction">
-            <h1>Welcome</h1>
-                <p>The Mississippi Women's Count aims to strengthen Mississippi women's economic security by using data to better inform policy makers.
-                Our site uses both qualitative and quantitative data to provide a comprehensive understanding of the unique challenges women encounter.
-                We used this data to develop a women's economic security index that will inform our own policy initiatives.
-                The information was gathered from a variety of sources, such as American Community Survey from the US Census Bureau and interviews with Women in Construction.
-                This project is a collaboration between Mississippi Low-Income Childcare Initiative and Barnard College's Empirical Reasoning Center & Mississippi Semester class.
+              <div className="introduction">
+                {/*}<div className="image">*/}
+                <Carousel id="carousel">
+                  <Carousel.Item>
+                    <img
+                      src={Report}
+                      alt="Women in Construction"
+                      className="d-block"
+                    />
+                    <Carousel.Caption>Report - Placeholder</Carousel.Caption>{" "}
+                    {/* Are we ready to replace this placeholder? */}
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <img
+                      src={WinCLogo}
+                      alt="Women in Construction"
+                      className="d-block"
+                    />
+                    <Carousel.Caption>Women in Construction</Carousel.Caption>
+                  </Carousel.Item>
+                </Carousel>
+                {/*</div>*/}
+              </div>
+            </Col>
+            <Col xl={6}>
+              <div className="introduction">
+                <h1>Welcome</h1>
+                <p>
+                  {" "}
+                  {/* this message needs to be updated */}
+                  The Mississippi Women's Count aims to strengthen Mississippi
+                  women's economic security by using data to better inform
+                  policy makers. Our site uses both qualitative and quantitative
+                  data to provide a comprehensive understanding of the unique
+                  challenges women encounter. We used this data to develop a
+                  women's economic security index that will inform our own
+                  policy initiatives. The information was gathered from a
+                  variety of sources, such as American Community Survey from the
+                  US Census Bureau and interviews with Women in Construction.
+                  This project is a collaboration between Mississippi Low-Income
+                  Childcare Initiative and Barnard College's Empirical Reasoning
+                  Center & Mississippi Semester class.
                 </p>
-          </div>
-          </Col>
+              </div>
+            </Col>
           </Row>
         </section>
 
@@ -129,87 +155,142 @@ class Home extends React.Component {
           </div>
         </section> */}
 
-        {/*Statistics section*/}
+        {/* section 2 - Statistics section*/}
         <section class="page-section second">
           <div className="introduction">
-              <h1>Statistics</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            <h1>Statistics</h1>
+            <p>
+              {" "}
+              {/* this text needs to be replaced */}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
+              maxime quam architecto quo inventore harum ex magni, dicta
+              impedit.
+            </p>
             <div class="container">
+              {" "}
+              {/* holds the 3 statistics numbers */}
               <div class="row text-center">
                 <div class="col-md-4">
-                    <h4 class="statistics_num">#48</h4>
-                  <p class="text-muted-home"> Mississippi is ranked 48 among US states. </p>
+                  <h4 class="statistics_num">#48</h4>
+                  <p class="text-muted-home">
+                    {" "}
+                    Mississippi is ranked 48 among US states.{" "}
+                  </p>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="statistics_num">2.9M</h4>
-                  <p class="text-muted-home">Mississippi has a population of 2.9 million</p>
+                  <h4 class="statistics_num">2.9M</h4>
+                  <p class="text-muted-home">
+                    Mississippi has a population of 2.9 million
+                  </p>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="statistics_num">32%</h4>
-                  <p class="text-muted-home">32% of people in Mississippi are college educated</p>
+                  <h4 class="statistics_num">32%</h4>
+                  <p class="text-muted-home">
+                    32% of people in Mississippi are college educated
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-
-        {/*Features section*/}
+        {/*section 3 - Features section */}
         <section class="page-section first">
-          <section id="services">
-                <div className="introduction">
-                  <h2>Features</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                </div>
-          <div class="container">
-            <div class="row text-center">
-              <div class="col-md-4">
-                <span class="fa-stack fa-4x">
+          {/* the class should be adjusted because the fonts are inconsistent with Stats page */}
+          <section id="services"> {/* why services as the id? */}
+            <div className="introduction"> 
+              <h2>Features</h2>
+              <p> {/* text needs to be replaced */}
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
+                maxime quam architecto quo inventore harum ex magni, dicta
+                impedit.
+              </p>
+            </div>
+            <div class="container">
+              <div class="row text-center">
+                <div class="col-md-4">
+                  <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500}> */}
+                    <a href="dataportal">
+                      <img src={data_logo} alt="Data icon" id="FeatureLogo" />
+                    </a>
+                    {/* </Fade> */}
+                  </span>
                   <a href="dataportal">
-                    <img src = {data_logo} alt="Data logo" id="FeatureLogo"/>
+                    <h4 class="service-heading">Data Portal</h4>
                   </a>
-                    {/* </Fade> */}
-                </span>
-                <a href="dataportal">
-                  <h4 class="service-heading">Data Portal</h4>
-                </a>
-                <p class="text-muted">The data portal has seven main categories: demographics, health, education, employment, income, housing, and government assistance. Within each category, there are several subcategories. Once you select a subcategory, you can toggle between the different gender and sex breakdowns. On each of these variable pages, you get a map, table, and histogram to get a comprehensive view of how each county measures in this particular variable. </p>
-                <Button variant="primary" href="dataportal">Go to Data Portal</Button>
-              </div>
-              <div class="col-md-4">
-                <span class="fa-stack fa-4x">
+                  <p class="text-muted">
+                    The data portal has seven main categories: demographics,
+                    health, education, employment, income, housing, and
+                    government assistance. Within each category, there are
+                    several subcategories. Once you select a subcategory, you
+                    can toggle between the different gender and sex breakdowns.
+                    On each of these variable pages, you get a map, table, and
+                    histogram to get a comprehensive view of how each county
+                    measures in this particular variable.{" "}
+                  </p>
+                  <Button variant="primary" href="dataportal">
+                    Go to Data Portal
+                  </Button>
+                </div>
+                <div class="col-md-4">
+                  <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500} delay={500}> */}
+                    <a href="stories">
+                      <img
+                        src={stories_logo}
+                        alt="Book icon"
+                        id="FeatureLogo"
+                      />
+                    </a>
+                    {/* </Fade> */}
+                  </span>
                   <a href="stories">
-                    <img src = {stories_logo} alt="Data logo" id="FeatureLogo"/>
+                    <h4 class="service-heading">Stories</h4>
                   </a>
-                    {/* </Fade> */}
-                </span>
-                <a href="stories">
-                  <h4 class="service-heading">Stories</h4>
-                </a>
-                <p class="text-muted">Read through stories we collected from women in the Women in Construction Job Training Program. There are two ways to filter through stories, either by person or by topic. If you select by person, you will get a preview of each of the interviewees, and you can see more about each person and their full interview transcript. If you select by topic, you get to see all quotes that pertain to the topic you choose. Some of the interviewees requested not to be
-                identified by name, instead they will be identified as Women in Construction Participant.</p>
-                <Button variant="primary" href="stories">Go to Stories</Button>
-              </div>
-              <div class="col-md-4">
-                <span class="fa-stack fa-4x">
+                  <p class="text-muted">
+                    Read through stories we collected from women in the Women in
+                    Construction Job Training Program. There are two ways to
+                    filter through stories, either by person or by topic. If you
+                    select by person, you will get a preview of each of the
+                    interviewees, and you can see more about each person and
+                    their full interview transcript. If you select by topic, you
+                    get to see all quotes that pertain to the topic you choose.
+                    Some of the interviewees requested not to be identified by
+                    name, instead they will be identified as Women in
+                    Construction Participant.
+                  </p>
+                  <Button variant="primary" href="stories">
+                    Go to Stories
+                  </Button>
+                </div>
+                <div class="col-md-4">
+                  <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500} delay={1000}> */}
-                  <a href="indexinfo">
-                    <img src = {method_logo} alt="Methodology logo" id="FeatureLogo"/>
-                  </a>
+                    <a href="indexinfo">
+                      <img
+                        src={method_logo}
+                        alt="Methodology logo"
+                        id="FeatureLogo"
+                      />
+                    </a>
                     {/* </Fade> */}
-                </span>
-                <a href="indexinfo">
-                  <h4 class="service-heading">Economic Security Index</h4>
-                </a>
-                <p class="text-muted">Read through our process of calculating a Women's Economic Security Index and visualize the distribution of the index across counties.
-                See how we differentiated the index by race to capture the combined effects of race and gender.
-                </p>
-                <Button variant="primary" href="indexinfo">Go to Index</Button>
+                  </span>
+                  <a href="indexinfo">
+                    <h4 class="service-heading">Economic Security Index</h4>
+                  </a>
+                  <p class="text-muted">
+                    Read through our process of calculating a Women's Economic
+                    Security Index and visualize the distribution of the index
+                    across counties. See how we differentiated the index by race
+                    to capture the combined effects of race and gender.
+                  </p>
+                  <Button variant="primary" href="indexinfo">
+                    Go to Index
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
           </section>
         </section>
 
@@ -240,104 +321,115 @@ class Home extends React.Component {
           </div>
         </section>*/}
 
-        {/*Video Demo Section*/}
+        {/*section 4 - Video Demo Section*/}
         {/* if video is not loading or file not found error, try downloading the video from the drive and replace file*/}
         <section class="page-section second">
           <div className="introduction">
             <h1>Scroll Demo</h1>
-            <p> The different features of Make Women Coount </p>
-            <div className="row">
-            <div style={{overflow: 'auto' }}>
-              <div style={{display: 'flex', alignItems: 'flex-start' }}>
-                <StickyBox offsetTop={80}>
-                <h3>Data Portal</h3>
-                The data portal has seven main categories: demographics, health, education, employment, income, housing, and government assistance.
-                </StickyBox>
-                <div>
-                  <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video>
+            <p> The different features of Make Women Count </p>
+            <div className="row"> {/* this contains the video and short description on the left. why not class "row video-demo"??*/}
+              <div style={{ overflow: "auto" }}>
+                <div style={{ display: "flex", alignItems: "flex-start" }}>
+                  <StickyBox offsetTop={80}>
+                    <h3>Data Portal</h3> {/* add: Compare populations by race and gender. */}
+                    The data portal has seven main categories: demographics,
+                    health, education, employment, income, housing, and
+                    government assistance.
+                  </StickyBox>
+                  <div>
+                    <video
+                      src={data_portal_demo}
+                      id="video"
+                      autoplay="autoplay"
+                      loop="true"
+                      muted
+                    ></video>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
 
-            <div className="row video-demo">
-            <div style={{overflow: 'auto' }}>
-              <div style={{display: 'flex', alignItems: 'flex-start' }}>
-                <StickyBox offsetTop={80}>
-                <h3>Index</h3>
-                Read through our process of calculating a Women's Economic Security Index and visualize the distribution of the index across counties.
-                </StickyBox>
-                <div>
-                  {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
+            <div className="row video-demo"> {/* this is the Index description */}
+              <div style={{ overflow: "auto" }}>
+                <div style={{ display: "flex", alignItems: "flex-start" }}>
+                  <StickyBox offsetTop={80}>
+                    <h3>Index</h3>
+                    Read through our process of calculating a Women's Economic
+                    Security Index and visualize the distribution of the index
+                    across counties.
+                  </StickyBox>
+                  <div> {/* !! missing */}
+                    {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
 
-            <div className="row video-demo">
-            <div style={{overflow: 'auto' }}>
-              <div style={{display: 'flex', alignItems: 'flex-start' }}>
-                <StickyBox offsetTop={80}>
-                  <h3>Stories</h3>
-                  Read through stories we collected from women in the Women in Construction Job Training Program. Explore either by person or topic.
-                </StickyBox>
-                <div>
-                  {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
+            <div className="row video-demo"> {/* this is the stories description */}
+              <div style={{ overflow: "auto" }}>
+                <div style={{ display: "flex", alignItems: "flex-start" }}>
+                  <StickyBox offsetTop={80}>
+                    <h3>Stories</h3>
+                    Read through stories we collected from women in the Women in
+                    Construction Job Training Program. Explore either by person
+                    or topic.
+                  </StickyBox>
+                  <div> {/* !! missing */}
+                    {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
-
           </div>
         </section>
 
-
+        {/* Imp: Consider adding a footer with an "UP" arrow. */}
 
         {/*<section class="page-section">*/}
-            {/*<div className="Howto">*/}
-              {/*<Row className="howtorow">*/}
-                {/*<Col xl={4}>*/}
-                  {/*<Row>*/}
-                  {/*<Button size="lg" className="homebutton" onClick={() => this.setState({ showDiv1: !showDiv1 })} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>*/}
-                    {/*Data Portal*/}
-                  {/*</Button>*/}
-                  {/*</Row>*/}
-                  {/*<Row className="explanation">*/}
-                  {/*{ showDiv1 && (*/}
-                  {/*<div id="div1">The data portal has seven main categories: demographics, health, education, employment, income, housing, and government assistance. Within each category, there are several subcategories. Once you select a subcategory, you can toggle between the different gender and sex breakdowns. On each of these variable pages, you get a map, table, and histogram to get a comprehensive view of how each county measures in this particular variable. Sometimes the breakdowns are unavailable (e.g. there was no gender breakdown found) so the buttons turn grey and will be disabled.</div>*/}
-                  {/*)}*/}
-                  {/*</Row>*/}
-                {/*</Col>*/}
-                {/*<Col xl={4}>*/}
-                  {/*<Row>*/}
-                  {/*<Button size="lg" className="homebutton" onClick={() => this.setState({ showDiv2: !showDiv2 })} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>*/}
-                    {/*Economic Security Index*/}
-                  {/*</Button>*/}
-                  {/*</Row>*/}
-                  {/*<Row className="explanation">*/}
-                  {/*{ showDiv2 && (*/}
-                    {/*<div id="div2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>*/}
-                  {/*)}*/}
-                  {/*</Row>*/}
-                {/*</Col>*/}
-                {/*<Col xl={4}>*/}
-                  {/*<Row>*/}
-                  {/*<Button size="lg" className="homebutton" onClick={() => this.setState({ showDiv3: !showDiv3 })} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>*/}
-                    {/*Stories*/}
-                  {/*</Button>*/}
-                  {/*</Row>*/}
-                  {/*<Row className="explanation">*/}
-                  {/*{ showDiv3 && (*/}
-                    {/*<div id="div3">There are two ways to filter through stories, either by person or by topic. If you select by person, you will get a preview of each of the interviewees from the Women in Construction Program, and you can see more about each person and their full interview transcript. If you select by topic, you get to see all quotes that pertain to the topic you choose. Some of the interviewees requested not to be identified by name, instead they will be identified as Women in Construction Participant.</div>*/}
-                  {/*)}*/}
-                  {/*</Row>*/}
-                {/*</Col>*/}
-              {/*</Row>*/}
-            {/*</div>*/}
-            {/*</section>*/}
-          </div>
-      )
+        {/*<div className="Howto">*/}
+        {/*<Row className="howtorow">*/}
+        {/*<Col xl={4}>*/}
+        {/*<Row>*/}
+        {/*<Button size="lg" className="homebutton" onClick={() => this.setState({ showDiv1: !showDiv1 })} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>*/}
+        {/*Data Portal*/}
+        {/*</Button>*/}
+        {/*</Row>*/}
+        {/*<Row className="explanation">*/}
+        {/*{ showDiv1 && (*/}
+        {/*<div id="div1">The data portal has seven main categories: demographics, health, education, employment, income, housing, and government assistance. Within each category, there are several subcategories. Once you select a subcategory, you can toggle between the different gender and sex breakdowns. On each of these variable pages, you get a map, table, and histogram to get a comprehensive view of how each county measures in this particular variable. Sometimes the breakdowns are unavailable (e.g. there was no gender breakdown found) so the buttons turn grey and will be disabled.</div>*/}
+        {/*)}*/}
+        {/*</Row>*/}
+        {/*</Col>*/}
+        {/*<Col xl={4}>*/}
+        {/*<Row>*/}
+        {/*<Button size="lg" className="homebutton" onClick={() => this.setState({ showDiv2: !showDiv2 })} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>*/}
+        {/*Economic Security Index*/}
+        {/*</Button>*/}
+        {/*</Row>*/}
+        {/*<Row className="explanation">*/}
+        {/*{ showDiv2 && (*/}
+        {/*<div id="div2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>*/}
+        {/*)}*/}
+        {/*</Row>*/}
+        {/*</Col>*/}
+        {/*<Col xl={4}>*/}
+        {/*<Row>*/}
+        {/*<Button size="lg" className="homebutton" onClick={() => this.setState({ showDiv3: !showDiv3 })} style={{backgroundColor: "#d4a45c", borderColor: "#d4a45c"}}>*/}
+        {/*Stories*/}
+        {/*</Button>*/}
+        {/*</Row>*/}
+        {/*<Row className="explanation">*/}
+        {/*{ showDiv3 && (*/}
+        {/*<div id="div3">There are two ways to filter through stories, either by person or by topic. If you select by person, you will get a preview of each of the interviewees from the Women in Construction Program, and you can see more about each person and their full interview transcript. If you select by topic, you get to see all quotes that pertain to the topic you choose. Some of the interviewees requested not to be identified by name, instead they will be identified as Women in Construction Participant.</div>*/}
+        {/*)}*/}
+        {/*</Row>*/}
+        {/*</Col>*/}
+        {/*</Row>*/}
+        {/*</div>*/}
+        {/*</section>*/}
+      </div>
+    );
   }
 }
 
-export default Home
+export default Home;
