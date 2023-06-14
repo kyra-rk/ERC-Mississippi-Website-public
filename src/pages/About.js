@@ -15,7 +15,7 @@ import WinCLogo from '../pictures/WinCLogo.png'
 	- Need some space/padding around icons and text when in mobile mode.
 	- Consider changing the images - the quality is not too good.
 	- Hand and WiC icons overlap with text, but the report does not. 
-	  Maybe consider adding padding or a wrapper? Not 100% sure on this one.
+	  ↪ Maybe consider adding padding or a wrapper? Not 100% sure on this one.
 	- Add ERC and Missisipi Class as contributors to the About. 
 	- Need to add in missing text and content to this page. 
 	- Maybe converge About and Contact to one page? 
