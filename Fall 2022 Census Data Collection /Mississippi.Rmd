@@ -1,0 +1,404 @@
+---
+title: "TidyCensus"
+output: html_document
+date: '2022-12-07'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages(c("tidycensus", "tidyverse"))
+install.packages("acs")
+install.packages("DT")
+library(tidycensus)
+library(tidyverse)
+library(acs)
+
+census_api_key("5e3ba95b31e60d07bccd54c85ace6675826e6e6f")
+
+acs::api.key.install(key="5e3ba95b31e60d07bccd54c85ace6675826e6e6f")
+```
+
+
+```{r}
+## Testing 
+
+age10 <- get_decennial(geography = "county", state="MS",
+                       variables = "P013001", 
+                       year = 2010)
+
+#age10
+
+v19 <- load_variables(2019, "acs5", cache=TRUE)
+#View(v19)
+
+	
+#B17010B_002
+tidypov <- get_acs(geography = "county", state="MS",
+                       variables = "B17010B_002", 
+                       year = 2019)
+#tidypov
+
+tidypov <- get_acs(geography = "county", state="MS",
+                       table = "B17001", 
+                       year = 2019, output="wide")
+#tidypov
+
+MS_geo <- geo.make(state = "MS", county = "*")
+pov2 <- acs.fetch(endyear=2019, span = 5, geography = MS_geo, table.number="B17001", col.names = "pretty")
+
+#pov2
+
+#View(tidypov)
+#dflist[[3]]
+
+#(dflist[[3]]$`Income in the past 12 months below poverty level:`/
+#dflist[[3]]$Total)* 100
+
+tidypov
+
+```
+
+
+```{r}
+year <- 2020
+v19 <- load_variables(year, "acs5", cache=TRUE)
+subjectvars <-  load_variables(year, "acs5/subject", cache=TRUE)
+
+getdata <- function(tablename, racetablename=tablename, returnvars=FALSE, raceavailable=TRUE, subject=FALSE) {
+  if (subject) {
+    vars <- data.frame(filter(subjectvars, grepl(paste0(tablename,"|",racetablename), name)))
+  }
+  else{
+    vars <- data.frame(filter(v19, grepl(paste0(tablename,"|",racetablename), name)))
+  }
+  df_all <- get_acs(geography = "county", state="MS",
+                         table = tablename, 
+                         year = year, output="wide")
+  if (raceavailable){
+    df_b <- get_acs(geography = "county", state="MS",
+                           table = paste0(racetablename, "B"), 
+                           year = year, output="wide")
+    df_w <- get_acs(geography = "county", state="MS",
+                           table = paste0(racetablename,"A"), 
+                           year = year, output="wide")
+    df_list <- list(df_all, df_b, df_w)
+    fulldf <- df_list %>% reduce(full_join, by='GEOID')
+  }
+  else {
+    fulldf <- df_all
+  }
+  tidyfulldf <- as.data.frame(fulldf)
+  htmlwidgets::saveWidget(DT::datatable(vars), "vars.html")
+  if (returnvars){
+    return(list(tidyfulldf, vars))
+  }
+  else {
+    return(tidyfulldf)
+  }
+}
+
+```
+
+```{r}
+tidypovdf <- getdata("B17001")
+allvars <- tidypovdf %>% select(GEOID, NAME)
+```
+
+#Poverty
+totalpop B17001_001, ibp: all B17001_002, ibp male B17001_003, ibp female B17001_017
+above B17001_031, above male B17001_032, above female B17001_046
+for white: add A after B17001, B for black
+
+```{r}
+alldems <- c("_A_A", "_A_B", "_A_W", "_M_A", "_M_B", "_M_W", "_F_A", "_F_B", "_F_W")
+# IBP, IAP, 
+#denominator for some of them is adding up below poverty and above poverty values to get total
+tidypovdf <- tidypovdf %>% mutate( 
+              IBP_A_A = 100 * B17001_002E/ B17001_001E,
+              IBP_A_B = 100 *B17001B_002E/B17001B_001E,
+              IBP_A_W = 100 *B17001A_002E/B17001A_001E,
+              IBP_M_A = 100 *B17001_003E/ (B17001_003E+B17001_032E),
+              IBP_M_B = 100 *B17001B_003E/ (B17001B_003E+B17001B_032E),
+              IBP_M_W = 100 *B17001A_003E/ (B17001A_003E+B17001A_032E),
+              IBP_F_A = 100 *B17001_017E/ (B17001_017E+B17001_046E),
+              IBP_F_B = 100 *B17001B_017E/ (B17001B_017E+B17001B_046E),
+              IBP_F_W = 100 *B17001A_017E/ (B17001A_017E+B17001A_046E),
+              IAP_A_A = 100 - IBP_A_A,
+              IAP_A_B = 100 - IBP_A_B,
+              IAP_A_W = 100 - IBP_A_W,
+              IAP_M_A = 100 - IBP_M_A,
+              IAP_M_B = 100 - IBP_M_B,
+              IAP_M_W = 100 - IBP_M_W,
+              IAP_F_A = 100 - IBP_F_A,
+              IAP_F_B = 100 - IBP_F_B,
+              IAP_F_W = 100 - IBP_F_W,
+              )
+allvars <- full_join(allvars, tidypovdf %>% select(GEOID, IBP_A_A, IBP_A_B, IBP_A_W, IBP_M_A, IBP_M_B, IBP_M_W, IBP_F_A, IBP_F_B, IBP_F_W), by="GEOID")
+#allvars <- full_join(allvars, tidypovdf %>% select(matches("IAP|GEOID")), by="GEOID")
+```
+
+#Median Earnings
+B20017_001 general, _002 male general, _003 male ft, 004 male not ft
+005 female general, 006 female ft, 007 female not ft
+- no race for ft and non ft (so no A_B, A_W)
+- also no everyone for ft and nonft, app crashes currently (A_A)
+This is really just a matter of renaming variables to fit our current structure
+```{r}
+tidymedearningsdf <- getdata("B20017")
+
+tidymedearningsdf <- tidymedearningsdf %>% rename( 
+  Median_Earnings_A_A = B20017_001E,
+  Median_Earnings_A_B = B20017B_001E, 
+  Median_Earnings_A_W = B20017A_001E,
+  Median_Earnings_M_A = B20017_002E,
+  Median_Earnings_M_B = B20017B_002E,
+  Median_Earnings_M_W = B20017A_002E,
+  Median_Earnings_F_A = B20017_005E,
+  Median_Earnings_F_B = B20017B_005E,
+  Median_Earnings_F_W = B20017A_005E,
+  FT_Median_Earnings_M_A = B20017_003E,
+  FT_Median_Earnings_M_B = B20017B_003E,
+  FT_Median_Earnings_M_W = B20017A_003E,
+  FT_Median_Earnings_F_A = B20017_006E,
+  FT_Median_Earnings_F_B = B20017B_006E,
+  FT_Median_Earnings_F_W = B20017A_006E,
+  Other_Median_Earnings_M_A = B20017_004E,
+  Other_Median_Earnings_M_B = B20017B_004E,
+  Other_Median_Earnings_M_W = B20017A_004E,
+  Other_Median_Earnings_F_A = B20017_007E,
+  Other_Median_Earnings_F_B = B20017B_007E,
+  Other_Median_Earnings_F_W = B20017A_007E
+)
+
+tidymedearningsdf <- tidymedearningsdf %>% mutate(
+  GenderWageGap_A_A = FT_Median_Earnings_F_A, FT_Median_Earnings_M_A)
+
+allvars <- full_join(allvars, tidymedearningsdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+```
+
+##Education
+Less_than_high_school_diploma c...003 / 
+A_B, A_W, M_B, M_W, F_B, F_W, 
+```{r}
+tidyedudf <- getdata("B15002", "C15002")
+
+lessthanhs_m_vars <- paste0("B15002_00", 3:9, "E")
+lessthanhs_m_vars <- append(lessthanhs_m_vars, "B15002_010E")
+lessthanhs_f_vars <- paste0("B15002_0", 20:27, "E")
+combined <- append(lessthanhs_m_vars, lessthanhs_f_vars)
+
+tidyedudf <- tidyedudf %>% mutate(
+  #male less than + female less than all over total population 25 years and over
+  Less_than_high_school_diploma_A_B = (100 * (C15002B_003E + C15002B_008E))/C15002B_001E,
+  Less_than_high_school_diploma_A_W = (100 * (C15002A_003E + C15002A_008E))/C15002A_001E,
+  Less_than_high_school_diploma_M_B = (100 * C15002B_003E)/C15002B_002E,
+  Less_than_high_school_diploma_M_W = (100 * C15002A_003E)/C15002A_002E,
+  Less_than_high_school_diploma_F_B = (100 * C15002B_008E)/C15002B_007E,
+  Less_than_high_school_diploma_F_W = (100 * C15002A_008E)/C15002A_007E,
+  "High_school_graduate_(includes_equivalency)_A_B" = (100 * (C15002B_004E + C15002B_009E))/C15002B_001E,
+  "High_school_graduate_(includes_equivalency)_A_W" = (100 * (C15002A_004E + C15002A_009E))/C15002A_001E,
+  "High_school_graduate_(includes_equivalency)_M_B" = (100 * C15002B_004E)/C15002B_002E,
+  "High_school_graduate_(includes_equivalency)_M_W" = (100 * C15002A_004E)/C15002A_002E,
+  "High_school_graduate_(includes_equivalency)_F_B" = (100 * C15002B_009E)/C15002B_007E,
+  "High_school_graduate_(includes_equivalency)_F_W" = (100 * C15002A_009E)/C15002A_007E,
+  Some_college_or_associates_degree_A_B = (100 * (C15002B_005E + C15002B_010E))/C15002B_001E,
+  Some_college_or_associates_degree_A_W = (100 * (C15002A_005E + C15002A_010E))/C15002A_001E,
+  Some_college_or_associates_degree_M_B = (100 * C15002B_005E)/C15002B_002E,
+  Some_college_or_associates_degree_M_W = (100 * C15002A_005E)/C15002A_002E,
+  Some_college_or_associates_degree_F_B = (100 * C15002B_010E)/C15002B_007E,
+  Some_college_or_associates_degree_F_W = (100 * C15002A_010E)/C15002A_007E,
+  Bachelors_degree_or_higher_A_B = (100 * (C15002B_006E + C15002B_011E))/C15002B_001E,
+  Bachelors_degree_or_higher_A_W = (100 * (C15002A_006E + C15002A_011E))/C15002A_001E,
+  Bachelors_degree_or_higher_M_B = (100 * C15002B_006E)/C15002B_002E,
+  Bachelors_degree_or_higher_M_W = (100 * C15002A_006E)/C15002A_002E,
+  Bachelors_degree_or_higher_F_B = (100 * C15002B_011E)/C15002B_007E,
+  Bachelors_degree_or_higher_F_W = (100 * C15002A_011E)/C15002A_007E,
+  ##now for general (non race vars)
+  Less_than_high_school_diploma_A_A = (100 * rowSums(across(combined)))/B15002_001E ,
+  Less_than_high_school_diploma_M_A = (100 * rowSums(across(lessthanhs_m_vars)))/B15002_002E ,
+  Less_than_high_school_diploma_F_A = (100 * rowSums(across(lessthanhs_f_vars)))/B15002_019E ,
+  "High_school_graduate_(includes_equivalency)_A_A" = (100 * (B15002_011E + B15002_028E)/B15002_001E),
+  "High_school_graduate_(includes_equivalency)_M_A" = (100 * B15002_011E)/B15002_002E,
+  "High_school_graduate_(includes_equivalency)_F_A" = (100 * B15002_028E)/B15002_019E,
+  Some_college_or_associates_degree_A_A = (100 * (B15002_012E+B15002_013E+B15002_014E +   B15002_029E+B15002_030E+B15002_031E ))/B15002_001E,
+  Some_college_or_associates_degree_M_A = (100 * (B15002_012E+B15002_013E+B15002_014E ))/B15002_002E,
+  Some_college_or_associates_degree_F_A = (100 * (B15002_029E+B15002_030E+B15002_031E))/B15002_019E,
+  Bachelors_degree_or_higher_A_A = (100 * (B15002_015E+B15002_016E+B15002_017E+B15002_018E + B15002_032E+B15002_033E+B15002_034E + B15002_035E))/B15002_001E,
+  Bachelors_degree_or_higher_M_A = (100 * (B15002_015E+B15002_016E+B15002_017E+B15002_018E ))/B15002_002E,
+  Bachelors_degree_or_higher_F_A = (100 * (B15002_032E+B15002_033E+B15002_034E + B15002_035E ))/B15002_019E
+)
+
+allvars <- full_join(allvars, tidyedudf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+```
+
+## Health Insurance
+
+```{r}
+resultlist <- getdata("B27001", "C27001", TRUE)
+tidyhealthdf <- resultlist[[1]]
+tidyhealthdf <- tidyhealthdf %>% select("GEOID" | ends_with("E")) %>% select(!"NAME")
+
+##Getting all relevant vars into lists
+vars <- resultlist[[2]]
+
+all_m <- (vars %>% filter(str_detect(label, "With"), str_detect(label, "Male"), str_detect(name, "B27001")))$name
+all_f <- (vars %>% filter(str_detect(label, "With"), str_detect(label, "Female"), str_detect(name, "B27001")))$name
+all_with <- (vars %>% filter(str_detect(label, "With"), str_detect(name, "B27001")))$name
+all_b <- (vars %>% filter(str_detect(label, "With"), str_detect(name, "C27001B")))$name
+all_w <- (vars %>% filter(str_detect(label, "With"), str_detect(name, "C27001A")))$name
+
+#Add E to the end of everything
+f1 <- function(x,y) paste0(x,y)
+result <- lapply(list(all_with, all_m, all_f, all_b, all_w), f1, "E")
+
+#above 53 and 56 for all female, 25 and 28 for male
+#total 52 and 55 for female, 24 and 27 for male
+above_m <- paste0("B27001_0", c(25, 28), "E")
+above_f <- paste0("B27001_0", c(53, 56), "E")
+above_all <- append(above_m, above_f)
+denominatorabove_m <- paste0("B27001_0", c(24, 27), "E")
+denominatorabove_f <- paste0("B27001_0", c(52, 55), "E")
+denominatorabove_all <- append(denominatorabove_m, denominatorabove_f)
+
+tidyhealthdf <- tidyhealthdf %>% mutate(
+  HealthInsurance_A_A = (100*rowSums(across(result[[1]])))/B27001_001E,
+  HealthInsurance_M_A = (100*rowSums(across(result[[2]])))/B27001_002E,
+  HealthInsurance_F_A = (100*rowSums(across(result[[3]])))/B27001_030E,
+  HealthInsurance_A_B = (100*rowSums(across(result[[4]])))/C27001B_001E,
+  HealthInsurance_A_W = (100*rowSums(across(result[[5]])))/C27001A_001E,
+  SeniorHealthInsurance_A_A = (100*rowSums(across(above_all)))/rowSums(across(denominatorabove_all)),
+  SeniorHealthInsurance_M_A =(100*rowSums(across(above_m)))/rowSums(across(denominatorabove_m)),
+  SeniorHealthInsurance_F_A = (100*rowSums(across(above_f)))/rowSums(across(denominatorabove_f)),
+  #above for white black is 009, total people above for white black is 008
+  SeniorHealthInsurance_A_B = (100*C27001B_009E)/C27001B_008E,
+  SeniorHealthInsurance_A_W = (100*C27001A_009E)/C27001A_008E
+)
+
+allvars <- full_join(allvars, tidyhealthdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+results <- getdata("B27003", raceavailable = FALSE, returnvars = TRUE)
+publichealthdf <- results[[1]]
+vars <- results[[2]]
+vars
+
+#selecting all under 65, with public coverage, and then totals for denominator
+all_m <- (vars %>% filter(str_detect(label, "With"), str_detect(label, "Male"), str_detect(name, "B27003")))[1:7,]$name
+all_f <- (vars %>% filter(str_detect(label, "With"), str_detect(label, "Female"), str_detect(name, "B27003")))[1:7,]$name
+all_with <- append(all_m, all_f)
+total_m <- (vars %>% filter(str_detect(label, "Male"),str_detect(label, "Estimate"),str_detect(label, "years"),!str_detect(label,"coverage"),str_detect(name, "B27003")))[1:7,]$name
+total_f <- (vars %>% filter(str_detect(label, "Female"),str_detect(label, "Estimate"),str_detect(label, "years"),!str_detect(label,"coverage"),str_detect(name, "B27003")))[1:7,]$name
+total <- append(total_m, total_f)
+result <- lapply(list(all_with, all_m, all_f, total, total_m, total_f), f1, "E")
+
+publichealthdf <- publichealthdf %>% mutate(
+  PublicHealthInsurance_A_A = (100*rowSums(across(result[[1]])))/rowSums(across(result[[4]])),
+  PublicHealthInsurance_M_A = (100*rowSums(across(result[[2]])))/rowSums(across(result[[5]])),
+  PublicHealthInsurance_F_A = (100*rowSums(across(result[[3]])))/rowSums(across(result[[6]]))
+)
+
+allvars <- full_join(allvars, publichealthdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+```
+
+```{r}
+rentdf <- getdata("B25064", raceavailable = FALSE)
+rentdf <- rentdf %>% rename (
+  MedianRent_A_A = B25064_001E
+)
+allvars <- full_join(allvars, rentdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+housingdf<- getdata("B25003")
+housingdf <- housingdf %>% mutate(
+  RenterOccupied_A_A = (100*B25003_003E)/B25003_001E,
+  RenterOccupied_A_B = (100*B25003B_003E)/B25003B_001E,
+  RenterOccupied_A_W = (100*B25003A_003E)/B25003A_001E
+)
+
+allvars <- full_join(allvars, housingdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+singlehousingdf <- getdata("S1101", raceavailable = FALSE, subject = TRUE)
+
+##total households S1101_C04_001 and male is S1101_C03_018, female is C04
+## so S1101_C04_018* S1101_C04_001 would give total households female single
+## and 03 would be male and then could add them up and then divide by sum of total male and female S1101_C04_001
+singlehousingdf <- singlehousingdf %>% mutate (
+  HH_RenterOccupied_SingleFamily_A_A = 100*((S1101_C03_018E/100* S1101_C03_001E) + (S1101_C04_018E/100* S1101_C04_001E)) / (S1101_C03_001E + S1101_C04_001E),
+  HH_RenterOccupied_SingleFamily_M_A = S1101_C03_018E,
+  HH_RenterOccupied_SingleFamily_F_A = S1101_C04_018E
+)
+
+allvars <- full_join(allvars, singlehousingdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+```
+
+```{r}
+car_commutedf <- getdata("B08006", "B08105")
+car_commutedf <- car_commutedf %>% mutate (
+  Car_truck_van_A_A = (100*B08006_002E)/B08006_001E,
+  Car_truck_van_M_A = (100*B08006_020E)/B08006_019E,
+  Car_truck_van_F_A = (100*B08006_036E)/B08006_035E,
+  Car_truck_van_A_B = (100*B08105B_002E)/B08105B_001E,
+  Car_truck_van_A_W = (100*B08105A_002E)/B08105A_001E
+)
+
+allvars <- full_join(allvars, car_commutedf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+meancommute <- getdata("S0801", raceavailable = FALSE, subject = TRUE)
+meancommute <- meancommute %>% mutate (
+  Mean_Commute_Time_A_A = S0801_C01_046E
+)
+allvars <- full_join(allvars, meancommute %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+results <- getdata("B08012", raceavailable = FALSE, returnvars = TRUE)
+commutedf <- results[[1]]
+vars <- results[[2]]
+
+lessthan30_all <- paste0("B08012_00", 2:7, "E")
+lessthan30_m <- paste0("B08012_0", 15:20, "E")
+lessthan30_f <- paste0("B08012_0", 28:33, "E")
+range30to60_all <- append(paste0("B08012_00",8:9, "E"),paste0("B08012_0",10:11, "E"))
+range30to60_m <- paste0("B08012_0", 21:24, "E")
+range30to60_f <- paste0("B08012_0", 34:37, "E")
+ 
+commutedf <- commutedf %>% mutate (
+  Less_Than_30_Minutes_A_A = (100*rowSums(across(lessthan30_all)))/B08012_001E,
+  Less_Than_30_Minutes_M_A = (100*rowSums(across(lessthan30_m)))/B08012_014E,
+  Less_Than_30_Minutes_F_A = (100*rowSums(across(lessthan30_f)))/B08012_027E,
+  Range_30_To_60_Minutes_A_A = (100*rowSums(across(range30to60_all)))/B08012_001E,
+  Range_30_To_60_Minutes_M_A = (100*rowSums(across(range30to60_m)))/B08012_014E,
+  Range_30_To_60_Minutes_F_A = (100*rowSums(across(range30to60_f)))/B08012_027E,
+  More_Than_60_Minutes_A_A = (100*(B08012_012E + B08012_013E))/B08012_001E,
+  More_Than_60_Minutes_M_A = (100*(B08012_025E + B08012_026E))/B08012_014E,
+  More_Than_60_Minutes_F_A = (100*(B08012_038E + B08012_039E))/B08012_027E
+)
+#commutedf$GEOID<- as.numeric(commutedf$GEOID)
+allvars <- full_join(allvars, commutedf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+
+```
+
+
+##to make sure it doesn't fail on certain vars
+```{r}
+allvars <- allvars %>% mutate(
+FT_Median_Earnings_A_A = 0,
+Other_Median_Earnings_A_A = 0
+)
+```
+
+```{r}
+install.packages("jsonlite")
+#library(rjson)
+
+olddata <- read.csv(file = "../MSWomenCount/Data_COMPLETE_cleaned_20210302.csv")
+allvars$GEOID <- as.numeric(allvars$GEOID)
+combineddata <- full_join(olddata, allvars, by=c("Id2" = "GEOID") )
+
+jsonlite::write_json(combineddata, "../MSWomenCount/src/data/Data_Test_2022_12_23.json")
+```
+
+
