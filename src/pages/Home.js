@@ -80,6 +80,7 @@ class Home extends React.Component {
             {/* <div className="bannercaption"> */}
             <p>Understanding the Experience of Women in Mississippi</p>
             {/*arrow feature - click feature not added*/}
+            {/* the arrow only goes down one section. why not go down to features or something? */}
             <div id="arrow-down" onClick={this.handleClick}>
               <i class="down"></i>
             </div>
