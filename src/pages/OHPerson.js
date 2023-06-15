@@ -53,17 +53,25 @@ class OHPerson extends React.Component {
   };
 
   handleIconClick = val => {
-    if (((val == -1) & (this.state.linefocus != 0)) | (val == 1)) {
+
+    if ((this.state.linefocus + val <= 0)){
+      this.setState({linefocus: this.state.maxlinefocus});
+      
+    }
+    else if (this.state.linefocus + val > this.state.maxlinefocus) {
+      this.setState({linefocus: 1});
+
+    }
+    else {
       var line = this.state.linefocus + val;
       this.setState({ linefocus: line });
+
     }
-    // if ((val == 1) & this.state.lie) console.log(this.state);
-    // elem.scrollIntoView();
+
   };
 
   //for when new topic button is selected, it will change the highlighted quotes by editing classname (prevprops needed for some reason to not have delay problem)
   componentDidUpdate(prevProps, prevState) {
-    // console.log(this.state)
     if (prevState.linefocus > 0) {
       document.querySelectorAll(
         `.section-${prevState.selectedcat}-${prevState.linefocus} p#transcriptquotes`
@@ -89,16 +97,13 @@ class OHPerson extends React.Component {
       for (index = 0; index < matchingsentence.length; index++) {
         matchingsentence[index].classList.add("selected");
         matchingsentence[index].style.color = "teal"
-        // matchingcategory[0].color;
       }
     }
     if (
       (this.state.linefocus !== prevState.linefocus) &
       (this.state.linefocus > 0)
     ) {
-      // var color = topic_categories.filter(
-      //   (obj, i) => i + 1 == this.state.selectedcat
-      // )[0].color;
+
         var color="teal"
       var elem = document.getElementsByClassName(
         `section-${this.state.selectedcat}-${this.state.linefocus}`
@@ -107,7 +112,6 @@ class OHPerson extends React.Component {
       var childelem = document.querySelectorAll(
         `.section-${this.state.selectedcat}-${this.state.linefocus} p#transcriptquotes`
       )[0];
-      // childelem.style.textShadow="4px 4px 12px rgba(38, 143, 255, 0.5)"
       childelem.style.textShadow = `0px 8px 10px ${color}`;
     }
   }
