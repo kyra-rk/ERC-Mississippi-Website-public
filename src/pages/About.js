@@ -9,18 +9,6 @@ import MLICCI from '../pictures/MLICCI.jpg';
 import Report from '../pictures/Report.jpg';
 import WinCLogo from '../pictures/WinCLogo.png'
 
-{/* General comments/questions: 
-	- Why do we have "export const About()" function and 
-	"export default About" at the bottom?
-	- Need some space/padding around icons and text when in mobile mode.
-	- Consider changing the images - the quality is not too good.
-	- Hand and WiC icons overlap with text, but the report does not. 
-	  ↪ Maybe consider adding padding or a wrapper? Not 100% sure on this one.
-	- Add ERC and Missisipi Class as contributors to the About. 
-	- Need to add in missing text and content to this page. 
-	- Maybe converge About and Contact to one page? 
-
-*/}
 
 export const About = () => (
 	  <div className="screenwidth">
