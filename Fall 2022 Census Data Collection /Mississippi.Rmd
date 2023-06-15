@@ -12,6 +12,10 @@ knitr::opts_chunk$set(echo = TRUE)
 install.packages(c("tidycensus", "tidyverse"))
 install.packages("acs")
 install.packages("DT")
+
+```
+
+```{r}
 library(tidycensus)
 library(tidyverse)
 library(acs)
@@ -69,11 +73,13 @@ subjectvars <-  load_variables(year, "acs5/subject", cache=TRUE)
 
 getdata <- function(tablename, racetablename=tablename, returnvars=FALSE, raceavailable=TRUE, subject=FALSE) {
   if (subject) {
-    vars <- data.frame(filter(subjectvars, grepl(paste0(tablename,"|",racetablename), name)))
+    subjectvars <- data.frame(filter(subjectvars, grepl(paste0(tablename,"|",racetablename), name)))
+    vars <-data.frame(filter(v19, grepl(paste0(tablename,"|",racetablename), name)))
   }
   else{
     vars <- data.frame(filter(v19, grepl(paste0(tablename,"|",racetablename), name)))
   }
+  
   df_all <- get_acs(geography = "county", state="MS",
                          table = tablename, 
                          year = year, output="wide")
@@ -92,6 +98,9 @@ getdata <- function(tablename, racetablename=tablename, returnvars=FALSE, raceav
   }
   tidyfulldf <- as.data.frame(fulldf)
   htmlwidgets::saveWidget(DT::datatable(vars), "vars.html")
+  if (subject) {
+    htmlwidgets::saveWidget(DT::datatable(subjectvars), "subjectvars.html")
+  }
   if (returnvars){
     return(list(tidyfulldf, vars))
   }
@@ -388,6 +397,11 @@ allvars <- allvars %>% mutate(
 FT_Median_Earnings_A_A = 0,
 Other_Median_Earnings_A_A = 0
 )
+```
+
+```{r}
+occdf <- getdata("S2401", "C24010", subject = TRUE)
+
 ```
 
 ```{r}
