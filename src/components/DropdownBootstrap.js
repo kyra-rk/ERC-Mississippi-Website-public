@@ -27,34 +27,19 @@ import { borderRight } from '@material-ui/system';
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 // import Map from '../components/Map.js'
 
-const demographics = [
-    {'name': 'White',
-    'abbreviation': 'W',
-    'class': 'White',
-    'subgroup':
-    [{
-      'name':'Women',
-      'abbreviation': 'F',
-      'class': 'WhiteWomen',
-      },
-      {'name': 'Men',
-    'abbreviation': 'M',
-    'class': 'WhiteMen',}
-    ]},
-    {'name': 'Black',
-    'abbreviation': 'B',
-    'class': 'Black',
-    'subgroup':
-    [{
-      'name':'Women',
-      'abbreviation': 'F',
-      'class': 'BlackWomen',
-      },
-      {'name': 'Men',
-    'abbreviation': 'M',
-    'class': 'BlackMen',}
-    ]},
-]
+
+
+const dem_list = [
+  {key: 1, id: "dembutton", name: "Everyone", race: "A", gender: "A", text: "Everyone"},
+  {key: 2, id: "dembutton", name: "White", race: "W", gender: "A", text: "White"},
+  {key: 3, id: "dembutton", name: "Black", race: "B", gender: "A", text: "Black"},
+  {key: 4, id: "genderbutton", name: "Women", race: "A", gender: "F", text: "Women"},
+  {key: 5, id: "genderbutton", name: "Men", race: "A", gender: "M", text: "Men"}, 
+  {key: 6, id: "Women", name: "WhiteWomen", race: "W", gender: "F", text: "White Women"},
+  {key: 7, id: "Women", name: "BlackWomen", race: "B", gender: "F", text: "Black Women"},
+  {key: 8, id: "Men", name: "WhiteMen", race: "W", gender: "M", text: "White Men"},
+  {key: 9, id: "Men", name: "BlackMen", race: "B", gender: "M", text: "Black Men"}
+];
 
 class DropdownBootstrap extends Component {
         constructor(props) {
@@ -146,65 +131,78 @@ class DropdownBootstrap extends Component {
                     ))}
                     </DropdownButton>
             ))
+            // console.log(categories2)
             return buttons;
         }
-        //Creates specific demographic filter buttons
+
+        /**
+         * Takes in a list of demographics and returns Grid wrapped buttons for those demographics only. 
+         * Is used by createDemButtons() method.
+         * @param {*} specificDems is a list of demographic names that should be included when returning buttons.
+         * @param {*} xsGrid to set the xs = {} attribute for the Grid. 
+         * @param {*} smGrid to set the sm = {} attribute for the Grid. 
+         * @returns a list of Grid-wrapped buttons with the id, key, className, value and onClick methods 
+         * associated with that demographic. See dem_list const at the top of the class. 
+         */
+        demListToButton(specificDems, xsGrid, smGrid) {
+          // uses the Array.prototype.map() function to apply to all items in dem_list.
+          return dem_list.map((dem) => {
+            // if the button is in the specificDems list, then return it
+            if (specificDems.indexOf(dem.name) !== -1) {
+              return ( <Grid xs={xsGrid} sm={smGrid}>
+                <Button 
+                  id={dem.id} // the id for styling purposes
+                  key={dem.name} // the key
+                  className={`${dem.name} dembutton 
+                    ${this.state.gender ? "available" : "unavailable"} 
+                    ${this.state.buttonselected === dem.name ? "selected" : ""}`} // the className for styling purposes
+                  value={[dem.race, dem.gender, dem.name]} // the value eg. ['A', 'A', 'Everyone]
+                  onClick={this.handleDemClick} // the onClick handler 
+                >
+                  {dem.text} 
+                </Button> </Grid> );
+            }
+            return null; // if not in the specificDems list, return null 
+          });
+        }
+
+        /**
+         * Splits demographic buttons into 4 groups: Everyone, Race, Gender, and RaceGender 
+         * to follow along with demo and keep Everyone at the top as the window shortens.
+         * @returns a Row component with Grid items for each demographic button.
+         */
         createDemButtons(){
+          let dem_buttons = (
+            <Row className="justify-content-center">
+              <Grid className="step2" container xs={8} sm={8} md={6} lg={4}>
+                <Grid container className="Everyone" sm={4}>
+                  {/* passes in a list of the demographics included in this section and the sm and xs attributes of the grid */}
+                {this.demListToButton(["Everyone"], 12, 12)}
+                </Grid>
+                <Grid container className="Race step3" xs={12} sm={8}>
+                  {this.demListToButton(["White", "Black"], 6, 6)}
+                </Grid>
+                <Grid container className="Gender step4" sm={4}>
+                  {this.demListToButton(["Women", "Men"], 6, 12)}
+                </Grid>
+                <Grid container className="RaceGender step5" sm={8}>
+                  {this.demListToButton(["WhiteWomen", "BlackWomen", "WhiteMen", "BlackMen"], 6, 6)}
+                </Grid>
+              </Grid>
+            </Row>
+          );
 
-          let everyonegridbutton =
-          <Row className="justify-content-center">
-          <Grid className = "step2" container xs = {8} sm={8} md={6} lg={4} >
-            <Grid container className="Everyone" sm={4}>
-
-            <Grid item xs ={12} sm={12} zeroMinWidth>
-                     <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>Everyone</Button>
-            </Grid>
-            </Grid>
-            <Grid container className="Race step3" xs = {12} sm={8} >
-
-            <Grid item xs = {6} sm={6}  zeroMinWidth>
-            <Button id="dembutton" key ="White" className={`White dembutton ${this.state.buttonselected==="White"? "selected": ""} ${this.state.race ? "available": "unavailable"}`} value={["W", "A", "White"]} onClick={this.handleDemClick}>White</Button>
-             </Grid>
-            <Grid item xs = {6} sm={6}  zeroMinWidth >
-            <Button id="dembutton" key ="Black" className={`Black dembutton ${this.state.buttonselected==="Black"? "selected": ""} ${this.state.race ? "available": "unavailable"}`} value={["B", "A", "Black"]} onClick={this.handleDemClick}>Black</Button>
-            </Grid>
-            </Grid>
-            <Grid container className="Gender step4" sm={4} >
-            <Grid item xs = {6} sm={12}>
-              <Button id="genderbutton" key="Women" className = {`Women dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Women"? "selected": ""}`}  value={["A", "F", "Women"]} onClick={this.handleDemClick}>Women</Button>
-            </Grid>
-            <Grid item xs ={6} sm={12} >
-            <Button id="genderbutton" key="Men" className = {`Men dembutton ${this.state.gender ? "available": "unavailable"} ${this.state.buttonselected==="Men"? "selected": ""}`} value={["A", "M", "Men"]} onClick={this.handleDemClick}>Men</Button>
-
-                     {/* <Button id="dembutton" key ="Everyone" className={`Everyone dembutton available ${this.state.buttonselected==="Everyone"? "selected": ""}`} value={["A", "A", "Everyone"]} onClick={this.handleDemClick}>MEN</Button> */}
-            </Grid>
-
-            </Grid>
-            <Grid container className="RaceGender step5" sm={8}  >
-            <Grid item xs = {6} sm={6} >
-                     <Button id="Women" key ="WhiteWomen" className={`WhiteWomen dembutton available ${this.state.buttonselected==="WhiteWomen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["W", "F", "WhiteWomen"]} onClick={this.handleDemClick}>White Women</Button>
-            </Grid>
-            <Grid item  xs = {6} sm={6} >
-                     <Button id="Women" key ="BlackWomen" className={`BlackWomen dembutton available ${this.state.buttonselected==="BlackWomen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["B", "F", "BlackWomen"]} onClick={this.handleDemClick}>Black Women</Button>
-            </Grid>
-            <Grid item  xs = {6} sm={6}>
-                     <Button id="Men" key ="WhiteMen" className={`WhiteMen dembutton available ${this.state.buttonselected==="WhiteMen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["W", "M", "WhiteMen"]} onClick={this.handleDemClick}>White Men</Button>
-            </Grid>
-            <Grid item  xs = {6}sm={6}>
-                     <Button id="Men" key ="BlackMen" className={`BlackMen dembutton available ${this.state.buttonselected==="BlackMen"? "selected": ""} ${this.state.racegender ? "available": "unavailable"}`} value={["B", "M", "BlackMen"]} onClick={this.handleDemClick}>Black Men</Button>
-            </Grid>
-          </Grid>
-          </Grid>
-</Row>
-
-
-          return [ everyonegridbutton];
+          return dem_buttons;
         }
 
         getabbreviation(matchingvar, demselected, genderselected){
           // console.log("GET ABBREVIATION", demselected, genderselected, matchingvar.universe, matchingvar.type)
           var abbrev = "";
+<<<<<<< HEAD
           // console.log("matchingvar:" +  matchingvar);
+=======
+          // console.log(matchingvar);
+>>>>>>> 08a491e897935ea588b56203e8b8ca785df85ed9
           abbrev = matchingvar.abbreviation + "_" + genderselected + "_" + demselected
           // var genderabbrev = "";
           // var totalabbrev = "";
@@ -254,7 +252,10 @@ class DropdownBootstrap extends Component {
           var genderselected = this.state.genderselected;
           var buttonselected = this.state.buttonselected;
           var error=false;
+<<<<<<< HEAD
           // console.log("Single household info: ", matchingvar.race)
+=======
+>>>>>>> 08a491e897935ea588b56203e8b8ca785df85ed9
           if (this.state.genderselected!=="A" && this.state.demselected!=="A" && matchingvar.racegender===false){
             error = true;
           }
@@ -264,7 +265,10 @@ class DropdownBootstrap extends Component {
           else if (this.state.genderselected !== "A" && matchingvar.gender === false){
             error = true;
           }
+<<<<<<< HEAD
           // console.log("ERROR", error);
+=======
+>>>>>>> 08a491e897935ea588b56203e8b8ca785df85ed9
           if (error === true){
             demselected = "A"
             genderselected = "A"
@@ -282,6 +286,9 @@ class DropdownBootstrap extends Component {
 
         handleDemClick(event){
           if (this.state.currentvar) {
+            console.log(event.target.value) // A,F,Women --> race, gender, overall dem name
+            {/* this.state.varlocation.index1 --> the number associated with the category */}
+            {/* this.state.varlocation.index2 --> the number associated with the sub-topic */}
             const matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2]
             var abbreviation = this.getabbreviation(matchingvar, event.target.value[0], event.target.value[2])
             // `P_${matchingvar.abbreviation}_${event.target.value[0]}_${event.target.value[2]}`
@@ -296,9 +303,10 @@ class DropdownBootstrap extends Component {
 
         render(){
            const varbuttons = this.createButtons();
-           const everyonebutton = this.createDemButtons();
+           const dembuttons = this.createDemButtons();
            const {stepsEnabled,steps,initialStep} = this.state;
            let match = this.props.match;
+<<<<<<< HEAD
           //  if (this.state.currentvar){
           //   //  console.log(this.state.varlocation.index1)
           //   let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
@@ -325,6 +333,13 @@ class DropdownBootstrap extends Component {
              let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
              variables = [abbrev1, abbrev2];
              labels = ["Men", "Women"];
+=======
+           if (this.state.currentvar){
+            //  console.log(this.state.varlocation.index1)
+            let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
+            // console.log(matchingvar);
+          }
+>>>>>>> 08a491e897935ea588b56203e8b8ca785df85ed9
 
            }
            else if (this.state.gender & this.state.race){
@@ -367,7 +382,7 @@ Data Portal                </h1> */}
                    </ButtonToolbar>
                    <section class="buttons">
                   <Row className="justify-content-center">
-                  <Col lg={10}>{everyonebutton}</Col>
+                  <Col lg={10}>{dembuttons}</Col>
                   </Row>
                  </section>
                 </Col>
