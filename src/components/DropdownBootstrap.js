@@ -204,7 +204,7 @@ class DropdownBootstrap extends Component {
         getabbreviation(matchingvar, demselected, genderselected){
           // console.log("GET ABBREVIATION", demselected, genderselected, matchingvar.universe, matchingvar.type)
           var abbrev = "";
-          console.log(matchingvar);
+          // console.log("matchingvar:" +  matchingvar);
           abbrev = matchingvar.abbreviation + "_" + genderselected + "_" + demselected
           // var genderabbrev = "";
           // var totalabbrev = "";
@@ -241,7 +241,7 @@ class DropdownBootstrap extends Component {
           //     abbrev += "_" + demselected;
           //   }
           // }
-          console.log(abbrev)
+          // console.log(abbrev)
           return abbrev;
 
         }
@@ -254,8 +254,7 @@ class DropdownBootstrap extends Component {
           var genderselected = this.state.genderselected;
           var buttonselected = this.state.buttonselected;
           var error=false;
-          console.log("Single household info: ", matchingvar.race
-          )
+          // console.log("Single household info: ", matchingvar.race)
           if (this.state.genderselected!=="A" && this.state.demselected!=="A" && matchingvar.racegender===false){
             error = true;
           }
@@ -265,7 +264,7 @@ class DropdownBootstrap extends Component {
           else if (this.state.genderselected !== "A" && matchingvar.gender === false){
             error = true;
           }
-          console.log("ERROR", error);
+          // console.log("ERROR", error);
           if (error === true){
             demselected = "A"
             genderselected = "A"
@@ -300,11 +299,49 @@ class DropdownBootstrap extends Component {
            const everyonebutton = this.createDemButtons();
            const {stepsEnabled,steps,initialStep} = this.state;
            let match = this.props.match;
-           if (this.state.currentvar){
-            //  console.log(this.state.varlocation.index1)
-            let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
-          }
+          //  if (this.state.currentvar){
+          //   //  console.log(this.state.varlocation.index1)
+          //   let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
+          // }
 
+          let variables = [];
+          let labels = [];
+          if (this.state.currentvar){
+           //  console.log(this.state.varlocation.index1)
+           let matchingvar = categories[this.state.varlocation.index1].variables[this.state.varlocation.index2];
+           if (!this.state.varabbreviation in this.state.dataset[0]){
+              // console.log
+           }
+           if (this.state.racegender){
+             let abbrev1 = this.getabbreviation(matchingvar, "W", "M");
+             let abbrev2 = this.getabbreviation(matchingvar, "W", "F")
+             let abbrev3 = this.getabbreviation(matchingvar, "B", "M")
+             let abbrev4 = this.getabbreviation(matchingvar, "B", "F")
+             variables = [abbrev1, abbrev2, abbrev3, abbrev4];
+             labels = ["White Men", "White Women", "Black Men", "Black Women"];
+           }
+           else if (this.state.gender & !this.state.race){
+             let abbrev1 = this.getabbreviation(matchingvar, "A", "M");
+             let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
+             variables = [abbrev1, abbrev2];
+             labels = ["Men", "Women"];
+
+           }
+           else if (this.state.gender & this.state.race){
+             let abbrev1 = this.getabbreviation(matchingvar, "A", "M");
+             let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
+             let abbrev3 = this.getabbreviation(matchingvar, "W", "A");
+             let abbrev4 = this.getabbreviation(matchingvar, "B", "A");
+             variables = [abbrev1, abbrev2, abbrev3, abbrev4];
+             labels = ["Men", "Women", "White Population", "Black Population"];
+           }
+           else if(this.state.race) {
+             let abbrev1 = this.getabbreviation(matchingvar, "W", "A");
+             let abbrev2 = this.getabbreviation(matchingvar, "B", "A");
+             variables = [abbrev1, abbrev2];
+             labels = ["White Population", "Black Population"];
+           }
+         }
 
             return (
                 <Container fluid="True">
@@ -359,6 +396,12 @@ Data Portal                </h1> */}
                  {/* {this.state.currentvar && variables &&
             <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
 
+<div className="demmapscontainer">
+                {/* {this.state.currentvar &&
+            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
+                 {this.state.currentvar && variables &&
+            <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
+</div>
           </Container>
 
             )
