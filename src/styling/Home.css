@@ -53,10 +53,11 @@ mark.yellow {
 
 }
 
-#carousel {
+/* this code has no effect on the visual */
+/* #carousel {
     width: 650px;
   height: 600px;
-}
+} */
 
 .banner{
   /* align: left; */
@@ -71,9 +72,14 @@ div.carousel-item img {
   height: 600px;
 }
 
+img {
+  width: 45%;
+  height: auto;
+}
+
 div.carousel-caption {
   background-color:  #eabd24 !important;
-  padding: 2px;
+  /* padding: 2px; */
   /* color: teal; */
   font-weight: bold;
 }
@@ -88,8 +94,9 @@ div.carousel-caption {
   
   position: absolute;
   left: 0%;
+  right: 0%;
   top: 35%;
-  width: 90%;
+  width: 100%; /*changed this from 90% to 100% to fix mobile view*/
   text-align: center;
   justify-content: center;
 
@@ -126,6 +133,10 @@ div.carousel-caption {
   color: #ffd524;
 } */
 
+.bottom-spacing{
+  margin-bottom: 15%;
+}
+
 .button1{
   color: White;
   background-color: #000000;
@@ -157,18 +168,23 @@ div.carousel-caption {
 /* .page-section {
   background-color: white;
 } */
+
+/* used to be padding by pixels, changed it to percent for mobile view */
 .introduction {
   /* margin: 0px 150px 0px 150px;
   padding-top: 50px;
   padding-bottom: 50px; */
-  padding: 50px 150px;
+  padding: 5% 10%;
+  /* padding: 50px 150px; */
   font-family: 'Open Sans';
 }
 
+/* removed padding bottom and top because there is too much - only affects features section of Home */
 #services {
-   margin: 0px 150px 0px 150px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  /* removed the margin to adjust the view for mobile - for features section */
+  /* margin: 0px 150px 0px 150px; */
+  /* padding-top: 50px; */
+  /* padding-bottom: 50px; */
   font-family: 'Roboto';
 }
 
@@ -250,6 +266,20 @@ div.carousel-caption {
   text-align: justify;
 }
 
+/* added - testing */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
 #div3{
   width: 65%;
   max-height: 250px;
@@ -275,10 +305,11 @@ div.carousel-caption {
   text-transform: none;
 }
 
+/* this makes the image too small on the mobile view - only affects features section on Home */
 #FeatureLogo{
-  margin-top: -20%;
-  width: 45%;
-  height: 45%;
+  /* margin-top: -20%; */
+  /* width: 90%;
+  height: 90%; */
 }
 
 #video{
@@ -299,15 +330,38 @@ div.carousel-caption {
   color: white !important;
 }
 
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+.d-block{
+}
+
+/* was trying something new out - can be ignored */
+/* .carousel-control-prev, .carousel-control-next{
+  color:#000000;
+}
+.carousel-control-prev-icon{
+  background-image: "../pictures/";
+} */
+
 .carousel_caption h3{
   color: #000000;
 }
 
-.carousel{
+/* a fixed pizel size does not cater well to responsivenss on web and mobile views */
+/* .carousel{
   width: 600px;
   height: 600px;
+} */
+
+.carousel-inner {   
+  margin: auto; 
 }
 
+/* to seperate the spacing for the second and third video demos.*/
 .video-demo{
   margin-top: 80px;
 }

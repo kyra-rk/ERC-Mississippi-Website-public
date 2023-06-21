@@ -97,21 +97,21 @@ class Home extends React.Component {
             <Col xl={6}>
               <div className="introduction">
                 {/*}<div className="image">*/}
+                {/* added the mx-auto tag to the className for the image. not sure if it makes a difference. */}
                 <Carousel id="carousel">
                   <Carousel.Item>
                     <img
                       src={Report}
                       alt="Women in Construction"
-                      className="d-block"
+                      className="mx-auto d-block"
                     />
-                    <Carousel.Caption>Report - Placeholder</Carousel.Caption>{" "}
-                    {/* Are we ready to replace this placeholder? */}
+                    <Carousel.Caption>Report - Placeholder</Carousel.Caption>
                   </Carousel.Item>
                   <Carousel.Item>
                     <img
                       src={WinCLogo}
                       alt="Women in Construction"
-                      className="d-block"
+                      className="mx-auto d-block"
                     />
                     <Carousel.Caption>Women in Construction</Carousel.Caption>
                   </Carousel.Item>
@@ -196,23 +196,24 @@ class Home extends React.Component {
 
         {/*section 3 - Features section */}
         <section class="page-section first">
-          {/* the class should be adjusted because the fonts are inconsistent with Stats page */}
           <section id="services"> {/* why services as the id? */}
             <div className="introduction"> 
-              <h2>Features</h2>
+            {/* originally was an h2, made it an h1 for consistency of font/color etc. */}
+              <h1>Features</h1>
               <p> {/* text needs to be replaced */}
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
                 maxime quam architecto quo inventore harum ex magni, dicta
                 impedit.
               </p>
             </div>
-            <div class="container">
+            {/* changed from class="container" to "introduction" */}
+            <div class="introduction">
               <div class="row text-center">
-                <div class="col-md-4">
+                <div class="col-md-4 bottom-spacing">
                   <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500}> */}
                     <a href="dataportal">
-                      <img src={data_logo} alt="Data icon" id="FeatureLogo" />
+                      <img src={data_logo} alt="Data icon" id="FeatureLogo"/>
                     </a>
                     {/* </Fade> */}
                   </span>
@@ -233,7 +234,7 @@ class Home extends React.Component {
                     Go to Data Portal
                   </Button>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 bottom-spacing">
                   <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500} delay={500}> */}
                     <a href="stories">
@@ -264,7 +265,7 @@ class Home extends React.Component {
                     Go to Stories
                   </Button>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 bottom-spacing">
                   <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500} delay={1000}> */}
                     <a href="indexinfo">
@@ -327,15 +328,19 @@ class Home extends React.Component {
           <div className="introduction">
             <h1>Scroll Demo</h1>
             <p> The different features of Make Women Count </p>
+            <div> {/* Tries to add Row (june 2023). tried changing div to Col. Was messy.*/}
             <div className="row"> {/* this contains the video and short description on the left. why not class "row video-demo"??*/}
               <div style={{ overflow: "auto" }}>
                 <div style={{ display: "flex", alignItems: "flex-start" }}>
+                  {/* <Col sm={6}> */}
                   <StickyBox offsetTop={80}>
                     <h3>Data Portal</h3> {/* add: Compare populations by race and gender. */}
                     The data portal has seven main categories: demographics,
                     health, education, employment, income, housing, and
                     government assistance.
                   </StickyBox>
+                  {/* </Col> */}
+                  {/* <Col sm={6}> */}
                   <div>
                     <video
                       src={data_portal_demo}
@@ -345,6 +350,7 @@ class Home extends React.Component {
                       muted
                     ></video>
                   </div>
+                  {/* </Col> */}
                 </div>
               </div>
             </div>
@@ -379,6 +385,7 @@ class Home extends React.Component {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </section>
