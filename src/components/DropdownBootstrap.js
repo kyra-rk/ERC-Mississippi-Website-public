@@ -198,11 +198,7 @@ class DropdownBootstrap extends Component {
         getabbreviation(matchingvar, demselected, genderselected){
           // console.log("GET ABBREVIATION", demselected, genderselected, matchingvar.universe, matchingvar.type)
           var abbrev = "";
-<<<<<<< HEAD
           // console.log("matchingvar:" +  matchingvar);
-=======
-          // console.log(matchingvar);
->>>>>>> 08a491e897935ea588b56203e8b8ca785df85ed9
           abbrev = matchingvar.abbreviation + "_" + genderselected + "_" + demselected
           // var genderabbrev = "";
           // var totalabbrev = "";
@@ -252,10 +248,6 @@ class DropdownBootstrap extends Component {
           var genderselected = this.state.genderselected;
           var buttonselected = this.state.buttonselected;
           var error=false;
-<<<<<<< HEAD
-          // console.log("Single household info: ", matchingvar.race)
-=======
->>>>>>> 08a491e897935ea588b56203e8b8ca785df85ed9
           if (this.state.genderselected!=="A" && this.state.demselected!=="A" && matchingvar.racegender===false){
             error = true;
           }
@@ -265,10 +257,6 @@ class DropdownBootstrap extends Component {
           else if (this.state.genderselected !== "A" && matchingvar.gender === false){
             error = true;
           }
-<<<<<<< HEAD
-          // console.log("ERROR", error);
-=======
->>>>>>> 08a491e897935ea588b56203e8b8ca785df85ed9
           if (error === true){
             demselected = "A"
             genderselected = "A"
@@ -306,7 +294,6 @@ class DropdownBootstrap extends Component {
            const dembuttons = this.createDemButtons();
            const {stepsEnabled,steps,initialStep} = this.state;
            let match = this.props.match;
-<<<<<<< HEAD
           //  if (this.state.currentvar){
           //   //  console.log(this.state.varlocation.index1)
           //   let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
@@ -333,13 +320,11 @@ class DropdownBootstrap extends Component {
              let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
              variables = [abbrev1, abbrev2];
              labels = ["Men", "Women"];
-=======
            if (this.state.currentvar){
             //  console.log(this.state.varlocation.index1)
             let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
             // console.log(matchingvar);
           }
->>>>>>> 08a491e897935ea588b56203e8b8ca785df85ed9
 
            }
            else if (this.state.gender & this.state.race){
