@@ -208,7 +208,8 @@ div.carousel-caption {
   font-family: "Oswald";
   font-weight: bold;
   letter-spacing: -1.5px;
-  margin-top: 7%;
+  /* Removed to make the space above the text shorter. */
+  /* margin-top: 7%; */
   position: relative;
   text-align: center;
   font-size: 60px;
