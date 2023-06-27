@@ -4,7 +4,7 @@
  */
 import React from "react";
 import "../styling/App.css";
-import "../styling/Home.css";
+import style from "../styling/Home.css";
 import WinC from "../pictures/WinC.jpg";
 import WinCLogo from "../pictures/WinCLogo.png";
 import Report from "../pictures/Report.jpg";
@@ -230,7 +230,7 @@ class Home extends React.Component {
                     histogram to get a comprehensive view of how each county
                     measures in this particular variable.{" "}
                   </p>
-                  <Button variant="primary" href="dataportal">
+                  <Button variant="primary" href="dataportal" style={{backgroundColor: "teal", borderColor:"teal"}}>
                     Go to Data Portal
                   </Button>
                 </div>
@@ -261,7 +261,7 @@ class Home extends React.Component {
                     name, instead they will be identified as Women in
                     Construction Participant.
                   </p>
-                  <Button variant="primary" href="stories">
+                  <Button variant="primary" href="stories" style={{backgroundColor: "teal", borderColor:"teal"}}>
                     Go to Stories
                   </Button>
                 </div>
@@ -286,7 +286,7 @@ class Home extends React.Component {
                     across counties. See how we differentiated the index by race
                     to capture the combined effects of race and gender.
                   </p>
-                  <Button variant="primary" href="indexinfo">
+                  <Button variant="primary" href="indexinfo" style={{backgroundColor: "teal", borderColor:"teal"}}>
                     Go to Index
                   </Button>
                 </div>
