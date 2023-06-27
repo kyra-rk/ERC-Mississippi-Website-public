@@ -322,6 +322,40 @@ class Home extends React.Component {
           </div>
         </section>*/}
 
+        {/* testing section 4 - Video Demo Section */}
+        {/* ref={this.myRef} --> what is this? */}
+        <section class="page-section second">
+          {/* <Row> */}
+            <div className="introduction">
+              <h1>Scroll Demo</h1>
+              <p> The different features of Make Women Count </p>
+            </div>
+          {/* </Row> */}
+          <Row className="introduction">
+            <Col xl={3}>
+              <div className="demo-bottom">
+              <StickyBox offsetTop={80}>
+                    <h3>Data Portal</h3> {/* add: Compare populations by race and gender. */}
+                    The data portal has seven main categories: demographics,
+                    health, education, employment, income, housing, and
+                    government assistance.
+              </StickyBox>
+              </div>
+            </Col>
+            <Col xl={9}>
+            <div className="demo-bottom">
+                    <video
+                      src={data_portal_demo}
+                      id="video"
+                      autoplay="autoplay"
+                      loop="true"
+                      muted
+                    ></video>
+              </div>
+            </Col>
+          </Row>
+        </section>
+
         {/*section 4 - Video Demo Section*/}
         {/* if video is not loading or file not found error, try downloading the video from the drive and replace file*/}
         <section class="page-section second">
