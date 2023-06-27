@@ -32,7 +32,7 @@ const nav_bar_items = [{url: "/", name: "Home"},
                            {url: "/stories", name: "Stories"},
                            {url: "/methodology", name: "Methodology"},
                            {url: "/about", name: "About"}];
-                          //  {url: "/contact", name: "Contact"}];
+                          //  {url: "/contact", name: "Contact"}]; 
 /*made home link be exact path "/" , any non matching url goes to nomatch page*/
 
 class App extends Component {
