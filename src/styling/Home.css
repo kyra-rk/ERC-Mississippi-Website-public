@@ -140,6 +140,8 @@ div.carousel-caption {
   color: #ffd524;
 } */
 
+
+/* doesn't seem to do anything */
 .bottom-spacing{
   margin-bottom: 15%;
 }
@@ -239,7 +241,8 @@ div.carousel-caption {
 
 .introduction p{
   font-size: 20px;
-  margin-bottom: 50px;
+  /* removed because it was too much */
+  /* margin-bottom: 50px; */
 }
 
 .Howto{
@@ -320,9 +323,10 @@ div.carousel-caption {
   height: 90%; */
 }
 
+/* changed width and height from 90% to 100 %*/
 #video{
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   margin-top: 20px;
   margin: auto;
   display: flex;
@@ -367,6 +371,15 @@ div.carousel-caption {
 
 .carousel-inner {   
   margin: auto; 
+}
+
+.demobottom{
+  padding-bottom: 0px;
+}
+
+/* padding applied to the bottom of the text descriptions in Video Demo section for when screen is too small */
+.textbottom{
+  padding-bottom: 5%;
 }
 
 /* to seperate the spacing for the second and third video demos.*/

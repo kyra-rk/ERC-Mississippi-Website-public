@@ -326,14 +326,14 @@ class Home extends React.Component {
         {/* ref={this.myRef} --> what is this? */}
         <section class="page-section second">
           {/* <Row> */}
-            <div className="introduction">
+            <div className="introduction demobottom">
               <h1>Scroll Demo</h1>
               <p> The different features of Make Women Count </p>
             </div>
           {/* </Row> */}
-          <Row className="introduction">
+          <Row className="introduction demobottom">
             <Col xl={3}>
-              <div className="demo-bottom">
+              <div className="textbottom">
               <StickyBox offsetTop={80}>
                     <h3>Data Portal</h3> {/* add: Compare populations by race and gender. */}
                     The data portal has seven main categories: demographics,
@@ -352,6 +352,36 @@ class Home extends React.Component {
                       muted
                     ></video>
               </div>
+            </Col>
+          </Row>
+          <Row className="introduction">
+            <Col xl={3}>
+              <div className="textbottom">
+              <StickyBox offsetTop={80}>
+                    <h3>Index</h3>
+                    Read through our process of calculating a Women's Economic
+                    Security Index and visualize the distribution of the index
+                    across counties.
+                  </StickyBox>
+              </div>
+            </Col>
+            <Col xl={9}>
+              <p> MISSING VIDEO </p>
+            </Col>
+          </Row>
+          <Row className="introduction">
+            <Col xl={3}>
+              <div className="textbottom">
+              <StickyBox offsetTop={80}>
+                    <h3>Stories</h3>
+                    Read through stories we collected from women in the Women in
+                    Construction Job Training Program. Explore either by person
+                    or topic.
+                  </StickyBox>
+              </div>
+            </Col>
+            <Col xl={9}>
+              <p> MISSING VIDEO </p>
             </Col>
           </Row>
         </section>
