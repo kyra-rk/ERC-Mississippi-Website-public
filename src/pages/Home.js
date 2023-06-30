@@ -327,12 +327,12 @@ class Home extends React.Component {
         <section class="page-section second">
           {/* <Row> */}
             <div className="introduction demobottom">
-              <h1>Scroll Demo</h1>
+              <h2>Scroll Demo</h2>
               <p> The different features of Make Women Count </p>
             </div>
           {/* </Row> */}
           <Row className="introduction demobottom">
-            <Col xl={3}>
+            <Col lg={3}>
               <div className="textbottom">
               <StickyBox offsetTop={80}>
                     <h3>Data Portal</h3> {/* add: Compare populations by race and gender. */}
@@ -342,7 +342,7 @@ class Home extends React.Component {
               </StickyBox>
               </div>
             </Col>
-            <Col xl={9}>
+            <Col lg={9}>
             <div className="demo-bottom">
                     <video
                       src={data_portal_demo}
@@ -355,7 +355,7 @@ class Home extends React.Component {
             </Col>
           </Row>
           <Row className="introduction">
-            <Col xl={3}>
+            <Col>
               <div className="textbottom">
               <StickyBox offsetTop={80}>
                     <h3>Index</h3>
@@ -364,13 +364,10 @@ class Home extends React.Component {
                     across counties.
                   </StickyBox>
               </div>
-            </Col>
-            <Col xl={9}>
-              <p> MISSING VIDEO </p>
             </Col>
           </Row>
           <Row className="introduction">
-            <Col xl={3}>
+            <Col>
               <div className="textbottom">
               <StickyBox offsetTop={80}>
                     <h3>Stories</h3>
@@ -380,79 +377,9 @@ class Home extends React.Component {
                   </StickyBox>
               </div>
             </Col>
-            <Col xl={9}>
-              <p> MISSING VIDEO </p>
-            </Col>
           </Row>
         </section>
 
-        {/*section 4 - Video Demo Section*/}
-        {/* if video is not loading or file not found error, try downloading the video from the drive and replace file*/}
-        <section class="page-section second">
-          <div className="introduction">
-            <h1>Scroll Demo</h1>
-            <p> The different features of Make Women Count </p>
-            <div> {/* Tries to add Row (june 2023). tried changing div to Col. Was messy.*/}
-            <div className="row"> {/* this contains the video and short description on the left. why not class "row video-demo"??*/}
-              <div style={{ overflow: "auto" }}>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                  {/* <Col sm={6}> */}
-                  <StickyBox offsetTop={80}>
-                    <h3>Data Portal</h3> {/* add: Compare populations by race and gender. */}
-                    The data portal has seven main categories: demographics,
-                    health, education, employment, income, housing, and
-                    government assistance.
-                  </StickyBox>
-                  {/* </Col> */}
-                  {/* <Col sm={6}> */}
-                  <div>
-                    <video
-                      src={data_portal_demo}
-                      id="video"
-                      autoplay="autoplay"
-                      loop="true"
-                      muted
-                    ></video>
-                  </div>
-                  {/* </Col> */}
-                </div>
-              </div>
-            </div>
-
-            <div className="row video-demo"> {/* this is the Index description */}
-              <div style={{ overflow: "auto" }}>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                  <StickyBox offsetTop={80}>
-                    <h3>Index</h3>
-                    Read through our process of calculating a Women's Economic
-                    Security Index and visualize the distribution of the index
-                    across counties.
-                  </StickyBox>
-                  <div> {/* !! missing */}
-                    {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="row video-demo"> {/* this is the stories description */}
-              <div style={{ overflow: "auto" }}>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                  <StickyBox offsetTop={80}>
-                    <h3>Stories</h3>
-                    Read through stories we collected from women in the Women in
-                    Construction Job Training Program. Explore either by person
-                    or topic.
-                  </StickyBox>
-                  <div> {/* !! missing */}
-                    {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </section>
 
         {/* Imp: Consider adding a footer with an "UP" arrow. */}
 
