@@ -198,7 +198,7 @@ class DropdownBootstrap extends Component {
         getabbreviation(matchingvar, demselected, genderselected){
           // console.log("GET ABBREVIATION", demselected, genderselected, matchingvar.universe, matchingvar.type)
           var abbrev = "";
-          // console.log(matchingvar);
+          // console.log("matchingvar:" +  matchingvar);
           abbrev = matchingvar.abbreviation + "_" + genderselected + "_" + demselected
           // var genderabbrev = "";
           // var totalabbrev = "";

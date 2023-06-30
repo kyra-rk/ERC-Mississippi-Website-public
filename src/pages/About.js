@@ -8,7 +8,7 @@ import { Row, Col } from 'react-bootstrap';
 import MLICCI from '../pictures/MLICCI.jpg';
 import Report from '../pictures/Report.jpg';
 import WinCLogo from '../pictures/WinCLogo.png'
-import Contact from './Contact';
+
 
 export const About = () => (
 	  <div className="screenwidth">
