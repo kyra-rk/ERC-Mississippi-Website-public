@@ -19,3 +19,7 @@
 .aboutrow{
   margin-bottom: 30px;
 }
+
+.image {   
+  max-width: 100%; 
+}
