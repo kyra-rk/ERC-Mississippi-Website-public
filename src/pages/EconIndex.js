@@ -578,11 +578,11 @@ export const EconIndex = () => (
             </Row>
 
             <Row>
-              <h6>
+              <p>
                 We highly recommend you read through our methodology for
                 calculating the index, which is included below our maps for the
                 index.
-              </h6>
+              </p>
             </Row>
 
             <Row className="justify-content-center">
