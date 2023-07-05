@@ -925,7 +925,7 @@ export const EconIndex = () => (
                     class="slidecontainer"
                     className="info_section multiplevars"
                   >
-                    <h2>Combining Variables Into Our Index</h2>
+                    {/* <h3>Combining Variables Into Our Index</h3> */}
                     <p>
                       We do the same steps for each of our variables as shown
                       below and we average them to get a final index value for a
