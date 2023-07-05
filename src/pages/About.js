@@ -7,7 +7,8 @@ import '../styling/About.css';
 import { Row, Col } from 'react-bootstrap';
 import MLICCI from '../pictures/MLICCI.jpg';
 import Report from '../pictures/Report.jpg';
-import WinCLogo from '../pictures/WinCLogo.png'
+import WinCLogo from '../pictures/WinCLogo.png';
+import Contact from './Contact.js';
 
 
 export const About = () => (
