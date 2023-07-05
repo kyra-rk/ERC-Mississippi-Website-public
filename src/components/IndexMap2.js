@@ -357,12 +357,12 @@ class DemographicMaps extends Component {
                <Row className="rowblock justify-content-md-center">
                    
                    <Col md={{span: 6}}>
-                       <Row className="justify-content-md-center"><div className="maptitle"><h1> {this.props.labels[0]}</h1></div></Row>
+                       <Row className="justify-content-md-center"><div className="maptitle"><h2> {this.props.labels[0]}</h2></div></Row>
                        <Row><Col className="demmapclass0"></Col></Row>
                    </Col>
 
                    <Col md={{span: 6}}>
-                       <Row className="justify-content-md-center"><div className="maptitle"><h1> {this.props.labels[1]}</h1></div></Row>
+                       <Row className="justify-content-md-center"><div className="maptitle"><h2> {this.props.labels[1]}</h2></div></Row>
                        <Row><Col className="demmapclass1"></Col></Row>
                    </Col>
                    

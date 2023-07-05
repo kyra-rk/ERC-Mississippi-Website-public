@@ -21,6 +21,12 @@ path {
   fill: steelblue;
 }
 
+.maptitle h2 {
+  font-size: 20px;
+  text-decoration: underline;
+  font-family: "Roboto";
+}
+
 #button1:hover, #button2:hover {
   fill-opacity: .7;
 }
