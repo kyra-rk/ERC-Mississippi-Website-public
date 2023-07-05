@@ -24,6 +24,15 @@
     font-family: "Oswald";
   }
 
+  .econindex h2{
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: "Oswald";
+  }
+
 .econindex p{
     text-align: justify;
     font-size: 16px;
