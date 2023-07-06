@@ -344,40 +344,47 @@ class DropdownBootstrap extends Component {
          }
 
             return (
-                <Container fluid="True">
+              <Container fluid="True">
                 {/* /* <h1>
 Data Portal                </h1> */}
-                  <Steps
-                    enabled={stepsEnabled}
-                    steps={steps}
-                    initialStep={initialStep}
-                    onStart={this.onStart}
-                    onExit={this.onExit}/>
+                <Steps
+                  enabled={stepsEnabled}
+                  steps={steps}
+                  initialStep={initialStep}
+                  onStart={this.onStart}
+                  onExit={this.onExit}
+                />
 
-                 <Row className="justify-content-center">
-                {/* <Router> */}
-                {/* <Col sm={1}></Col> */}
-                <Col sm={12} lg={10}>
-                   <ButtonToolbar className="step1"> {varbuttons}
-                    <DropdownButton
-                        title="Childcare"
-                        variant={"info"}>
-                         <Dropdown.Item onClick={this.handleChildCareClick}>CCDF Eligible Children</Dropdown.Item>
-                    </DropdownButton>
-                   </ButtonToolbar>
-                   <section class="buttons">
-                  <Row className="justify-content-center">
-                  <Col lg={10}>{dembuttons}</Col>
-                  </Row>
-                 </section>
-                </Col>
-                   <Col lg={12} className="demobutton">
-                   <IconButton color="default" className="iconbutton" onClick={this.onStart}>
+                <Row className="justify-content-center">
+                  {/* <Router> */}
+                  {/* <Col sm={1}></Col> */}
+                  <Col sm={12} lg={10}>
+                    <ButtonToolbar className="step1">
+                      {" "}
+                      {varbuttons}
+                      <DropdownButton title="Childcare" variant={"info"}>
+                        <Dropdown.Item onClick={this.handleChildCareClick}>
+                          CCDF Eligible Children
+                        </Dropdown.Item>
+                      </DropdownButton>
+                    </ButtonToolbar>
+                    <section class="buttons">
+                      <Row className="justify-content-center">
+                        <Col lg={10}>{dembuttons}</Col>
+                      </Row>
+                    </section>
+                  </Col>
+                  <Col lg={12} className="demobutton">
+                    <IconButton
+                      color="default"
+                      className="iconbutton"
+                      onClick={this.onStart}
+                    >
                       <HelpIcon color="primary" />
                       <p>Click here for Demo</p>
                     </IconButton>
-                    </Col>
-                   {/* <Switch>
+                  </Col>
+                  {/* <Switch>
                     <Route strict path={`${match.path}/:varabbreviation`}
                     render={(routeProps) => (
                       <MapTest {...routeProps} datainput = {this.state.dataset} />
@@ -387,24 +394,37 @@ Data Portal                </h1> */}
                 </Router> */}
                 </Row>
 
-
-                {!this.state.childcare &&
-            <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected} vardesc={this.state.vardesc} longdesc={this.state.varlongdesc}/>
-          }
-                 {this.state.childcare &&
-                 <ChildCareMap />}
-                 {/* {this.state.currentvar && variables &&
+                {!this.state.childcare && (
+                  <MapTest
+                    datainput={this.state.dataset}
+                    variable={this.state.varabbreviation}
+                    varname={this.state.varname}
+                    group={this.state.buttonselected}
+                    vardesc={this.state.vardesc}
+                    longdesc={this.state.varlongdesc}
+                  />
+                )}
+                {this.state.childcare && <ChildCareMap />}
+                {/* {this.state.currentvar && variables &&
             <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
 
-<div className="demmapscontainer">
-                {/* {this.state.currentvar &&
+                <div className="demmapscontainer">
+                  {/* {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
-                 {this.state.currentvar && variables &&
-            <DemographicMap className = "demmaps" variables = {variables} labels = {labels} datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>}
-</div>
-          </Container>
-
-            )
+                  {this.state.currentvar && variables && (
+                    <DemographicMap
+                      className="demmaps"
+                      variables={variables}
+                      labels={labels}
+                      datainput={this.state.dataset}
+                      variable={this.state.varabbreviation}
+                      varname={this.state.varname}
+                      group={this.state.buttonselected}
+                    />
+                  )}
+                </div>
+              </Container>
+            );
         }
         onStart = () => {
           this.setState(() => ({ stepsEnabled: true }));
