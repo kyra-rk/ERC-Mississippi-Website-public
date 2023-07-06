@@ -127,12 +127,16 @@ div.btn-toolbar {
 }
 
 .iconbutton {
-  margin: 0px;
-  top: 'auto';
-  right: 0px;
-  bottom: 20px;
-  left: 'auto';
-  position: 'fixed';
+  /* margin: 0px; */
+  /* top: 'auto'; */
+  padding: 2px;
+  color: transparent;
+  background-color: transparent;
+  border-color: transparent;
+  padding-right: 15px;
+  /* bottom: 20px; */
+  /* left: 'auto'; */
+  /* position: 'fixed'; */
 }
 
 svg.MuiSvgIcon-root.MuiSvgIcon-colorPrimary path {
