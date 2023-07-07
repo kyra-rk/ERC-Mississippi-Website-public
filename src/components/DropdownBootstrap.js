@@ -502,14 +502,6 @@ Data Portal                </h1> */}
           <Col sm={12} lg={10}>
             <ButtonToolbar className="step1">
               {" "}
-              <div>
-                <button
-                  className="iconbutton"
-                  onClick={this.onStart}
-                >
-                  <HelpIcon color="primary" />
-                </button>
-              </div>
               {varbuttons}
               <DropdownButton title="Childcare" variant={"info"}>
                 <Dropdown.Item onClick={this.handleChildCareClick}>
@@ -522,6 +514,15 @@ Data Portal                </h1> */}
                 <Col lg={10}>{dembuttons}</Col>
               </Row>
             </section>
+            <div>
+                <button
+                  className="iconbutton"
+                  onClick={this.onStart}
+                >
+                  <HelpIcon color="primary" />
+                </button>
+                <p className="help-text">Demo</p>
+              </div>
           </Col>
           {/* <Col lg={12} className="demobutton">
             <IconButton
