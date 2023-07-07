@@ -228,7 +228,7 @@ div.carousel-caption {
   letter-spacing: -1.5px;
   font-weight: bold;
   margin-top: 0%;
-  font-family: "Fira Sans";
+  font-family: "Oswald";
   position: relative;
   text-align: center;
   font-size: 60px;
@@ -249,6 +249,11 @@ div.carousel-caption {
   font-size: 20px;
   /* removed because it was too much */
   /* margin-bottom: 50px; */
+}
+
+h3 {
+  font-size: 1.90rem;
+  font-family: 'Fira Sans';
 }
 
 .Howto{
