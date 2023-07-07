@@ -135,7 +135,7 @@ class DropdownBootstrap extends Component {
         {
           element: ".step1",
           intro:
-            "Take this tour to understand how to use this tool. You can skip the tour by clicking on the Skip button. The first step to using this tool is selecting a category to explore and choosing a variable from it.",
+            "Take this tour to understand how to use this tool. The first step to using this tool is selecting a category to explore and choosing a variable from it. You can skip the tour by clicking on the Skip button. If you ever want to see these steps again, click the Demo button.",
         },
         {
           element: ".step2",
@@ -178,6 +178,11 @@ class DropdownBootstrap extends Component {
           element: ".step9",
           intro:
             "See the variation in the variable by different demographic groups here. Note the title above each map to see what demographic is being represented. These will change according to what is available for a specific variable.",
+          position: "right",
+        },
+        {
+          element: ".step10",
+          intro: "If you need to see this demo again, click this button.",
           position: "right",
         },
       ],
@@ -516,7 +521,7 @@ Data Portal                </h1> */}
             </section>
             <div>
                 <button
-                  className="iconbutton"
+                  className="iconbutton step10"
                   onClick={this.onStart}
                 >
                   <HelpIcon color="primary" />
