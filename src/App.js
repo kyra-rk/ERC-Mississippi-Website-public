@@ -1,9 +1,10 @@
 /*Entry point for the app*/
 import React, { Component } from 'react';
 // import './styling/App.css';
+import ScrollToTop from './components/ScrollToTop';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import {HashRouter} from 'react-router-dom'
-
 import { Switch, NavLink } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -39,6 +40,7 @@ class App extends Component {
   render() {
     return (
         <Router>
+          <ScrollToTop />
         <div className="App">
         <NavBar links={nav_bar_items} brand="Make Women Count"/>
           <Switch>
