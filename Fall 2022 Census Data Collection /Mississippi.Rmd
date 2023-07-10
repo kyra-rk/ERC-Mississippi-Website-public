@@ -261,8 +261,9 @@ all_b <- (vars %>% filter(str_detect(label, "With"), str_detect(name, "C27001B")
 all_w <- (vars %>% filter(str_detect(label, "With"), str_detect(name, "C27001A")))$name
 
 #Add E to the end of everything
-f1 <- function(x,y) paste0(x,y)
-result <- lapply(list(all_with, all_m, all_f, all_b, all_w), f1, "E")
+paste_e <- function(x,y) paste0(x,"E")
+
+result <- lapply(list(all_with, all_m, all_f, all_b, all_w), paste_e)
 
 #above 53 and 56 for all female, 25 and 28 for male
 #total 52 and 55 for female, 24 and 27 for male
@@ -301,7 +302,7 @@ all_with <- append(all_m, all_f)
 total_m <- (vars %>% filter(str_detect(label, "Male"),str_detect(label, "Estimate"),str_detect(label, "years"),!str_detect(label,"coverage"),str_detect(name, "B27003")))[1:7,]$name
 total_f <- (vars %>% filter(str_detect(label, "Female"),str_detect(label, "Estimate"),str_detect(label, "years"),!str_detect(label,"coverage"),str_detect(name, "B27003")))[1:7,]$name
 total <- append(total_m, total_f)
-result <- lapply(list(all_with, all_m, all_f, total, total_m, total_f), f1, "E")
+result <- lapply(list(all_with, all_m, all_f, total, total_m, total_f), paste_e)
 
 publichealthdf <- publichealthdf %>% mutate(
   PublicHealthInsurance_A_A = (100*rowSums(across(result[[1]])))/rowSums(across(result[[4]])),
@@ -399,20 +400,317 @@ Other_Median_Earnings_A_A = 0
 )
 ```
 
+
+#occupation data
+
 ```{r}
 occdf <- getdata("S2401", "C24010", subject = TRUE)
+#head(occdf)
+
+#tidyoccdf <- occdf[[1]]
+#tidyoccdf <- tidyoccdf %>% select("GEOID" | ends_with("E")) #%>% select(!"NAME")
+
+vars <- occdf[1,]
+vars
+
+#healthcare
+occdf <- occdf %>% mutate(
+  HealthcareEmployees_A_A = 100*((S2401_C01_015E + S2401_C01_016E + S2401_C01_017E +     S2401_C01_019E)/S2401_C01_001E),
+  HealthcareEmployees_F_A = 100*((S2401_C04_015E + S2401_C04_016E + S2401_C04_017E +     S2401_C04_019E)/S2401_C04_001E),
+  HealthcareEmployees_M_A = 100*((S2401_C02_015E + S2401_C02_016E + S2401_C02_017E +     S2401_C02_019E)/S2401_C02_001E),
+  HealthcareEmployees_A_W = 100*((C24010A_003E + C24010A_004E + C24010A_009E + C24010A_010E)/(C24010A_002E + C24010A_008E)),  
+  HealthcareEmployees_A_B = 100*((C24010B_003E + C24010A_004E + C24010B_009E + C24010A_010E)/(C24010A_003E + C24010A_008E)),
+  HealthcareEmployees_F_W = 100*((C24010A_009E + C24010A_010E)/(C24010A_008E)),
+  HealthcareEmployees_F_B = 100*((C24010B_009E + C24010B_010E)/(C24010B_008E)),
+  HealthcareEmployees_M_W = 100*((C24010A_003E + C24010A_004E)/(C24010A_002E)),
+  HealthcareEmployees_M_B = 100*((C24010B_003E + C24010B_004E)/(C24010B_002E))
+)
+
+#legal employees
+occdf <- occdf %>% mutate(
+  LegalEmployees_A_A = 100*((S2401_C01_012E)/(S2401_C01_001E)), 
+  LegalEmployees_F_A = 100*((S2401_C04_012E)/(S2401_C04_001E)),
+  LegalEmployees_M_A = 100*((S2401_C02_012E)/(S2401_C02_001E)) 
+)
+
+#sales employees
+occdf <- occdf %>% mutate(
+  SalesEmployees_A_A = 100*((S2401_C01_027E)/(S2401_C01_001E)),
+  SalesEmployees_F_A = 100*((S2401_C04_027E)/(S2401_C04_001E)), 
+  SalesEmployees_M_A = 100*((S2401_C02_027E)/(S2401_C02_001E)),
+  SalesEmployees_A_W = 100*((C24010A_005E + C24010A_011E)/(C24010A_003E + C24010A_008E)),
+  SalesEmployees_A_B = 100*((C24010B_005E + C24010B_011E)/(C24010B_003E + C24010B_008E)), 
+  SalesEmployees_F_W = 100*((C24010A_011E)/(C24010A_008E)), 
+  SalesEmployees_F_B = 100*((C24010B_011E)/(C24010B_008E)), 
+  SalesEmployees_M_W = 100*((C24010A_005E)/(C24010A_003E)), 
+  SalesEmployees_M_B = 100*((C24010B_005E)/(C24010B_003E)) 
+)
+
+#business employees 
+occdf <- occdf %>% mutate(
+  BusEmployees_A_A = 100*((S2401_C01_004E + S2401_C01_005E)/(S2401_C01_001E)),
+  BusEmployees_F_A = 100*((S2401_C04_004E + S2401_C04_005E)/(S2401_C04_001E)),
+  BusEmployees_M_A = 100*((S2401_C02_004E + S2401_C02_005E)/(S2401_C02_001E)),
+  BusEmployees_A_W = 100*((C24010A_003E + C24010A_009E)/(C24010A_002E + C24010A_008E)),  
+  BusEmployees_A_B = 100*((C24010B_003E + C24010B_009E)/(C24010A_003E + C24010A_008E)),
+  BusEmployees_F_W = 100*((C24010A_009E)/(C24010A_008E)),
+  BusEmployees_F_B = 100*((C24010B_009E)/(C24010B_008E)),
+  BusEmployees_M_W = 100*((C24010A_003E)/(C24010A_002E)),
+  BusEmployees_M_B = 100*((C24010B_003E)/(C24010B_002E))
+)
+
+#construction and extraction employees
+occdf <- occdf %>% mutate(
+  ConstructionEmployees_A_A = 100*((S2401_C01_031E)/(S2401_C01_001E)),
+  ConstructionEmployees_F_A = 100*((S2401_C04_031E)/(S2401_C04_001E)),
+  ConstructionEmployees_M_A = 100*((S2401_C02_031E)/(S2401_C02_001E)),
+  ConstructionEmployees_A_W = 100*((C24010A_006E + C24010A_012E)/(C24010A_003E + C24010A_008E)), 
+  ConstructionEmployees_A_B = 100*((C24010B_006E + C24010B_012E)/(C24010B_003E + C24010B_008E)),
+  ConstructionEmployees_F_W = 100*((C24010A_012E)/(C24010A_008E)), 
+  ConstructionEmployees_F_B = 100*((C24010B_012E)/(C24010B_008E)),
+  ConstructionEmployees_M_W = 100*((C24010A_006E)/(C24010A_003E)),
+  ConstructionEmployees_M_B = 100*((C24010B_006E)/(C24010B_003E))
+)
+
+#food employees 
+occdf <- occdf %>% mutate(
+  FoodEmployees_A_A = 100*((S2401_C01_023E)/(S2401_C01_001E)),
+  FoodEmployees_F_A = 100*((S2401_C04_023E)/(S2401_C04_001E)),
+  FoodEmployees_M_A = 100*((S2401_C02_023E)/(S2401_C02_001E))
+)
+
+#transportation employees 
+occdf <- occdf %>% mutate(
+  TransportEmployees_A_A = 100*((S2401_C01_033E)/(S2401_C01_001E)),
+  TransportEmployees_F_A = 100*((S2401_C04_033E)/(S2401_C04_001E)),
+  TransportEmployees_M_A = 100*((S2401_C02_033E)/(S2401_C02_001E)),
+  TransportEmployees_A_W = 100*((C24010A_007E + C24010A_013E)/(C24010A_003E + C24010A_008E)),  
+  TransportEmployees_A_B = 100*((C24010B_007E + C24010B_013E)/(C24010B_003E + C24010B_008E)), 
+  TransportEmployees_F_W = 100*((C24010A_013E)/(C24010A_008E)), 
+  TransportEmployees_F_B = 100*((C24010B_013E)/(C24010B_008E)),
+  TransportEmployees_M_W = 100*((C24010A_007E)/(C24010A_003E)),
+  TransportEmployees_M_B = 100*((C24010B_007E)/(C24010B_003E)) 
+)
+
+allvars <- full_join(allvars, occdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+```
+
+#unemployment data
+```{r}
+#keeps only the estimates
+unemployment <- getdata("B23001", "C23002", TRUE)
+head(unemployment)
+
+#unsure about the purpose of these lines it seems the same either way
+tidyunemploymentdf <- unemployment[[1]]
+#tidyunemploymentdf <- tidyunemploymentdf %>% select("GEOID" | ends_with("E")) %>% select(!"NAME")
+
+vars <- unemployment[[2]]
+vars
+
+filtervars <- function (variables, searchname, searchtext, removetext="") {
+  filteredvars <- variables %>% filter(str_detect(name, searchname))
+  for (text in searchtext) {
+    filteredvars <- filteredvars %>% filter(str_detect(label, text))
+  }
+  if (removetext != "") {
+    filteredvars <- filteredvars %>% filter(!str_detect(label, removetext))
+  }
+  return (filteredvars$name)
+}
+
+all_unemployed <- filtervars(vars, "B23001", c("Unemployed")) #all_unemployed
+all_unemployed_m <- filtervars(vars, "B23001", c("Unemployed", "Male")) #unemployed male
+all_unemployed_f <- filtervars(vars, "B23001", c("Unemployed", "Female")) #unemployed female
+all_unemployed_w <- filtervars(vars, "C23002A", c("Unemployed")) #unemployed white people
+all_unemployed_b <- filtervars(vars, "C23002B", c("Unemployed")) #unemployed black people
+all_unemployed_fw <- filtervars(vars, "C23002A", c("Unemployed", "Female")) #unemployed white women
+all_unemployed_fb <- filtervars(vars, "C23002B", c("Unemployed", "Female")) #unemployed black women
+all_unemployed_mw <- filtervars(vars, "C23002A", c("Unemployed", "Male")) #unemployed white men
+all_unemployed_mb <- filtervars(vars, "C23002B", c("Unemployed", "Male")) #unemployed black men
+
+#denominators start here
+all_labor_force <- filtervars(vars, "B23001", c("In labor force:"), c("In labor force:!!")) #everyone
+all_labor_force_m <- filtervars(vars, "B23001", c("In labor force:", "Male"), "In labor force:!!") #male
+all_labor_force_f <- filtervars(vars, "B23001", c("In labor force:", "Female"), "In labor force:!!") #female
+all_labor_force_w <- filtervars(vars, "C23002A", c("In labor force:"), "In labor force:!!") #white
+all_labor_force_b <- filtervars(vars, "C23002B", c("In labor force:"), "In labor force:!!") # black
+all_labor_force_mw <- filtervars(vars, "C23002A", c("In labor force:", "Male"), "In labor force:!!") #white men
+all_labor_force_mb <- filtervars(vars, "C23002B", c("In labor force:", "Male"), "In labor force:!!")
+all_labor_force_fw <- filtervars(vars, "C23002A", c("In labor force:", "Female"), "In labor force:!!")
+all_labor_force_fb <- filtervars(vars, "C23002B", c("In labor force:", "Female"), "In labor force:!!")
+
+
+#Add E to everything 
+result <- lapply(list(all_unemployed, all_unemployed_m, all_unemployed_f, all_unemployed_w, all_unemployed_b, all_unemployed_fw, all_unemployed_fb, all_unemployed_mw, all_unemployed_mb), paste_e)
+result
+
+result2 <- lapply(list(all_labor_force, all_labor_force_m, all_labor_force_f, all_labor_force_w, all_labor_force_b, all_labor_force_fw, all_labor_force_fb, all_labor_force_mw, all_labor_force_mb), paste_e)
+result2 # list 
+
+
+#rename and calculate percentages
+tidyunemploymentdf
+tidyunemploymentdf <- tidyunemploymentdf %>% mutate(
+  Unemployment_Rate_A_A = 100*((rowSums(across(result[[1]])))/(rowSums(across(result2[[1]])))),
+  Unemployment_Rate_M_A = 100*((rowSums(across(result[[2]])))/(rowSums(across(result2[[2]])))),
+  Unemployment_Rate_F_A = 100*((rowSums(across(result[[3]])))/(rowSums(across(result2[[3]])))),
+  Unemployment_Rate_A_W = 100*((rowSums(across(result[[4]])))/(rowSums(across(result2[[4]])))),
+  Unemployment_Rate_A_B = 100*((rowSums(across(result[[5]])))/(rowSums(across(result2[[5]])))),
+  Unemployment_Rate_F_W = 100*((rowSums(across(result[[6]])))/(rowSums(across(result2[[6]])))),
+  Unemployment_Rate_F_B = 100*((rowSums(across(result[[7]])))/(rowSums(across(result2[[7]])))),
+  Unemployment_Rate_M_W = 100*((rowSums(across(result[[8]])))/(rowSums(across(result2[[8]])))),
+  Unemployment_Rate_M_B = 100*((rowSums(across(result[[9]])))/(rowSums(across(result2[[9]]))))
+)
+
+allvars <- full_join(allvars, tidyunemploymentdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+```
+
+#population data 
+```{r}
+population_estimates <- getdata("B01001")
+#used the rows for total estimates by race or gender, disregarded age ranges 
+population_estimates <- population_estimates %>% mutate(
+  Population_A_A = B01001_001E, #all genders and races
+  Population_M_A = B01001_002E, #male only all races
+  Population_F_A = B01001_017E, #female only and all races
+  Population_A_W = B01001A_001E, #all genders and white only
+  Population_A_B = B01001B_001E, #all genders and black only 
+  Population_M_W = B01001A_002E, #male and white only
+  Population_M_B = B01001B_002E, #male and black only
+  Population_F_W = B01001A_017E, #female and white only 
+  Population_F_B = B01001B_017E, #female and black only 
+)
+
+allvars <- full_join(allvars, population_estimates %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
 
 ```
+
+
+#single households data - correct
+```{r}
+single_households <- getdata("S1101", "B11001", subject=TRUE)
+
+single_households <- single_households %>% mutate(
+  HH_SingleFamily_A_A = 100*((S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)/S1101_C01_009E),
+  HH_SingleFamily_M_A = 100*((S1101_C03_009E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
+  HH_SingleFamily_F_A = 100*((S1101_C04_009E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
+  HH_SingleFamily_A_W = 100*((B11001A_002E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
+  HH_SingleFamily_A_B = 100*((B11001B_002E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
+  HH_SingleFamily_M_W = 100*((B11001A_005E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
+  HH_SingleFamily_M_B = 100*((B11001B_005E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
+  HH_SingleFamily_F_W = 100*((B11001A_006E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
+  HH_SingleFamily_F_B = 100*((B11001B_006E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E))
+)
+
+allvars <- full_join(allvars, single_households %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+```
+
+#single households with minors
+```{r}
+singlehouseholds_minors <- getdata("S2201", raceavailable=FALSE, subject=TRUE)
+
+singlehouseholds_minors <- singlehouseholds_minors %>% mutate(
+  HH_W.MinorsSingleFamily_A_A = 100*((S2201_C01_010E + S2201_C01_011E)/(S2201_C01_009E)),
+  HH_W.MinorsSingleFamily_F_A = 100*((S2201_C01_013E)/(S2201_C01_010E + S2201_C01_011E)),
+  HH_W.MinorsSingleFamily_M_A = 100*((S2201_C01_012E)/(S2201_C01_010E + S2201_C01_011E))
+)
+
+allvars <- full_join(allvars, singlehouseholds_minors %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+```
+
+#families on gov programs data
+```{r}
+govprograms <- getdata("B09010", raceavailable = FALSE)
+#rows 3-6 all family households on SSI
+#rows 9-12 all family households NOT on SSI
+govprograms_familyhouseholds <- govprograms %>% mutate(
+  HHOnGovPrograms_Family_A_A = 100*((B09010_003E)/(B09010_003E+B09010_009E)),
+  HHOnGovPrograms_Family_F_A = 100*((B09010_006E)/(B09010_003E)),
+  HHOnGovPrograms_Family_M_A = 100*((B09010_005E)/(B09010_003E))
+)
+
+# #make histogram of these three variables
+# ggplot(govprograms_familyhouseholds, aes(x = HHOnGovPrograms_Family_A_A)) + geom_histogram(fill="blue", color="black", bins=30)
+# ggplot(govprograms_familyhouseholds, aes(x = HHOnGovPrograms_Family_F_A)) + geom_histogram(fill="red", color="black", bins=30)
+# ggplot(govprograms_familyhouseholds, aes(x = HHOnGovPrograms_Family_M_A)) + geom_histogram(fill="purple", color="black", bins=30)
+
+allvars <- full_join(allvars, govprograms_familyhouseholds %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+```
+
+#single households on SNAP
+```{r}
+single_households_SNAP <- getdata("S2201", raceavailable=FALSE, subject=TRUE)
+
+single_households_SNAP <- single_households_SNAP %>% mutate(
+  HHOnSNAP_SingleFamily_A_A = 100*(S2201_C03_005E/S2201_C01_005E),
+  HHOnSNAP_SingleFamily_M_A = 100*(S2201_C03_006E/S2201_C01_006E),
+  HHOnSNAP_SingleFamily_F_A = 100*(S2201_C03_007E/S2201_C01_007E)
+)
+
+allvars <- full_join(allvars, single_households_SNAP %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+```
+
+#single households with minors on SNAP
+```{r}
+singlehouseholds_minors_SNAP <- getdata("S2201", raceavailable=FALSE, subject=TRUE)
+
+singlehouseholds_minors_SNAP <- singlehouseholds_minors_SNAP %>% mutate(
+  HHOnSNAP_W.MinorsSingleFamily_A_A = 100*(S2201_C03_011E/S2201_C01_011E),
+  HHOnSNAP_W.MinorsSingleFamily_M_A = 100*(S2201_C03_012E/S2201_C01_012E),
+  HHOnSNAP_W.MinorsSingleFamily_F_A = 100*(S2201_C03_013E/S2201_C01_013E)
+)
+
+allvars <- full_join(allvars, singlehouseholds_minors_SNAP %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
+```
+
+#renter-occupied housing
+```{r}
+# renters <- getdata("B25008", "B25003")
+# 
+# #percentages
+# renters <- renters %>% mutate(
+#   RenterOccupied_A_A = 100*(B25008_003E/B25008_001E),
+#   Renter_Occupied_A_W = 100*(B25003A_003E/B25003A_001E),
+#   Renter_Occupied_A_B = 100*(B25003B_003E/B25003B_001E)
+# )
+
+```
+#median rent
+```{r}
+# median_rent <- getdata("B25064", raceavailable=FALSE)
+# median_rent <- median_rent %>% mutate(
+#   Median_Rent_A_A <- B25064_001E
+# )
+```
+#single household renter
+```{r}
+# single_household_renters <- getdata("S1101", raceavailable=FALSE, subject=TRUE)
+# 
+# #find out if this includes married couples or not (contradiction between subtab and variable name)
+# single_household_renters <- single_household_renters %>% mutate(
+#   HH_RenterOccupied_SingleFamily_A_A = 100*((S1101_C03_018E+S1101_C04_018E)/S1101_C01_018E),
+#   HH_RenterOccupied_SingleFamily_M_A = 100*((S1101_C03_018E)/(S1101_C03_018E+S1101_C04_018E)),
+#   HH_RenterOccupied_SingleFamily_F_A = 100*((S1101_C04_018E)/(S1101_C03_018E+S1101_C04_018E))
+# )
+```
+
 
 ```{r}
 install.packages("jsonlite")
 #library(rjson)
 
-olddata <- read.csv(file = "../MSWomenCount/Data_COMPLETE_cleaned_20210302.csv")
+olddata <- read.csv(file = "../Data_COMPLETE_cleaned_20210302.csv")
+olddata <- olddata %>% rename(TANFPayment_A_A = Total_TANFPayment)
 allvars$GEOID <- as.numeric(allvars$GEOID)
 combineddata <- full_join(olddata, allvars, by=c("Id2" = "GEOID") )
 
-jsonlite::write_json(combineddata, "../MSWomenCount/src/data/Data_Test_2022_12_23.json")
+jsonlite::write_json(combineddata, "../src/data/Data_Test_2023_07_10.json")
 ```
 
 
