@@ -49,7 +49,7 @@ class DropdownBootstrap extends Component {
                 currentvar: true,
                 match: this.props.match,
                 varname: "Population Estimates",
-                varabbreviation: 'Female_Population',
+                varabbreviation: 'Population_F_A',
                 vardesc: '',
                 varlongdesc: '',
                 varlocation: {index1: 0, index2: 0},
