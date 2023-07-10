@@ -4,7 +4,7 @@
  */
 import React from "react";
 import "../styling/App.css";
-import "../styling/Home.css";
+import style from "../styling/Home.css";
 import WinC from "../pictures/WinC.jpg";
 import WinCLogo from "../pictures/WinCLogo.png";
 import Report from "../pictures/Report.jpg";
@@ -97,21 +97,21 @@ class Home extends React.Component {
             <Col xl={6}>
               <div className="introduction">
                 {/*}<div className="image">*/}
+                {/* added the mx-auto tag to the className for the image. not sure if it makes a difference. */}
                 <Carousel id="carousel">
                   <Carousel.Item>
                     <img
                       src={Report}
                       alt="Women in Construction"
-                      className="d-block"
+                      className="mx-auto d-block"
                     />
-                    <Carousel.Caption>Report - Placeholder</Carousel.Caption>{" "}
-                    {/* Are we ready to replace this placeholder? */}
+                    <Carousel.Caption>Report - Placeholder</Carousel.Caption>
                   </Carousel.Item>
                   <Carousel.Item>
                     <img
                       src={WinCLogo}
                       alt="Women in Construction"
-                      className="d-block"
+                      className="mx-auto d-block"
                     />
                     <Carousel.Caption>Women in Construction</Carousel.Caption>
                   </Carousel.Item>
@@ -196,23 +196,24 @@ class Home extends React.Component {
 
         {/*section 3 - Features section */}
         <section class="page-section first">
-          {/* the class should be adjusted because the fonts are inconsistent with Stats page */}
           <section id="services"> {/* why services as the id? */}
             <div className="introduction"> 
-              <h2>Features</h2>
+            {/* originally was an h2, made it an h1 for consistency of font/color etc. */}
+              <h1>Features</h1>
               <p> {/* text needs to be replaced */}
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
                 maxime quam architecto quo inventore harum ex magni, dicta
                 impedit.
               </p>
             </div>
-            <div class="container">
+            {/* changed from class="container" to "introduction" */}
+            <div class="introduction">
               <div class="row text-center">
-                <div class="col-md-4">
+                <div class="col-md-4 bottom-spacing">
                   <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500}> */}
                     <a href="dataportal">
-                      <img src={data_logo} alt="Data icon" id="FeatureLogo" />
+                      <img src={data_logo} alt="Data icon" id="FeatureLogo"/>
                     </a>
                     {/* </Fade> */}
                   </span>
@@ -229,11 +230,11 @@ class Home extends React.Component {
                     histogram to get a comprehensive view of how each county
                     measures in this particular variable.{" "}
                   </p>
-                  <Button variant="primary" href="dataportal">
+                  <Button variant="primary" href="dataportal" style={{backgroundColor: "teal", borderColor:"teal"}}>
                     Go to Data Portal
                   </Button>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 bottom-spacing">
                   <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500} delay={500}> */}
                     <a href="stories">
@@ -260,11 +261,11 @@ class Home extends React.Component {
                     name, instead they will be identified as Women in
                     Construction Participant.
                   </p>
-                  <Button variant="primary" href="stories">
+                  <Button variant="primary" href="stories" style={{backgroundColor: "teal", borderColor:"teal"}}>
                     Go to Stories
                   </Button>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 bottom-spacing">
                   <span class="fa-stack fa-4x">
                     {/* <Fade duration={1500} delay={1000}> */}
                     <a href="indexinfo">
@@ -285,7 +286,7 @@ class Home extends React.Component {
                     across counties. See how we differentiated the index by race
                     to capture the combined effects of race and gender.
                   </p>
-                  <Button variant="primary" href="indexinfo">
+                  <Button variant="primary" href="indexinfo" style={{backgroundColor: "teal", borderColor:"teal"}}>
                     Go to Index
                   </Button>
                 </div>
@@ -321,22 +322,28 @@ class Home extends React.Component {
           </div>
         </section>*/}
 
-        {/*section 4 - Video Demo Section*/}
-        {/* if video is not loading or file not found error, try downloading the video from the drive and replace file*/}
+        {/* testing section 4 - Video Demo Section */}
+        {/* ref={this.myRef} --> what is this? */}
         <section class="page-section second">
-          <div className="introduction">
-            <h1>Scroll Demo</h1>
-            <p> The different features of Make Women Count </p>
-            <div className="row"> {/* this contains the video and short description on the left. why not class "row video-demo"??*/}
-              <div style={{ overflow: "auto" }}>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                  <StickyBox offsetTop={80}>
+          {/* <Row> */}
+            <div className="introduction demobottom">
+              <h2>Scroll Demo</h2>
+              <p> The different features of Make Women Count </p>
+            </div>
+          {/* </Row> */}
+          <Row className="introduction demobottom">
+            <Col lg={3}>
+              <div className="textbottom">
+              <StickyBox offsetTop={80}>
                     <h3>Data Portal</h3> {/* add: Compare populations by race and gender. */}
                     The data portal has seven main categories: demographics,
                     health, education, employment, income, housing, and
                     government assistance.
-                  </StickyBox>
-                  <div>
+              </StickyBox>
+              </div>
+            </Col>
+            <Col lg={9}>
+            <div className="demo-bottom">
                     <video
                       src={data_portal_demo}
                       id="video"
@@ -344,44 +351,35 @@ class Home extends React.Component {
                       loop="true"
                       muted
                     ></video>
-                  </div>
-                </div>
               </div>
-            </div>
-
-            <div className="row video-demo"> {/* this is the Index description */}
-              <div style={{ overflow: "auto" }}>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                  <StickyBox offsetTop={80}>
+            </Col>
+          </Row>
+          <Row className="introduction">
+            <Col>
+              <div className="textbottom">
+              <StickyBox offsetTop={80}>
                     <h3>Index</h3>
                     Read through our process of calculating a Women's Economic
                     Security Index and visualize the distribution of the index
                     across counties.
                   </StickyBox>
-                  <div> {/* !! missing */}
-                    {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
-                  </div>
-                </div>
               </div>
-            </div>
-
-            <div className="row video-demo"> {/* this is the stories description */}
-              <div style={{ overflow: "auto" }}>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                  <StickyBox offsetTop={80}>
+            </Col>
+          </Row>
+          <Row className="introduction">
+            <Col>
+              <div className="textbottom">
+              <StickyBox offsetTop={80}>
                     <h3>Stories</h3>
                     Read through stories we collected from women in the Women in
                     Construction Job Training Program. Explore either by person
                     or topic.
                   </StickyBox>
-                  <div> {/* !! missing */}
-                    {/* <video src={data_portal_demo} id="video" autoplay="autoplay" loop="true" muted></video> */}
-                  </div>
-                </div>
               </div>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </section>
+
 
         {/* Imp: Consider adding a footer with an "UP" arrow. */}
 

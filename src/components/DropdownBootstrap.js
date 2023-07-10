@@ -366,7 +366,6 @@ return [ everyonegridbutton];
              let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
              variables = [abbrev1, abbrev2];
              labels = ["Men", "Women"];
-
            }
            else if (this.state.gender & this.state.race){
              let abbrev1 = this.getabbreviation(matchingvar, "A", "M");
