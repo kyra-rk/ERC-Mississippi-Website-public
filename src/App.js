@@ -26,7 +26,7 @@ import TopicCategory from './pages/TopicCategory'
 const nav_bar_items = [{url: "/", name: "Home"}, 
                          //  {url: "/dataportal", name: "Data Portal"},
                            {url: "/dataportal", name: "Data Portal"},
-                           {url: "/dataportal2", name: "Data Portal2"},
+                          //  {url: "/dataportal2", name: "Data Portal2"},
                           //  {url: "/comparison", name: "Compare Data"}, 
                            {url: "/indexinfo", name: "Index"}, 
                            {url: "/stories", name: "Stories"},
@@ -44,7 +44,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home}/>
            <Route path="/dataportal" component={DropdownBootstrap}/>
-           <Route path="/dataportal2" component={DropdownBootstrap_2}/>
+           {/* <Route path="/dataportal2" component={DropdownBootstrap_2}/> */}
           {/* <Route path="/comparison" component={Comparison}/> */}
             <Route path="/indexinfo" component={EconIndex}/>
             <Route path="/stories" component={Stories}/>
