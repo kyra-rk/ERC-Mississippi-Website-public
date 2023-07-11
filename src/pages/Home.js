@@ -121,7 +121,7 @@ class Home extends React.Component {
             </Col>
             <Col xl={6}>
               <div className="introduction">
-                <h1>Welcome</h1>
+                <h2>Welcome</h2>
                 <p>
                   {" "}
                   {/* this message needs to be updated */}
@@ -158,7 +158,7 @@ class Home extends React.Component {
         {/* section 2 - Statistics section*/}
         <section class="page-section second">
           <div className="introduction">
-            <h1>Statistics</h1>
+            <h2>Statistics</h2>
             <p>
               {" "}
               {/* this text needs to be replaced */}
@@ -199,7 +199,7 @@ class Home extends React.Component {
           <section id="services"> {/* why services as the id? */}
             <div className="introduction"> 
             {/* originally was an h2, made it an h1 for consistency of font/color etc. */}
-              <h1>Features</h1>
+              <h2>Features</h2>
               <p> {/* text needs to be replaced */}
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
                 maxime quam architecto quo inventore harum ex magni, dicta
