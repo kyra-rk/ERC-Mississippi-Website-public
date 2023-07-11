@@ -160,18 +160,6 @@ class DropdownBootstrap extends Component {
                     ${racegender ? (this.state.racegender ? "available" : "unavailable") : ""}
                     ${this.state.buttonselected === dem.name ? "selected" : ""}`
                   } // the className for styling purposes
-                  /*
-                  ${dem.name != "Everyone" && dem.id == "dembutton" ? 
-                      (this.state.race ? "available" : "unavailable") : "available"
-                    }
-                    ${dem.id == "genderbutton" ? 
-                      (this.state.gender ? "available" : "unavailable") : ""
-                    }
-                    ${dem.id == "Men" || dem.id == "Women" ? 
-                      (this.state.racegender ? "available" : "unavailable") : ""
-                    }
-                    ${this.state.buttonselected === dem.name ? "selected" : ""}
-                   */
                   value={[dem.race, dem.gender, dem.name]} // the value eg. ['A', 'A', 'Everyone]
                   onClick={this.handleDemClick} // the onClick handler 
                 >
@@ -336,7 +324,7 @@ class DropdownBootstrap extends Component {
 
         handleDemClick(event){
           if (this.state.currentvar) {
-            console.log(event.target.value) // A,F,Women --> race, gender, overall dem name
+            // console.log(event.target.value) // A,F,Women --> race, gender, overall dem name
             {/* this.state.varlocation.index1 --> the number associated with the category */}
             {/* this.state.varlocation.index2 --> the number associated with the sub-topic */}
             const matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2]
@@ -398,7 +386,7 @@ class DropdownBootstrap extends Component {
              labels = ["White Population", "Black Population"];
            }
          }
-         console.log(this.state)
+        //  console.log(this.state)
             return (
                 <Container fluid="True">
                 {/* /* <h1>
