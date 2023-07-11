@@ -416,7 +416,7 @@ return [ everyonegridbutton];
     if (this.state.currentvar) {
       //  console.log(this.state.varlocation.index1)
       let matchingvar =
-        categories[this.state.varlocation.index1].variables[
+        categories2[this.state.varlocation.index1].variables[
           this.state.varlocation.index2
         ];
       if (!this.state.varabbreviation in this.state.dataset[0]) {
