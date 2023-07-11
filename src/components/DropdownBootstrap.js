@@ -144,7 +144,7 @@ class DropdownBootstrap extends Component {
          * @returns a list of Grid-wrapped buttons with the id, key, className, value and onClick methods 
          * associated with that demographic. See dem_list const at the top of the class. 
          */
-        demListToButton(specificDems, xsGrid, smGrid) {
+        demListToButton(specificDems, xsGrid, smGrid, race, gender, racegender) {
           // uses the Array.prototype.map() function to apply to all items in dem_list.
           return dem_list.map((dem) => {
             // if the button is in the specificDems list, then return it
@@ -154,7 +154,14 @@ class DropdownBootstrap extends Component {
                   id={dem.id} // the id for styling purposes
                   key={dem.name} // the key
                   className={`${dem.name} dembutton 
-                    ${dem.name != "Everyone" && dem.id == "dembutton" ? 
+                    available
+                    ${race ? (this.state.race ? "available" : "unavailable") : ""}
+                    ${gender ? (this.state.gender ? "available" : "unavailable") : ""}
+                    ${racegender ? (this.state.racegender ? "available" : "unavailable") : ""}
+                    ${this.state.buttonselected === dem.name ? "selected" : ""}`
+                  } // the className for styling purposes
+                  /*
+                  ${dem.name != "Everyone" && dem.id == "dembutton" ? 
                       (this.state.race ? "available" : "unavailable") : "available"
                     }
                     ${dem.id == "genderbutton" ? 
@@ -163,8 +170,8 @@ class DropdownBootstrap extends Component {
                     ${dem.id == "Men" || dem.id == "Women" ? 
                       (this.state.racegender ? "available" : "unavailable") : ""
                     }
-                    ${this.state.buttonselected === dem.name ? "selected" : ""}`
-                  } // the className for styling purposes
+                    ${this.state.buttonselected === dem.name ? "selected" : ""}
+                   */
                   value={[dem.race, dem.gender, dem.name]} // the value eg. ['A', 'A', 'Everyone]
                   onClick={this.handleDemClick} // the onClick handler 
                 >
@@ -186,16 +193,16 @@ class DropdownBootstrap extends Component {
               <Grid className="step2" container xs={8} sm={8} md={6} lg={4}>
                 <Grid container className="Everyone" sm={4}>
                   {/* passes in a list of the demographics included in this section and the sm and xs attributes of the grid */}
-                {this.demListToButton(["Everyone"], 12, 12)}
+                {this.demListToButton(["Everyone"], 12, 12, false, false, false)}
                 </Grid>
                 <Grid container className="Race step3" xs={12} sm={8}>
-                  {this.demListToButton(["White", "Black"], 6, 6)}
+                  {this.demListToButton(["White", "Black"], 6, 6, true, false, false)}
                 </Grid>
                 <Grid container className="Gender step4" sm={4}>
-                  {this.demListToButton(["Women", "Men"], 6, 12)}
+                  {this.demListToButton(["Women", "Men"], 6, 12, false, true, false)}
                 </Grid>
                 <Grid container className="RaceGender step5" sm={8}>
-                  {this.demListToButton(["WhiteWomen", "BlackWomen", "WhiteMen", "BlackMen"], 6, 6)}
+                  {this.demListToButton(["WhiteWomen", "BlackWomen", "WhiteMen", "BlackMen"], 6, 6, false, false, true)}
                 </Grid>
               </Grid>
             </Row>
