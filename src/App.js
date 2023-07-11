@@ -24,6 +24,7 @@ import OHPerson from "./pages/OHPerson";
 import TopicCategory from "./pages/TopicCategory";
 // import DropdownBootstrap from './components/DropdownBootstrap'
 
+
 const nav_bar_items = [
   { url: "/", name: "Home" },
   //  {url: "/dataportal", name: "Data Portal"},
@@ -36,6 +37,7 @@ const nav_bar_items = [
   { url: "/about", name: "About" },
 ];
 //  {url: "/contact", name: "Contact"}];
+
 /*made home link be exact path "/" , any non matching url goes to nomatch page*/
 
 class App extends Component {
@@ -48,7 +50,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/dataportal" component={DropdownBootstrap} />
-            <Route path="/dataportal2" component={DropdownBootstrap_2} />
+            {/* <Route path="/dataportal2" component={DropdownBootstrap_2} /> */}
             {/* <Route path="/comparison" component={Comparison}/> */}
             <Route path="/indexinfo" component={EconIndex} />
             <Route path="/stories" component={Stories} />
