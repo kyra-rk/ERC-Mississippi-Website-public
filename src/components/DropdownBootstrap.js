@@ -533,7 +533,7 @@ return [ everyonegridbutton];
         <div className="demmapscontainer">
           {/* {this.state.currentvar &&
             <MapTest datainput = {this.state.dataset} variable ={this.state.varabbreviation} varname = {this.state.varname} group ={this.state.buttonselected}/>} */}
-          {this.state.currentvar && variables && (
+          {this.state.currentvar && variables && !this.state.childcare && (
             <DemographicMap
               className="demmaps"
               variables={variables}
