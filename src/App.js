@@ -57,7 +57,7 @@ class App extends Component {
             <Route path="/stories" component={Stories} />
             <Route path="/methodology" component={Methodology} />
             <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
+            {/* <Route path="/contact" component={Contact} /> */}
             {/* <Route exact path="/stories/people" component={Stories}/> */}
             <Route path="/stories/people/:name" component={OHPerson} />
             <Route path="/stories/topic/:name" component={TopicCategory} />
