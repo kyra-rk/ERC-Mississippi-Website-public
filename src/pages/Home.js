@@ -4,7 +4,7 @@
  */
 import React from "react";
 import "../styling/App.css";
-import style from "../styling/Home.css";
+// import style from "../styling/Home.css";
 import WinC from "../pictures/WinC.jpg";
 import WinCLogo from "../pictures/WinCLogo.png";
 import Report from "../pictures/Report.jpg";
@@ -13,12 +13,13 @@ import stories_logo from "../pictures/stories.svg";
 import method_logo from "../pictures/tools.svg";
 import data_portal_demo from "../pictures/Data_portal_demo.mp4";
 import "bootstrap";
-import Fade from "react-reveal/Fade";
-import { Card, Button, Carousel, Figure, Row, Col } from "react-bootstrap";
-import AnimatedNumber from "react-animated-number";
-import HomepageStats from "../components/HomepageStats";
+// import Fade from "react-reveal/Fade";
+// import {Card, Figure } from "react-bootstrap";
+import { Button, Carousel, Row, Col } from "react-bootstrap";
+// import AnimatedNumber from "react-animated-number";
+// import HomepageStats from "../components/HomepageStats";
 import StickyBox from "react-sticky-box";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
+// import AddCircleIcon from "@material-ui/icons/AddCircle";
 import smoothscroll from "smoothscroll-polyfill";
 
 class Home extends React.Component {
