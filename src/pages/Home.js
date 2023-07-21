@@ -4,7 +4,7 @@
  */
 import React from "react";
 import "../styling/App.css";
-// import style from "../styling/Home.css";
+import "../styling/Home.css";
 import WinC from "../pictures/WinC.jpg";
 import WinCLogo from "../pictures/WinCLogo.png";
 import Report from "../pictures/Report.jpg";
