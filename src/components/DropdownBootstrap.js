@@ -367,7 +367,7 @@ return [ everyonegridbutton];
 
   handleDemClick(event) {
     if (this.state.currentvar) {
-      console.log(event.target.value); // A,F,Women --> race, gender, overall dem name
+      // console.log(event.target.value); // A,F,Women --> race, gender, overall dem name
       {
         /* this.state.varlocation.index1 --> the number associated with the category */
       }
@@ -405,7 +405,7 @@ return [ everyonegridbutton];
     const varbuttons = this.createButtons();
     const dembuttons = this.createDemButtons();
     const { stepsEnabled, steps, initialStep } = this.state;
-    let match = this.props.match;
+    // let match = this.props.match;
     //  if (this.state.currentvar){
     //   //  console.log(this.state.varlocation.index1)
     //   let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
@@ -419,9 +419,9 @@ return [ everyonegridbutton];
         categories2[this.state.varlocation.index1].variables[
           this.state.varlocation.index2
         ];
-      if (!this.state.varabbreviation in this.state.dataset[0]) {
-        // console.log
-      }
+      // if (!this.state.varabbreviation in this.state.dataset[0]) {
+      //   // console.log
+      // }
       if (this.state.racegender) {
         let abbrev1 = this.getabbreviation(matchingvar, "W", "M");
         let abbrev2 = this.getabbreviation(matchingvar, "W", "F");
@@ -434,14 +434,14 @@ return [ everyonegridbutton];
         let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
         variables = [abbrev1, abbrev2];
         labels = ["Men", "Women"];
-        if (this.state.currentvar) {
-          //  console.log(this.state.varlocation.index1)
-          let matchingvar =
-            categories2[this.state.varlocation.index1].variables[
-              this.state.varlocation.index2
-            ];
-          // console.log(matchingvar);
-        }
+        // if (this.state.currentvar) {
+        //   //  console.log(this.state.varlocation.index1)
+        //   let matchingvar =
+        //     categories2[this.state.varlocation.index1].variables[
+        //       this.state.varlocation.index2
+        //     ];
+        //   // console.log(matchingvar);
+        // }
       } else if (this.state.gender & this.state.race) {
         let abbrev1 = this.getabbreviation(matchingvar, "A", "M");
         let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
