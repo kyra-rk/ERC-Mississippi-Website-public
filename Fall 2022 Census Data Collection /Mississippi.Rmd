@@ -1,7 +1,7 @@
 ---
 title: "TidyCensus"
 output: html_document
-date: '2022-12-07'
+date: '2023-26-07'
 ---
 
 ```{r setup, include=FALSE}
@@ -405,7 +405,7 @@ Other_Median_Earnings_A_A = 0
 
 ```{r}
 occdf <- getdata("S2401", "C24010", subject = TRUE)
-#head(occdf)
+head(occdf)
 
 #tidyoccdf <- occdf[[1]]
 #tidyoccdf <- tidyoccdf %>% select("GEOID" | ends_with("E")) #%>% select(!"NAME")
@@ -415,75 +415,75 @@ vars
 
 #healthcare
 occdf <- occdf %>% mutate(
-  HealthcareEmployees_A_A = 100*((S2401_C01_015E + S2401_C01_016E + S2401_C01_017E +     S2401_C01_019E)/S2401_C01_001E),
-  HealthcareEmployees_F_A = 100*((S2401_C04_015E + S2401_C04_016E + S2401_C04_017E +     S2401_C04_019E)/S2401_C04_001E),
-  HealthcareEmployees_M_A = 100*((S2401_C02_015E + S2401_C02_016E + S2401_C02_017E +     S2401_C02_019E)/S2401_C02_001E),
-  HealthcareEmployees_A_W = 100*((C24010A_003E + C24010A_004E + C24010A_009E + C24010A_010E)/(C24010A_002E + C24010A_008E)),  
-  HealthcareEmployees_A_B = 100*((C24010B_003E + C24010A_004E + C24010B_009E + C24010A_010E)/(C24010A_003E + C24010A_008E)),
-  HealthcareEmployees_F_W = 100*((C24010A_009E + C24010A_010E)/(C24010A_008E)),
-  HealthcareEmployees_F_B = 100*((C24010B_009E + C24010B_010E)/(C24010B_008E)),
-  HealthcareEmployees_M_W = 100*((C24010A_003E + C24010A_004E)/(C24010A_002E)),
-  HealthcareEmployees_M_B = 100*((C24010B_003E + C24010B_004E)/(C24010B_002E))
+  HealthcareEmployees_A_A = 100*((C24010_016E+C24010_020E+C24010_052E+C24010_056E)/(C24010_001E)),
+  HealthcareEmployees_F_A = 100*((C24010_052E+C24010_056E)/(C24010_038E)),
+  HealthcareEmployees_M_A = 100*((C24010_016E+C24010_020E)/(C24010_002E)),
 )
 
-#legal employees
+#sales and office employees
 occdf <- occdf %>% mutate(
-  LegalEmployees_A_A = 100*((S2401_C01_012E)/(S2401_C01_001E)), 
-  LegalEmployees_F_A = 100*((S2401_C04_012E)/(S2401_C04_001E)),
-  LegalEmployees_M_A = 100*((S2401_C02_012E)/(S2401_C02_001E)) 
-)
-
-#sales employees
-occdf <- occdf %>% mutate(
-  SalesEmployees_A_A = 100*((S2401_C01_027E)/(S2401_C01_001E)),
-  SalesEmployees_F_A = 100*((S2401_C04_027E)/(S2401_C04_001E)), 
-  SalesEmployees_M_A = 100*((S2401_C02_027E)/(S2401_C02_001E)),
-  SalesEmployees_A_W = 100*((C24010A_005E + C24010A_011E)/(C24010A_003E + C24010A_008E)),
-  SalesEmployees_A_B = 100*((C24010B_005E + C24010B_011E)/(C24010B_003E + C24010B_008E)), 
+  SalesEmployees_A_A = 100*((C24010_027E+C24010_063E)/(C24010_001E)),
+  SalesEmployees_F_A = 100*((C24010_063E)/(C24010_038E)), 
+  SalesEmployees_M_A = 100*((C24010_027E)/(C24010_002E)),
+  SalesEmployees_A_W = 100*((C24010A_005E+C24010A_011E)/(C24010A_002E+C24010A_008E)),
+  SalesEmployees_A_B = 100*((C24010B_005E+C24010B_011E)/(C24010B_002E+C24010B_008E)), 
   SalesEmployees_F_W = 100*((C24010A_011E)/(C24010A_008E)), 
   SalesEmployees_F_B = 100*((C24010B_011E)/(C24010B_008E)), 
-  SalesEmployees_M_W = 100*((C24010A_005E)/(C24010A_003E)), 
-  SalesEmployees_M_B = 100*((C24010B_005E)/(C24010B_003E)) 
+  SalesEmployees_M_W = 100*((C24010A_005E)/(C24010A_002E)), 
+  SalesEmployees_M_B = 100*((C24010B_005E)/(C24010B_002E)) 
 )
 
-#business employees 
+#management, business, sciences, and arts employees 
 occdf <- occdf %>% mutate(
-  BusEmployees_A_A = 100*((S2401_C01_004E + S2401_C01_005E)/(S2401_C01_001E)),
-  BusEmployees_F_A = 100*((S2401_C04_004E + S2401_C04_005E)/(S2401_C04_001E)),
-  BusEmployees_M_A = 100*((S2401_C02_004E + S2401_C02_005E)/(S2401_C02_001E)),
+  BusEmployees_A_A = 100*((C24010_003E+C24010_039E)/(C24010_001E)),
+  BusEmployees_F_A = 100*((C24010_039E)/(C24010_038E)),
+  BusEmployees_M_A = 100*((C24010_003E)/(C24010_002E)),
   BusEmployees_A_W = 100*((C24010A_003E + C24010A_009E)/(C24010A_002E + C24010A_008E)),  
-  BusEmployees_A_B = 100*((C24010B_003E + C24010B_009E)/(C24010A_003E + C24010A_008E)),
+  BusEmployees_A_B = 100*((C24010B_003E + C24010B_009E)/(C24010A_002E + C24010A_008E)),
   BusEmployees_F_W = 100*((C24010A_009E)/(C24010A_008E)),
   BusEmployees_F_B = 100*((C24010B_009E)/(C24010B_008E)),
   BusEmployees_M_W = 100*((C24010A_003E)/(C24010A_002E)),
   BusEmployees_M_B = 100*((C24010B_003E)/(C24010B_002E))
 )
 
-#construction and extraction employees
+#service occupations 
 occdf <- occdf %>% mutate(
-  ConstructionEmployees_A_A = 100*((S2401_C01_031E)/(S2401_C01_001E)),
-  ConstructionEmployees_F_A = 100*((S2401_C04_031E)/(S2401_C04_001E)),
-  ConstructionEmployees_M_A = 100*((S2401_C02_031E)/(S2401_C02_001E)),
-  ConstructionEmployees_A_W = 100*((C24010A_006E + C24010A_012E)/(C24010A_003E + C24010A_008E)), 
-  ConstructionEmployees_A_B = 100*((C24010B_006E + C24010B_012E)/(C24010B_003E + C24010B_008E)),
+  ServiceEmployees_A_A = 100*((C24010_019E+C24010_055E)/(C24010_001E)),
+  ServiceEmployees_F_A = 100*((C24010_055E)/(C24010_038E)), 
+  ServiceEmployees_M_A = 100*((C24010_019E)/(C24010_002E)), 
+  ServiceEmployees_A_W = 100*((C24010A_004E+C24010A_010E)/(C24010A_001E)), 
+  ServiceEmployees_A_B = 100*((C24010B_004E+C24010B_010E)/(C24010B_001E)), 
+  ServiceEmployees_F_W = 100*((C24010A_010E)/(C24010A_008E)), 
+  ServiceEmployees_F_B = 100*((C24010B_010E)/(C24010B_008E)), 
+  ServiceEmployees_M_W = 100*((C24010A_004E)/(C24010A_002E)), 
+  ServiceEmployees_M_B = 100*((C24010B_004E)/(C24010B_002E)) 
+)
+
+#natural resources, construction, and maintenance employees
+occdf <- occdf %>% mutate(
+  ConstructionEmployees_A_A = 100*((C24010_030E+C24010_066E)/(C24010_001E)),
+  ConstructionEmployees_F_A = 100*((C24010_066E)/(C24010_038E)),
+  ConstructionEmployees_M_A = 100*((C24010_030E)/(C24010_002E)),
+  ConstructionEmployees_A_W = 100*((C24010A_006E+C24010A_012E)/(C24010A_002E+C24010A_008E)), 
+  ConstructionEmployees_A_B = 100*((C24010B_006E+C24010B_012E)/(C24010B_002E+C24010B_008E)),
   ConstructionEmployees_F_W = 100*((C24010A_012E)/(C24010A_008E)), 
   ConstructionEmployees_F_B = 100*((C24010B_012E)/(C24010B_008E)),
-  ConstructionEmployees_M_W = 100*((C24010A_006E)/(C24010A_003E)),
-  ConstructionEmployees_M_B = 100*((C24010B_006E)/(C24010B_003E))
+  ConstructionEmployees_M_W = 100*((C24010A_006E)/(C24010A_002E)),
+  ConstructionEmployees_M_B = 100*((C24010B_006E)/(C24010B_002E))
 )
 
 #food employees 
 occdf <- occdf %>% mutate(
-  FoodEmployees_A_A = 100*((S2401_C01_023E)/(S2401_C01_001E)),
-  FoodEmployees_F_A = 100*((S2401_C04_023E)/(S2401_C04_001E)),
-  FoodEmployees_M_A = 100*((S2401_C02_023E)/(S2401_C02_001E))
+  FoodEmployees_A_A = 100*((C24010_024E+C24010_060E)/(C24010_001E)),
+  FoodEmployees_F_A = 100*((C24010_060E)/(C24010_038E)),
+  FoodEmployees_M_A = 100*((C24010_024E)/(C24010_002E))
 )
 
-#transportation employees 
+#production, transportation, and material moving employees 
 occdf <- occdf %>% mutate(
-  TransportEmployees_A_A = 100*((S2401_C01_033E)/(S2401_C01_001E)),
-  TransportEmployees_F_A = 100*((S2401_C04_033E)/(S2401_C04_001E)),
-  TransportEmployees_M_A = 100*((S2401_C02_033E)/(S2401_C02_001E)),
+  TransportEmployees_A_A = 100*((C24010_030E+C24010_070E)/(C24010_001E)),
+  TransportEmployees_F_A = 100*((C24010_070E)/(C24010_038E)),
+  TransportEmployees_M_A = 100*((C24010_030E)/(C24010_002E)),
   TransportEmployees_A_W = 100*((C24010A_007E + C24010A_013E)/(C24010A_003E + C24010A_008E)),  
   TransportEmployees_A_B = 100*((C24010B_007E + C24010B_013E)/(C24010B_003E + C24010B_008E)), 
   TransportEmployees_F_W = 100*((C24010A_013E)/(C24010A_008E)), 
@@ -492,13 +492,224 @@ occdf <- occdf %>% mutate(
   TransportEmployees_M_B = 100*((C24010B_007E)/(C24010B_003E)) 
 )
 
-allvars <- full_join(allvars, occdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+# male_female_occdf <- occdf %>% select("NAME" | "HealthcareEmployees_M_A" | "HealthcareEmployees_F_A" | "SalesEmployees_M_A" |  "SalesEmployees_F_A" | "BusEmployees_M_A" | "BusEmployees_F_A"  | "ServiceEmployees_M_A" | "ServiceEmployees_F_A" | "ConstructionEmployees_M_A" | "ConstructionEmployees_F_A"| "FoodEmployees_M_A" | "FoodEmployees_F_A" | "TransportEmployees_M_A" | "TransportEmployees_F_A")
+# male_female_occdf
+# 
+# # male_occupation_plot_data <- male_female_occdf %>% pivot_longer(!GEOID, names_to = "Occupation", values_to = "Percent")
+# # male_occupation_plot_data
+# 
+# 
+# 
+# healthcare_df <- male_female_occdf %>% select ("NAME" | "HealthcareEmployees_M_A" | "HealthcareEmployees_F_A")
+# healthcare_df
+# 
+# plot_width <- 40
+# plot_height <- 0.5 * nrow(healthcare_df)
+# 
+# #plot for healthcare
+# healthcare_plot <- ggplot(healthcare_df, aes(x = HealthcareEmployees_M_A, y = NAME)) +
+#   # Plot points for percent of men
+#   geom_point(aes(color = "Men"), size = 3) +
+#   # Plot points for percent of women
+#   geom_point(aes(x = HealthcareEmployees_F_A, color = "Women"), size = 3) +
+#   # Draw lines between the points for men and women
+#   geom_segment(aes(xend = HealthcareEmployees_F_A, yend = NAME), 
+#                color = "black", size = 0.25) +
+#   # Customize colors for points and lines
+#   scale_color_manual(values = c("Men" = "blue", "Women" = "red")) +
+#   # Set appropriate labels and titles
+#   labs(x = "Percentage", y = "County", 
+#        title = "Percent of Men and Women in Healthcare by County") +
+#   theme(axis.text.y = element_text(angle = 0, hjust = 0.5)) +
+#   theme(plot.title = element_text(hjust = 0.5, size = 30)) +
+#   theme(legend.text = element_text(size = 20),
+#         legend.title = element_text(size = 15)) +
+#   guides(color = guide_legend(override.aes = list(size = 10))) + 
+#   theme(axis.text.x = element_text(size = 25),
+#         axis.text.y = element_text(size = 15))
+# 
+# 
+# ggsave("healthcare_plot.png", plot = healthcare_plot, width = plot_width, height = plot_height, units = "cm")
+# 
+# plot_height <- 0.5 * nrow(sales_df)
+# 
+# sales_df <- male_female_occdf %>% select ("NAME" | "SalesEmployees_M_A" | "SalesEmployees_F_A")
+# sales_df
+# 
+# #plot for sales
+# sales_plot <- ggplot(sales_df, aes(x = SalesEmployees_M_A, y = NAME)) +
+#   # Plot points for percent of men
+#   geom_point(aes(color = "Men"), size = 3) +
+#   # Plot points for percent of women
+#   geom_point(aes(x = SalesEmployees_F_A, color = "Women"), size = 3) +
+#   # Draw lines between the points for men and women
+#   geom_segment(aes(xend = SalesEmployees_F_A, yend = NAME), 
+#                color = "black", size = 0.25) +
+#   # Customize colors for points and lines
+#   scale_color_manual(values = c("Men" = "blue", "Women" = "red")) +
+#   # Set appropriate labels and titles
+#   labs(x = "Percentage", y = "County", 
+#        title = "Percent of Men and Women in Sales by County") +
+#   theme(axis.text.y = element_text(angle = 0, hjust = 0.5)) +
+#   theme(plot.title = element_text(hjust = 0.5, size = 30)) +
+#   theme(legend.text = element_text(size = 20),
+#         legend.title = element_text(size = 15)) +
+#   guides(color = guide_legend(override.aes = list(size = 10))) + 
+#   theme(axis.text.x = element_text(size = 25),
+#         axis.text.y = element_text(size = 15))
+# 
+# ggsave("sales_plot.png", plot = sales_plot, width = plot_width, height = plot_height, units = "cm")
+# 
+# bus_df <- male_female_occdf %>% select ("NAME" | "BusEmployees_M_A" | "BusEmployees_F_A")
+# bus_df
+# 
+# plot_height <- 0.5 * nrow(bus_df)
+# 
+# #business employees plot 
+# bus_plot <- ggplot(bus_df, aes(x = BusEmployees_M_A, y = NAME)) +
+#   # Plot points for percent of men
+#   geom_point(aes(color = "Men"), size = 3) +
+#   # Plot points for percent of women
+#   geom_point(aes(x = BusEmployees_F_A, color = "Women"), size = 3) +
+#   # Draw lines between the points for men and women
+#   geom_segment(aes(xend = BusEmployees_F_A, yend = NAME), 
+#                color = "black", size = 0.25) +
+#   # Customize colors for points and lines
+#   scale_color_manual(values = c("Men" = "blue", "Women" = "red")) +
+#   # Set appropriate labels and titles
+#   labs(x = "Percentage", y = "County", 
+#        title = "Percent of Men and Women in Business Occupations by County") +
+#   theme(axis.text.y = element_text(angle = 0, hjust = 0.5)) +
+#   theme(plot.title = element_text(hjust = 0.5, size = 30)) +
+#   theme(legend.text = element_text(size = 20),
+#         legend.title = element_text(size = 15)) +
+#   guides(color = guide_legend(override.aes = list(size = 10))) + 
+#   theme(axis.text.x = element_text(size = 25),
+#         axis.text.y = element_text(size = 15))
+# 
+# ggsave("business_plot.png", plot = bus_plot, width = plot_width, height = plot_height, units = "cm")
+# 
+# service_df <- male_female_occdf %>% select ("NAME" | "ServiceEmployees_M_A" | "ServiceEmployees_F_A")
+# service_df
+# 
+# plot_height <- 0.5 * nrow(service_df)
+# 
+# #plot for service employees 
+# service_plot <- ggplot(service_df, aes(x = ServiceEmployees_M_A, y = NAME)) +
+#   # Plot points for percent of men
+#   geom_point(aes(color = "Men"), size = 3) +
+#   # Plot points for percent of women
+#   geom_point(aes(x = ServiceEmployees_F_A, color = "Women"), size = 3) +
+#   # Draw lines between the points for men and women
+#   geom_segment(aes(xend = ServiceEmployees_F_A, yend = NAME), 
+#                color = "black", size = 0.25) +
+#   # Customize colors for points and lines
+#   scale_color_manual(values = c("Men" = "blue", "Women" = "red")) +
+#   # Set appropriate labels and titles
+#   labs(x = "Percentage", y = "County", 
+#        title = "Percent of Men and Women in Service Occupations by County") +
+#   theme(axis.text.y = element_text(angle = 0, hjust = 0.5)) +
+#   theme(plot.title = element_text(hjust = 0.5, size = 30)) +
+#   theme(legend.text = element_text(size = 20),
+#         legend.title = element_text(size = 15)) +
+#   guides(color = guide_legend(override.aes = list(size = 10))) + 
+#   theme(axis.text.x = element_text(size = 25),
+#         axis.text.y = element_text(size = 15))
+# 
+# ggsave("service_plot.png", plot = service_plot, width = plot_width, height = plot_height, units = "cm")
+# 
+# construction_df <- male_female_occdf %>% select ("NAME" | "ConstructionEmployees_M_A" | "ConstructionEmployees_F_A")
+# construction_df
+# 
+# plot_height <- 0.5 * nrow(construction_df)
+# 
+# #plot for construction employees 
+# construction_plot <- ggplot(construction_df, aes(x = ConstructionEmployees_M_A, y = NAME)) +
+#   # Plot points for percent of men
+#   geom_point(aes(color = "Men"), size = 3) +
+#   # Plot points for percent of women
+#   geom_point(aes(x = ConstructionEmployees_F_A, color = "Women"), size = 3) +
+#   # Draw lines between the points for men and women
+#   geom_segment(aes(xend = ConstructionEmployees_F_A, yend = NAME), 
+#                color = "black", size = 0.25) +
+#   # Customize colors for points and lines
+#   scale_color_manual(values = c("Men" = "blue", "Women" = "red")) +
+#   # Set appropriate labels and titles
+#   labs(x = "Percentage", y = "County", 
+#        title = "Percent of Men and Women in Natural Resource, Construction, and Maintenance Occupations by County") +
+#   theme(axis.text.y = element_text(angle = 0, hjust = 0.5)) +
+#   theme(plot.title = element_text(hjust = 0.5, size = 20)) +
+#   theme(legend.text = element_text(size = 20),
+#         legend.title = element_text(size = 15)) +
+#   guides(color = guide_legend(override.aes = list(size = 10))) + 
+#   theme(axis.text.x = element_text(size = 25),
+#         axis.text.y = element_text(size = 15))
+# 
+# ggsave("construction_plot.png", plot = construction_plot, width = plot_width, height = plot_height, units = "cm")
+# 
+# food_df <- male_female_occdf %>% select ("NAME" | "FoodEmployees_M_A" | "FoodEmployees_F_A")
+# food_df
+# 
+# plot_height <- 0.5 * nrow(food_df)
+# 
+# #plot for construction employees 
+# food_plot <- ggplot(food_df, aes(x = FoodEmployees_M_A, y = NAME)) +
+#   # Plot points for percent of men
+#   geom_point(aes(color = "Men"), size = 3) +
+#   # Plot points for percent of women
+#   geom_point(aes(x = FoodEmployees_F_A, color = "Women"), size = 3) +
+#   # Draw lines between the points for men and women
+#   geom_segment(aes(xend = FoodEmployees_F_A, yend = NAME), 
+#                color = "black", size = 0.25) +
+#   # Customize colors for points and lines
+#   scale_color_manual(values = c("Men" = "blue", "Women" = "red")) +
+#   # Set appropriate labels and titles
+#   labs(x = "Percentage", y = "County", 
+#        title = "Percent of Men and Women in Food Occupations by County") +
+#   theme(axis.text.y = element_text(angle = 0, hjust = 0.5)) +
+#   theme(plot.title = element_text(hjust = 0.5, size = 30)) +
+#   theme(legend.text = element_text(size = 20),
+#         legend.title = element_text(size = 15)) +
+#   guides(color = guide_legend(override.aes = list(size = 10))) + 
+#   theme(axis.text.x = element_text(size = 25),
+#         axis.text.y = element_text(size = 15))
+# 
+# ggsave("food_plot.png", plot = food_plot, width = plot_width, height = plot_height, units = "cm")
+# 
+# transport_df <- male_female_occdf %>% select ("NAME" | "TransportEmployees_M_A" | "TransportEmployees_F_A")
+# transport_df
+# 
+# plot_height <- 0.5 * nrow(transport_df)
+# 
+# #plot for construction employees 
+# transport_plot <- ggplot(transport_df, aes(x = TransportEmployees_M_A, y = NAME)) +
+#   # Plot points for percent of men
+#   geom_point(aes(color = "Men"), size = 3) +
+#   # Plot points for percent of women
+#   geom_point(aes(x = TransportEmployees_F_A, color = "Women"), size = 3) +
+#   # Draw lines between the points for men and women
+#   geom_segment(aes(xend = TransportEmployees_F_A, yend = NAME), 
+#                color = "black", size = 0.25) +
+#   # Customize colors for points and lines
+#   scale_color_manual(values = c("Men" = "blue", "Women" = "red")) +
+#   # Set appropriate labels and titles
+#   labs(x = "Percentage", y = "County", 
+#        title = "Percent of Men and Women in Production, Transport, and Moving Occupations by County") +
+#   theme(axis.text.y = element_text(angle = 0, hjust = 0.5)) +
+#   theme(plot.title = element_text(hjust = 0.5, size = 20)) +
+#   theme(legend.text = element_text(size = 20),
+#         legend.title = element_text(size = 15)) +
+#   guides(color = guide_legend(override.aes = list(size = 10))) + 
+#   theme(axis.text.x = element_text(size = 25),
+#         axis.text.y = element_text(size = 15))
+# 
+# ggsave("transport_plot.png", plot = transport_plot, width = plot_width, height = plot_height, units = "cm")
 ```
 
 #unemployment data
 ```{r}
 #keeps only the estimates
-unemployment <- getdata("B23001", "C23002", TRUE)
+unemployment <- getdata("B23001", "C23002", TRUE) 
 head(unemployment)
 
 #unsure about the purpose of these lines it seems the same either way
@@ -569,38 +780,47 @@ allvars <- full_join(allvars, tidyunemploymentdf %>% select(matches("_A|_B|_W|GE
 #population data 
 ```{r}
 population_estimates <- getdata("B01001")
-#used the rows for total estimates by race or gender, disregarded age ranges 
+#used the rows for total estimates by race or gender, disregarded age ranges - adults and children are included  
 population_estimates <- population_estimates %>% mutate(
   Population_A_A = B01001_001E, #all genders and races
   Population_M_A = B01001_002E, #male only all races
-  Population_F_A = B01001_017E, #female only and all races
-  Population_A_W = B01001A_001E, #all genders and white only
-  Population_A_B = B01001B_001E, #all genders and black only 
-  Population_M_W = B01001A_002E, #male and white only
-  Population_M_B = B01001B_002E, #male and black only
-  Population_F_W = B01001A_017E, #female and white only 
-  Population_F_B = B01001B_017E, #female and black only 
+  Population_F_A = B01001_026E, #female only and all races
+  Population_A_W = 100*(B01001A_001E/B01001_001E), #all genders and white only
+  Population_A_B = 100*(B01001B_001E/B01001_001E), #all genders and black only 
+  # Population_M_W = B01001A_002E, #male and white only
+  # Population_M_B = B01001B_002E, #male and black only
+  # Population_F_W = B01001A_017E, #female and white only 
+  # Population_F_B = B01001B_017E #female and black only 
 )
+
+population_estimates$Population_M_A / population_estimates$Population_A_A
+population_estimates$Population_M_B / population_estimates$Population_A_B
+population_estimates %>% filter(Population_M_B/Population_A_B > .7) #Green and Issaquena have a higher percent of men
 
 allvars <- full_join(allvars, population_estimates %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
 
 ```
 
 
-#single households data - correct
+#single households data
 ```{r}
 single_households <- getdata("S1101", "B11001", subject=TRUE)
+head(single_households)
+
+#find definition 
+
+#probably needs to be redone, S1101 contains percentages 
 
 single_households <- single_households %>% mutate(
-  HH_SingleFamily_A_A = 100*((S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)/S1101_C01_009E),
-  HH_SingleFamily_M_A = 100*((S1101_C03_009E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
-  HH_SingleFamily_F_A = 100*((S1101_C04_009E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
-  HH_SingleFamily_A_W = 100*((B11001A_002E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
-  HH_SingleFamily_A_B = 100*((B11001B_002E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
-  HH_SingleFamily_M_W = 100*((B11001A_005E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
-  HH_SingleFamily_M_B = 100*((B11001B_005E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
-  HH_SingleFamily_F_W = 100*((B11001A_006E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E)),
-  HH_SingleFamily_F_B = 100*((B11001B_006E)/(S1101_C02_009E + S1101_C03_009E + S1101_C04_009E))
+  HH_SingleFamily_A_A = 100*(B11001_004E/B11001_001E),
+  HH_SingleFamily_M_A = 100*(B11001_005E/B11001_004E),
+  HH_SingleFamily_F_A = 100*(B11001_006E/B11001_004E),
+  HH_SingleFamily_A_W = 100*(B11001A_004E/B11001A_001E),
+  HH_SingleFamily_A_B = 100*(B11001B_004E/B11001B_001E),
+  HH_SingleFamily_M_W = 100*(B11001A_005E/B11001A_004E),
+  HH_SingleFamily_M_B = 100*(B11001B_005E/B11001B_004E),
+  HH_SingleFamily_F_W = 100*(B11001A_006E/B11001A_004E),
+  HH_SingleFamily_F_B = 100*(B11001B_006E/B11001B_004E)
 )
 
 allvars <- full_join(allvars, single_households %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
@@ -611,10 +831,11 @@ allvars <- full_join(allvars, single_households %>% select(matches("_A|_B|_W|GEO
 ```{r}
 singlehouseholds_minors <- getdata("S2201", raceavailable=FALSE, subject=TRUE)
 
+#not sure what's possibly wrong here, need to ask Fatima  
 singlehouseholds_minors <- singlehouseholds_minors %>% mutate(
-  HH_W.MinorsSingleFamily_A_A = 100*((S2201_C01_010E + S2201_C01_011E)/(S2201_C01_009E)),
-  HH_W.MinorsSingleFamily_F_A = 100*((S2201_C01_013E)/(S2201_C01_010E + S2201_C01_011E)),
-  HH_W.MinorsSingleFamily_M_A = 100*((S2201_C01_012E)/(S2201_C01_010E + S2201_C01_011E))
+  HH_W.MinorsSingleFamily_A_A = 100*(S2201_C01_011E/S2201_C01_001E),
+  HH_W.MinorsSingleFamily_F_A = 100*(S2201_C01_013E/S2201_C01_011E),
+  HH_W.MinorsSingleFamily_M_A = 100*(S2201_C01_012E/S2201_C01_011E)
 )
 
 allvars <- full_join(allvars, singlehouseholds_minors %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
@@ -623,7 +844,9 @@ allvars <- full_join(allvars, singlehouseholds_minors %>% select(matches("_A|_B|
 
 #families on gov programs data
 ```{r}
+#unsure, this says universe: needs to be changed?
 govprograms <- getdata("B09010", raceavailable = FALSE)
+#head(govprograms)
 #rows 3-6 all family households on SSI
 #rows 9-12 all family households NOT on SSI
 govprograms_familyhouseholds <- govprograms %>% mutate(
@@ -644,6 +867,7 @@ allvars <- full_join(allvars, govprograms_familyhouseholds %>% select(matches("_
 #single households on SNAP
 ```{r}
 single_households_SNAP <- getdata("S2201", raceavailable=FALSE, subject=TRUE)
+head(single_households_SNAP)
 
 single_households_SNAP <- single_households_SNAP %>% mutate(
   HHOnSNAP_SingleFamily_A_A = 100*(S2201_C03_005E/S2201_C01_005E),
@@ -659,6 +883,7 @@ allvars <- full_join(allvars, single_households_SNAP %>% select(matches("_A|_B|_
 ```{r}
 singlehouseholds_minors_SNAP <- getdata("S2201", raceavailable=FALSE, subject=TRUE)
 
+#not sure, this might be wrong
 singlehouseholds_minors_SNAP <- singlehouseholds_minors_SNAP %>% mutate(
   HHOnSNAP_W.MinorsSingleFamily_A_A = 100*(S2201_C03_011E/S2201_C01_011E),
   HHOnSNAP_W.MinorsSingleFamily_M_A = 100*(S2201_C03_012E/S2201_C01_012E),
@@ -671,7 +896,8 @@ allvars <- full_join(allvars, singlehouseholds_minors_SNAP %>% select(matches("_
 
 #renter-occupied housing
 ```{r}
-# renters <- getdata("B25008", "B25003")
+renters <- getdata("B25008", "B25003")
+head(renters)
 # 
 # #percentages
 # renters <- renters %>% mutate(
@@ -690,7 +916,7 @@ allvars <- full_join(allvars, singlehouseholds_minors_SNAP %>% select(matches("_
 ```
 #single household renter
 ```{r}
-# single_household_renters <- getdata("S1101", raceavailable=FALSE, subject=TRUE)
+#single_household_renters <- getdata("S1101", raceavailable=FALSE, subject=TRUE)
 # 
 # #find out if this includes married couples or not (contradiction between subtab and variable name)
 # single_household_renters <- single_household_renters %>% mutate(
