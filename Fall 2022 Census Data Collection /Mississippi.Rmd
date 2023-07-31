@@ -1,7 +1,7 @@
 ---
 title: "TidyCensus"
 output: html_document
-date: '2023-26-07'
+date: '2022-12-07'
 ---
 
 ```{r setup, include=FALSE}
@@ -404,7 +404,7 @@ Other_Median_Earnings_A_A = 0
 #occupation data
 
 ```{r}
-occdf <- getdata("S2401", "C24010", subject = TRUE)
+occdf <- getdata("C24010")
 head(occdf)
 
 #tidyoccdf <- occdf[[1]]
@@ -417,8 +417,12 @@ vars
 occdf <- occdf %>% mutate(
   HealthcareEmployees_A_A = 100*((C24010_016E+C24010_020E+C24010_052E+C24010_056E)/(C24010_001E)),
   HealthcareEmployees_F_A = 100*((C24010_052E+C24010_056E)/(C24010_038E)),
-  HealthcareEmployees_M_A = 100*((C24010_016E+C24010_020E)/(C24010_002E)),
+  HealthcareEmployees_M_A = 100*((C24010_016E+C24010_020E)/(C24010_002E))
+  #HealthcareEmployees_F_A_A = 100*((C24010_052E+C24010_056E)/(C24010_016E+C24010_020E+C24010_052E+C24010_056E))
 )
+
+# healthcare_female <- occdf %>% select("HealthcareEmployees_A_A" |"HealthcareEmployees_F_A" | "HealthcareEmployees_F_A_A")
+# healthcare_female
 
 #sales and office employees
 occdf <- occdf %>% mutate(
@@ -484,12 +488,12 @@ occdf <- occdf %>% mutate(
   TransportEmployees_A_A = 100*((C24010_030E+C24010_070E)/(C24010_001E)),
   TransportEmployees_F_A = 100*((C24010_070E)/(C24010_038E)),
   TransportEmployees_M_A = 100*((C24010_030E)/(C24010_002E)),
-  TransportEmployees_A_W = 100*((C24010A_007E + C24010A_013E)/(C24010A_003E + C24010A_008E)),  
-  TransportEmployees_A_B = 100*((C24010B_007E + C24010B_013E)/(C24010B_003E + C24010B_008E)), 
+  TransportEmployees_A_W = 100*((C24010A_007E + C24010A_013E)/(C24010A_002E + C24010A_008E)),  
+  TransportEmployees_A_B = 100*((C24010B_007E + C24010B_013E)/(C24010B_002E + C24010B_008E)), 
   TransportEmployees_F_W = 100*((C24010A_013E)/(C24010A_008E)), 
   TransportEmployees_F_B = 100*((C24010B_013E)/(C24010B_008E)),
-  TransportEmployees_M_W = 100*((C24010A_007E)/(C24010A_003E)),
-  TransportEmployees_M_B = 100*((C24010B_007E)/(C24010B_003E)) 
+  TransportEmployees_M_W = 100*((C24010A_007E)/(C24010A_002E)),
+  TransportEmployees_M_B = 100*((C24010B_007E)/(C24010B_002E)) 
 )
 
 # male_female_occdf <- occdf %>% select("NAME" | "HealthcareEmployees_M_A" | "HealthcareEmployees_F_A" | "SalesEmployees_M_A" |  "SalesEmployees_F_A" | "BusEmployees_M_A" | "BusEmployees_F_A"  | "ServiceEmployees_M_A" | "ServiceEmployees_F_A" | "ConstructionEmployees_M_A" | "ConstructionEmployees_F_A"| "FoodEmployees_M_A" | "FoodEmployees_F_A" | "TransportEmployees_M_A" | "TransportEmployees_F_A")
@@ -793,9 +797,9 @@ population_estimates <- population_estimates %>% mutate(
   # Population_F_B = B01001B_017E #female and black only 
 )
 
-population_estimates$Population_M_A / population_estimates$Population_A_A
-population_estimates$Population_M_B / population_estimates$Population_A_B
-population_estimates %>% filter(Population_M_B/Population_A_B > .7) #Green and Issaquena have a higher percent of men
+# population_estimates$Population_M_A / population_estimates$Population_A_A
+# population_estimates$Population_M_B / population_estimates$Population_A_B
+# population_estimates %>% filter(Population_M_B/Population_A_B > .7) #Green and Issaquena have a higher percent of men
 
 allvars <- full_join(allvars, population_estimates %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
 
@@ -804,7 +808,7 @@ allvars <- full_join(allvars, population_estimates %>% select(matches("_A|_B|_W|
 
 #single households data
 ```{r}
-single_households <- getdata("S1101", "B11001", subject=TRUE)
+single_households <- getdata("B11001", subject=TRUE)
 head(single_households)
 
 #find definition 
