@@ -418,10 +418,10 @@ vars
 
 #healthcare
 
-occdf <- occdf %>% mutate(
-  EmployedWomen = 100*((C24010_038E)/(C24010_001E)),
-  EmployedMen = 100*((C24010_002E)/(C24010_001E))
-)
+# occdf <- occdf %>% mutate(
+#   EmployedWomen = 100*((C24010_038E)/(C24010_001E)),
+#   EmployedMen = 100*((C24010_002E)/(C24010_001E))
+# )
   
   
 occdf <- occdf %>% mutate(
