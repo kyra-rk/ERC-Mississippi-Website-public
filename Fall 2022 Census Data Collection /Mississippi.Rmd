@@ -183,7 +183,9 @@ tidymedearningsdf <- tidymedearningsdf %>% rename(
 )
 
 tidymedearningsdf <- tidymedearningsdf %>% mutate(
-  GenderWageGap_A_A = FT_Median_Earnings_F_A, FT_Median_Earnings_M_A)
+  GenderWageGap_A_A = 100*(FT_Median_Earnings_F_A/FT_Median_Earnings_M_A))
+
+#tidymedearningsdf$GenderWageGap_A_A
 
 allvars <- full_join(allvars, tidymedearningsdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
 ```
@@ -239,6 +241,7 @@ tidyedudf <- tidyedudf %>% mutate(
   Bachelors_degree_or_higher_M_A = (100 * (B15002_015E+B15002_016E+B15002_017E+B15002_018E ))/B15002_002E,
   Bachelors_degree_or_higher_F_A = (100 * (B15002_032E+B15002_033E+B15002_034E + B15002_035E ))/B15002_019E
 )
+
 
 allvars <- full_join(allvars, tidyedudf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
 
@@ -405,7 +408,7 @@ Other_Median_Earnings_A_A = 0
 
 ```{r}
 occdf <- getdata("C24010")
-head(occdf)
+#head(occdf)
 
 #tidyoccdf <- occdf[[1]]
 #tidyoccdf <- tidyoccdf %>% select("GEOID" | ends_with("E")) #%>% select(!"NAME")
@@ -414,14 +417,21 @@ vars <- occdf[1,]
 vars
 
 #healthcare
+
+occdf <- occdf %>% mutate(
+  EmployedWomen = 100*((C24010_038E)/(C24010_001E)),
+  EmployedMen = 100*((C24010_002E)/(C24010_001E))
+)
+  
+  
 occdf <- occdf %>% mutate(
   HealthcareEmployees_A_A = 100*((C24010_016E+C24010_020E+C24010_052E+C24010_056E)/(C24010_001E)),
   HealthcareEmployees_F_A = 100*((C24010_052E+C24010_056E)/(C24010_038E)),
-  HealthcareEmployees_M_A = 100*((C24010_016E+C24010_020E)/(C24010_002E))
+  HealthcareEmployees_M_A = 100*((C24010_016E+C24010_020E)/(C24010_002E)),
   #HealthcareEmployees_F_A_A = 100*((C24010_052E+C24010_056E)/(C24010_016E+C24010_020E+C24010_052E+C24010_056E))
 )
 
-# healthcare_female <- occdf %>% select("HealthcareEmployees_A_A" |"HealthcareEmployees_F_A" | "HealthcareEmployees_F_A_A")
+# healthcare_female <- occdf %>% select("EmployedWomen" |"EmployedMen"| "HealthcareEmployees_A_A" |"HealthcareEmployees_F_A" | "HealthcareEmployees_F_A_A")
 # healthcare_female
 
 #sales and office employees
