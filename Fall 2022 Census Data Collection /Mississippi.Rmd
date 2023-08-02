@@ -228,9 +228,9 @@ tidyedudf <- tidyedudf %>% mutate(
   Bachelors_degree_or_higher_F_B = (100 * C15002B_011E)/C15002B_007E,
   Bachelors_degree_or_higher_F_W = (100 * C15002A_011E)/C15002A_007E,
   ##now for general (non race vars)
-  Less_than_high_school_diploma_A_A = (100 * rowSums(across(combined)))/B15002_001E ,
-  Less_than_high_school_diploma_M_A = (100 * rowSums(across(lessthanhs_m_vars)))/B15002_002E ,
-  Less_than_high_school_diploma_F_A = (100 * rowSums(across(lessthanhs_f_vars)))/B15002_019E ,
+  Less_than_high_school_diploma_A_A = (100 * rowSums(across(all_of(combined))))/B15002_001E ,
+  Less_than_high_school_diploma_M_A = (100 * rowSums(across(all_of(lessthanhs_m_vars))))/B15002_002E ,
+  Less_than_high_school_diploma_F_A = (100 * rowSums(across(all_of(lessthanhs_f_vars))))/B15002_019E ,
   "High_school_graduate_(includes_equivalency)_A_A" = (100 * (B15002_011E + B15002_028E)/B15002_001E),
   "High_school_graduate_(includes_equivalency)_M_A" = (100 * B15002_011E)/B15002_002E,
   "High_school_graduate_(includes_equivalency)_F_A" = (100 * B15002_028E)/B15002_019E,
@@ -241,7 +241,6 @@ tidyedudf <- tidyedudf %>% mutate(
   Bachelors_degree_or_higher_M_A = (100 * (B15002_015E+B15002_016E+B15002_017E+B15002_018E ))/B15002_002E,
   Bachelors_degree_or_higher_F_A = (100 * (B15002_032E+B15002_033E+B15002_034E + B15002_035E ))/B15002_019E
 )
-
 
 allvars <- full_join(allvars, tidyedudf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
 
@@ -950,7 +949,7 @@ olddata <- olddata %>% rename(TANFPayment_A_A = Total_TANFPayment)
 allvars$GEOID <- as.numeric(allvars$GEOID)
 combineddata <- full_join(olddata, allvars, by=c("Id2" = "GEOID") )
 
-jsonlite::write_json(combineddata, "../src/data/Data_Test_2023_07_10.json")
+jsonlite::write_json(combineddata, "../src/data/Data_2023_08_02.json")
 ```
 
 
