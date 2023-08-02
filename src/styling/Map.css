@@ -269,3 +269,15 @@ div.legend {
 .legendimage img {
   width: 30%;
 }
+
+.source {
+  font-style: italic
+}
+
+.longdesc {
+  text-align: left;
+}
+
+.relatedinfo {
+  text-align: center;
+}

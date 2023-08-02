@@ -10,11 +10,11 @@ import "../styling/Dropdown.css";
 import data_general from "../data/data_general_ms.json";
 // import datacomplete from '../data/datacomplete.json'
 import datacomplete from "../data/Data_Complete_20210302-2.json";
-import datacomplete2 from "../data/Data_Test_2023_07_10.json";
+import datacomplete2 from "../data/Data_2023_08_02.json";
 import data_black from "../data/data_black.json";
 import data_white from "../data/data_white.json";
 import categories from "../data/Metadata";
-import categories2 from "../data/Metadata_2022_12_23";
+import categories2 from "../data/Metadata_2023_08_02";
 import topic_categories from "../data/topic_categories";
 import { throwStatement } from "@babel/types";
 import { Steps } from "intro.js-react";
@@ -49,6 +49,7 @@ class DropdownBootstrap extends Component {
       varabbreviation: "Female_Population",
       vardesc: "",
       varlongdesc: "",
+      source: "",
       varlocation: { index1: 0, index2: 0 },
       dataset: datacomplete2,
       race: true,
@@ -310,7 +311,7 @@ return [ everyonegridbutton];
   handleClick(index, i, event) {
     const matchingvar = categories2[index].variables[i];
     var desc = matchingvar.description;
-    var longerdesc = matchingvar.longdesc;
+    var longerdesc = matchingvar.datadesc;
     var demselected = this.state.demselected;
     var genderselected = this.state.genderselected;
     var buttonselected = this.state.buttonselected;
@@ -362,6 +363,7 @@ return [ everyonegridbutton];
       buttonselected: buttonselected,
       vardesc: desc,
       varlongdesc: longerdesc,
+      source: matchingvar.datasource
     });
   }
 
@@ -524,6 +526,7 @@ return [ everyonegridbutton];
             group={this.state.buttonselected}
             vardesc={this.state.vardesc}
             longdesc={this.state.varlongdesc}
+            source={this.state.source}
           />
         )}
         {this.state.childcare && <ChildCareMap />}
