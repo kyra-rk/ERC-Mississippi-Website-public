@@ -12,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 install.packages(c("tidycensus", "tidyverse"))
 install.packages("acs")
 install.packages("DT")
+install.packages("jsonlite")
 
 ```
 
@@ -505,6 +506,8 @@ occdf <- occdf %>% mutate(
   TransportEmployees_M_B = 100*((C24010B_007E)/(C24010B_002E)) 
 )
 
+allvars <- full_join(allvars, occdf %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+
 # male_female_occdf <- occdf %>% select("NAME" | "HealthcareEmployees_M_A" | "HealthcareEmployees_F_A" | "SalesEmployees_M_A" |  "SalesEmployees_F_A" | "BusEmployees_M_A" | "BusEmployees_F_A"  | "ServiceEmployees_M_A" | "ServiceEmployees_F_A" | "ConstructionEmployees_M_A" | "ConstructionEmployees_F_A"| "FoodEmployees_M_A" | "FoodEmployees_F_A" | "TransportEmployees_M_A" | "TransportEmployees_F_A")
 # male_female_occdf
 # 
@@ -862,7 +865,7 @@ govprograms <- getdata("B09010", raceavailable = FALSE)
 #head(govprograms)
 #rows 3-6 all family households on SSI
 #rows 9-12 all family households NOT on SSI
-govprograms_familyhouseholds <- govprograms %>% mutate(
+govprograms <- govprograms %>% mutate(
   HHOnGovPrograms_Family_A_A = 100*((B09010_003E)/(B09010_003E+B09010_009E)),
   HHOnGovPrograms_Family_F_A = 100*((B09010_006E)/(B09010_003E)),
   HHOnGovPrograms_Family_M_A = 100*((B09010_005E)/(B09010_003E))
@@ -873,7 +876,7 @@ govprograms_familyhouseholds <- govprograms %>% mutate(
 # ggplot(govprograms_familyhouseholds, aes(x = HHOnGovPrograms_Family_F_A)) + geom_histogram(fill="red", color="black", bins=30)
 # ggplot(govprograms_familyhouseholds, aes(x = HHOnGovPrograms_Family_M_A)) + geom_histogram(fill="purple", color="black", bins=30)
 
-allvars <- full_join(allvars, govprograms_familyhouseholds %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
+allvars <- full_join(allvars, govprograms %>% select(matches("_A|_B|_W|GEOID")), by="GEOID")
 
 ```
 
@@ -941,7 +944,6 @@ head(renters)
 
 
 ```{r}
-install.packages("jsonlite")
 #library(rjson)
 
 olddata <- read.csv(file = "../Data_COMPLETE_cleaned_20210302.csv")
