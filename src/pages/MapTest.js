@@ -291,10 +291,11 @@ class Map extends Component {
 
                bars.on("mouseover", function(d){
                    d3.selectAll("path.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
-                   .attr("opacity", .7)
-                   .style("stroke-width",3 )
-                   .style("fill", "yellow")
+                //    .attr("opacity", .7)
+                   .style("stroke-width",6 )
+                //    .style("fill", "yellow")
                    .style("stroke", "yellow");
+
                    d3.selectAll("circle.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
                 .style("fill", "yellow")
                 .style("stroke", "purple")
@@ -303,17 +304,17 @@ class Map extends Component {
                 })
                 .on("mouseout", function(d){
                     d3.selectAll("path.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
-                    .attr("opacity", 1)
+                    // .attr("opacity", 1)
                     .style("stroke-width",1)
-                    .style("fill",function(d) {
-                        let value = undefined;
-                        value = d.properties[variable];
-                        if (value) {
-                            return color(value);
-                        } else {
-                            return "#ccc";
-                        }
-                })
+                //     .style("fill",function(d) {
+                //         let value = undefined;
+                //         value = d.properties[variable];
+                //         if (value) {
+                //             return color(value);
+                //         } else {
+                //             return "#ccc";
+                //         }
+                // })
                     .style("stroke", "white");
                     d3.selectAll("circle.county" + d.Geography.substring(0,d.Geography.length-20))
                     .attr("opacity", 1)
