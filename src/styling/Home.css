@@ -201,7 +201,12 @@ div.carousel-caption {
   padding-bottom: 0px;
 }
 
-.first h1 {
+.first h1{
+  color: teal;
+}
+
+/* Added h2 */
+.first h2{
   color: teal;
 }
 
@@ -217,12 +222,13 @@ div.carousel-caption {
   font-size: 60px;
 }
 
+/* Originally Fira Sans. Should we keep it or make it Oswald? */
 .introduction h2{
 
   letter-spacing: -1.5px;
   font-weight: bold;
-  margin-top: -5%;
-  font-family: "Fira Sans";
+  margin-top: 0%;
+  font-family: "Oswald";
   position: relative;
   text-align: center;
   font-size: 60px;
@@ -243,6 +249,11 @@ div.carousel-caption {
   font-size: 20px;
   /* removed because it was too much */
   /* margin-bottom: 50px; */
+}
+
+h3 {
+  font-size: 1.90rem;
+  font-family: 'Fira Sans';
 }
 
 .Howto{

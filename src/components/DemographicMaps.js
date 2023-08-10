@@ -13,6 +13,7 @@ class DemographicMaps extends Component {
             dataset: this.props.datainput,
             color: d3.scaleQuantile().range(["#fde8f4","#dfb9cf","#b76293","#79064b", "#30031e"]),
             variables: this.props.variables,
+            varname: this.props.varname
         };
         this.mapElement = React.createRef();
         this.componentDidMount = this.componentDidMount.bind(this)
@@ -47,7 +48,7 @@ class DemographicMaps extends Component {
     componentDidUpdate(prevProps){
         if (this.props.variables != prevProps.variables){
             const [width, height, projection, missing] = this.setUp();
-            console.log("didupdate: ", width)
+            // console.log("didupdate: ", width)
             let variables = this.props.variables;
             let labels = this.props.labels;
             variables.forEach((obj, i) => this.drawMap(`.demmapclass${i}`, obj, width, height, projection))
@@ -347,7 +348,7 @@ class DemographicMaps extends Component {
      </Col>
             }}
         )
-          
+
         
     // const maps = this.props.variables.map((obj) => 
 
@@ -358,7 +359,7 @@ class DemographicMaps extends Component {
             <Row>
                 <Col>
 
-               <div className="headerdiv"><h1 className="descriptionheader">Demographic Maps</h1></div>
+               <div className="headerdiv"><h1 className="descriptionheader">{this.props.varname}</h1></div>
 
             </Col>
             </Row>

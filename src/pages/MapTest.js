@@ -15,6 +15,7 @@ class Map extends Component {
             variablename: this.props.varname,
             variabledescription: this.props.vardesc,
             longerdescription: this.props.longdesc,
+            source: this.props.source,
             // variabledescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
             group: this.props.group,
         };
@@ -38,7 +39,7 @@ class Map extends Component {
     componentDidUpdate(prevProps){
 
         if (this.props.variable != prevProps.variable){
-            this.setState({variable: this.props.variable, variablename: this.props.varname, group: this.props.group, variabledescription: this.props.vardesc, longerdescription: this.props.longdesc});
+            this.setState({variable: this.props.variable, variablename: this.props.varname, group: this.props.group, variabledescription: this.props.vardesc, longerdescription: this.props.longdesc, source: this.props.source});
         }
         this.drawMap();
         this.drawDotplot();
@@ -291,10 +292,11 @@ class Map extends Component {
 
                bars.on("mouseover", function(d){
                    d3.selectAll("path.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
-                   .attr("opacity", .7)
-                   .style("stroke-width",3 )
-                   .style("fill", "yellow")
+                //    .attr("opacity", .7)
+                   .style("stroke-width",6 )
+                //    .style("fill", "yellow")
                    .style("stroke", "yellow");
+
                    d3.selectAll("circle.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
                 .style("fill", "yellow")
                 .style("stroke", "purple")
@@ -303,17 +305,17 @@ class Map extends Component {
                 })
                 .on("mouseout", function(d){
                     d3.selectAll("path.county" + d.Geography.substring(0,d.Geography.length-20).replace(/\s+/g, ''))
-                    .attr("opacity", 1)
+                    // .attr("opacity", 1)
                     .style("stroke-width",1)
-                    .style("fill",function(d) {
-                        let value = undefined;
-                        value = d.properties[variable];
-                        if (value) {
-                            return color(value);
-                        } else {
-                            return "#ccc";
-                        }
-                })
+                //     .style("fill",function(d) {
+                //         let value = undefined;
+                //         value = d.properties[variable];
+                //         if (value) {
+                //             return color(value);
+                //         } else {
+                //             return "#ccc";
+                //         }
+                // })
                     .style("stroke", "white");
                     d3.selectAll("circle.county" + d.Geography.substring(0,d.Geography.length-20))
                     .attr("opacity", 1)
@@ -720,9 +722,10 @@ class Map extends Component {
                        <Row className="step7"><Col className="distribution"></Col></Row>
                    </Col>
                </Row>
-               <Row className="rowblock justify-content-center" noGutters={true}>
+               <Row className="rowblock" noGutters={true}>
                <Col  sm={10} md = {8} lg={{span: 5, offset: 1}} className="longdesc">
                <div><p> {this.state.longerdescription}</p> 
+               <div><p className="source">Source: US Census {this.state.source? ` Table ${this.state.source}` : ""}</p></div>
                {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Euismod nisi porta lorem mollis. Quam vulputate dignissim suspendisse in est ante in. Dui ut ornare lectus sit. Amet tellus cras adipiscing enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Aliquam faucibus purus in massa. Magna fringilla urna porttitor rhoncus dolor purus non enim.  */}
                <a href="stories"><Card className="relatedinfo"><Card.Body><Card.Title>Related Info</Card.Title><Card.Text>Click here to see our Stories Page for more insight on how these data show up in women's lives on a day to day basis. </Card.Text> </Card.Body></Card></a>
                </div>
