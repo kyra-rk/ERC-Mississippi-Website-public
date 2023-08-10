@@ -1,28 +1,28 @@
 import React, { Component } from "react";
 import {Row,DropdownButton,Dropdown,ButtonToolbar,Col,Button,Container,} from "react-bootstrap";
 import Grid from "@material-ui/core/Grid";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MapTest from "../pages/MapTest";
 import DemographicMap from "../components/DemographicMaps";
 import ChildCareMap from "../components/ChildCareMap";
 import "../styling/App.css";
 import "../styling/Dropdown.css";
-import data_general from "../data/data_general_ms.json";
+// import data_general from "../data/data_general_ms.json";
 // import datacomplete from '../data/datacomplete.json'
-import datacomplete from "../data/Data_Complete_20210302-2.json";
+// import datacomplete from "../data/Data_Complete_20210302-2.json";
 import datacomplete2 from "../data/Data_2023_08_02.json";
-import data_black from "../data/data_black.json";
-import data_white from "../data/data_white.json";
-import categories from "../data/Metadata";
+// import data_black from "../data/data_black.json";
+// import data_white from "../data/data_white.json";
+// import categories from "../data/Metadata";
 import categories2 from "../data/Metadata_2023_08_02";
-import topic_categories from "../data/topic_categories";
-import { throwStatement } from "@babel/types";
+// import topic_categories from "../data/topic_categories";
+// import { throwStatement } from "@babel/types";
 import { Steps } from "intro.js-react";
 import "../styling/introjs.css";
-import { Fab, IconButton, Tooltip } from "@material-ui/core";
+// import { Fab, IconButton, Tooltip } from "@material-ui/core";
 import HelpIcon from "@material-ui/icons/Help";
-import HelpOutlineSharpIcon from "@material-ui/icons/HelpOutlineSharp";
-import { borderRight } from "@material-ui/system"
+// import HelpOutlineSharpIcon from "@material-ui/icons/HelpOutlineSharp";
+// import { borderRight } from "@material-ui/system"
 // import '../styling/font-awesome.min.css'
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 // import Map from '../components/Map.js'
@@ -326,7 +326,7 @@ class DropdownBootstrap extends Component {
 
   handleDemClick(event) {
     if (this.state.currentvar) {
-      console.log(event.target.value); // A,F,Women --> race, gender, overall dem name
+      // console.log(event.target.value); // A,F,Women --> race, gender, overall dem name
       {
         /* this.state.varlocation.index1 --> the number associated with the category */
       }
@@ -364,7 +364,7 @@ class DropdownBootstrap extends Component {
     const varbuttons = this.createButtons();
     const dembuttons = this.createDemButtons();
     const { stepsEnabled, steps, initialStep } = this.state;
-    let match = this.props.match;
+    // let match = this.props.match;
     //  if (this.state.currentvar){
     //   //  console.log(this.state.varlocation.index1)
     //   let matchingvar = categories2[this.state.varlocation.index1].variables[this.state.varlocation.index2];
@@ -379,9 +379,9 @@ class DropdownBootstrap extends Component {
         categories2[this.state.varlocation.index1].variables[
           this.state.varlocation.index2
         ];
-      if (!this.state.varabbreviation in this.state.dataset[0]) {
-        // console.log
-      }
+      // if (!this.state.varabbreviation in this.state.dataset[0]) {
+      //   // console.log
+      // }
       if (this.state.racegender) {
         let abbrev1 = this.getabbreviation(matchingvar, "W", "M");
         let abbrev2 = this.getabbreviation(matchingvar, "W", "F");
@@ -394,14 +394,14 @@ class DropdownBootstrap extends Component {
         let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
         variables = [abbrev1, abbrev2];
         labels = ["Men", "Women"];
-        if (this.state.currentvar) {
-          //  console.log(this.state.varlocation.index1)
-          let matchingvar =
-            categories2[this.state.varlocation.index1].variables[
-              this.state.varlocation.index2
-            ];
-          // console.log(matchingvar);
-        }
+        // if (this.state.currentvar) {
+        //   //  console.log(this.state.varlocation.index1)
+        //   let matchingvar =
+        //     categories2[this.state.varlocation.index1].variables[
+        //       this.state.varlocation.index2
+        //     ];
+        //   // console.log(matchingvar);
+        // }
       } else if (this.state.gender & this.state.race) {
         let abbrev1 = this.getabbreviation(matchingvar, "A", "M");
         let abbrev2 = this.getabbreviation(matchingvar, "A", "F");
