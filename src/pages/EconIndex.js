@@ -578,11 +578,11 @@ export const EconIndex = () => (
             </Row>
 
             <Row>
-              <h6>
+              <p>
                 We highly recommend you read through our methodology for
                 calculating the index, which is included below our maps for the
                 index.
-              </h6>
+              </p>
             </Row>
 
             <Row className="justify-content-center">
@@ -595,9 +595,9 @@ export const EconIndex = () => (
                 <Row>
                   <Col>
                     <div className="headerdiv indexheader">
-                      <h1 className="descriptionheader">
+                      <h2 className="descriptionheader">
                         Variables in the Index
-                      </h1>
+                      </h2>
                     </div>
                   </Col>
                 </Row>
@@ -612,7 +612,7 @@ export const EconIndex = () => (
             <Row>
               <Col>
                 <div className="headerdiv indexheader">
-                  <h1 className="descriptionheader">Index</h1>
+                  <h2 className="descriptionheader">Index</h2>
                 </div>
               </Col>
             </Row>
@@ -647,7 +647,7 @@ export const EconIndex = () => (
             <Row>
               <Col>
                 <div className="headerdiv indexheader">
-                  <h1 className="descriptionheader">Index Maps by Race</h1>
+                  <h2 className="descriptionheader">Index Maps by Race</h2>
                 </div>
               </Col>
             </Row>
@@ -692,11 +692,11 @@ export const EconIndex = () => (
                 <a id="section-2"> </a>
               </div>
               <section class="bg-light page-section" className="section">
-                <h1>How did we calculate the index?</h1>
+                <h2>How did we calculate the index?</h2>
                 <Row>
                   <Col>
                     <div className="headerdiv indexheader">
-                      <h1 className="descriptionheader">Rescaling Variables</h1>
+                      <h2 className="descriptionheader">Rescaling Variables</h2>
                     </div>
                   </Col>
                 </Row>
@@ -780,7 +780,7 @@ export const EconIndex = () => (
                 <Row>
                   <Col>
                     <div className="headerdiv indexheader">
-                      <h1 className="descriptionheader">Rescaling by Race</h1>
+                      <h2 className="descriptionheader">Rescaling by Race</h2>
                     </div>
                   </Col>
                 </Row>
@@ -914,9 +914,9 @@ export const EconIndex = () => (
                   <Row>
                     <Col>
                       <div className="headerdiv indexheader">
-                        <h1 className="descriptionheader">
+                        <h2 className="descriptionheader">
                           Composing the Index
-                        </h1>
+                        </h2>
                       </div>
                     </Col>
                   </Row>
@@ -925,7 +925,7 @@ export const EconIndex = () => (
                     class="slidecontainer"
                     className="info_section multiplevars"
                   >
-                    <h2>Combining Variables Into Our Index</h2>
+                    {/* <h3>Combining Variables Into Our Index</h3> */}
                     <p>
                       We do the same steps for each of our variables as shown
                       below and we average them to get a final index value for a
