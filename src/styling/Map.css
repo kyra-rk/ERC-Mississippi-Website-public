@@ -21,6 +21,12 @@ path {
   fill: steelblue;
 }
 
+.maptitle h2 {
+  font-size: 20px;
+  text-decoration: underline;
+  font-family: "Roboto";
+}
+
 #button1:hover, #button2:hover {
   fill-opacity: .7;
 }
@@ -268,4 +274,16 @@ div.legend {
 
 .legendimage img {
   width: 30%;
+}
+
+.source {
+  font-style: italic
+}
+
+.longdesc {
+  text-align: left;
+}
+
+.relatedinfo {
+  text-align: center;
 }

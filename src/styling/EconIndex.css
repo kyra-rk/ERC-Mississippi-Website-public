@@ -20,15 +20,24 @@
     text-align: center;
     font-size: 40px;
     margin-top: 20px;
-    margin-bottom: 2%;
-    font-family: "Open Sans";
+    margin-bottom: 5%;
+    font-family: "Oswald";
+  }
+
+  .econindex h2{
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: "Oswald";
   }
 
 .econindex p{
     text-align: justify;
     font-size: 16px;
     margin-bottom: 30px;
-    font-family: "Open Sans";
+    font-family: "Roboto";
   }
 .info_section{
     /* margin: 100px 150px 0px 0px; */
@@ -38,11 +47,16 @@
 .info_section h1{
   /* text-align: left; */
   font-size: 30px;
+  font-family: "Oswald";
 }
 
 .info_section h3{
   text-align: left;
   font-size: 20px;
+}
+
+h3, h4, h5, h6{
+  font-family: "Roboto";
 }
 
 .imgsize{
@@ -80,12 +94,12 @@
 .tab-content h5 {
  margin-top:15px;
 }
-  .value h4 {
-    font-size: 44px;
-  }
+.value h4 {
+  font-size: 44px;
+}
 
-  .section h4 {
-  font-size: 36px;
+.section h4 {
+  font-size: 30px;
 }
   .singleslider {
     margin-top: 50px;
