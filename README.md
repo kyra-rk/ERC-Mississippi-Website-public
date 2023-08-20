@@ -1,3 +1,5 @@
+This project was worked on by Kyra Ramesh Krishna from June 2023 to August 2023.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
