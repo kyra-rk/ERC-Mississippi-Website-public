@@ -1,3 +1,6 @@
+In the summer of 2023, I (Kyra) worked on developing the Mississippi project – an interactive data visualization website that leverages data from the US Census and from in person interviews to educate policymakers and the general public about women’s economic security in Mississippi. 
+I used React, JavaScript, HTML and CSS to fix rendering bugs, rebuild pages to be more responsive on both web and mobile views, add modularity through functional components, optimize code to reduce memory usage, and re-design key features and pages to enhance user experience. Towards the end, I also started playing around with creating interactive maps with a JavaScript library called D3 (see the responsivemap branch). 
+
 This project was worked on by Kyra Ramesh Krishna from June 2023 to August 2023.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
